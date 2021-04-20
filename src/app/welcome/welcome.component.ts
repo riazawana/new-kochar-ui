@@ -40,15 +40,15 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   notification:any;
   notificationcount:number = 0;
 
-  create(title,content,id) {
+  create(title,content,id,cli) {
 
     var data = content //JSON.parse(content);
-    // console.log(data);
+     console.log(data);
     this.notification = this._notifications.create(title, data)
     this.notifyMe(data);
     this.notification.click.subscribe(function(notif, mouseEvent){
    // alert(id);
-    this.router.navigate(['kochar/notification-details',id]);
+    this.router.navigate(['kochar/notification-details',id,cli]);
 
    // console.log(notif);
     
@@ -124,10 +124,11 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   
     this.soc.messages.subscribe(msg => {
-      //console.log(JSON.parse(msg.text[0]));
+      console.log(JSON.parse(msg.text[0]));
       var da = JSON.parse(msg.text[0]);
       var x = da._id;
-      this.create("Notification",JSON.parse(msg.text[0]).data.notification,x);
+      var cli = da.client;
+      this.create("Notification",JSON.parse(msg.text[0]).data.notification,x,cli);
     })
 
    
@@ -235,8 +236,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     //     }
     //   });
     // }
-
-    console.log("asdf");
   }
 
 

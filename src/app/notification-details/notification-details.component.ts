@@ -27,7 +27,7 @@ export class NotificationDetailsComponent implements OnInit {
                
             this.backend.getnotification(this.id,this.cli)
           .subscribe((data)=> { 
-            // console.log("Data:",data);
+             //console.log("Data:",data);
             this.data = data["data"].notification[0];
               this.date = this.data.send_time;
             // console.log("Data:",this.data);
@@ -62,6 +62,11 @@ export class NotificationDetailsComponent implements OnInit {
        this.backend.updatenotification(data)
           .subscribe((data)=> { 
             // console.log("Mess:",data);
+             if(data["success"] == true){
+              this.router.navigate(['/kochar/Notifications']);
+
+             }
+
           });
   }
 

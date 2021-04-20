@@ -146,11 +146,11 @@ export class NotificationComponent implements OnInit , OnDestroy {
         for(var k = 0; k < data["data"][0].length;k++){
             if(data["data"][0][k]._id == 'Risk Assessment'){
               this.risk = data["data"][0][k].notification;
-        // console.log(this.risk);
+        //  console.log(this.risk);
 
             }else{
               this.health = data["data"][0][k].notification;
-        // console.log(this.health);
+        //  console.log(this.health);
 
         }
 
@@ -173,6 +173,8 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
   getnotificationdetails(x,y){
     // alert(x)
+    // alert(y)
+
   
     this.router.navigate(['/kochar/notification-details',x,y]);
   }
