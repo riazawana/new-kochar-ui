@@ -81,6 +81,7 @@ export class AddUserComponent implements OnInit {
     .subscribe((data)=> { 
       // console.log("zones:",data["data"]);
        this.zones = data["data"];
+     console.log(this.zones);
     });
   }
 
