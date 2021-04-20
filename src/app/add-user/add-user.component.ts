@@ -82,6 +82,7 @@ export class AddUserComponent implements OnInit {
       // console.log("zones:",data["data"]);
        this.zones = data["data"];
      console.log(this.zones);
+     console.log("git test riaz....")
     });
   }
 
