@@ -235,6 +235,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     //     }
     //   });
     // }
+
+    console.log("asdf");
   }
 
 
