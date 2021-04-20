@@ -114,7 +114,7 @@ export class AddNewUserEsclationComponent implements OnInit {
         this.designation = "";
         this.tat = "";
 
-      
+      console.log("asd");
 
     }
 
