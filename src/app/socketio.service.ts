@@ -36,6 +36,14 @@ export class SocketioService {
         }
         )
 
+        // this.socket.on('iot_gateway_commands', (data) => {
+        //   console.log("Received message from Websocket Server")
+        //   observer.next(data);
+        // }
+        // )
+
+        
+
         this.socket.on('modbus_notification', (data) => {
           console.log("Received message from Websocket Server")
           observer.next(data);
@@ -61,7 +69,7 @@ export class SocketioService {
     // socket server whenever the `next()` method is called.
     let observer = {
         next: (data: Object) => {
-            this.socket.emit('message', JSON.stringify(data));
+            this.socket.emit('iot_gateway_commands', JSON.stringify(data));
         },
     };
    

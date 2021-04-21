@@ -35,7 +35,7 @@ export class CommandSettingSmartmeterComponent implements OnInit {
 
     sendMessage(x,y,mac) {
       var data = {
-        mac:mac,
+        mac_id:mac,
         type:x,
         value:y
       }

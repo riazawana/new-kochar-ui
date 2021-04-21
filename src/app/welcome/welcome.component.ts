@@ -58,18 +58,18 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   
   
 
-  sendMessage() {
+//   sendMessage() {
    
-    var data = {
-      mac:"asdf",
-      type:"asdf123",
-      value:"asdd"
-    }
+//     var data = {
+//       mac:"asdf",
+//       type:"asdf123",
+//       value:"asdd"
+//     }
      
-   this.soc.sendMsg(data);
+//    this.soc.sendMsg(data);
 
    
- }
+//  }
 
   ngOnInit(): void {
 

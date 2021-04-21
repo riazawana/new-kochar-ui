@@ -16,6 +16,7 @@ export interface UserData {
   action:any;
 }
 
+
 @Component({
   selector: 'app-gateways',
   templateUrl: './gateways.component.html',
@@ -86,7 +87,7 @@ export class GatewaysComponent implements OnInit {
 
   sendMessage(x,y,mac) {
     var data = {
-      mac:mac,
+      mac_id:mac,
       type:x,
       value:y
     }

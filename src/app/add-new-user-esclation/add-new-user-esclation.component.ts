@@ -89,6 +89,11 @@ export class AddNewUserEsclationComponent implements OnInit {
       var la = this.location_id.split(",");
       this.client =  la[2];
 
+      alert(la[0]);
+      alert(la[1]);
+      alert(la[2]);
+
+
     var newadd =
         {
       email:this.email,
