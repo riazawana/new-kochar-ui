@@ -25,13 +25,13 @@
             <!-- Progress Column -->
             <ng-container matColumnDef="hub_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Zone </th>
-              <td mat-cell *matCellDef="let row"> {{row.zone_name}} </td>
+              <td mat-cell *matCellDef="let row"> {{row._id.zone_name}} </td>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="location">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
-              <td mat-cell *matCellDef="let row"> {{row.location_name}} </td>
+              <td mat-cell *matCellDef="let row"> {{row._id.location_name}} </td>
             </ng-container>
         
             <!-- Color Column -->
@@ -43,7 +43,7 @@
                 <a (click)="deleteMatrix(row.gateway_id)"><i class="fa fa-times ml-3"></i></a>
                 <a (click)="adduser(row._id)"><i class="fa fa-user-plus ml-3"></i></a>     -->
                 
-                <label *ngIf="view" (click)="openDialog(row.location_id,row.mac_id,row.gateway_name)"><i class="fa fa-eye"></i></label>
+                <label *ngIf="view" (click)="openDialog(row.escalation,row._id.location_id)"><i class="fa fa-eye"></i></label>
                 <label *ngIf="edit" (click)="edituser(row._id)"><i class="fa fa-user-plus ml-3"></i></label>
                 <label *ngIf="delete" (click)="deleteMatrix(row._id)"><i class="fa fa-times ml-3"></i></label>                
                 <label *ngIf="!view" ><i class="fa fa-eye"></i></label>

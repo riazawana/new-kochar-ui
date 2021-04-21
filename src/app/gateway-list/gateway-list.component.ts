@@ -145,11 +145,20 @@ export class GatewayListComponent implements OnInit {
 
       })
 
-    this.backend.getgatewaylocationwise(this.id)
-    .subscribe((data)=> { 
-      // console.log("All gateway:",data["data"]);
-       this.gateway = data["data"];
-    });
+      
+
+      this.backend.getlocation(this.id)
+      .subscribe((data)=> { 
+       console.log("location clinet data:",data["data"][0].client);
+        var c = data["data"][0].client;
+       this.backend.getgatewaylocationwise(this.id,c)
+       .subscribe((data)=> { 
+          console.log("All gateway:",data["data"]);
+          this.gateway = data["data"];
+       });
+      });
+      
+   
 
   }
 

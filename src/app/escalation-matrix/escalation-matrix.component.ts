@@ -56,14 +56,12 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
 
   /////////////////////////modal 2/////////////////////////////////////
-     openDialog(l_id,m_id,name): void {
-      //  alert(l_id);
-      //  alert(m_id);
-      //  alert(name);
+     openDialog(data,location_id): void {
+     
 
        const dialogRef = this.dialog.open(EscalationDetailsComponent, {
         //  width: '600px',
-         data: {id: l_id,mac_id:m_id,name:name}    
+         data: {data: data,location_id:location_id}    
        },
        );
 
@@ -121,14 +119,10 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
     this.backend.getescalationmatrixuserwise()
     .subscribe((data)=> { 
-      //  console.log("All escalation:",data);
+        console.log("All escalation:",data);
 
-       for(var k = 0; k < data["data"].length; k++){
-         if(data["data"][k].escalation.length != 0){
-         
-           newdata.push(data["data"][k]);
-         }
-       }
+     
+      newdata = data["data"];
 
        this.dataSource = new MatTableDataSource(newdata);
 
@@ -160,9 +154,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
   }
 
  
-  deleteMatrix(id) : void{
-   // alert(id)
-  }
+  
 
   
 }

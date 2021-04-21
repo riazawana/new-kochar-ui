@@ -27,8 +27,20 @@
             <td>{{da.email}}</td>
             <td>{{da.designation}}</td>
             <td>{{da.tat}}</td>
-            <td>{{da._id}}</td>
 
+            <!-- {client: req.body.client,
+              location_id: req.body.location_id,
+              email: req.body.email,
+              mac_id: req.body.mac_id,
+               gateway_name: req.body.gateway_name} -->
+
+            <td><p (click)="delete(da.device_type[0].gateway_name,da.device_type[0].mac_id,da.client,da.email)">Delete</p></td>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+            <td><p (click)="edit(da.device_type[0].gateway_name,da.device_type[0].mac_id,da.client,da.email,da.phone,da.level,da.designation,da.tat,da.name)">Edit</p></td>
           </tr>
         </tbody>
       </table>

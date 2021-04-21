@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 export interface UserData {
   sr_no: string;
   name: string;
-  created_by: string;
+  type: string;
   action:string;
 }
 
@@ -19,7 +19,7 @@ export interface UserData {
   styleUrls: ['./features.component.css']
 })
 export class FeaturesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['sr_no', 'name', 'created_by','action'];
+  displayedColumns: string[] = ['sr_no', 'name', 'type','action'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -76,16 +76,20 @@ export class FeaturesComponent implements AfterViewInit {
        }, 1);
     }
 
+   this.getallf();
+
+   
+  }
+
+  getallf(){
     this.backend.getallfeatures()
     .subscribe((data)=> { 
-      //  console.log("All roles:",data['data']);
+        console.log("All roles:",data['data']);
        this.dataSource = new MatTableDataSource(data['data']);
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;
 
     });
-
-   
   }
 
   applyFilter(event: Event) {
@@ -107,10 +111,12 @@ export class FeaturesComponent implements AfterViewInit {
   }
 
 
-  deletefeature(x){
-    this.backend.deletefeature(x)
+  deletefeature(x,y){
+    this.backend.deletefeature(x,y)
     .subscribe((data)=> { 
-      //  console.log("data",data);
+        console.log("data",data);
+   this.getallf();
+
     });
 
   }

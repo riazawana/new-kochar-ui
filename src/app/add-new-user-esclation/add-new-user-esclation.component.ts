@@ -27,6 +27,7 @@ export class AddNewUserEsclationComponent implements OnInit {
   level_list = [1,2,3,4,5,6,7,8,9,10];
   user_list:any;
 
+   client : any; 
   ngOnInit(): void {
    // console.log(sessionStorage.getItem('userdata'));
    // console.log(sessionStorage.getItem('token'));
@@ -35,17 +36,23 @@ export class AddNewUserEsclationComponent implements OnInit {
 
     this.backend.getlocationuserwise()
     .subscribe((data)=> { 
-     // console.log(data);
+     console.log(data);
       this.locations = data["data"][0].locations;
+
     })
 
    
 
   }
 
-  gethub(x){
+  gethub(x,y){
+      
 
-    this.backend.getgatewaylocationwise(x)
+      alert(x);
+      alert(y);
+
+
+    this.backend.getgatewaylocationwise(x,y)
     .subscribe((data)=> { 
       //console.log(data);
       this.hub_list = data["data"];
@@ -65,7 +72,7 @@ export class AddNewUserEsclationComponent implements OnInit {
 
     this.backend.addescalationmatrix(this.array)
     .subscribe((data)=> { 
-      //console.log(data);
+      console.log(data);
     })
 
     }
@@ -74,7 +81,6 @@ export class AddNewUserEsclationComponent implements OnInit {
       data:[]
     };
 
-    client:any;
 
     add(){
 
@@ -114,7 +120,7 @@ export class AddNewUserEsclationComponent implements OnInit {
         this.designation = "";
         this.tat = "";
 
-      console.log("asd");
+      //console.log("asd");
 
     }
 

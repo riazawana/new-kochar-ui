@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-8">
+
+        <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput [(ngModel)]="name" name="name" placeholder="name">
+              <mat-hint>Name</mat-hint>
+            </mat-form-field>
+          </p>
+
+        <p>
+            <mat-form-field appearance="outline" id="level">
+              <mat-label>Level*</mat-label>
+              <mat-select placeholder="level" [(ngModel)]="level" name="level">
+                <mat-option *ngFor="let l of level_list" value="{{l}}"  >{{l}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+
+       
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput [(ngModel)]="phone" name="phone" placeholder="Number">
+              <mat-hint>Phone</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Designation</mat-label>
+              <input matInput [(ngModel)]="designation" name="designation" placeholder="Developer">
+              <mat-hint>Designation</mat-hint>
+            </mat-form-field>
+          </p>
+
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="email" name="email" placeholder="Email">
+              <mat-hint>User Email</mat-hint>
+            </mat-form-field>
+          </p>
+
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>TAT</mat-label>
+              <input matInput type="number" [(ngModel)]="tat" name="tat" placeholder="tat">
+              <mat-hint>TAT</mat-hint>
+            </mat-form-field>
+          </p>
+
+
+          <button type="button" class="btn btn-primary" (click)="edit()">Submit</button>
+
+    </div>
+  </div>

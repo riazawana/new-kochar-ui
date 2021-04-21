@@ -203,10 +203,24 @@ onNoClick2(): void {
   }
 
 
-  delete(x){
-    // alert(x)
-  }
+  // delete(x){
+  //    alert(x)
+  // }
   
+
+  delete(process_id) {
+
+     alert(process_id);
+    this.backend.stop_camera(process_id).subscribe((rs)=> { 
+      // console.log("asdsd",rs);
+
+      if(rs["success"]) {
+        this.getAllRtspProcesses();
+    } else {
+        console.log(rs);
+    }
+    })
+    }
 
   
 

@@ -107,6 +107,7 @@ import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import { GetallrecordModalComponent } from './getallrecord-modal/getallrecord-modal.component';
 import { HealthDashComponent } from './health-dash/health-dash.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
+import { EditEscalationUserModalComponent } from './edit-escalation-user-modal/edit-escalation-user-modal.component';
 // import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -245,6 +246,7 @@ const customNotifierOptions: NotifierOptions = {
     GetallrecordModalComponent,
     HealthDashComponent,
     DetailsModalComponent,
+    EditEscalationUserModalComponent,
   ],
   imports: [
     HttpClientModule,

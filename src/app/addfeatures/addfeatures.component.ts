@@ -49,12 +49,25 @@ export class AddfeaturesComponent implements OnInit {
         created_by:da["name"]
       }
      // console.log(data);
+
+     if(this.type == 'module'){
+      this.backend.addmodule(data).subscribe((data)=> { 
+        console.log(data);
+         if(data["success"] == true){
+           this.router.navigate(["/kochar/Features"]);
+          }
+       });
+     }else{
       this.backend.addfeature(data).subscribe((data)=> { 
-      //  console.log(data);
-        if(data["success"] == true){
-          this.router.navigate(["/kochar/Features"]);
-         }
-      });
+        console.log(data);
+         if(data["success"] == true){
+           this.router.navigate(["/kochar/Features"]);
+          }
+       });
+     }
+      
+
+     
       
   }
 

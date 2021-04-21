@@ -144,6 +144,11 @@ export class BackendconnectionService {
 
   }
 
+  addbutton(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/addbutton',data,this.httpOptions);
+  }
+
   addtemplate(data){
     this.auth();
     return this.httpClient.post(this.api+'/addtemplate',data,this.httpOptions);
@@ -177,9 +182,29 @@ export class BackendconnectionService {
 
   
 
-  deletefeature(x){
+  deletefeature(x,t){
     this.auth();
-    return this.httpClient.delete(this.api+'/deletefeature?_id='+x,this.httpOptions);
+    return this.httpClient.delete(this.api+'/deletefeature?name='+x+'&type='+t,this.httpOptions);
+  
+  }
+
+
+
+
+  deleteescalationmatrix(data){
+    this.auth();
+  const options = {
+    headers:this.httpOptions,
+    body: data
+  }
+    return this.httpClient.delete(this.api+'/deleteescalationmatrix',options);
+  
+  }
+
+
+  updateescalationmatrix(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/updateescalationmatrix',data,this.httpOptions);
   
   }
 
@@ -232,9 +257,9 @@ export class BackendconnectionService {
 
 
 
-  getgatewaylocationwise(location_id){
+  getgatewaylocationwise(location_id,c){
     this.auth();
-    return this.httpClient.get(this.api+'/getgatewaylocationwise?location_id='+location_id,this.httpOptions);
+    return this.httpClient.get(this.api+'/getgatewaylocationwise?location_id='+location_id+'&client='+c,this.httpOptions);
   }
 
 

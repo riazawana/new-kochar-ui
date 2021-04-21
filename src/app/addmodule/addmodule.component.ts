@@ -27,11 +27,11 @@ export class AddmoduleComponent implements OnInit {
       name:this.name,
       created_by:da["name"]
     }
-   // console.log(data);
+    console.log(data);
 
     this.backend.addmodule(data)
     .subscribe((data)=> { 
-     // console.log(data);
+      console.log(data);
     });
 
   }

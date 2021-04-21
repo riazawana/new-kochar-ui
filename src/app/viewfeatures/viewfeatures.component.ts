@@ -27,7 +27,7 @@ export class ViewfeaturesComponent implements OnInit {
      
     this.backend.getfeatures(this.id)
     .subscribe((data)=> { 
-      // console.log("User Data",data);
+       console.log("User Data",data);
        this.name = data["data"][0].name;
        this.type = data["data"][0].type;
 
