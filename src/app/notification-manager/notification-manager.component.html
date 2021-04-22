@@ -11,7 +11,7 @@
                 <mat-form-field appearance="outline" id="gateway" class="selectcls">
                   <mat-label>Select Gateway</mat-label>
                   <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
-                    <mat-option *ngFor="let g of gateways" value="{{g.gateway_id}}" (click)="getport(g.gateway_id)"  >{{g.gateway.name}}</mat-option>
+                    <mat-option *ngFor="let g of gateways" value="{{g[0].mac_id}}" (click)="getport(g[0].mac_id)"  >{{g[0].name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
             </p>
@@ -32,15 +32,15 @@
                     <th scope="row">{{da.port_number}}</th>
                     <td>{{da.sensor_name}}</td>
                     <td>
-                        <mat-checkbox class="example-margin" [disabled]="!isvalid"  [checked]="da.notif_arm" (change)="onclick('notif_arm',$event.checked,da._id)" >  </mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="!edit"  [checked]="da.notif_arm" (change)="onclick('notif_arm',$event.checked,da._id)" >  </mat-checkbox>
                       </td>
                     <td>
-                        <mat-checkbox class="example-margin"  [disabled]="!isvalid"  [checked]="da.notif_diarm"  (change)="onclick('notif_diarm',$event.checked,da._id)">  </mat-checkbox>
+                        <mat-checkbox class="example-margin"  [disabled]="!edit"  [checked]="da.notif_diarm"  (change)="onclick('notif_diarm',$event.checked,da._id)">  </mat-checkbox>
                     </td>
         
                   </tr>
 
-                  <button type="button" class="btn btn-primary" *ngIf="isvalid == true" (click)="submit()" style="margin-left: 190%;">Update</button>
+                  <button type="button" class="btn btn-primary" *ngIf="edit == true" (click)="submit()" style="margin-left: 190%;">Update</button>
 
                 </tbody>
                    

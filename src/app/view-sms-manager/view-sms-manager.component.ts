@@ -67,7 +67,7 @@ export class ViewSmsManagerComponent implements OnInit {
 
       this.backend.getsmssetting(this.id)
       .subscribe((data)=> { 
-        //  console.log("Data:",data);
+          console.log("Data:",data);
          this.gateway = data["data"][0].gateway_id
           this.data = data["data"][0];
       });
@@ -75,7 +75,7 @@ export class ViewSmsManagerComponent implements OnInit {
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      //  console.log("Data:",data["data"]);
+        console.log("Data:",data["data"]);
         this.gateways = data["data"];
     });
   }

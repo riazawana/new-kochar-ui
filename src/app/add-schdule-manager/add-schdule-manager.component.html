@@ -1,0 +1,313 @@
+
+<div class="row">
+    <div class="containt">
+        <div class="sub-heading">
+       
+            <h3>View Schedule manager</h3>
+            <hr>
+         </div>
+  
+         <div class="form_holder">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8" style="font-size: 80%;">
+                        <br>
+                        <p>      
+                            <mat-form-field appearance="outline" id="gateway" class="selectcls">
+                              <mat-label>Select Gateway</mat-label>
+                              <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+                                <mat-option *ngFor="let g of gateways" value="{{g[0].name}},{{g[0].mac_id}},{{g[0].devices[0].client}}" >{{g[0].name}}-{{g[0].location_name}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </p>
+
+                        <hr>
+                        <br>
+
+                         <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">Days</th>
+                                <th scope="col">ARM</th>
+                                <th scope="col">DISARM</th>  
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Monday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="mona" name="mona" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="mond" name="mond" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Tuesday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="tuea" name="tuea" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="tued" name="tued" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <th scope="row">Wednesday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="weda" name="weda" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="wedd" name="wedd" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Thursday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="thua" name="thua" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="thud" name="thud" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <th scope="row">Friday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="fria" name="fria" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="frid" name="frid" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Saturday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sata" name="sata" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="satd" name="satd" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Sunday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="suna" name="suna" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sund" name="sund" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+            
+                                         
+                            </tbody>
+                               
+                          </table>
+
+
+
+                         <hr>
+
+                      
+ <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">Days</th>
+                                <th scope="col">RELAY 1 ON</th>
+                                <th scope="col">RELAY 1 OFF</th>    
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Monday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="mon1o" name="mon1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="mon1f" name="mon1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Tuesday</th>
+                                <td>
+                                    <input matInput  type="time" [(ngModel)]="tue1o" name="tue1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="tue1f" name="tue1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <th scope="row">Wednesday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="wed1o" name="wed1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="wed1f" name="wed1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Thursday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="thu1o" name="thu1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="thu1f" name="thu1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <th scope="row">Friday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="fri1o" name="fri1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="fri1f" name="fri1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Saturday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sat1o" name="sat1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sat1f" name="sat1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <th scope="row">Sunday</th>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sun1o" name="sun1o" placeholder="HH:MM" >
+                                </td>
+                                <td>
+                                    <input matInput type="time" [(ngModel)]="sun1f" name="sun1f" placeholder="HH:MM" >
+                                </td>
+                              </tr>
+            
+                                         
+                            </tbody>
+                               
+                          </table>
+
+                        
+                            <hr>
+
+                            <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Days</th>
+                                    <th scope="col">RELAY 2 ON</th>
+                                    <th scope="col">RELAY 2 OFF</th>  
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">Monday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="mon2o" name="mon2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="mon2f" name="mon2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+                                  <tr>
+                                    <th scope="row">Tuesday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="tue2o" name="tue2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="tue2f" name="tue2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+    
+                                  <tr>
+                                    <th scope="row">Wednesday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="wed2o" name="wed2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="wed2f" name="wed2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+                                  <tr>
+                                    <th scope="row">Thursday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="thu2o" name="thu2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="thu2f" name="thu2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+    
+                                  <tr>
+                                    <th scope="row">Friday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="fri2o" name="fri2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="fri2f" name="fri2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+                                  <tr>
+                                    <th scope="row">Saturday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="sat2o" name="sat2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="sat2f" name="sat2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+    
+                                  <tr>
+                                    <th scope="row">Sunday</th>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="sun2o" name="sun2o" placeholder="HH:MM" >
+                                    </td>
+                                    <td>
+                                        <input matInput type="time" [(ngModel)]="sun2f" name="sun2f" placeholder="HH:MM" >
+                                    </td>
+                                  </tr>
+                
+                                             
+                                </tbody>
+                                   
+                              </table>
+
+
+
+
+                          <button type="button" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+         </div>
+      
+           
+       
+           
+       
+    </div>
+    
+  </div>
+  
+  
+  
+  

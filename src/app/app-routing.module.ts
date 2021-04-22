@@ -69,7 +69,10 @@ import { AddvideogatewayComponent } from './addvideogateway/addvideogateway.comp
 import { VideogatewayComponent } from './videogateway/videogateway.component';
 import { ViewvideogatewayComponent } from './viewvideogateway/viewvideogateway.component';
 import { HealthDashComponent } from './health-dash/health-dash.component';
- 
+import { SchduleManagerComponent } from './schdule-manager/schdule-manager.component';
+import { AddSchduleManagerComponent } from './add-schdule-manager/add-schdule-manager.component';
+import { ViewSchduleManagerComponent } from './view-schdule-manager/view-schdule-manager.component';
+
 const routes: Routes =[{
   path:'',redirectTo: 'kochar/profile', pathMatch: 'full'  , canActivate:[AuthGuard]
 }
@@ -94,12 +97,15 @@ const routes: Routes =[{
     {path:'Health Dashboard',component: HealthDashComponent},
     {path:'Energy Management/Secondary Gateway',component: SecondryGatewayComponent},
     {path:'Energy Management/Smartmeter',component: SmartMeterComponent},
+    {path:'addschedule',component: AddSchduleManagerComponent},
+    {path:'viewschedule/:id/:cli',component: ViewSchduleManagerComponent},
     {path:'IOT Gateway',component: IotGatewayDashComponent,children:  [
       {path:'Zones',component: ZoneDeviceComponent},
       {path:'Templates',component: TemplateListComponent},
       {path:'Gateway',component: GatewaysComponent},
       {path:'SMS Manager',component: SmsManagerComponent},
       {path:'Notification Manager',component: NotificationManagerComponent},
+      {path:'Schedule Manager',component: SchduleManagerComponent},
      ]},
      {path:'Escalation Matrix',component: EscalationMatrixComponent},
      {path:'adduserescalation/:id',component:AddUserEsclationComponent},

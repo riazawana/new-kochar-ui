@@ -202,6 +202,12 @@ export class BackendconnectionService {
   }
 
 
+  updatesmssetting(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/updatesmssetting',data,this.httpOptions);
+  
+  }
+
   updateescalationmatrix(data){
     this.auth();
     return this.httpClient.post(this.api+'/updateescalationmatrix',data,this.httpOptions);
@@ -303,7 +309,7 @@ export class BackendconnectionService {
  
   getnotificationsettings(id){
     this.auth();
-      return this.httpClient.get(this.api+'/getnotificationsettings?gateway_id='+id,this.httpOptions);
+      return this.httpClient.get(this.api+'/getnotificationsettings?mac_id='+id,this.httpOptions);
     }
 
 
@@ -327,10 +333,49 @@ export class BackendconnectionService {
       return this.httpClient.post(this.api+'/updatedevice',data,this.httpOptions);
       
     }
+
+    addiotgatewayschedule(data){
+      this.auth();
+      return this.httpClient.post(this.api+'/addiotgatewayschedule',data,this.httpOptions);
+      
+    }
+
+    updateiotgatewayschedule(data){
+      this.auth();
+      return this.httpClient.post(this.api+'/updateiotgatewayschedule',data,this.httpOptions);
+      
+    }
+
+    getiotgatewayschedule(id){
+      this.auth();
+        return this.httpClient.get(this.api+'/getiotgatewayschedule?mac_id='+id,this.httpOptions);
+      }
+
+      getalliotgatewayschedule(){
+        this.auth();
+          return this.httpClient.get(this.api+'/getiotgatewayschedule',this.httpOptions);
+        }
+
+
+        deleteiotgatewayschedule(x){
+        this.auth();
+        return this.httpClient.delete(this.api+'/deleteiotgatewayschedule?mac_id='+x,this.httpOptions);
+      
+      }
+
+
+
+      
+
+      deletesmssetting(x,y){
+        this.auth();
+        return this.httpClient.delete(this.api+'/deletesmssetting?mac_id='+x+'&client='+y,this.httpOptions);
+      
+      }
    
     getsmssetting(id){
       this.auth();
-        return this.httpClient.get(this.api+'/getsmssetting?gateway_id='+id,this.httpOptions);
+        return this.httpClient.get(this.api+'/getsmssetting?mac_id='+id,this.httpOptions);
       }
 
 

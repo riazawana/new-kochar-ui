@@ -60,7 +60,7 @@ export class AddSmsManagerComponent implements OnInit {
   ngOnInit(): void {
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      // console.log("Data:",data);
+       console.log("Data:",data);
         this.gateways = data["data"];
     });
   }
@@ -298,7 +298,7 @@ export class AddSmsManagerComponent implements OnInit {
 
     this.backend.addsmssetting(this.data)
     .subscribe((data)=> { 
-      // console.log("Data:",data);
+       console.log("Data:",data);
     });
 
   }

@@ -1,0 +1,64 @@
+
+<div class="row">
+    <div class="containt">
+        <div class="sub-heading">
+          <button type="button" class="btn btn-primary" (click)="addfun()" style="float: right;">Add New Schedule</button>
+
+            <h3>Schedule Manager</h3>
+        </div>
+        <hr>  
+
+        
+
+        <div class="main">
+            <p>      
+                <mat-form-field appearance="outline" id="gateway" class="selectcls">
+                  <mat-label>Select Gateway</mat-label>
+                  <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+                    <mat-option *ngFor="let g of gateways" value="{{g[0].gateway_id}},{{g[0].mac_id}}" (click)="getdata(g[0].mac_id)"  >{{g[0].name}}-{{g[0].location_name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </p>
+
+
+            <table class="table" *ngIf="schdata.length != 0" style="text-align: center;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Sr. No</th>
+                    <th scope="col">Gateway Name</th>
+                    <th scope="col">MAC Address</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Action</th>
+
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let da of schdata;let i = index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{da.name}}</td>
+                    <td>{{da.mac_id}}</td>
+                    <td>{{da.createdAt}}</td>
+                    <td><p (click)="viewfun(da.mac_id,da.client)">view</p> | <p (click)="viewfun(da.mac_id,da.client)"> edit</p> | <p (click)="deletefun(da.mac_id,da.client)">delete</p></td>
+                 
+        
+                  </tr>
+
+                  <button type="button" class="btn btn-primary" *ngIf="isvalid == true" (click)="submit()" style="margin-left: 190%;">Update</button>
+
+                </tbody>
+                   
+              </table>
+
+         
+
+
+
+        </div>
+
+    
+    </div>
+</div>
+  
+  
+  

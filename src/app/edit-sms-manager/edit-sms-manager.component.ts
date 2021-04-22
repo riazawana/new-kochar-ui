@@ -18,6 +18,7 @@ export class EditSmsManagerComponent implements OnInit {
 
   gateways:any;
   gateway:any;
+  mac_id:any;
 
   arm_by_platform1:any;
   arm_by_platform2:any;
@@ -88,7 +89,7 @@ export class EditSmsManagerComponent implements OnInit {
  
   armda :any;
   disarmda:any;
-  
+  client:any;
 
 
 
@@ -143,8 +144,12 @@ export class EditSmsManagerComponent implements OnInit {
 
       this.backend.getsmssetting(this.id)
       .subscribe((data)=> { 
-        // console.log("Data:",data["data"][0]);
+         console.log("Data:",data["data"][0]);
+         console.log("Data:",data);
+
          this.gateway = data["data"][0].gateway_id
+         this.mac_id = data["data"][0].mac_id;
+          this.client = data["data"][0].client;
           this.data = data["data"][0];
 
 
@@ -226,7 +231,7 @@ export class EditSmsManagerComponent implements OnInit {
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-       // console.log("Data:",data["data"]);
+        console.log("Data:",data["data"]);
         this.gateways = data["data"];
     });
   }
@@ -458,7 +463,32 @@ export class EditSmsManagerComponent implements OnInit {
   }
 
 
-  onsubmit(){}
+  onsubmit(){
+    console.log(this.data);
+
+    var da = JSON.parse(sessionStorage.getItem('userdata'));
+    
+var data = {
+  "arm_by_platform": this.data.arm_by_platform,
+  "disarm_by_platform": this.data.disarm_by_platform,
+  "offline": this.data.offline,
+  "online": this.data.online,
+  "arm_by_keypad": this.data.arm_by_keypad,
+  "disarm_by_keypad": this.data.disarm_by_keypad,
+  "arm": this.data.arm,
+  "disarm": this.data.disarm,
+  "modified_by": da["name"],
+  "mac_id": this.mac_id,
+  "client": this.client
+}
+
+
+    this.backend.updatesmssetting(data)
+    .subscribe((data)=> { 
+        console.log("Data:",data);
+    });
+
+  }
  
 
 }

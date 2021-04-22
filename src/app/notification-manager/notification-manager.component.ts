@@ -162,8 +162,11 @@ gateways:any;
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      //  console.log("Data:",data);
+       
+
+
         this.gateways = data["data"];
+
     });
     
   }
@@ -173,7 +176,7 @@ gateway:any;
   getport(x){
     this.backend.getnotificationsettings(x)
     .subscribe((data)=> { 
-      //  console.log("Data:",data);
+      console.log("Data:",data);
         this.ports = data["data"];
         
         this.data = data["data"];
@@ -205,7 +208,7 @@ gateway:any;
      }
     this.backend.updatenotificationsettings(da)
     .subscribe((data)=> { 
-      //  console.log("Data:",data);
+        console.log("Data:",data);
 
     });
 

@@ -3,34 +3,30 @@ import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../backendconnection.service';
 
-
 @Component({
-  selector: 'app-sms-manager',
-  templateUrl: './sms-manager.component.html',
-  styleUrls: ['./sms-manager.component.css']
+  selector: 'app-schdule-manager',
+  templateUrl: './schdule-manager.component.html',
+  styleUrls: ['./schdule-manager.component.css']
 })
-export class SmsManagerComponent implements OnInit {
+export class SchduleManagerComponent implements OnInit {
 
   constructor(
               private router: Router,
     private backend: BackendconnectionService 
             ){ }
 
-          
+isvalid:boolean=false; 
+add:boolean = false;
+edit:boolean = false;
+view:boolean = false;
+delete:boolean = false;
+
 gateways:any;
 gateway:any;
-id: string;
-
-
-add:any=false;
-
-view:any=false;
-edit:any=false;
-delete:any=false;
-
 
 
   ngOnInit(){
+
     var role = sessionStorage.getItem('role');
 
     if(role == 'admin'){
@@ -45,7 +41,7 @@ delete:any=false;
       setTimeout(() => {
         var features = JSON.parse(sessionStorage.getItem('features'));
         for(var i = 0; i < features.length; i++){
-          if(features[i].feature_name == 'SMS Manager'){
+          if(features[i].feature_name == 'Schedule Manager'){
              if(features[i].add == true){
             this.add = true;
              }
@@ -66,55 +62,44 @@ delete:any=false;
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-        console.log("Data:",data);
+      
+      console.log(data);
         this.gateways = data["data"];
+
     });
     
   }
-  k : any = [];
 
-  getsetting(x){
-    
-    alert(x);
+  schdata:any = [];
 
-
-    this.backend.getsmssetting(x)
+  getdata(x,y){
+    this.backend.getiotgatewayschedule(x)
     .subscribe((data)=> { 
-        console.log("Data:",data);
-        this.k = data["data"];
-    });
+      
+      console.log(data);
+        this.schdata = data["data"];
 
-    // for(var i =0; i<this.gateways.length; i++){
-    //   if(this.gateways[i].gateway_id == x){
-    //     this.k = this.gateways[i].gateway;
-    //   }
-    // }
-  }
-
-
-  addnew(){
-    this.router.navigate(['/kochar/addsmssetting']);
-  }
-  smsView(id) : void {
-    // alert(id);
-    this.router.navigate(['/kochar/viewsmssetting',id]);
-
-  }
-
-  smsEdit(id) : void {
-    this.router.navigate(['/kochar/editsmartmeter',id]);
-
-  }
-
-  smsDelete(mac_id,cli) : void {
-    alert(mac_id)
-    alert(cli)
-
-    this.backend.deletesmssetting(mac_id,cli)
-    .subscribe((data)=> { 
-        console.log("Data:",data);
     });
   }
-  
+ 
+
+  viewfun(x,y){
+    this.router.navigate(['/kochar/viewschedule',x,y]);
+
+  }
+
+  deletefun(x,y){
+    this.backend.deleteiotgatewayschedule(x)
+    .subscribe((data)=> { 
+      
+      console.log(data);
+
+    });
+  }
+
+  addfun(){
+    this.router.navigate(['/kochar/addschedule']);
+
+  }
 
 }

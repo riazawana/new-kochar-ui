@@ -13,7 +13,7 @@
                 <mat-form-field appearance="outline" id="gateway" class="selectcls">
                   <mat-label>Select Gateway</mat-label>
                   <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
-                    <mat-option *ngFor="let g of gateways" value="{{g.gateway_id}}" (click)="getsetting(g.gateway_id)"  >{{g.gateway.name}}</mat-option>
+                    <mat-option *ngFor="let g of gateways" value="{{g[0].mac_id}}" (click)="getsetting(g[0].mac_id)"  >{{g[0].name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
             </p>
@@ -35,9 +35,9 @@
                     <td>{{l.gateway_name}}</td>
                     <td>{{l.mac_id}}</td>
                     <td>
-                <a (click)="smsView(l.gateway_id)"><i class="fa fa-eye"></i></a>
-                <a (click)="smsEdit(l.gateway_id)"><i class="fa fa-pencil-square-o ml-3"></i></a>
-                <a (click)="smsDelete(l.gateway_id)"><i class="fa fa-times ml-3"></i></a>
+                <a (click)="smsView(l.mac_id)"><i class="fa fa-eye"></i></a>
+                <a (click)="smsEdit(l.mac_id)"><i class="fa fa-pencil-square-o ml-3"></i></a>
+                <a (click)="smsDelete(l.mac_id,l.client)"><i class="fa fa-times ml-3"></i></a>
                     </td>
 
         

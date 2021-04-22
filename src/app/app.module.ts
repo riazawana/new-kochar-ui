@@ -108,6 +108,9 @@ import { GetallrecordModalComponent } from './getallrecord-modal/getallrecord-mo
 import { HealthDashComponent } from './health-dash/health-dash.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
 import { EditEscalationUserModalComponent } from './edit-escalation-user-modal/edit-escalation-user-modal.component';
+import { SchduleManagerComponent } from './schdule-manager/schdule-manager.component';
+import { AddSchduleManagerComponent } from './add-schdule-manager/add-schdule-manager.component';
+import { ViewSchduleManagerComponent } from './view-schdule-manager/view-schdule-manager.component';
 // import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -247,6 +250,9 @@ const customNotifierOptions: NotifierOptions = {
     HealthDashComponent,
     DetailsModalComponent,
     EditEscalationUserModalComponent,
+    SchduleManagerComponent,
+    AddSchduleManagerComponent,
+    ViewSchduleManagerComponent,
   ],
   imports: [
     HttpClientModule,
