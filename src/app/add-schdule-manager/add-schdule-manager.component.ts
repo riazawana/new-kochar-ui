@@ -133,62 +133,62 @@ export class AddSchduleManagerComponent implements OnInit {
       },
       "relay1":{
           "monday":{
-              "arm":this.mon1o,
-              "disarm": this.mon1f
+              "on":this.mon1o,
+              "off": this.mon1f
           },
           "tuesday":{
-              "arm":this.tue1o,
-              "disarm": this.tue1f
+              "on":this.tue1o,
+              "off": this.tue1f
           },
           "wednesday":{
-              "arm":this.wed1o,
-              "disarm": this.wed1f
+              "on":this.wed1o,
+              "off": this.wed1f
           },
           "thursday":{
-              "arm":this.thu1o,
-              "disarm": this.thu1f
+              "on":this.thu1o,
+              "off": this.thu1f
           },
           "friday":{
-              "arm":this.fri1o,
-              "disarm": this.fri1f
+              "on":this.fri1o,
+              "off": this.fri1f
           },
           "saturday":{
-              "arm":this.sat1o,
-              "disarm": this.sat1f
+              "on":this.sat1o,
+              "off": this.sat1f
           },
           "sunday":{
-              "arm":this.sun1o,
-              "disarm": this.sun1f
+              "on":this.sun1o,
+              "off": this.sun1f
           }
       },
       "relay2":{
         "monday":{
-            "arm":this.mon2o,
-            "disarm": this.mon2f
+            "on":this.mon2o,
+            "off": this.mon2f
         },
         "tuesday":{
-            "arm":this.tue2o,
-            "disarm": this.tue2f
+            "on":this.tue2o,
+            "off": this.tue2f
         },
         "wednesday":{
-            "arm":this.wed2o,
-            "disarm": this.wed2f
+            "on":this.wed2o,
+            "off": this.wed2f
         },
         "thursday":{
-            "arm":this.thu2o,
-            "disarm": this.thu2f
+            "on":this.thu2o,
+            "off": this.thu2f
         },
         "friday":{
-            "arm":this.fri2o,
-            "disarm": this.fri2f
+            "on":this.fri2o,
+            "off": this.fri2f
         },
         "saturday":{
-            "arm":this.sat2o,
-            "disarm": this.sat2f
+            "on":this.sat2o,
+            "off": this.sat2f
         },
         "sunday":{
-            "arm":this.sun2o,
-            "disarm": this.sun2f
+            "on":this.sun2o,
+            "off": this.sun2f
         }
     },
       "created_by": da["name"],

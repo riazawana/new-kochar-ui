@@ -99,6 +99,8 @@ const routes: Routes =[{
     {path:'Energy Management/Smartmeter',component: SmartMeterComponent},
     {path:'addschedule',component: AddSchduleManagerComponent},
     {path:'viewschedule/:id/:cli',component: ViewSchduleManagerComponent},
+    {path:'editschedule/:id/:cli',component: ViewSchduleManagerComponent},
+
     {path:'IOT Gateway',component: IotGatewayDashComponent,children:  [
       {path:'Zones',component: ZoneDeviceComponent},
       {path:'Templates',component: TemplateListComponent},

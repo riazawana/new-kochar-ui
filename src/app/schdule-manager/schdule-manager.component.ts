@@ -88,6 +88,13 @@ gateway:any;
 
   }
 
+
+  editfun(x,y){
+    this.router.navigate(['/kochar/editschedule',x,y]);
+
+  }
+
+
   deletefun(x,y){
     this.backend.deleteiotgatewayschedule(x)
     .subscribe((data)=> { 

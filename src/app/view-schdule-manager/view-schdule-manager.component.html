@@ -1,144 +1,312 @@
 
 <div class="row">
-    <div class="containt">
-        <div class="sub-heading">
-       
-            <h3>View Schedule manager</h3>
-            <hr>
-         </div>
-  
-         <div class="form_holder">
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8" style="font-size: 80%;">
-                        <br>
-                        <p>      
-                            <mat-form-field appearance="outline" id="gateway" class="selectcls">
-                              <mat-label>Select Gateway</mat-label>
-                              <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
-                                <mat-option *ngFor="let g of gateways" value="{{g[0].gateway_id}},{{g[0].mac_id}}" (click)="getdata(g[0].mac_id)" disabled >{{g[0].name}}-{{g[0].location_name}}</mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                        </p>
+  <div class="containt">
+      <div class="sub-heading">
+     
+          <h3>View Schedule manager</h3>
+          <hr>
+       </div>
 
-                        <hr>
-                        <br>
+       <div class="form_holder">
+          <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8" style="font-size: 80%;">
+                      <br>
+                      <p>      
+                          <mat-form-field appearance="outline" id="gateway" class="selectcls">
+                            <mat-label>Select Gateway</mat-label>
+                            <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+                              <mat-option *ngFor="let g of gateways" value="{{g[0].mac_id}}" >{{g[0].name}}-{{g[0].location_name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </p>
 
-                         <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th scope="col">Type</th>
-                                <th scope="col">L1</th>
-                                <th scope="col">L2</th>
-                                <th scope="col">L3</th>
-                                <th scope="col">L4</th>
-                                <th scope="col">L5</th>
-                                <th scope="col">L6</th>
-                                <th scope="col">L7</th>
-                                <th scope="col">L8</th>
-                                <th scope="col">L9</th>
-                                <th scope="col">L10</th>
-                                <th scope="col">Action</th> 
+                      <hr>
+                      <br>
+
+                       <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">Days</th>
+                              <th scope="col">ARM</th>
+                              <th scope="col">DISARM</th>  
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Monday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.monday.arm" name="mona" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.monday.disarm" name="mond" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Tuesday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.tuesday.arm" name="tuea" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.tuesday.disarm" name="tued" placeholder="HH:MM" >
+                              </td>
+                            </tr>
 
 
-                              
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">ARM By Platform</th>
-                                <td *ngFor = "let da of data.arm_by_platform, let ia= index">
-                                    <mat-checkbox class="example-margin"  [checked]= "da" >  </mat-checkbox>
-                                </td>
-                                
-                                <td>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                </td>
-                              </tr>
-            
-                              <tr>
-                                <th scope="row">DISARM By Platform</th>
-                                <td *ngFor = "let dd of data.disarm_by_platform, let id= index">
-                                    <mat-checkbox class="example-margin"  [checked]= "dd" >  </mat-checkbox>
-                                </td>
-                                <td>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                </td>
-                              </tr>
+                            <tr>
+                              <th scope="row">Wednesday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.wednesday.arm" name="weda" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.wednesday.disarm" name="wedd" placeholder="HH:MM" >
+                              </td>
+                            </tr>
 
-                              <tr>
-                                <th scope="row">ARM By Keypad</th>
-                                <td *ngFor = "let dak of data.arm_by_keypad, let iak= index">
-                                    <mat-checkbox class="example-margin"  [checked]= "dak" >  </mat-checkbox>
-                                </td>
-                                <td>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                </td>
-                              </tr>
+                            <tr>
+                              <th scope="row">Thursday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.thursday.arm" name="thua" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.thursday.disarm" name="thud" placeholder="HH:MM" >
+                              </td>
+                            </tr>
 
-                              <tr>
-                                <th scope="row">DISARM By Keypad</th>
-                                <td *ngFor = "let ddk of data.disarm_by_keypad, let idk= index">
-                                    <mat-checkbox class="example-margin" [checked]= "ddk" >  </mat-checkbox>
-                                </td>
-                                <td>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin"  >  </mat-checkbox>
-                                </td>
-                              </tr>
 
-                              <tr>
-                                <th scope="row">OFFLINE</th>
-                                <td *ngFor = "let dff of data.offline, let iff= index">
-                                    <mat-checkbox class="example-margin"  [checked]= "dff" >  </mat-checkbox>
-                                </td>
-                                <td>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                </td>
-                              </tr>
+                            <tr>
+                              <th scope="row">Friday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.friday.arm" name="fria" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.friday.disarm" name="frid" placeholder="HH:MM" >
+                              </td>
+                            </tr>
 
-                              <tr>
-                                <th scope="row">ONLINE</th>
-                                <td *ngFor = "let do of data.online, let io= index">
-                                    <mat-checkbox class="example-margin"  [checked]= "do" >  </mat-checkbox>
-                                </td>
-                                <td>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                    <mat-checkbox class="example-margin" >  </mat-checkbox>
-                                </td>
-                              </tr>
-            
-                            </tbody>
-                               
-                          </table>
+                            <tr>
+                              <th scope="row">Saturday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.saturday.arm" name="sata" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.saturday.disarm" name="satd" placeholder="HH:MM" >
+                              </td>
+                            </tr>
 
-                         <hr>
+                            <tr>
+                              <th scope="row">Sunday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.sunday.arm" name="suna" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.arm.sunday.disarm" name="sund" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+          
+                                       
+                          </tbody>
+                             
+                        </table>
+
+
+
+                       <hr>
+
+                    
+<table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">Days</th>
+                              <th scope="col">RELAY 1 ON</th>
+                              <th scope="col">RELAY 1 OFF</th>    
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Monday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.monday.on" name="mon1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.monday.off" name="mon1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Tuesday</th>
+                              <td>
+                                  <input matInput  type="time" [(ngModel)]="da.relay1.tuesday.on" name="tue1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.tuesday.off" name="tue1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+
+                            <tr>
+                              <th scope="row">Wednesday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.wednesday.on" name="wed1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.tuesday.off" name="wed1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Thursday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.thursday.on" name="thu1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.thursday.off" name="thu1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+
+                            <tr>
+                              <th scope="row">Friday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.friday.on" name="fri1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.friday.off" name="fri1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Saturday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.saturday.on" name="sat1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.saturday.off" name="sat1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Sunday</th>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.sunday.on" name="sun1o" placeholder="HH:MM" >
+                              </td>
+                              <td>
+                                  <input matInput type="time" [(ngModel)]="da.relay1.sunday.off" name="sun1f" placeholder="HH:MM" >
+                              </td>
+                            </tr>
+          
+                                       
+                          </tbody>
+                             
+                        </table>
 
                       
+                          <hr>
+
+                          <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">Days</th>
+                                  <th scope="col">RELAY 2 ON</th>
+                                  <th scope="col">RELAY 2 OFF</th>  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Monday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.monday.on" name="mon2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.monday.off" name="mon2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Tuesday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.tuesday.on" name="tue2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.tuesday.off" name="tue2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+  
+                                <tr>
+                                  <th scope="row">Wednesday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.wednesday.on" name="wed2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.wednesday.off" name="wed2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Thursday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.thursday.on" name="thu2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.thursday.off" name="thu2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+  
+                                <tr>
+                                  <th scope="row">Friday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.friday.on" name="fri2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.friday.off" name="fri2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Saturday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.saturday.on" name="sat2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.saturday.off" name="sat2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Sunday</th>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.sunday.on" name="sun2o" placeholder="HH:MM" >
+                                  </td>
+                                  <td>
+                                      <input matInput type="time" [(ngModel)]="da.relay2.sunday.off" name="sun2f" placeholder="HH:MM" >
+                                  </td>
+                                </tr>
+              
+                                           
+                              </tbody>
+                                 
+                            </table>
 
 
-                        
 
 
-                          <!-- <button type="button" class="btn btn-primary" (click)="onsubmit()">Submit</button> -->
+                        <button type="button" *ngIf="edit == true" class="btn btn-primary" (click)="onsubmit()">Submit</button>
 
-                </div>
-                <div class="col-sm-2"></div>
-            </div>
-         </div>
-      
-           
-       
-           
-       
-    </div>
+              </div>
+              <div class="col-sm-2"></div>
+          </div>
+       </div>
     
+         
+     
+         
+     
   </div>
   
-  
-  
-  
+</div>
+
+
+
