@@ -138,14 +138,14 @@ if(role == 'admin'){
   }
 
   adduser(){
-    this.router.navigate(['/kochar/adduser']);
+    this.router.navigate(['/kochar/Users/adduser']);
   }
 
   viewUser(id){
-    this.router.navigate(['/kochar/viewuser',id])
+    this.router.navigate(['/kochar/Users/viewuser',id])
   }
   editUser(id){
-    this.router.navigate(['/kochar/edituser',id])
+    this.router.navigate(['/kochar/Users/edituser',id])
   }
 
   deleteUser(x){

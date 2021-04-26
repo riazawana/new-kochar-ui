@@ -103,11 +103,11 @@ export class FeaturesComponent implements AfterViewInit {
 
 
   addfeatures(){
-    this.router.navigate(['/kochar/addfeatures']);
+    this.router.navigate(['/kochar/Features/addfeatures']);
   }
 
   viewfeatures(x){
-    this.router.navigate(['/kochar/viewfeatures',x]);
+    this.router.navigate(['/kochar/Features/viewfeatures',x]);
   }
 
 

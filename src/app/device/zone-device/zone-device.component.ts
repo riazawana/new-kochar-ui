@@ -1,9 +1,11 @@
+
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { BackendconnectionService } from '../backendconnection.service';
-import {Router} from '@angular/router';
+import { BackendconnectionService } from '../../backendconnection.service';
+import {Router,ActivatedRoute} from '@angular/router';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 
 export interface UserData {
@@ -15,37 +17,42 @@ export interface UserData {
 
 
 @Component({
-  selector: 'app-zone',
-  templateUrl: './zone.component.html',
-  styleUrls: ['./zone.component.css']
+  selector: 'app-zone-device',
+  templateUrl: './zone-device.component.html',
+  styleUrls: ['./zone-device.component.css']
 })
 
-
-export class ZoneComponent implements AfterViewInit {
+export class ZoneDeviceComponent implements AfterViewInit {
   displayedColumns: string[] = ['sr_no', 'name', 'action'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
- id: string;
+  add = false;
+  view = false;
+  edit = false;
+  delete = false;
+
+
+
   constructor(
     private backend: BackendconnectionService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {
   }
 
-  edit:boolean = false;
-  delete:boolean = false;
-  view:boolean = false;
-  add:boolean = false;
-
-
   ngAfterViewInit() {
-   
-  
 
-  
+
+    this.add = false;
+    this.view = false;
+    this.edit = false;
+    this.delete = false;
+
+
+
     var role = sessionStorage.getItem('role');
 
     if(role == 'admin'){
@@ -60,7 +67,7 @@ export class ZoneComponent implements AfterViewInit {
       setTimeout(() => {
         var features = JSON.parse(sessionStorage.getItem('features'));
         for(var i = 0; i < features.length; i++){
-          if(features[i].feature_name == 'Zones'){
+          if(features[i].feature_name == 'Devices'){
              if(features[i].add == true){
             this.add = true;
              }
@@ -80,9 +87,11 @@ export class ZoneComponent implements AfterViewInit {
     }
 
 
+
+
     this.backend.getallzones()
     .subscribe((data)=> { 
-      //  console.log("All zones:",data);
+      // console.log("All zones:",data);
        this.dataSource = new MatTableDataSource(data["data"]);
 
        this.dataSource.paginator = this.paginator;
@@ -102,40 +111,26 @@ export class ZoneComponent implements AfterViewInit {
     }
   }
 
-  addzone(){
-    this.router.navigate(['/kochar/Zones/addzone']);
-  }
+  viewlocation(x){
 
- 
+    var url = this.router.url.split("/");
+   // console.log(url);
+   
 
- 
-
-  zoneView(id){
-    //alert(id)
-    this.router.navigate(['/kochar/Zones/viewzone',id])
-  }
-  zoneEdit(id){
-   // alert(id)
-   this.router.navigate(['/kochar/Zones/editzone',id])
-    
-  }
- 
-
-  zoneDelete(x){
-
-    // alert(x)
-    this.backend.deletezone(x)
-    .subscribe((data)=> { 
-
-      //  console.log(data);
-    });
+    // if(url[2] == "Devices"){
+      this.router.navigate(['/kochar/Devices/Locations',x,'Devices']);
+    // }else{
+    // this.router.navigate(['/kochar/Locations',x,'in']);
+    // }
   }
 
   addlocation(x){
-    // alert(x)
+    //alert(x)
    
-      this.router.navigate(['/kochar/addnewlocation',x]);
+      this.router.navigate(['/kochar/Devices/addnewlocation',x]);
     
   }
+
+
 }
 

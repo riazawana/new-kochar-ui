@@ -48,7 +48,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     this.notifyMe(data);
     this.notification.click.subscribe(function(notif, mouseEvent){
    // alert(id);
-    this.router.navigate(['kochar/notification-details',id,cli]);
+    this.router.navigate(['kochar/Notifications/notification-details',id,cli]);
 
    // console.log(notif);
     

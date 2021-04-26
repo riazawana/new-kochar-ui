@@ -7,7 +7,7 @@ import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { EscalationDetailsComponent } from '../escalation-details/escalation-details.component';                    // modal two load
+import { EscalationDetailsComponent } from './escalation-details/escalation-details.component';                    // modal two load
 
 export interface DialogData {
   select_s_e : string;
@@ -150,7 +150,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
   }
 
   addnewuser(){
-    this.router.navigate(['/kochar/addnewuserescalation']);
+    this.router.navigate(['/kochar/Escalation Matrix/addnewuserescalation']);
   }
 
  

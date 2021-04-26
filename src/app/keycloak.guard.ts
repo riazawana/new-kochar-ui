@@ -24,10 +24,10 @@ export class AuthGuard extends KeycloakAuthGuard {
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
       await this.keycloak.login({
-        redirectUri: '202.164.38.204:3003/#/kochar/profile/',
+        redirectUri: 'http://localhost:4200/#/kochar/profile/',
       });
     }
-
+     // 202.164.38.204:3003
     // Get the roles required from the route.
     const requiredRoles = route.data.roles;
 

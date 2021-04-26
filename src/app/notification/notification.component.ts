@@ -176,7 +176,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
     // alert(y)
 
   
-    this.router.navigate(['/kochar/notification-details',x,y]);
+    this.router.navigate(['/kochar/Notifications/notification-details',x,y]);
   }
 
 }

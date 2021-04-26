@@ -79,7 +79,7 @@ export class RolesComponent implements AfterViewInit {
 
     this.backend.getallroles()
     .subscribe((data)=> { 
-      //  console.log("All roles:",data['data']);
+        console.log("All roles:",data['data']);
        this.dataSource = new MatTableDataSource(data['data']);
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;
@@ -100,16 +100,16 @@ export class RolesComponent implements AfterViewInit {
 
 
   addrole(){
-    this.router.navigate(['/kochar/addrole']);
+    this.router.navigate(['/kochar/Roles/addrole']);
   }
 
   viewrole(x){
     alert(x)
-    this.router.navigate(['/kochar/viewrole',x]);
+    this.router.navigate(['/kochar/Roles/viewrole',x]);
   }
 
   editrole(x){
-    this.router.navigate(['/kochar/editrole',x]);
+    this.router.navigate(['/kochar/Roles/editrole',x]);
   }
 
   deleterole(x){

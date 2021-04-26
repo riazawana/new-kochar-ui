@@ -82,7 +82,7 @@ export interface UserData {
   opendevice(x,y = this.id ){
    // alert(x);
    // alert(y);
-    this.router.navigate(['/kochar/'+x,this.idz,y]);
+    this.router.navigate(['/kochar/Devices/'+x,this.idz,y]);
 
   }
 

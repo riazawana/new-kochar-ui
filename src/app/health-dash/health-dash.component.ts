@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { BackendconnectionService } from '../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { DetailsModalComponent } from '../details-modal/details-modal.component';         
+import { DetailsModalComponent } from './details-modal/details-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
