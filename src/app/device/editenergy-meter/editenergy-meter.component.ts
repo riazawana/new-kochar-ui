@@ -8,7 +8,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-editenergy-meter',
   templateUrl: './editenergy-meter.component.html',
-  styleUrls: ['./editenergy-meter.component.css']
+  styleUrls: ['./editenergy-meter.component.scss']
 })
 export class EditenergyMeterComponent implements OnInit {
 

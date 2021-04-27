@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-viewenergy',
   templateUrl: './viewenergy.component.html',
-  styleUrls: ['./viewenergy.component.css']
+  styleUrls: ['./viewenergy.component.scss']
 })
 export class ViewenergyComponent implements OnInit {
 

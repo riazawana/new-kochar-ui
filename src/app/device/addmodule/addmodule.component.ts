@@ -4,7 +4,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-addmodule',
   templateUrl: './addmodule.component.html',
-  styleUrls: ['./addmodule.component.css']
+  styleUrls: ['./addmodule.component.scss']
 })
 export class AddmoduleComponent implements OnInit {
 

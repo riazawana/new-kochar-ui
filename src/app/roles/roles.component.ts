@@ -16,7 +16,7 @@ export interface UserData {
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.css']
+  styleUrls: ['./roles.component.scss']
 })
 
 export class RolesComponent implements AfterViewInit {

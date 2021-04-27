@@ -17,7 +17,7 @@ export interface UserData {
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
-  styleUrls: ['./zone.component.css']
+  styleUrls: ['./zone.component.scss']
 })
 
 

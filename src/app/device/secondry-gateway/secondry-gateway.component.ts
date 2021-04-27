@@ -14,7 +14,7 @@ import { CommandSettingMeterComponent } from '../../command-setting-meter/comman
 @Component({
   selector: 'app-secondry-gateway',
   templateUrl: './secondry-gateway.component.html',
-  styleUrls: ['./secondry-gateway.component.css']
+  styleUrls: ['./secondry-gateway.component.scss']
 })
 export class SecondryGatewayComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 @Component({
   selector: 'app-addzone',
   templateUrl: './addzone.component.html',
-  styleUrls: ['./addzone.component.css']
+  styleUrls: ['./addzone.component.scss']
 })
 
 export class AddzoneComponent implements OnInit {

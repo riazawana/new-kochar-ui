@@ -8,7 +8,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 @Component({
   selector: 'app-addfeatures',
   templateUrl: './addfeatures.component.html',
-  styleUrls: ['./addfeatures.component.css']
+  styleUrls: ['./addfeatures.component.scss']
 })
 export class AddfeaturesComponent implements OnInit {
 

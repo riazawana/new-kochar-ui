@@ -19,7 +19,7 @@ export interface UserData {
 @Component({
   selector: 'app-zone-device',
   templateUrl: './zone-device.component.html',
-  styleUrls: ['./zone-device.component.css']
+  styleUrls: ['./zone-device.component.scss']
 })
 
 export class ZoneDeviceComponent implements AfterViewInit {

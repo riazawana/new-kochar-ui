@@ -7,7 +7,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-notification-manager',
   templateUrl: './notification-manager.component.html',
-  styleUrls: ['./notification-manager.component.css']
+  styleUrls: ['./notification-manager.component.scss']
 })
 export class NotificationManagerComponent implements OnInit {
 

@@ -20,7 +20,7 @@ export interface UserData {
 @Component({
   selector: 'app-gateways',
   templateUrl: './gateways.component.html',
-  styleUrls: ['./gateways.component.css']
+  styleUrls: ['./gateways.component.scss']
 })
 
 

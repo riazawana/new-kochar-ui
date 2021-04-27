@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addtemplate',
   templateUrl: './addtemplate.component.html',
-  styleUrls: ['./addtemplate.component.css']
+  styleUrls: ['./addtemplate.component.scss']
 })
 export class AddtemplateComponent implements OnInit {
 

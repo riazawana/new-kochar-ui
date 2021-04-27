@@ -5,7 +5,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-router-detail',
   templateUrl: './router-detail.component.html',
-  styleUrls: ['./router-detail.component.css']
+  styleUrls: ['./router-detail.component.scss']
 })
 export class RouterDetailComponent implements OnInit {
 

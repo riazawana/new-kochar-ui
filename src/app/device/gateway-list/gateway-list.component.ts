@@ -11,7 +11,7 @@ import { CommandSettingComponent } from '../../command-setting/command-setting.c
 @Component({
   selector: 'app-gateway-list',
   templateUrl: './gateway-list.component.html',
-  styleUrls: ['./gateway-list.component.css']
+  styleUrls: ['./gateway-list.component.scss']
 })
 export class GatewayListComponent implements OnInit {
 

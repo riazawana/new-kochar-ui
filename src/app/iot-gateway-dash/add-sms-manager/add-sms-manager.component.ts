@@ -3,7 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-add-sms-manager',
   templateUrl: './add-sms-manager.component.html',
-  styleUrls: ['./add-sms-manager.component.css']
+  styleUrls: ['./add-sms-manager.component.scss']
 })
 export class AddSmsManagerComponent implements OnInit {
 

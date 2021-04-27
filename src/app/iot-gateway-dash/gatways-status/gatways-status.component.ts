@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-gatways-status',
   templateUrl: './gatways-status.component.html',
-  styleUrls: ['./gatways-status.component.css']
+  styleUrls: ['./gatways-status.component.scss']
 })
 
 

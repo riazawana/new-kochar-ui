@@ -9,7 +9,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addrouter',
   templateUrl: './addrouter.component.html',
-  styleUrls: ['./addrouter.component.css']
+  styleUrls: ['./addrouter.component.scss']
 })
 export class AddrouterComponent implements OnInit {
 

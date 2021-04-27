@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-edit-sms-manager',
   templateUrl: './edit-sms-manager.component.html',
-  styleUrls: ['./edit-sms-manager.component.css']
+  styleUrls: ['./edit-sms-manager.component.scss']
 })
 export class EditSmsManagerComponent implements OnInit {
 

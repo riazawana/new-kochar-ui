@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-viewfeatures',
   templateUrl: './viewfeatures.component.html',
-  styleUrls: ['./viewfeatures.component.css']
+  styleUrls: ['./viewfeatures.component.scss']
 })
 export class ViewfeaturesComponent implements OnInit {
 

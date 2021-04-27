@@ -9,7 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'app-health-dash',
   templateUrl: './health-dash.component.html',
-  styleUrls: ['./health-dash.component.css']
+  styleUrls: ['./health-dash.component.scss']
 })
 export class HealthDashComponent implements OnInit {
 

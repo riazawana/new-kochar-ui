@@ -23,7 +23,7 @@ export interface UserData {
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements AfterViewInit {
   displayedColumns: string[] = ['sr_no', 'name', 'role','zone', 'action'];

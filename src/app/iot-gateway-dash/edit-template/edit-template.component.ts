@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-edit-template',
   templateUrl: './edit-template.component.html',
-  styleUrls: ['./edit-template.component.css']
+  styleUrls: ['./edit-template.component.scss']
 })
 export class EditTemplateComponent implements OnInit {
 

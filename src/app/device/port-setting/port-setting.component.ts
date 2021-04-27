@@ -5,7 +5,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-port-setting',
   templateUrl: './port-setting.component.html',
-  styleUrls: ['./port-setting.component.css']
+  styleUrls: ['./port-setting.component.scss']
 })
 export class PortSettingComponent implements OnInit {
 

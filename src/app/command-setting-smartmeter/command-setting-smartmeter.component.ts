@@ -6,7 +6,7 @@ import {SocketioSendmsgService} from "../socketio-sendmsg.service";
 @Component({
   selector: 'app-command-setting-smartmeter',
   templateUrl: './command-setting-smartmeter.component.html',
-  styleUrls: ['./command-setting-smartmeter.component.css']
+  styleUrls: ['./command-setting-smartmeter.component.scss']
 })
 export class CommandSettingSmartmeterComponent implements OnInit {
 

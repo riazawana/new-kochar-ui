@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addnewlocation',
   templateUrl: './addnewlocation.component.html',
-  styleUrls: ['./addnewlocation.component.css']
+  styleUrls: ['./addnewlocation.component.scss']
 })
 export class AddnewlocationComponent implements OnInit {
 

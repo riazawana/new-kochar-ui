@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addvideogateway',
   templateUrl: './addvideogateway.component.html',
-  styleUrls: ['./addvideogateway.component.css']
+  styleUrls: ['./addvideogateway.component.scss']
 })
 export class AddvideogatewayComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-view-template',
   templateUrl: './view-template.component.html',
-  styleUrls: ['./view-template.component.css']
+  styleUrls: ['./view-template.component.scss']
 })
 export class ViewTemplateComponent implements OnInit {
 

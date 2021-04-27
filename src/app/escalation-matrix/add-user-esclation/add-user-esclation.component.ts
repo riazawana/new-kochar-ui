@@ -4,7 +4,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-add-user-esclation',
   templateUrl: './add-user-esclation.component.html',
-  styleUrls: ['./add-user-esclation.component.css']
+  styleUrls: ['./add-user-esclation.component.scss']
 })
 export class AddUserEsclationComponent implements OnInit {
 

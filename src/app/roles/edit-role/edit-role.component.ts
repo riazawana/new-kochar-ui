@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-edit-role',
   templateUrl: './edit-role.component.html',
-  styleUrls: ['./edit-role.component.css']
+  styleUrls: ['./edit-role.component.scss']
 })
 export class EditRoleComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-edit-zone',
   templateUrl: './edit-zone.component.html',
-  styleUrls: ['./edit-zone.component.css']
+  styleUrls: ['./edit-zone.component.scss']
 })
 export class EditZoneComponent implements OnInit {
 

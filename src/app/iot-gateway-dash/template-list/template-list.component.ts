@@ -16,7 +16,7 @@ export interface UserData {
 @Component({
   selector: 'app-template-list',
   templateUrl: './template-list.component.html',
-  styleUrls: ['./template-list.component.css']
+  styleUrls: ['./template-list.component.scss']
 })
 
 

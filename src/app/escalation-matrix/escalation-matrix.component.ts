@@ -29,7 +29,7 @@ export interface UserData {
 @Component({
   selector: 'app-escalation-matrix',
   templateUrl: './escalation-matrix.component.html',
-  styleUrls: ['./escalation-matrix.component.css']
+  styleUrls: ['./escalation-matrix.component.scss']
 })
 
 export class EscalationMatrixComponent implements AfterViewInit {

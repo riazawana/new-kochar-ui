@@ -5,7 +5,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-editrouter',
   templateUrl: './editrouter.component.html',
-  styleUrls: ['./editrouter.component.css']
+  styleUrls: ['./editrouter.component.scss']
 })
 export class EditrouterComponent implements OnInit {
 

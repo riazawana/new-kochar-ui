@@ -7,7 +7,7 @@ import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-getallrecord-modal',
   templateUrl: './getallrecord-modal.component.html',
-  styleUrls: ['./getallrecord-modal.component.css']
+  styleUrls: ['./getallrecord-modal.component.scss']
 })
 export class GetallrecordModalComponent implements OnInit {
 

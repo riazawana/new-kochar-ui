@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-add-smart-meter',
   templateUrl: './add-smart-meter.component.html',
-  styleUrls: ['./add-smart-meter.component.css']
+  styleUrls: ['./add-smart-meter.component.scss']
 })
 export class AddSmartMeterComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-view-zone',
   templateUrl: './view-zone.component.html',
-  styleUrls: ['./view-zone.component.css']
+  styleUrls: ['./view-zone.component.scss']
 })
 export class ViewZoneComponent implements OnInit {
 

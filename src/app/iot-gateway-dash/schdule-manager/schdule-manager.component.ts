@@ -6,7 +6,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-schdule-manager',
   templateUrl: './schdule-manager.component.html',
-  styleUrls: ['./schdule-manager.component.css']
+  styleUrls: ['./schdule-manager.component.scss']
 })
 export class SchduleManagerComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-videogateway',
   templateUrl: './videogateway.component.html',
-  styleUrls: ['./videogateway.component.css']
+  styleUrls: ['./videogateway.component.scss']
 })
 export class VideogatewayComponent implements OnInit {
 

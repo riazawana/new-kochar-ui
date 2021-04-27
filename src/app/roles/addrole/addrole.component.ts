@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-addrole',
   templateUrl: './addrole.component.html',
-  styleUrls: ['./addrole.component.css']
+  styleUrls: ['./addrole.component.scss']
 })
 export class AddroleComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { EditEscalationUserModalComponent } from '../edit-escalation-user-modal/
 @Component({
   selector: 'app-escalation-details',
   templateUrl: './escalation-details.component.html',
-  styleUrls: ['./escalation-details.component.css']
+  styleUrls: ['./escalation-details.component.scss']
 })
 export class EscalationDetailsComponent implements OnInit {
 

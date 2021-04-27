@@ -6,7 +6,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addenergy-meter',
   templateUrl: './addenergy-meter.component.html',
-  styleUrls: ['./addenergy-meter.component.css']
+  styleUrls: ['./addenergy-meter.component.scss']
 })
 export class AddenergyMeterComponent implements OnInit {
 

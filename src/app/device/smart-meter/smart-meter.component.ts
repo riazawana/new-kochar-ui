@@ -11,7 +11,7 @@ import { CommandSettingSmartmeterComponent } from '../../command-setting-smartme
 @Component({
   selector: 'app-smart-meter',
   templateUrl: './smart-meter.component.html',
-  styleUrls: ['./smart-meter.component.css']
+  styleUrls: ['./smart-meter.component.scss']
 })
 export class SmartMeterComponent implements OnInit {
 

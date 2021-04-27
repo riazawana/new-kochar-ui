@@ -6,7 +6,7 @@ import {Location} from '@angular/common';
 @Component({
   selector: 'app-iot-gateway-dash',
   templateUrl: './iot-gateway-dash.component.html',
-  styleUrls: ['./iot-gateway-dash.component.css']
+  styleUrls: ['./iot-gateway-dash.component.scss']
 })
 export class IotGatewayDashComponent implements OnInit {
 

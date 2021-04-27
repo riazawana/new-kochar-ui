@@ -7,7 +7,7 @@ import {SocketioSendmsgService} from "../socketio-sendmsg.service";
 @Component({
   selector: 'app-command-setting',
   templateUrl: './command-setting.component.html',
-  styleUrls: ['./command-setting.component.css']
+  styleUrls: ['./command-setting.component.scss']
 })
 export class CommandSettingComponent implements OnInit {
 

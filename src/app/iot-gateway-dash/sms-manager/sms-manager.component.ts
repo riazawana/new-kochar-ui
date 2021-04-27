@@ -7,7 +7,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-sms-manager',
   templateUrl: './sms-manager.component.html',
-  styleUrls: ['./sms-manager.component.css']
+  styleUrls: ['./sms-manager.component.scss']
 })
 export class SmsManagerComponent implements OnInit {
 

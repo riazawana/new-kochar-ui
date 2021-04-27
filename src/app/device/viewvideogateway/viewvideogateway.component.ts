@@ -20,7 +20,7 @@ declare const Hls: any;
 @Component({
   selector: 'app-viewvideogateway',
   templateUrl: './viewvideogateway.component.html',
-  styleUrls: ['./viewvideogateway.component.css']
+  styleUrls: ['./viewvideogateway.component.scss']
 })
 
 

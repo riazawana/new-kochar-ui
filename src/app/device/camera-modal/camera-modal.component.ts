@@ -6,7 +6,7 @@ declare const Hls: any;
 @Component({
   selector: 'app-camera-modal',
   templateUrl: './camera-modal.component.html',
-  styleUrls: ['./camera-modal.component.css']
+  styleUrls: ['./camera-modal.component.scss']
 })
 
 export class CameraModalComponent implements OnInit {

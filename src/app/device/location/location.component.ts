@@ -7,7 +7,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-add-schdule-manager',
   templateUrl: './add-schdule-manager.component.html',
-  styleUrls: ['./add-schdule-manager.component.css']
+  styleUrls: ['./add-schdule-manager.component.scss']
 })
 export class AddSchduleManagerComponent implements OnInit {
 

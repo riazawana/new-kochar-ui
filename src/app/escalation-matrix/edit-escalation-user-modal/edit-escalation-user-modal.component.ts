@@ -6,7 +6,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-edit-escalation-user-modal',
   templateUrl: './edit-escalation-user-modal.component.html',
-  styleUrls: ['./edit-escalation-user-modal.component.css']
+  styleUrls: ['./edit-escalation-user-modal.component.scss']
 })
 export class EditEscalationUserModalComponent implements OnInit {
 

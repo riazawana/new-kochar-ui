@@ -4,7 +4,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-energy-meter',
   templateUrl: './energy-meter.component.html',
-  styleUrls: ['./energy-meter.component.css']
+  styleUrls: ['./energy-meter.component.scss']
 })
 export class EnergyMeterComponent implements OnInit {
 
