@@ -81,7 +81,9 @@ const zoneRoutes: Routes =[
   exports: [RouterModule],
 
 })
-export class ZoneModule { }
+export class ZoneModule {
+ 
+ }
 
 
 

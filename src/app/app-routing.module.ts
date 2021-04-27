@@ -13,52 +13,56 @@ const routes: Routes =[{
 
     {
       path: 'Users',
-      loadChildren: './user/user.module#UserModule'
+      loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+
     },
 
     {
       path: 'Zones',
-      loadChildren: './zone/zone.module#ZoneModule'
+      loadChildren: () => import('./zone/zone.module').then(m => m.ZoneModule)
     },
 
     {
       path: 'Features',
-      loadChildren: './features/features.module#FeaturesModule'
+      loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule)
     },
 
 
     {
       path: 'Roles',
-      loadChildren: './roles/roles.module#RolesModule'
+      loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)
     },
 
     {
       path: 'Notifications',
-      loadChildren: './notification/notification.module#NotificationModule'
+      loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule)
     },
 
     {
       path: 'Escalation Matrix',
-      loadChildren: './escalation-matrix/escalation-matrix.module#EscalationMatrixModule'
+      loadChildren: () => import('./escalation-matrix/escalation-matrix.module').then(m => m.EscalationMatrixModule)
     },
 
 
 
     {
       path: 'Health Dashboard',
-      loadChildren: './health-dash/health-dash.module#HealthDashModule'
+      loadChildren: () => import('./health-dash/health-dash.module').then(m => m.HealthDashModule)
+
     },
 
 
     {
       path: 'Devices',
-      loadChildren: './device/device.module#DeviceModule'
+      loadChildren: () => import('./device/device.module').then(m => m.DeviceModule)
+
     },
 
 
     {
       path:'IOT Gateway', 
-      loadChildren: './iot-gateway-dash/iot-gateway.module#IotGatewayModule'
+      loadChildren: () => import('./iot-gateway-dash/iot-gateway.module').then(m => m.IotGatewayModule)
+
     },
    ]  , canActivate:[AuthGuard]
   },

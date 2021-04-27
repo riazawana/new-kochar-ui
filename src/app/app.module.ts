@@ -38,15 +38,15 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ErrorComponent } from './error/error.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { UserModule } from './user/user.module';
-import { ZoneModule } from './zone/zone.module';
-import { FeaturesModule } from './features/features.module';
-import { RolesModule } from './roles/roles.module';
-import { NotificationModule } from './notification/notification.module';
-import { EscalationMatrixModule } from './escalation-matrix/escalation-matrix.module';
-import { HealthDashModule } from './health-dash/health-dash.module';
-import { DeviceModule } from './device/device.module';
-import { IotGatewayModule } from './iot-gateway-dash/iot-gateway.module';
+// import { UserModule } from './user/user.module';
+// import { ZoneModule } from './zone/zone.module';
+// import { FeaturesModule } from './features/features.module';
+// import { RolesModule } from './roles/roles.module';
+// import { NotificationModule } from './notification/notification.module';
+// import { EscalationMatrixModule } from './escalation-matrix/escalation-matrix.module';
+// import { HealthDashModule } from './health-dash/health-dash.module';
+// import { DeviceModule } from './device/device.module';
+// import { IotGatewayModule } from './iot-gateway-dash/iot-gateway.module';
 
 
 
@@ -124,16 +124,17 @@ const customNotifierOptions: NotifierOptions = {
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    UserModule,
-    ZoneModule,
     FormsModule,
-    FeaturesModule,
-    RolesModule,
-    NotificationModule,
-    EscalationMatrixModule,
-    HealthDashModule,
-    DeviceModule,
-    IotGatewayModule,
+
+    // UserModule,
+    // ZoneModule,
+    // FeaturesModule,
+    // RolesModule,
+    // NotificationModule,
+    // EscalationMatrixModule,
+    // HealthDashModule,
+    // DeviceModule,
+    // IotGatewayModule,
 
     ReactiveFormsModule,
     // material //

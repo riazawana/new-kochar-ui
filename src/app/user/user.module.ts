@@ -81,7 +81,9 @@ const userRoutes: Routes =[
   exports: [RouterModule],
 
 })
-export class UserModule { }
+export class UserModule { 
+ 
+}
 
 
 

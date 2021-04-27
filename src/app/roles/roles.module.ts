@@ -83,4 +83,6 @@ const userRoutes: Routes =[
 })
 
 
-export class RolesModule { }
+export class RolesModule {
+  
+ }
