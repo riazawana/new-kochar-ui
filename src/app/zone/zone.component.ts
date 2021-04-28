@@ -54,6 +54,7 @@ export class ZoneComponent implements AfterViewInit {
       this.edit = true;
       this.delete = true;
       this.view = true;
+      this.addlocationbtn = false;
       });
     }else{
     
@@ -63,6 +64,8 @@ export class ZoneComponent implements AfterViewInit {
           if(features[i].feature_name == 'Zones'){
              if(features[i].add == true){
             this.add = true;
+            this.addlocationbtn = true;
+
              }
              if(features[i].view == true){
               this.view = true;
@@ -128,6 +131,8 @@ export class ZoneComponent implements AfterViewInit {
       this.getAllZones();
     });
   }
+
+  addlocationbtn:boolean = false;
 
   addlocation(x){
     // alert(x)

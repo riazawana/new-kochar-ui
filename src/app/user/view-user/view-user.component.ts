@@ -65,7 +65,7 @@ export class ViewUserComponent implements OnInit {
      
     this.backend.getSingleUser(this.id)
     .subscribe((data)=> { 
-      // console.log("User Data",data);
+       console.log("User Data",data);
        this.user = data['data'][0];
 
        this.name = this.user.name;
@@ -79,7 +79,8 @@ export class ViewUserComponent implements OnInit {
        this.role_id = this.user.roles[0].id;
        this.zone_id = this.user.zones;
        this.user_id = this.user.user_id;
-       
+
+       this.role_name = this.user.roles[0].name;
 
        this.getcity(this.state_id);
     this.getpin(this.state_id, this.city_id);
@@ -90,6 +91,8 @@ export class ViewUserComponent implements OnInit {
     
 
   }
+
+  role_name:any;
 
   getcountry(){
     

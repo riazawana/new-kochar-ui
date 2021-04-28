@@ -44,7 +44,7 @@
               <div class="col-sm-7"></div>
              
               <div class="col-sm-1">
-                  <span matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()"><i class="fa fa-bell-o bellcls mt-2"></i></span>
+                  <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()"><i class="fa fa-bell-o bellcls mt-2"></i></span>
               </div>
 
               <div class="col-sm-2">
@@ -57,9 +57,12 @@
             </div>
         </div>
 
-        <!-- <button (click)="sendMessage()">SOC</button> -->
+        <!-- <button (click)="sendMessage()">SOC</button>
 
-      <!-- <button (click)="notifyMe()">notify</button> -->
+
+      <button (click)="create('hi','asd',12,'add')">notify</button>
+      <button (click)="clearall()">clearall</button> -->
+
 
       <div class="w3-container">
         

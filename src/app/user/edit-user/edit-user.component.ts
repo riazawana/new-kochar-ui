@@ -93,7 +93,7 @@ export class EditUserComponent implements OnInit {
      
     this.backend.getSingleUser(this.id)
     .subscribe((data)=> { 
-      // console.log("User Data for edit",data);
+       console.log("User Data for edit",data);
       this.user = data['data'][0];
       this.name = this.user.name;
        this.mobile = this.user.mobile;
@@ -109,7 +109,7 @@ export class EditUserComponent implements OnInit {
         this.keycloak = this.user.keycloak_user_id;
         // this.client = this.user.client;
 
-
+        
 
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);
