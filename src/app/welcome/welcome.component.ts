@@ -20,6 +20,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   faSignOutAlt = faSignOutAlt;
   
   private notifier: NotifierService;
+  notif: boolean = false;
 
   constructor(
     private _notifications: NotificationsService,
@@ -44,7 +45,31 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
     var data = content //JSON.parse(content);
      console.log(data);
-    this.notification = this._notifications.create(title, data)
+    
+     var type = "success";
+     if(type = "success"){
+      this.notification = this._notifications.success(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }if(type = "warn"){
+      this.notification = this._notifications.warn(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }if(type = "error"){
+      this.notification = this._notifications.error(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }
+
+
+
+  
     this.notifyMe(data);
     this.notification.click.subscribe(function(notif, mouseEvent){
    // alert(id);
@@ -58,18 +83,18 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   
   
 
-//   sendMessage() {
+  sendMessage() {
    
-//     var data = {
-//       mac:"asdf",
-//       type:"asdf123",
-//       value:"asdd"
-//     }
+    var data = {
+      mac:"asdf",
+      type:"asdf123",
+      value:"asdd"
+    }
      
-//    this.soc.sendMsg(data);
+   this.soc.sendMsg(data);
 
    
-//  }
+ }
 
   ngOnInit(): void {
 
@@ -90,7 +115,14 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       sessionStorage.setItem('userid', userDetails["_instance"].tokenParsed.sub);
       sessionStorage.setItem('role', userDetails["_instance"].realmAccess.roles[0]);
 
-      
+      if(userDetails["_instance"].realmAccess.roles[0] == 'admin'){
+          this.notif = false;
+      }else{
+        this.notif = true;
+      }
+
+
+
       this.backend.getrole(userDetails["_instance"].realmAccess.roles[0])
       .subscribe((data)=> { 
 
@@ -128,13 +160,18 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       var da = JSON.parse(msg.text[0]);
       var x = da._id;
       var cli = da.client;
-      this.create("Notification",JSON.parse(msg.text[0]).data.notification,x,cli);
+      
+      if(this.notif == true){
+        this.create("Notification",JSON.parse(msg.text[0]).data.notification,x,cli);
+      }
+
     })
 
    
       this.w3_open();
-
-     // this.notificationcounter();
+      if( this.notif == true){
+       // this.notificationcounter();
+      }
       
       
      
@@ -147,7 +184,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         this.knot = setInterval(() =>{
          this.backend.getNotificationCount()
       .subscribe((data)=> { 
-      // console.log(data)
+       console.log(data)
         this.notificationcount = data["opencount"]; 
       })
     }
@@ -212,30 +249,12 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
 
    notifyMe(x) {
-    // if (!("Notification" in window)) {
-    //   alert("This browser does not support desktop notification");
-    // }
-    // else if (Notification.permission === "granted") {
+    
           var options = {
                   body: x
                };
             var notification = new Notification("Hi there",options);
-    // }
-    // else if (Notification.permission !== 'denied') {
-    //   Notification.requestPermission(function (permission) {
-    //     if (!('permission' in Notification)) {
-    //       console.log(Notification);
-    //       Notification.permission = permission;
-    //     }
-     
-    //     if (permission === "granted") {
-    //       var options = {
-    //             body: "This is the body of the notification"
-    //         };
-    //       var notification = new Notification("Hi there",options);
-    //     }
-    //   });
-    // }
+  
   }
 
 

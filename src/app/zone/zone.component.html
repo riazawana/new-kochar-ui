@@ -43,12 +43,11 @@
                 <label *ngIf="view" (click)="zoneView(row._id)"><i class="fa fa-eye"></i></label>
                 <label *ngIf="edit" (click)="zoneEdit(row._id)"><i class="fa fa-pencil-square-o ml-3"></i></label>
                 <label *ngIf="delete" (click)="zoneDelete(row._id)"><i class="fa fa-times ml-3"></i></label>                
-                <label *ngIf="add" (click)="addlocation(row._id)"><i class="fa fa-user-plus ml-3"></i></label>
+                <label *ngIf="addlocationbtn" (click)="addlocation(row._id)"><i class="fa fa-user-plus ml-3"></i></label>
                 
                 <label *ngIf="!view" ><i class="fa fa-eye"></i></label>
                 <label *ngIf="!edit" ><i class="fa fa-pencil-square-o ml-3"></i></label>
                 <label *ngIf="!delete" ><i class="fa fa-times ml-3"></i></label>
-                <label *ngIf="!add" ><i class="fa fa-user-plus ml-3"></i></label>
 
                  </td>
             </ng-container>
