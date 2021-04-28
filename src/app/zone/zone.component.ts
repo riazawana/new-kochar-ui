@@ -77,10 +77,14 @@ export class ZoneComponent implements AfterViewInit {
         }
         
        }, 1);
-    }
+    }    
+
+   this.getAllZones();
+  }
 
 
-    this.backend.getallzones()
+    getAllZones(){
+      this.backend.getallzones()
     .subscribe((data)=> { 
       //  console.log("All zones:",data);
        this.dataSource = new MatTableDataSource(data["data"]);
@@ -89,9 +93,7 @@ export class ZoneComponent implements AfterViewInit {
        this.dataSource.sort = this.sort;
 
     });
-
-   
-  }
+    }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -105,11 +107,6 @@ export class ZoneComponent implements AfterViewInit {
   addzone(){
     this.router.navigate(['/kochar/Zones/addzone']);
   }
-
- 
-
- 
-
   zoneView(id){
     //alert(id)
     this.router.navigate(['/kochar/Zones/viewzone',id])
@@ -128,6 +125,7 @@ export class ZoneComponent implements AfterViewInit {
     .subscribe((data)=> { 
 
       //  console.log(data);
+      this.getAllZones();
     });
   }
 

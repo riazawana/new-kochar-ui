@@ -72,22 +72,21 @@ export class RolesComponent implements AfterViewInit {
         }
         
        }, 1);
-    }
-      
-
-
-
-    this.backend.getallroles()
-    .subscribe((data)=> { 
-        console.log("All roles:",data['data']);
-       this.dataSource = new MatTableDataSource(data['data']);
-       this.dataSource.paginator = this.paginator;
-       this.dataSource.sort = this.sort;
-
-    });
-
+    }    
+      this.getAllRoles();
    
   }
+
+     getAllRoles(){
+      this.backend.getallroles()
+      .subscribe((data)=> { 
+          console.log("All roles:",data['data']);
+         this.dataSource = new MatTableDataSource(data['data']);
+         this.dataSource.paginator = this.paginator;
+         this.dataSource.sort = this.sort;
+  
+      });
+     }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -116,9 +115,12 @@ export class RolesComponent implements AfterViewInit {
     this.backend.deleterole(x)
     .subscribe((data)=> { 
       //  console.log("data",data['data']);
+      this.getAllRoles();
     });
-
+    
+    
   }
+  
 
   
 }

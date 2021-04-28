@@ -146,7 +146,7 @@ export class AddroleComponent implements OnInit {
           })
 
       }
-
+      this.router.navigate(["/kochar/Roles"]);
     })
 
 
