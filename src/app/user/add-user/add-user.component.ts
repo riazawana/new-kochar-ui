@@ -184,11 +184,11 @@ export class AddUserComponent implements OnInit {
         client:this.client
       }
   
-      //console.log(data);
+      console.log(data);
 
       this.backend.adduser(data)
       .subscribe((data)=> { 
-        //console.log(data);
+        console.log(data);
         //console.log(data["success"]);
 
         if(data["success"] == true){
@@ -249,8 +249,10 @@ export class AddUserComponent implements OnInit {
   
       this.backend.adduser(data)
       .subscribe((data)=> { 
-        //console.log(data);
-        this.router.navigate(["/kochar/Users"]);
+        console.log(data);
+        if(data["success"] == true){
+          this.router.navigate(["/kochar/Users"]);
+         }
       });
 
     }

@@ -112,13 +112,15 @@ export class FeaturesComponent implements AfterViewInit {
 
 
   deletefeature(x,y){
-    this.backend.deletefeature(x,y)
-    .subscribe((data)=> { 
-        console.log("data",data);
-   this.getallf();
-
-    });
-
+    // alert(x)
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.backend.deletefeature(x,y)
+      .subscribe((data)=> { 
+          console.log("data",data);
+     this.getallf();
+  
+      });
+  }
   }
 
   

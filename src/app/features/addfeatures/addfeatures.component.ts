@@ -74,7 +74,7 @@ export class AddfeaturesComponent implements OnInit {
  
 
   cancel(){
-    this.router.navigate(["/kochar/Users"]);
+    this.router.navigate(["/kochar/Features"]);
   }
 
   addsubmodule(){

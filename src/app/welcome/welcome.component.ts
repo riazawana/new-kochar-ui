@@ -47,19 +47,19 @@ export class WelcomeComponent implements OnInit, OnDestroy {
      console.log(data);
     
      var type = "success";
-     if(type = "success"){
+     if(type == "success"){
       this.notification = this._notifications.success(title, data, {
         timeOut: 3000,
         showProgressBar: true,
         pauseOnHover: true
       });
-     }if(type = "warn"){
+     }if(type == "warn"){
       this.notification = this._notifications.warn(title, data, {
         timeOut: 3000,
         showProgressBar: true,
         pauseOnHover: true
       });
-     }if(type = "error"){
+     }if(type == "error"){
       this.notification = this._notifications.error(title, data, {
         timeOut: 3000,
         showProgressBar: true,

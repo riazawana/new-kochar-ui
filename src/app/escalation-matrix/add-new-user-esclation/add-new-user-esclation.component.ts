@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
+import {Router,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-add-new-user-esclation',
@@ -9,7 +10,9 @@ import { BackendconnectionService } from '../../backendconnection.service';
 export class AddNewUserEsclationComponent implements OnInit {
 
   constructor(
-    private backend: BackendconnectionService 
+    private backend: BackendconnectionService,
+    private route: ActivatedRoute,
+
   ) { }
   hub:string;
   email:string;
@@ -28,9 +31,16 @@ export class AddNewUserEsclationComponent implements OnInit {
   user_list:any;
 
    client : any; 
+   id:any;
   ngOnInit(): void {
-   // console.log(sessionStorage.getItem('userdata'));
-   // console.log(sessionStorage.getItem('token'));
+  
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get("id");
+        if(this.id != null){
+            this.location_id = this.id+','+params.get("name")+','+params.get("cli");
+            this.gethub(this.id,params.get("cli"));
+        }
+    })
     
     var da = JSON.parse(sessionStorage.getItem('userdata'));
 
@@ -48,8 +58,9 @@ export class AddNewUserEsclationComponent implements OnInit {
   gethub(x,y){
       
 
-      alert(x);
-      alert(y);
+      
+
+      alert(this.location_id);
 
 
     this.backend.getgatewaylocationwise(x,y)
@@ -89,9 +100,9 @@ export class AddNewUserEsclationComponent implements OnInit {
       var la = this.location_id.split(",");
       this.client =  la[2];
 
-      alert(la[0]);
-      alert(la[1]);
-      alert(la[2]);
+      // alert(la[0]);
+      // alert(la[1]);
+      // alert(la[2]);
 
 
     var newadd =

@@ -65,7 +65,7 @@ export class AddzoneComponent implements OnInit {
     //console.log(data);
 
     this.backend.addzone(data).subscribe((resule)=>{  
-      //console.log("result:",resule)
+      console.log("result:",resule)
 
       if(resule["success"] == true){
         this.router.navigate(["/kochar/Zones"]);
@@ -73,6 +73,10 @@ export class AddzoneComponent implements OnInit {
 
     })
 
+  }
+
+  cancel(){
+    this.router.navigate(["/kochar/Zones"]);
   }
 
 

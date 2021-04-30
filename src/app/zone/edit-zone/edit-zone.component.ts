@@ -78,7 +78,7 @@ export class EditZoneComponent implements OnInit {
 
     this.backend.updatezone(data)
     .subscribe((result)=> { 
-      // console.log(result);
+       console.log(result);
 
       if(result["success"] == true){
         this.router.navigate(["/kochar/Zones"]);
@@ -86,6 +86,10 @@ export class EditZoneComponent implements OnInit {
 
      });
 
+  }
+
+  cancel(){
+    this.router.navigate(["/kochar/Zones"]);
   }
 
 }

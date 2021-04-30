@@ -232,8 +232,8 @@ mod_name:any;
 // console.log(data)
 this.backend.updateuser(data)
 .subscribe((data)=> { 
-  //  console.log("Data:",data["data"]);
-   this.city_list = data["data"];
+    console.log("Data:",data["data"]);
+  // this.city_list = data["data"];
 
    if(data["success"] == true){
     this.router.navigate(["/kochar/Users"]);

@@ -123,7 +123,9 @@ export class ZoneComponent implements AfterViewInit {
 
   zoneDelete(x){
 
-    // alert(x)
+     alert(x)
+    if (confirm('Are you sure to delete this record ?') == true) {
+
     this.backend.deletezone(x)
     .subscribe((data)=> { 
 
@@ -131,11 +133,15 @@ export class ZoneComponent implements AfterViewInit {
       this.getAllZones();
     });
   }
+  }
+
+
+  
 
   addlocationbtn:boolean = false;
 
   addlocation(x){
-    // alert(x)
+    alert(x)
    
       this.router.navigate(['/kochar/addnewlocation',x]);
     

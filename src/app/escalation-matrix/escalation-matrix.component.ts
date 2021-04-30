@@ -76,6 +76,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
      delete:boolean = false;
      view:boolean = false;
      add:boolean = false;
+     addsinglebtn:boolean=false;
    
      ngAfterViewInit() {
    
@@ -100,6 +101,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
             // alert('aa')
 
             this.add = true;
+            this.addsinglebtn = true;
              }
              if(features[i].view == true){
               this.view = true;
@@ -144,9 +146,22 @@ export class EscalationMatrixComponent implements AfterViewInit {
     }
   }
 
-  edituser(id){
-   // alert(id)
-    //this.router.navigate(['/kochar/adduserescalation',id]);
+  // edituser(id){
+  //  // alert(id)
+  //   //this.router.navigate(['/kochar/adduserescalation',id]);
+  // }
+
+  addsingle(id,c){
+  
+
+    var k = id.location_name;
+    var n = id.location_id;
+
+  
+
+    this.router.navigate(['/kochar/Escalation Matrix/addsingleuseresclation',n,k,c]);
+
+
   }
 
   addnewuser(){

@@ -43,8 +43,10 @@ export class AddsubModuleComponent implements OnInit {
 
    this.backend.addsubmodule(data)
     .subscribe((data)=> { 
-     console.log(data);
-      
+      console.log(data);
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/Features"]);
+       }
 
     })
  }
@@ -53,7 +55,9 @@ export class AddsubModuleComponent implements OnInit {
 
   
 
-
+ cancel(){
+  this.router.navigate(["/kochar/Features"]);
+}
 
 
 

@@ -111,14 +111,16 @@ export class RolesComponent implements AfterViewInit {
     this.router.navigate(['/kochar/Roles/editrole',x]);
   }
 
+
   deleterole(x){
+    // alert(x)
+    if (confirm('Are you sure to delete this record ?') == true) {
     this.backend.deleterole(x)
     .subscribe((data)=> { 
       //  console.log("data",data['data']);
       this.getAllRoles();
     });
-    
-    
+  }
   }
   
 

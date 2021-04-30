@@ -119,7 +119,7 @@ export class AddroleComponent implements OnInit {
           }
 
           this.backend.addrole_feature_mapping(newmappingdata).subscribe((resule)=>{  
-                // console.log("result:",resule)
+                 console.log("result:",resule)
 
                 if(resule["success"] == true){
 
@@ -134,7 +134,7 @@ export class AddroleComponent implements OnInit {
 
     this.backend.addrole_module_mapping(data)
     .subscribe((data)=> { 
-      // console.log(data);
+       console.log(data);
       if(data["success"] == true){
 
       this.router.navigate(["/kochar/Roles"]);
@@ -146,7 +146,7 @@ export class AddroleComponent implements OnInit {
           })
 
       }
-      this.router.navigate(["/kochar/Roles"]);
+     // this.router.navigate(["/kochar/Roles"]);
     })
 
 
@@ -226,6 +226,12 @@ export class AddroleComponent implements OnInit {
   delete(x){
   this.mapping.splice(x,1);
  }
+
+
+
+ cancel(){
+  this.router.navigate(["/kochar/Roles"]);
+}
 
  
 }

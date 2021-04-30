@@ -39,8 +39,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 const escRoutes: Routes =[
   {path:'',component: EscalationMatrixComponent , canActivate:[AuthGuard]},
     {path:'Escalation Matrix',component: EscalationMatrixComponent, canActivate:[AuthGuard]},
-    {path:'adduserescalation/:id',component:AddUserEsclationComponent, canActivate:[AuthGuard]},
+    // {path:'adduserescalation/:id',component:AddUserEsclationComponent, canActivate:[AuthGuard]},
     {path:'addnewuserescalation',component:AddNewUserEsclationComponent, canActivate:[AuthGuard]},
+    {path:'addsingleuseresclation/:id/:name/:cli',component:AddNewUserEsclationComponent, canActivate:[AuthGuard]},
+
+    
   ]
 
 

@@ -220,14 +220,14 @@ export class EditRoleComponent implements OnInit {
           //console.log('update data', newmappingdata);
 
           this.backend.updaterole_feature_mapping(newmappingdata).subscribe((resule)=>{  
-            //    console.log("result:",resule);
+                console.log("result:",resule);
                 if(resule["success"] == true){
 
 
                 //  console.log(newmappingdataofmodule);
                  
                  this.backend.updaterole_module_mapping(newmappingdataofmodule).subscribe((res)=>{  
-                // console.log(res)
+                 console.log(res)
                 if(res["success"] == true){
                  this.router.navigate(["/kochar/Roles"]);
                 }
@@ -240,6 +240,10 @@ export class EditRoleComponent implements OnInit {
       // }
 
     // })
+  }
+
+  cancel(){
+    this.router.navigate(["/kochar/Roles"]);
   }
 
 
