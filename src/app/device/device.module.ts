@@ -7,7 +7,7 @@ import { VideogatewayComponent } from './videogateway/videogateway.component';
 
 import { LocationComponent } from './location/location.component';
 import { AddlocationComponent } from './addlocation/addlocation.component';
-import { AddmoduleComponent } from './addmodule/addmodule.component';
+// import { AddmoduleComponent } from './addmodule/addmodule.component';
 import { ZoneDeviceComponent } from './zone-device/zone-device.component';
 import { GatewayListComponent } from './gateway-list/gateway-list.component';
 import { RouterDetailComponent } from './router-detail/router-detail.component';
@@ -81,7 +81,7 @@ const userRoutes: Routes =[
     {path:'addvideogateway/:idz/:id',component:AddvideogatewayComponent,canActivate:[AuthGuard]},
     {path:'Video/:idz/:id',component:VideogatewayComponent,canActivate:[AuthGuard]},
     {path:'viewvideo/:id',component: ViewvideogatewayComponent,canActivate:[AuthGuard]},
-    {path:'addmodule',component: AddmoduleComponent,canActivate:[AuthGuard]},
+    // {path:'addmodule',component: AddmoduleComponent,canActivate:[AuthGuard]},
     {path:'viewenergy/:id',component:ViewenergyComponent,canActivate:[AuthGuard]},
     {path:'Energy Management/Secondary Gateway',component: SecondryGatewayComponent,canActivate:[AuthGuard]},
     {path:'Energy Management/Smartmeter',component: SmartMeterComponent,canActivate:[AuthGuard]},
@@ -103,7 +103,7 @@ const userRoutes: Routes =[
     AddrouterComponent,
     LocationComponent,
     AddlocationComponent,
-    AddmoduleComponent,
+    // AddmoduleComponent,
     ZoneDeviceComponent,
     GatewayListComponent,
     GetallrecordModalComponent,

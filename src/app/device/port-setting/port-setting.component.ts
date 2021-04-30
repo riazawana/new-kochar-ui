@@ -54,7 +54,12 @@ export class PortSettingComponent implements OnInit {
       // console.log(this.newdata);
     this.backend.updatedevice(this.newdata)
     .subscribe((data)=> { 
-      //  console.log("Data:",data);
+       console.log("Data:",data);
+
+       
+       if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
     });
 
 

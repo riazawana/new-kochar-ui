@@ -143,7 +143,7 @@ export class ZoneComponent implements AfterViewInit {
   addlocation(x){
     alert(x)
    
-      this.router.navigate(['/kochar/addnewlocation',x]);
+      this.router.navigate(['/kochar/Devices/addnewlocation',x]);
     
   }
 }

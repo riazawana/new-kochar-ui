@@ -84,7 +84,11 @@ export class EditrouterComponent implements OnInit {
 
    this.backend.updaterouter(data)
    .subscribe((data)=>{
-          // console.log(data)
+           console.log(data);
+
+       if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
    })
 
  }

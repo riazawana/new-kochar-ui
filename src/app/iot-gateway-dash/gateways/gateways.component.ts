@@ -54,7 +54,11 @@ export class GatewaysComponent implements OnInit {
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      console.log("All gateways:",data["data"][0][0]);
+      // console.log("All gateways:",data["data"][0][0]);
+      // alert(data["data"])
+      // alert(typeof data["data"])
+      console.log(data)
+
 
        this.gateways = data["data"];
    

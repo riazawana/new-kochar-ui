@@ -45,12 +45,12 @@ export class VideogatewayComponent implements OnInit {
   }
 
 
-  // delete(x,y){
-  //   this.backend.deleterouter(x,y)
-  //   .subscribe((data)=> { 
-  //     //  console.log(data);
-  //   });
-  // }
+  delete(x,y){
+    this.backend.deleterouter(x,y)
+    .subscribe((data)=> { 
+        console.log(data);
+    });
+  }
 
   // edit(x,y){
   //   this.router.navigate(['/kochar/editrouter',x]);

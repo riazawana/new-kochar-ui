@@ -109,7 +109,7 @@ export class EditUserComponent implements OnInit {
         this.keycloak = this.user.keycloak_user_id;
         // this.client = this.user.client;
 
-        
+        console.log(this.user.zones);
 
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);

@@ -64,22 +64,22 @@ export class AddnewlocationComponent implements OnInit {
 
   selectedIndex: number = 0;
 
- nextStep(x) {
-    // if (this.selectedIndex != 3) {
-    //   this.selectedIndex = this.selectedIndex + 1;
-    // }
-    this.selectedIndex = x;
-    // console.log(this.selectedIndex);
-  }
+//  nextStep(x) {
+//     // if (this.selectedIndex != 3) {
+//     //   this.selectedIndex = this.selectedIndex + 1;
+//     // }
+//     this.selectedIndex = x;
+//     // console.log(this.selectedIndex);
+//   }
 
-  previousStep(x) {
-    // if (this.selectedIndex != 0) {
-    //   this.selectedIndex = this.selectedIndex - 1;
-    // }
-    this.selectedIndex = x;
+//   previousStep(x) {
+//     // if (this.selectedIndex != 0) {
+//     //   this.selectedIndex = this.selectedIndex - 1;
+//     // }
+//     this.selectedIndex = x;
 
-    // console.log(this.selectedIndex);
-  }
+//     // console.log(this.selectedIndex);
+//   }
 
   
   
@@ -145,12 +145,15 @@ export class AddnewlocationComponent implements OnInit {
 
    
 
-    //console.log("data:",data);
+    console.log("data:",data);
 
     this.backend.addlocation(data)
     .subscribe((data)=> { 
-      // console.log("Data:",data);
-       this.location_id = data["location_id"];
+      console.log("Data:",data);
+      
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
     });
 
   }

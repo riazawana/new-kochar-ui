@@ -316,7 +316,10 @@ export class AddtemplateComponent implements OnInit {
     
     this.backend.addtemplate(newdata)
     .subscribe((data)=> { 
-      // console.log("Data:",data);
+      console.log("Data:",data);
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/IOT Gateway/Templates"]);
+       }
     });
 
   }

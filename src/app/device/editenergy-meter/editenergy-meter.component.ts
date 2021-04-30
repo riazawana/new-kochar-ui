@@ -103,8 +103,11 @@ export class EditenergyMeterComponent implements OnInit {
 
     this.backend.updatemodbus(da)
     .subscribe((data)=> { 
-      //  console.log("Data:",data);
+        console.log("Data:",data);
     
+        if(data["success"] == true){
+          this.router.navigate(["/kochar/Devices"]);
+         }
     });
   }
 
