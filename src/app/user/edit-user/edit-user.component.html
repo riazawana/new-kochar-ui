@@ -150,8 +150,8 @@
                         
 
 
-                        <p *ngIf="role_id != 'business'">
-                      
+                        <!-- <p *ngIf="role_id != 'business'"> -->
+                      <p [style.display]="role_id !='business' ? 'block' : 'none'">
                           <mat-form-field appearance="outline" id="zone">
                             <mat-label>Zones</mat-label>
                             <mat-select placeholder="Zone" [(ngModel)]="zonesname" name="zonesname" multiple required formControlName="zonesname">
