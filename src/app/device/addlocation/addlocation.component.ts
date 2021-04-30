@@ -383,8 +383,12 @@ export class AddlocationComponent implements OnInit {
     
     this.backend.adddevice(newdata)
     .subscribe((data)=> { 
-      // console.log("Data:",data);
+      console.log("Data:",data);
        //this.nextStep();
+
+       if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
 
     });
 

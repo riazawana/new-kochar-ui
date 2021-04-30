@@ -61,7 +61,10 @@ export class AddSmartMeterComponent implements OnInit {
 
     this.backend.addsmartmeter(data)
     .subscribe((data)=> { 
-      //console.log(data);
+      console.log(data);
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
     })
 
     }

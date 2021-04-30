@@ -97,7 +97,11 @@ export class AddvideogatewayComponent implements OnInit {
     
     this.backend.addvideogateways(data)
     .subscribe((data)=> { 
-      // console.log("Data:",data);
+      console.log("Data:",data);
+
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
     });
 
   }

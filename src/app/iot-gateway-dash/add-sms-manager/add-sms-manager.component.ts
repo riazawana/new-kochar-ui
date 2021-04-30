@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-add-sms-manager',
@@ -8,7 +9,9 @@ import { BackendconnectionService } from '../../backendconnection.service';
 export class AddSmsManagerComponent implements OnInit {
 
   constructor(
-    private backend: BackendconnectionService 
+    private backend: BackendconnectionService ,
+    private router:Router
+
   ) { }
 
 
@@ -299,6 +302,9 @@ export class AddSmsManagerComponent implements OnInit {
     this.backend.addsmssetting(this.data)
     .subscribe((data)=> { 
        console.log("Data:",data);
+       if(data["success"] == true){
+        this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
+       }
     });
 
   }

@@ -133,9 +133,13 @@ export class AddenergyMeterComponent implements OnInit {
 
     this.backend.addmodbus(da)
     .subscribe((data)=> { 
-    //   console.log("Data:",data);
+       console.log("Data:",data);
        //this.location_id = data["location_id"];
        //this.nextStep(1);
+
+       if(data["success"] == true){
+        this.router.navigate(["/kochar/Devices"]);
+       }
     });
   }
 

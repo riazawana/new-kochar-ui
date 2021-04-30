@@ -54,7 +54,7 @@ const userRoutes: Routes =[
     {path:'viewschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
     {path:'editschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
     {path:'Templates',component: TemplateListComponent,canActivate:[AuthGuard]},
-      {path:'Gateway',component: GatewaysComponent,canActivate:[AuthGuard]},
+      {path:'List all Gateway',component: GatewaysComponent,canActivate:[AuthGuard]},
       {path:'SMS Manager',component: SmsManagerComponent,canActivate:[AuthGuard]},
       {path:'Notification Manager',component: NotificationManagerComponent,canActivate:[AuthGuard]},
       {path:'Schedule Manager',component: SchduleManagerComponent,canActivate:[AuthGuard]},

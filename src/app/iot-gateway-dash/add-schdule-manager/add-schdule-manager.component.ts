@@ -200,6 +200,10 @@ export class AddSchduleManagerComponent implements OnInit {
     this.backend.addiotgatewayschedule(data)
     .subscribe((data)=> { 
       console.log(data);
+
+      if(data["success"] == true){
+        this.router.navigate(["/kochar/IOT Gateway/Schedule Manager"]);
+       }
     })
 
     }

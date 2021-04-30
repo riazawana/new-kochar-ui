@@ -486,6 +486,9 @@ var data = {
     this.backend.updatesmssetting(data)
     .subscribe((data)=> { 
         console.log("Data:",data);
+        if(data["success"] == true){
+          this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
+         }
     });
 
   }

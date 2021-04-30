@@ -66,10 +66,10 @@ const routes: Routes =[{
     },
    ]  , canActivate:[AuthGuard]
   },
-  // {
-  //   path: '**',
-  //   component: ErrorComponent
-  // }
+  {
+    path: '**',
+    component: ErrorComponent
+  }
   ]
 
 
