@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-edit-user',
@@ -236,6 +237,7 @@ this.backend.updateuser(data)
   // this.city_list = data["data"];
 
    if(data["success"] == true){
+     Swal.fire("User updated successfully!");
     this.router.navigate(["/kochar/Users"]);
    }
 });

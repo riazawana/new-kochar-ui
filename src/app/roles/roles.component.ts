@@ -4,7 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 export interface UserData {
   sr_no: string;
@@ -113,15 +113,49 @@ export class RolesComponent implements AfterViewInit {
 
 
   deleterole(x){
-    // alert(x)
-    if (confirm('Are you sure to delete this record ?') == true) {
-    this.backend.deleterole(x)
+
+    //  alert(x)
+    // if (confirm('Are you sure to delete this record ?') == true) {
+      
+
+   
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this Role!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+
+           this.backend.deleterole(x)
     .subscribe((data)=> { 
-      //  console.log("data",data['data']);
+
+      //  console.log(data);
       this.getAllRoles();
+      Swal.fire(
+        'Deleted!',
+        'Role has been deleted.',
+        'success'
+      )
     });
+          
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Role is safe :)',
+            'error'
+          )
+        }
+      }) 
+   
+  // }
   }
-  }
+
+
   
 
   

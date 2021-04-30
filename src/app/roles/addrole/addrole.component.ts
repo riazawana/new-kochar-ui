@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 @Component({
   selector: 'app-addrole',
   templateUrl: './addrole.component.html',
@@ -106,8 +106,9 @@ export class AddroleComponent implements OnInit {
 
     //  console.log("final:",this.featuresarr);
 
-
+      
       if(data["success"] == true){
+        Swal.fire("Role Added Successfully!");
         role_id = data["data"][0]._id;
             role_name = data["data"][0].name;
       
@@ -146,7 +147,7 @@ export class AddroleComponent implements OnInit {
           })
 
       }
-     // this.router.navigate(["/kochar/Roles"]);
+     this.router.navigate(["/kochar/Roles"]);
     })
 
 

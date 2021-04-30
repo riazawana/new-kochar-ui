@@ -3,7 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-add-user',
@@ -213,6 +213,7 @@ export class AddUserComponent implements OnInit {
         this.backend.addbusiness(newdata)
       .subscribe((data)=> { 
         //console.log(data);
+        Swal.fire("User created successfully!");
         this.router.navigate(["/kochar/Users"]);
       })
       }
@@ -250,7 +251,8 @@ export class AddUserComponent implements OnInit {
       this.backend.adduser(data)
       .subscribe((data)=> { 
         console.log(data);
-        if(data["success"] == true){
+        if(data["success"] == true){ 
+          Swal.fire("User created successfully!");         
           this.router.navigate(["/kochar/Users"]);
          }
       });

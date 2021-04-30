@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -68,6 +68,7 @@ export class AddzoneComponent implements OnInit {
       console.log("result:",resule)
 
       if(resule["success"] == true){
+        Swal.fire("Zone Added Successfully!");
         this.router.navigate(["/kochar/Zones"]);
        }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 @Component({
   selector: 'app-edit-role',
   templateUrl: './edit-role.component.html',
@@ -222,13 +222,14 @@ export class EditRoleComponent implements OnInit {
           this.backend.updaterole_feature_mapping(newmappingdata).subscribe((resule)=>{  
                 console.log("result:",resule);
                 if(resule["success"] == true){
-
-
+                  // Swal.fire("Role feature mapping updated!");
+                  
                 //  console.log(newmappingdataofmodule);
                  
                  this.backend.updaterole_module_mapping(newmappingdataofmodule).subscribe((res)=>{  
                  console.log(res)
                 if(res["success"] == true){
+                  Swal.fire("Role_module_mapping update successfully!");
                  this.router.navigate(["/kochar/Roles"]);
                 }
                 
@@ -236,7 +237,7 @@ export class EditRoleComponent implements OnInit {
               }
           
           })
-
+           
       // }
 
     // })

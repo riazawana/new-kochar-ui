@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 @Component({
   selector: 'app-edit-zone',
   templateUrl: './edit-zone.component.html',
@@ -81,6 +81,7 @@ export class EditZoneComponent implements OnInit {
        console.log(result);
 
       if(result["success"] == true){
+        Swal.fire("Zone updated Successfully!");
         this.router.navigate(["/kochar/Zones"]);
        }
 

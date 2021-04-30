@@ -3,7 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-addfeatures',
@@ -54,6 +54,7 @@ export class AddfeaturesComponent implements OnInit {
       this.backend.addmodule(data).subscribe((data)=> { 
         console.log(data);
          if(data["success"] == true){
+           Swal.fire("Module added successfully!")
            this.router.navigate(["/kochar/Features"]);
           }
        });
@@ -61,6 +62,7 @@ export class AddfeaturesComponent implements OnInit {
       this.backend.addfeature(data).subscribe((data)=> { 
         console.log(data);
          if(data["success"] == true){
+           Swal.fire("Feature added successfully!");
            this.router.navigate(["/kochar/Features"]);
           }
        });
