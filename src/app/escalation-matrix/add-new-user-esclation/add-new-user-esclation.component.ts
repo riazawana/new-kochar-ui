@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-add-new-user-esclation',
@@ -12,6 +13,7 @@ export class AddNewUserEsclationComponent implements OnInit {
   constructor(
     private backend: BackendconnectionService,
     private route: ActivatedRoute,
+    private router: Router
 
   ) { }
   hub:string;
@@ -51,18 +53,9 @@ export class AddNewUserEsclationComponent implements OnInit {
 
     })
 
-   
-
   }
 
-  gethub(x,y){
-      
-
-      
-
-      alert(this.location_id);
-
-
+  gethub(x,y){     
     this.backend.getgatewaylocationwise(x,y)
     .subscribe((data)=> { 
       //console.log(data);
@@ -71,21 +64,16 @@ export class AddNewUserEsclationComponent implements OnInit {
 
   }
 
- 
-
-
-
-  onsubmit(){
-  
-
-
-    //console.log(this.array);
+  onsubmit(){   
 
     this.backend.addescalationmatrix(this.array)
     .subscribe((data)=> { 
       console.log(data);
-    })
-
+      if(data["success"]==true){
+        Swal.fire("Escalation matrix added successfully");
+      }
+      
+    })    
     }
 
     array:any = {
@@ -134,10 +122,14 @@ export class AddNewUserEsclationComponent implements OnInit {
         this.email = "";
         this.phone = "";
         this.designation = "";
-        this.tat = "";
+        this.tat = ""
 
       //console.log("asd");
 
+    }
+
+    cancel(){
+      this.router.navigate(["/kochar/Escalation Matrix"]);
     }
 
   }

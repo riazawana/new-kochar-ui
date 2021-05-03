@@ -4,7 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 export interface UserData {
   sr_no: string;
@@ -39,10 +39,6 @@ export class FeaturesComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-
-     
-
-   
     var role = sessionStorage.getItem('role');
 
     if(role == 'admin'){
@@ -111,17 +107,57 @@ export class FeaturesComponent implements AfterViewInit {
   }
 
 
-  deletefeature(x,y){
-    // alert(x)
-    if (confirm('Are you sure to delete this record ?') == true) {
-      this.backend.deletefeature(x,y)
-      .subscribe((data)=> { 
-          console.log("data",data);
-     this.getallf();
+  // deletefeature(x,y){
+  //   // alert(x)
+  //   if (confirm('Are you sure to delete this record ?') == true) {
+  //     this.backend.deletefeature(x,y)
+  //     .subscribe((data)=> { 
+  //         console.log("data",data);
+  //    this.getallf();
   
-      });
+  //     });
+  // }
+  // }
+
+  deletefeature(x,y){
+    //  alert(x)
+    // if (confirm('Are you sure to delete this record ?') == true) {
+  
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this Feature!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+
+           this.backend.deletefeature(x,y)
+    .subscribe((data)=> { 
+
+      //  console.log(data);
+      this.getallf();
+      Swal.fire(
+        'Deleted!',
+        'Feature has been deleted.',
+        'success'
+      )
+    });         
+        
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Feature is safe :)',
+            'error'
+          )
+        }
+      }) 
+   
+  // }
   }
-  }
+
+  
 
   
 }

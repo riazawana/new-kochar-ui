@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 @Component({
   selector: 'app-addsub-module',
@@ -20,8 +22,6 @@ export class AddsubModuleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-
       this.backend.getallmodules()
     .subscribe((data)=> { 
      console.log(data);
@@ -30,8 +30,6 @@ export class AddsubModuleComponent implements OnInit {
     })
   }
 
-
-  
 
  onsubmit(){
    var data = {
@@ -45,6 +43,7 @@ export class AddsubModuleComponent implements OnInit {
     .subscribe((data)=> { 
       console.log(data);
       if(data["success"] == true){
+        Swal.fire("Sub-module added Successfully!");
         this.router.navigate(["/kochar/Features"]);
        }
 
