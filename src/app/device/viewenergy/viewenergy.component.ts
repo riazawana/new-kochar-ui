@@ -26,7 +26,7 @@ export class ViewenergyComponent implements OnInit {
      
     this.backend.getmodbus(this.id)
     .subscribe((data)=> { 
-       //console.log("User Data",data);
+       console.log("User Data",data);
       
    
 

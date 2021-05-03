@@ -229,7 +229,7 @@ export class EditRoleComponent implements OnInit {
                  this.backend.updaterole_module_mapping(newmappingdataofmodule).subscribe((res)=>{  
                  console.log(res)
                 if(res["success"] == true){
-                  Swal.fire("Role_module_mapping update successfully!");
+                  Swal.fire("Role update successfully!");
                  this.router.navigate(["/kochar/Roles"]);
                 }
                 

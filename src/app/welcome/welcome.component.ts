@@ -170,7 +170,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
    
       this.w3_open();
       if( this.notif == true){
-       // this.notificationcounter();
+        this.notificationcounter();
       }
       
       
@@ -184,7 +184,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         this.knot = setInterval(() =>{
          this.backend.getNotificationCount()
       .subscribe((data)=> { 
-       console.log(data)
+      //  console.log(data)
         this.notificationcount = data["opencount"]; 
       })
     }

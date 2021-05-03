@@ -22,7 +22,7 @@ export class EnergyMeterComponent implements OnInit {
 
       this.backend.getmodbuslocationwise(this.id)
       .subscribe((data)=> { 
-          // console.log("Data:",data["data"]);
+           console.log("Data:",data["data"]);
          this.energylist = data["data"];
         
   
@@ -42,7 +42,7 @@ export class EnergyMeterComponent implements OnInit {
   delete(x,y){
     this.backend.deletemodbus(x,y)
     .subscribe((data)=> { 
-      //  console.log(data);
+        console.log(data);
     });
   }
 
