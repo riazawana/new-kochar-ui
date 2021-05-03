@@ -23,7 +23,7 @@ export class RoutersComponent implements OnInit {
 
       this.backend.getrouterlocationwise(this.id)
       .subscribe((data)=> { 
-          // console.log("Data:",data["data"]);
+           console.log("Data:",data["data"]);
          this.routerslist = data["data"];
         
   
@@ -43,7 +43,7 @@ export class RoutersComponent implements OnInit {
   delete(x,y){
     this.backend.deleterouter(x,y)
     .subscribe((data)=> { 
-      //  console.log(data);
+        console.log(data);
     });
   }
 

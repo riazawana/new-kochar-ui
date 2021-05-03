@@ -23,9 +23,9 @@ export class RouterDetailComponent implements OnInit {
 
       this.backend.getrouter(this.id)
       .subscribe((data)=> { 
-          // console.log("Data:",data["data"][0]);
+          console.log("Data:",data);
 
-          this.data = data["data"][0];
+          this.data = data["data"];
       });
 
       })

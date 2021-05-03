@@ -102,13 +102,12 @@ export class AddroleComponent implements OnInit {
     }
 
     this.backend.addrole(data).subscribe((data)=>{
-    //  console.log("result:",data)
+     console.log("result:",data)
 
     //  console.log("final:",this.featuresarr);
 
       
       if(data["success"] == true){
-        Swal.fire("Role Added Successfully!");
         role_id = data["data"][0]._id;
             role_name = data["data"][0].name;
       
@@ -131,14 +130,19 @@ export class AddroleComponent implements OnInit {
       mapping: this.mapping,
       role_id: role_id
     }
-    // console.log(data);
+     console.log(data);
 
     this.backend.addrole_module_mapping(data)
     .subscribe((data)=> { 
        console.log(data);
       if(data["success"] == true){
+        Swal.fire("Role Added Successfully!");
 
       this.router.navigate(["/kochar/Roles"]);
+      }
+      else{
+        Swal.fire("Role Module Mapp Not Added!");
+        
       }
     });
 

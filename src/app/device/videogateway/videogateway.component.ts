@@ -26,7 +26,7 @@ export class VideogatewayComponent implements OnInit {
 
       this.backend.getallvideogateways()
       .subscribe((data)=> { 
-          // console.log("Data:",data["data"]);
+           console.log("Data:",data["data"]);
          this.videolist = data["data"];
         
   
