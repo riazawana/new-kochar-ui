@@ -1,19 +1,71 @@
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="background-color: #022656;color: white;    font-size: 13px;
-" id="mySidebar">
-<div>
-  <img src="assets/company_logo/logo.png" (click)="redirect()" style="width: 100%;height: 38px;">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left iot-sidebar" 
+ id="mySidebar">
+<div class="logo-img">
+  <img class="logo-demention"  src="assets/company_logo/logo.png" (click)="redirect()">
 </div>
     <div *ngFor="let s of sidebar"> 
 
           <div *ngIf="s.submodulename.length != 0;else elseBlock">
                 <ul class="list-unstyled components">   
                   <li>
-                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="w3-bar-item w3-button">{{s.modulename}} 
+                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="component-nav"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 276.167 276.167" style="enable-background:new 0 0 276.167 276.167;"
+                       xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M33.144,2.471C15.336,2.471,0.85,16.958,0.85,34.765s14.48,32.293,32.294,32.293s32.294-14.486,32.294-32.293
+                          S50.951,2.471,33.144,2.471z"/>
+                        <path d="M137.663,2.471c-17.807,0-32.294,14.487-32.294,32.294s14.487,32.293,32.294,32.293c17.808,0,32.297-14.486,32.297-32.293
+                          S155.477,2.471,137.663,2.471z"/>
+                        <path d="M243.873,67.059c17.804,0,32.294-14.486,32.294-32.293S261.689,2.471,243.873,2.471s-32.294,14.487-32.294,32.294
+                          S226.068,67.059,243.873,67.059z"/>
+                        <path d="M32.3,170.539c17.807,0,32.297-14.483,32.297-32.293c0-17.811-14.49-32.297-32.297-32.297S0,120.436,0,138.246
+                          C0,156.056,14.493,170.539,32.3,170.539z"/>
+                        <path d="M136.819,170.539c17.804,0,32.294-14.483,32.294-32.293c0-17.811-14.478-32.297-32.294-32.297
+                          c-17.813,0-32.294,14.486-32.294,32.297C104.525,156.056,119.012,170.539,136.819,170.539z"/>
+                        <path d="M243.038,170.539c17.811,0,32.294-14.483,32.294-32.293c0-17.811-14.483-32.297-32.294-32.297
+                          s-32.306,14.486-32.306,32.297C210.732,156.056,225.222,170.539,243.038,170.539z"/>
+                        <path d="M33.039,209.108c-17.807,0-32.3,14.483-32.3,32.294c0,17.804,14.493,32.293,32.3,32.293s32.293-14.482,32.293-32.293
+                          S50.846,209.108,33.039,209.108z"/>
+                        <path d="M137.564,209.108c-17.808,0-32.3,14.483-32.3,32.294c0,17.804,14.487,32.293,32.3,32.293
+                          c17.804,0,32.293-14.482,32.293-32.293S155.368,209.108,137.564,209.108z"/>
+                        <path d="M243.771,209.108c-17.804,0-32.294,14.483-32.294,32.294c0,17.804,14.49,32.293,32.294,32.293
+                          c17.811,0,32.294-14.482,32.294-32.293S261.575,209.108,243.771,209.108z"/>
+                      </g>
+                    </g>
+                    
+                    </svg> {{s.modulename}} 
                       <fa-icon [icon]="faCaretDown" style="float: right;"></fa-icon>
                       </a>
                       <ul class="collapse list-unstyled" id="{{s.modulename.replace(' ','')}}" style="margin-left: 10%;">
                           <li *ngFor="let ss of s.submodulename">
-                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="w3-bar-item w3-button">{{ss.submodule_name}}</a>
+                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="component-nav ">              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 276.167 276.167" style="enable-background:new 0 0 276.167 276.167;"
+                               xml:space="preserve">
+                            <g>
+                              <g>
+                                <path d="M33.144,2.471C15.336,2.471,0.85,16.958,0.85,34.765s14.48,32.293,32.294,32.293s32.294-14.486,32.294-32.293
+                                  S50.951,2.471,33.144,2.471z"/>
+                                <path d="M137.663,2.471c-17.807,0-32.294,14.487-32.294,32.294s14.487,32.293,32.294,32.293c17.808,0,32.297-14.486,32.297-32.293
+                                  S155.477,2.471,137.663,2.471z"/>
+                                <path d="M243.873,67.059c17.804,0,32.294-14.486,32.294-32.293S261.689,2.471,243.873,2.471s-32.294,14.487-32.294,32.294
+                                  S226.068,67.059,243.873,67.059z"/>
+                                <path d="M32.3,170.539c17.807,0,32.297-14.483,32.297-32.293c0-17.811-14.49-32.297-32.297-32.297S0,120.436,0,138.246
+                                  C0,156.056,14.493,170.539,32.3,170.539z"/>
+                                <path d="M136.819,170.539c17.804,0,32.294-14.483,32.294-32.293c0-17.811-14.478-32.297-32.294-32.297
+                                  c-17.813,0-32.294,14.486-32.294,32.297C104.525,156.056,119.012,170.539,136.819,170.539z"/>
+                                <path d="M243.038,170.539c17.811,0,32.294-14.483,32.294-32.293c0-17.811-14.483-32.297-32.294-32.297
+                                  s-32.306,14.486-32.306,32.297C210.732,156.056,225.222,170.539,243.038,170.539z"/>
+                                <path d="M33.039,209.108c-17.807,0-32.3,14.483-32.3,32.294c0,17.804,14.493,32.293,32.3,32.293s32.293-14.482,32.293-32.293
+                                  S50.846,209.108,33.039,209.108z"/>
+                                <path d="M137.564,209.108c-17.808,0-32.3,14.483-32.3,32.294c0,17.804,14.487,32.293,32.3,32.293
+                                  c17.804,0,32.293-14.482,32.293-32.293S155.368,209.108,137.564,209.108z"/>
+                                <path d="M243.771,209.108c-17.804,0-32.294,14.483-32.294,32.294c0,17.804,14.49,32.293,32.294,32.293
+                                  c17.811,0,32.294-14.482,32.294-32.293S261.575,209.108,243.771,209.108z"/>
+                              </g>
+                            </g>
+                            
+                            </svg> {{ss.submodule_name}}</a>
                           </li>
                       </ul>
                   </li>
@@ -21,7 +73,36 @@
           </div>
         
           <ng-template #elseBlock>
-            <a  (click)="next('/kochar/'+s.modulename)"  class="w3-bar-item w3-button">{{s.modulename}}</a>
+            <a  (click)="next('/kochar/'+s.modulename)"  class="component-nav">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	  viewBox="0 0 276.167 276.167" style="enable-background:new 0 0 276.167 276.167;"
+	 xml:space="preserve">
+<g>
+	<g>
+		<path d="M33.144,2.471C15.336,2.471,0.85,16.958,0.85,34.765s14.48,32.293,32.294,32.293s32.294-14.486,32.294-32.293
+			S50.951,2.471,33.144,2.471z"/>
+		<path d="M137.663,2.471c-17.807,0-32.294,14.487-32.294,32.294s14.487,32.293,32.294,32.293c17.808,0,32.297-14.486,32.297-32.293
+			S155.477,2.471,137.663,2.471z"/>
+		<path d="M243.873,67.059c17.804,0,32.294-14.486,32.294-32.293S261.689,2.471,243.873,2.471s-32.294,14.487-32.294,32.294
+			S226.068,67.059,243.873,67.059z"/>
+		<path d="M32.3,170.539c17.807,0,32.297-14.483,32.297-32.293c0-17.811-14.49-32.297-32.297-32.297S0,120.436,0,138.246
+			C0,156.056,14.493,170.539,32.3,170.539z"/>
+		<path d="M136.819,170.539c17.804,0,32.294-14.483,32.294-32.293c0-17.811-14.478-32.297-32.294-32.297
+			c-17.813,0-32.294,14.486-32.294,32.297C104.525,156.056,119.012,170.539,136.819,170.539z"/>
+		<path d="M243.038,170.539c17.811,0,32.294-14.483,32.294-32.293c0-17.811-14.483-32.297-32.294-32.297
+			s-32.306,14.486-32.306,32.297C210.732,156.056,225.222,170.539,243.038,170.539z"/>
+		<path d="M33.039,209.108c-17.807,0-32.3,14.483-32.3,32.294c0,17.804,14.493,32.293,32.3,32.293s32.293-14.482,32.293-32.293
+			S50.846,209.108,33.039,209.108z"/>
+		<path d="M137.564,209.108c-17.808,0-32.3,14.483-32.3,32.294c0,17.804,14.487,32.293,32.3,32.293
+			c17.804,0,32.293-14.482,32.293-32.293S155.368,209.108,137.564,209.108z"/>
+		<path d="M243.771,209.108c-17.804,0-32.294,14.483-32.294,32.294c0,17.804,14.49,32.293,32.294,32.293
+			c17.811,0,32.294-14.482,32.294-32.293S261.575,209.108,243.771,209.108z"/>
+	</g>
+</g>
+
+</svg>
+
+              {{s.modulename}}</a>
           </ng-template>
 
     </div>
@@ -33,12 +114,12 @@
 
 
   
-<div id="main">
-        <div class="w3-teal">
+<div id="main" class="mainContainer">
+        <div class="bg-white pad1">
             <div class="row" style="width: 100%;margin: 0%;">
-              <div class="col-sm-2">
-                <button id="openNav" class="w3-button w3-teal w3-xlarge" (click)="w3_open()">&#9776;</button>
-                <button id="closeNav" class="w3-button w3-teal w3-xlarge" (click)="w3_close()" style="display: none;">&#9776;</button>     
+              <div class="col-sm-2 padding-left-0">
+                <button id="openNav" class="nav-btn bg-white w3-xlarge" (click)="w3_open()">&#9776;</button>
+                <button id="closeNav" class="nav-btn bg-white w3-xlarge" (click)="w3_close()" style="display: none;">&#9776;</button>     
               </div> 
               
               <div class="col-sm-7"></div>
@@ -47,8 +128,8 @@
                   <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()"><i class="fa fa-bell-o bellcls mt-2"></i></span>
               </div>
 
-              <div class="col-sm-2">
-                <button id="logout" class="w3-button w3-teal w3-xlarge" (click)="logout()" >logout 
+              <div class="col-sm-2 logout-btn">
+                <button id="logout" class="nav-btn pr-0 bg-white w3-Small" (click)="logout()" >logout 
                   <fa-icon [icon]="faSignOutAlt"></fa-icon>
                 </button> 
 
@@ -63,10 +144,10 @@
       <button (click)="create('hi','asd',12,'add')">notify</button>
       <button (click)="clearall()">clearall</button> -->
 
+      <router-outlet></router-outlet>
 
       <div class="w3-container">
         
-              <router-outlet></router-outlet>
 
               <div style="width:100%;text-align: center;">
                 <span style="color: gray;font-size: 90%;">Copyright © 2021 KocharTech. All Right Reserved</span>

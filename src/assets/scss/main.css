@@ -1,0 +1,23 @@
+:root{
+    --primary-500:orange;
+    --white:#fff;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color:#E94B26;
+    border-color:#E94B26;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #e33b1c;
+    border-color: #e33b1c;
+}
+.container{
+    max-width: 1200px;
+width: 100%;
+margin-right: auto;
+margin-left: auto;
+padding-right:1rem;
+padding-left:1rem;
+}
