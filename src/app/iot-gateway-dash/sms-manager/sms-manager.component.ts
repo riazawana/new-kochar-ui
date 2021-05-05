@@ -2,7 +2,7 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-sms-manager',

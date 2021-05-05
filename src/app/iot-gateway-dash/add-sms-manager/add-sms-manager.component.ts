@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-add-sms-manager',
   templateUrl: './add-sms-manager.component.html',
@@ -303,6 +304,7 @@ export class AddSmsManagerComponent implements OnInit {
     .subscribe((data)=> { 
        console.log("Data:",data);
        if(data["success"] == true){
+         Swal.fire("SMS Setting added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
        }
     });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-addtemplate',
   templateUrl: './addtemplate.component.html',
@@ -318,6 +318,7 @@ export class AddtemplateComponent implements OnInit {
     .subscribe((data)=> { 
       console.log("Data:",data);
       if(data["success"] == true){
+        Swal.fire("Template added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/Templates"]);
        }
     });

@@ -4,7 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 export interface UserData {
   sr_no: string;
@@ -78,8 +78,13 @@ export class TemplateListComponent implements AfterViewInit {
         
        }, 1);
     }
+       this.getAllTemplateList();   
 
-    this.backend.getalltemplate()
+   
+  }
+     
+      getAllTemplateList(){
+        this.backend.getalltemplate()
     .subscribe((data)=> { 
       //  console.log("All Template:",data["data"]);
        this.dataSource = new MatTableDataSource(data["data"]);
@@ -88,9 +93,7 @@ export class TemplateListComponent implements AfterViewInit {
        this.dataSource.sort = this.sort;
 
     });
-
-   
-  }
+      }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -105,10 +108,6 @@ export class TemplateListComponent implements AfterViewInit {
     this.router.navigate(['/kochar/IOT Gateway/addtemplate']);
   }
 
-  
-
-  
-
   openView(id): void {
     this.router.navigate(['/kochar/IOT Gateway/viewtemplate',id])   
   }
@@ -116,17 +115,40 @@ export class TemplateListComponent implements AfterViewInit {
   openEdit(id): void {
     this.router.navigate(['/kochar/IOT Gateway/edittemplate',id])
   }
- 
+  
+  openDelete(x){   
+  
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this Template-List!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
 
-  openDelete(x){
-
-    alert(x)
-    this.backend.deletetemplate(x)
+           this.backend.deletetemplate(x)
     .subscribe((data)=> { 
 
       //  console.log(data);
-      //  alert(data["msg"]);
-    });
+      this.getAllTemplateList();
+      Swal.fire(
+        'Deleted!',
+        'Template-List has been deleted.',
+        'success'
+      )
+    });         
+        
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Template-List is safe :)',
+            'error'
+          )
+        }
+      })   
+  
   }
 }
 

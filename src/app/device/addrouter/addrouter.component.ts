@@ -1,10 +1,8 @@
 
-
-
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-addrouter',
@@ -106,6 +104,9 @@ export class AddrouterComponent implements OnInit {
     .subscribe((data)=> { 
       // console.log("Data:",data);
        //this.location_id = data["location_id"];
+       if(data["success"] == true){
+          Swal.fire("Router added successfully!"); 
+      }
        this.nextStep(1);
     });
   }

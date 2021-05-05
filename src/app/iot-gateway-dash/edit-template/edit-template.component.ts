@@ -73,5 +73,7 @@ export class EditTemplateComponent implements OnInit {
       
     });
   }
-
+            cancel(){
+              this.router.navigate(["/kochar/IOT Gateway/Templates"]);
+            }
 }
