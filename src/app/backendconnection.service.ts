@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class BackendconnectionService {
 
   constructor(private httpClient : HttpClient,
-    private router: Router,
+    private router: Router
     ) { }
 
      

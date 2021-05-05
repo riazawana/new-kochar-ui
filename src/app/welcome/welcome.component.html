@@ -8,12 +8,18 @@
           <div *ngIf="s.submodulename.length != 0;else elseBlock">
                 <ul class="list-unstyled components">   
                   <li>
-                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="w3-bar-item w3-button">{{s.modulename}} 
+                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="w3-bar-item w3-button">
+                        <img src="assets/svg/{{s.modulename}}.svg"> &nbsp;&nbsp;&nbsp;
+                        {{s.modulename}}
                       <fa-icon [icon]="faCaretDown" style="float: right;"></fa-icon>
+
                       </a>
                       <ul class="collapse list-unstyled" id="{{s.modulename.replace(' ','')}}" style="margin-left: 10%;">
                           <li *ngFor="let ss of s.submodulename">
-                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="w3-bar-item w3-button">{{ss.submodule_name}}</a>
+                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="w3-bar-item w3-button">
+                                
+                                <img src="assets/svg/{{ss.submodule_name}}.svg"> &nbsp;&nbsp;&nbsp;
+                                {{ss.submodule_name}}</a>
                           </li>
                       </ul>
                   </li>
@@ -21,7 +27,9 @@
           </div>
         
           <ng-template #elseBlock>
-            <a  (click)="next('/kochar/'+s.modulename)"  class="w3-bar-item w3-button">{{s.modulename}}</a>
+            <a  (click)="next('/kochar/'+s.modulename)"  class="w3-bar-item w3-button">
+              <img src="assets/svg/{{s.modulename}}.svg"> &nbsp;&nbsp;&nbsp;
+              {{s.modulename}}</a>
           </ng-template>
 
     </div>
