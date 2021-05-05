@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-add-smart-meter',
@@ -63,6 +64,7 @@ export class AddSmartMeterComponent implements OnInit {
     .subscribe((data)=> { 
       console.log(data);
       if(data["success"] == true){
+        Swal.fire("Smart Meter Added Successfully!");
         this.router.navigate(["/kochar/Devices"]);
        }
     })

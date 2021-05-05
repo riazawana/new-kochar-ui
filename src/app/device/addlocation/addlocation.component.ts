@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-addlocation',
@@ -387,6 +388,7 @@ export class AddlocationComponent implements OnInit {
        //this.nextStep();
 
        if(data["success"] == true){
+        Swal.fire("Location Added Successfully!");
         this.router.navigate(["/kochar/Devices"]);
        }
 

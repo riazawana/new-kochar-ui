@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+
 
 
 @Component({
@@ -138,6 +140,7 @@ export class AddenergyMeterComponent implements OnInit {
        //this.nextStep(1);
 
        if(data["success"] == true){
+        Swal.fire("Energy Meter Added Successfully!");
         this.router.navigate(["/kochar/Devices"]);
        }
     });
