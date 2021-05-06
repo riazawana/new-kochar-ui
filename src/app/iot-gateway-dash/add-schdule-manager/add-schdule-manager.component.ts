@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-add-schdule-manager',
   templateUrl: './add-schdule-manager.component.html',
@@ -202,6 +202,7 @@ export class AddSchduleManagerComponent implements OnInit {
       console.log(data);
 
       if(data["success"] == true){
+          Swal.fire("Schedule Manager added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/Schedule Manager"]);
        }
     })
