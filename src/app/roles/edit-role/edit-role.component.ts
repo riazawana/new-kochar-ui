@@ -144,8 +144,7 @@ export class EditRoleComponent implements OnInit {
          }
 
          this.backend.getrole_module_mappingbyname(this.name).subscribe((data)=>{
-        //  console.log("datarolemodulemap:",data)
-
+         console.log("datarolemodulemap:",data);
          this.mapping = data["data"][0].mapping;
          this.m_id = data["data"][0]._id;
          this.mrole_id = data["data"][0].role_id;

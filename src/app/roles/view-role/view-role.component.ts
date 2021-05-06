@@ -47,18 +47,51 @@ export class ViewRoleComponent implements OnInit {
 
     nameid:any;
 
+  // align(){
+  //   this.route.paramMap.subscribe(params => {
+  //     this.nameid = params.get("id");
+  //     })
+     
+  //     this.backend.getrole(this.nameid)
+  //     .subscribe((data)=> { 
+  //       //  console.log("Data:",data);
+  //        this.data = data["data"][0];
+  //      this.name = this.data.name;
+  //      this._id = this.data.feature_mapping[0]._id;
+  //      this.role_id = this.data.role_id;
+
+
+  //        for(var k = 0; k < this.featuresarr.length; k++){
+  //         for(var l = 0; l < this.data.feature_mapping[0].mapping.length; l++){
+  //          if(this.featuresarr[k].feature_name == this.data.feature_mapping[0].mapping[l].feature_name){
+  //           this.featuresarr[k] = this.data.feature_mapping[0].mapping[l];
+  //          }
+  //         }
+
+           
+  //        }
+
+  //       //  console.log("final:",  this.featuresarr)
+
+  //       //  alert(this._id);
+  //       //  alert(this.role_id);
+
+  //     });
+  // }
+
+
   align(){
     this.route.paramMap.subscribe(params => {
-      this.nameid = params.get("id");
+      this.id = params.get("id");
       })
      
-      this.backend.getrole(this.nameid)
+      this.backend.getrole(this.id)
       .subscribe((data)=> { 
-        //  console.log("Data:",data);
+        //  console.log("Data:",data["data"]);
          this.data = data["data"][0];
        this.name = this.data.name;
        this._id = this.data.feature_mapping[0]._id;
-       this.role_id = this.data.role_id;
+       this.role_id = this.data.feature_mapping[0].role_id;
 
 
          for(var k = 0; k < this.featuresarr.length; k++){
@@ -71,14 +104,22 @@ export class ViewRoleComponent implements OnInit {
            
          }
 
-        //  console.log("final:",  this.featuresarr)
+         this.backend.getrole_module_mappingbyname(this.name).subscribe((data)=>{
+        //  console.log("datarolemodulemap:",data)
 
-        //  alert(this._id);
-        //  alert(this.role_id);
+         this.mapping = data["data"][0].mapping;
+         this.m_id = data["data"][0]._id;
+         this.mrole_id = data["data"][0].role_id;
+
+        })
 
       });
-  }
 
+      
+  }
+  mapping:any;
+  mrole_id:any;
+  m_id:any;
 
   check(a,x,y){
 

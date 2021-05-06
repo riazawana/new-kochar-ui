@@ -95,12 +95,12 @@ if(role == 'admin'){
     this.backend.getallusers()
     .subscribe((data)=> { 
 
-        //console.log("All Users:",data);
+        console.log("All Users:",data);
        var users = data["data"];
        var business_user = [];
        
        for(var k = 0; k<users.length; k++){
-        if(users[k].role_id == "5ff84154fcadd556b5559e02"){
+        if(users[k].roles[0].name == "business"){
           business_user.push(users[k])
         }
        }
@@ -177,7 +177,7 @@ if(role == 'admin'){
            this.backend.deleteuser(x)
     .subscribe((data)=> { 
 
-      //  console.log(data);
+        console.log(data);
       this.getuser();
       Swal.fire(
         'Deleted!',

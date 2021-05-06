@@ -22,6 +22,22 @@
                             </mat-form-field>
                           </p>
 
+                          <div class="row" *ngFor="let da of mapping;let i = index;">
+                            <div class="col-sm-4">
+                              {{da.modulename}}
+                            </div>
+                            <div class="col-sm-4">
+                              <div *ngIf="da.submodulemapping == true">
+                                <div class="row" *ngFor="let sa of da.submodulename">
+                                     {{sa.submodule_name}}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <p (click)="delete(i)">delete</p>
+                            </div>
+                           </div>
+
                             <p *ngFor="let da of featuresarr;">
                               <mat-label>{{da.feature_name}}</mat-label>
                             
