@@ -14,8 +14,7 @@ import { ViewTemplateComponent } from './view-template/view-template.component';
 import { EditTemplateComponent } from './edit-template/edit-template.component';
 import { ViewSchduleManagerComponent } from './view-schdule-manager/view-schdule-manager.component';
 import { SchduleManagerComponent } from './schdule-manager/schdule-manager.component';
-
-
+import { AddSchduleManagerComponent } from './add-schdule-manager/add-schdule-manager.component';
 import { ViewSmsManagerComponent } from './view-sms-manager/view-sms-manager.component';
 import { EditSmsManagerComponent } from './edit-sms-manager/edit-sms-manager.component';
 
@@ -53,8 +52,11 @@ const userRoutes: Routes =[
     // {path:'',component: IotGatewayDashComponent , canActivate:[AuthGuard]},
     {path:'viewschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
     {path:'editschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
+    {path:'addschedule',component: AddSchduleManagerComponent,canActivate:[AuthGuard]},
+
+    
     {path:'Templates',component: TemplateListComponent,canActivate:[AuthGuard]},
-      {path:'List all Gateway',component: GatewaysComponent,canActivate:[AuthGuard]},
+      {path:'Gateway',component: GatewaysComponent,canActivate:[AuthGuard]},
       {path:'SMS Manager',component: SmsManagerComponent,canActivate:[AuthGuard]},
       {path:'Notification Manager',component: NotificationManagerComponent,canActivate:[AuthGuard]},
       {path:'Schedule Manager',component: SchduleManagerComponent,canActivate:[AuthGuard]},
@@ -83,6 +85,7 @@ const userRoutes: Routes =[
     SchduleManagerComponent,
     ViewSmsManagerComponent,
     EditSmsManagerComponent, 
+    AddSchduleManagerComponent
   ],
   imports: [
     RouterModule.forChild(userRoutes),

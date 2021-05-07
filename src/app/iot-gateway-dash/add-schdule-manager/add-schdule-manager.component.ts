@@ -16,7 +16,7 @@ export class AddSchduleManagerComponent implements OnInit {
   ) { }
 
   gateway:any;
-  gateways:any;
+  gateways:any = [];
 
   mona:any;
   tuea:any;
