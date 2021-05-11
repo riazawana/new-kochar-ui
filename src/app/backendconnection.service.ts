@@ -188,6 +188,13 @@ export class BackendconnectionService {
   
   }
 
+  deletevideogateways(x,t){
+    this.auth();
+    return this.httpClient.delete(this.api+'/deletevideogateways?mac_id='+x+'&client='+t,this.httpOptions);
+  
+  }
+
+ 
 
 
 
@@ -446,7 +453,7 @@ export class BackendconnectionService {
 
       getrouter(x){
         this.auth();
-        return this.httpClient.get(this.api+'/getrouter?_id='+x,this.httpOptions);
+        return this.httpClient.get(this.api+'/getrouter?mac_id='+x,this.httpOptions);
       
       }
 

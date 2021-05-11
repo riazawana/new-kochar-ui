@@ -35,16 +35,16 @@
                  <input class="form-control form-control-sm"  [(ngModel)]="url" type="text" placeholder="URL">
                </div>
                <div class="col-sm-1">
-                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('url',url,data.id)">Update</button>
+                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('updatepollingurl',url,data.id)">Update</button>
                  </div>
              </div>
 
-             <div class="row col-sm-9">
+             <div class="row col-sm-12">
                <label class="col-sm-6">KeyPad Password</label>
-               <div class="form-group col-sm-2 keypadclass">
+               <div class="form-group col-sm-4 keypadclass">
                  <input class="form-control form-control-sm"  [(ngModel)]="KeyPad"  type="number">
                </div>
-               <div class="col-sm-1">
+               <div class="col-sm-2">
                  <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('Keypad',KeyPad,data.id)">Update</button>
                  </div>
              </div>
@@ -84,14 +84,14 @@
              <div class="row col-sm-12">
                <label class="col-sm-6">Calibrate Temperature Sensor</label>                      
                <div class="col-sm-6">
-                 <button type="button" class="btn btn-secondary tempsensor">Get</button>
+                 <button type="button" class="btn btn-secondary tempsensor" (click)="sendMessage('gettemperaturecalibrationstatus','get',data.id)">Get</button>
                  </div>
              </div>
 
              <div class="row col-sm-12">
                <div class="col-sm-6"></div>                      
                <div class="col-sm-6">
-                 <button type="button" class="btn btn-secondary calicls mt-2">Calibrate Temperature Sensor(s)</button>
+                 <button type="button" class="btn btn-secondary calicls mt-2" (click)="sendMessage('calibratetemperaturesensor','get',data.id)">Calibrate Temperature Sensor(s)</button>
                  </div>
              </div>
              <div class="row col-sm-12">
@@ -122,10 +122,10 @@
                  <input class="form-control form-control-sm" [(ngModel)]="Reboot" type="text">
                </div>
                <div class="col-sm-1">
-                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('reboot',Reboot,data.id)">Update</button>                        
+                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('rebootschedule',Reboot,data.id)">Update</button>                        
                  </div>
                  <div class="col-sm-1">
-                   <button type="button" class="btn btn-secondary rebootget">Get</button>
+                   <button type="button" class="btn btn-secondary rebootget" (click)="sendMessage('getrebootscheduletime','get',data.id)">Get</button>
                    </div>
              </div>
              

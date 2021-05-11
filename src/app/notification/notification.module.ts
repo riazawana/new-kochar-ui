@@ -29,6 +29,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
 
 const notifRoutes: Routes =[
   {path:'',component: NotificationComponent , canActivate:[AuthGuard]},
@@ -68,7 +69,8 @@ const notifRoutes: Routes =[
      MatBadgeModule,
      MatSlideToggleModule,
      MatDatepickerModule,
-     MatNativeDateModule
+     MatNativeDateModule,        
+     MatSortModule
   ],
   exports: [RouterModule],
 

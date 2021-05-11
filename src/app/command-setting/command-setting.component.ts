@@ -41,7 +41,7 @@ export class CommandSettingComponent implements OnInit {
      
      // console.log(typeof this.data.id)
 
-      //alert(this.data.id)
+      alert(this.data.id)
     }
 
     onNoClick(): void {
@@ -54,7 +54,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-       
+         console.log(data)
      this.soc.sendMsg(data);
   
      

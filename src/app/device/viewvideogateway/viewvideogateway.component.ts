@@ -84,6 +84,8 @@ onNoClick2(): void {
     this.dialogRef.close();
   }
   
+  getallRtspinterval:any;
+  cameralistinterval:any;
 
   ngOnInit(): void {
 
@@ -129,7 +131,7 @@ onNoClick2(): void {
 
     // });
 
-  setInterval(()=>{
+ this.cameralistinterval =  setInterval(()=>{
     this.allcamera = this.backend.cam_list ;
     // console.log(this.allcamera);
   },1000)
@@ -137,7 +139,7 @@ onNoClick2(): void {
 
    //////////////////////////
    this.getAllRtspProcesses();
-   setInterval(() => {
+   this.getallRtspinterval = setInterval(() => {
        this.fetchAndPopulateResourcesUsage();
        this.getAllRtspProcesses();
    }, 5000);
@@ -208,9 +210,14 @@ onNoClick2(): void {
   // }
   
 
+  ngOnDestroy(){
+    clearInterval(this.getallRtspinterval);
+    clearInterval(this.cameralistinterval);
+  }
+
   delete(process_id) {
 
-     alert(process_id);
+     //alert(process_id);
     this.backend.stop_camera(process_id).subscribe((rs)=> { 
       // console.log("asdsd",rs);
 
@@ -221,6 +228,20 @@ onNoClick2(): void {
     }
     })
     }
+
+
+    // stopRtspProcess(process_id) {
+    //   // alert("secons"+process_id);
+    //   this.backend.stop_camera(process_id).subscribe((rs)=> { 
+    //     // console.log("asdsd",rs);
+  
+    //     if(rs["success"]) {
+    //       this.getAllRtspProcesses();
+    //   } else {
+    //       console.log(rs);
+    //   }
+    //   })
+    //   }
 
   
 

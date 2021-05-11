@@ -39,8 +39,10 @@ export class GatewayListComponent implements OnInit {
 
     arm = false;
     disarm = false;
-    relay1 = false;
-    relay2 = false;
+    relay1on = false;
+    relay2on = false;
+    relay1off = false;
+    relay2off = false;
     refresh = false;
     command_setting = false;
     port_setting = false;
@@ -75,8 +77,10 @@ export class GatewayListComponent implements OnInit {
       setTimeout(() => {
          this.arm = true;
       this.disarm = true;
-      this.relay1 = true;
-      this.relay2 = true;
+      this.relay1on = true;
+      this.relay2on = true;
+      this.relay1off = true;
+      this.relay2off = true;
       this.refresh = true;
       this.command_setting = true;
       this.port_setting = true;
@@ -108,16 +112,30 @@ export class GatewayListComponent implements OnInit {
                 this.refresh = true;
                  }
                 }
-          if(features[i].feature_name == 'Relay 1'){
+          if(features[i].feature_name == 'Relay 1 ON'){
 
                 if(features[i].action == true){
-                  this.relay1 = true;
+                  this.relay1on = true;
                    }
                    }
-          if(features[i].feature_name == 'Relay 2'){
+
+                   if(features[i].feature_name == 'Relay 1 OFF'){
+
+                    if(features[i].action == true){
+                      this.relay1off = true;
+                       }
+                       }
+
+                       if(features[i].feature_name == 'Relay 2 ON'){
+
+                        if(features[i].action == true){
+                          this.relay2on = true;
+                           }
+                           }
+          if(features[i].feature_name == 'Relay 2 OFF'){
                    
                    if(features[i].action == true){
-                    this.relay2 = true;
+                    this.relay2off = true;
                      }
                     }
           if(features[i].feature_name == 'Command Settings'){

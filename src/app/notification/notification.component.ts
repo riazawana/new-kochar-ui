@@ -46,13 +46,14 @@ export class NotificationComponent implements OnInit , OnDestroy {
   displayedColumns2: string[] = ['sr_no', 'status', 'locationname','notification','createdAt','updatedAt','tat','remark', 'action'];
   
   dataSource: MatTableDataSource<health>;
-
-  @ViewChild(MatPaginator) paginator2: MatPaginator;
-  @ViewChild(MatSort) sort2: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
   dataSource2: MatTableDataSource<risk>;
+
+  // @ViewChild('MatPaginator') paginator: MatPaginator;
+  // @ViewChild('MatPaginator2') paginator2: MatPaginator;
+  @ViewChild('MatSort') t1Sort: MatSort;
+  @ViewChild('MatSort2') t2Sort: MatSort;
+
+
   add:any = false;
   delete:any = false;
   edit:any = false;
@@ -65,9 +66,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
     
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
     this.dataSource = new MatTableDataSource;
-
     this.dataSource2 = new MatTableDataSource;
    }
    myVar:any;
@@ -82,7 +81,6 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
 
      var role = sessionStorage.getItem('role');
-
      if(role == 'admin'){
        setTimeout(() => {
           this.add = true;
@@ -162,11 +160,11 @@ export class NotificationComponent implements OnInit , OnDestroy {
        this.dataSource2 = new MatTableDataSource( this.risk );
        this.dataSource = new MatTableDataSource( this.health );
 
-       this.dataSource.paginator = this.paginator;
-       this.dataSource.sort = this.sort;
+      //  this.dataSource.paginator = this.paginator;
+       this.dataSource.sort = this.t1Sort;
 
-       this.dataSource2.paginator = this.paginator2;
-       this.dataSource2.sort = this.sort2;
+      //  this.dataSource2.paginator = this.paginator2;
+       this.dataSource2.sort = this.t2Sort;
 
     });
   }

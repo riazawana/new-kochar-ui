@@ -22,12 +22,33 @@
 
                 </div>
                 <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                    <i class="fa fa-flag" aria-hidden="true"></i>
+                    <p *ngIf="info != undefined">{{info.version}}</p>
+
+                        </div>
+                        <div class="col-sm-4">
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                    <p *ngIf="info.is_online == true">Online</p>
+                    <p *ngIf="info.is_online == false">Offline</p>
+
+                        </div>
+                        <div class="col-sm-4">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    <p *ngIf="info != undefined">{{info.uptime}}</p>
+
+                    
+                        </div>
+
+                    </div>
+
 
                 </div>
-                <div class="col-sm-3" *ngIf="data.router_info != undefined">
-                    <p>Load Average : <b>{{data.router_info.loadaverage}}</b></p>
-                    <p>Local IP : <b>{{data.router_info.localIP}}</b></p>
-                    <p>Public IP : <b>{{data.router_info.publicIP}}</b></p>
+                <div class="col-sm-3" *ngIf="info != undefined">
+                    <p>Load Average : <b>{{info.loadaverage}}</b></p>
+                    <p>Local IP : <b>{{info.localIP}}</b></p>
+                    <p>Public IP : <b>{{info.publicIP}}</b></p>
 
                 </div>
             
@@ -55,13 +76,13 @@
                 <div class="col-sm-3">
                    </div>
                    <div class="col-sm-3">
-                   <p>124.952 MB</p>
+                   <p>{{totalmem[1]}}</p>
                    </div>
                    <div class="col-sm-3">
-                   <p>51.72 MB</p>
+                    <p>{{avilmem[1]}}</p>
                    </div>
                    <div class="col-sm-3">
-                   <p>19.452 MB</p>
+                    <p>{{cached[1]}}</p>
                    </div>
                </div>
             
@@ -87,24 +108,25 @@
                     <tbody>
                       <tr>
                         <th scope="row">Tx</th>
-                        <td>0</td>
-                        <td>1110110915</td>
-                        <td>0</td>
-                        <td>623891289</td>
-                        <td>87368563</td>
-                        <td>0</td>
-                        <td>1047004362</td>
+                        <td>{{teth0[1]}}</td>
+                        <td>{{tbr_lan[1]}}</td>
+                        <td>{{t3g_wan[1]}}</td>
+                        <td>{{twwan0[1]}}</td>
+                        <td>{{ttun0[1]}}</td>
+                        <td>{{twlan0[1]}}</td>
+                        <td>{{twlan1[1]}}</td>
 
                       </tr>
                       <tr>
                         <th scope="row">Rx</th>
-                        <td>0</td>
-                        <td>1110110915</td>
-                        <td>0</td>
-                        <td>623891289</td>
-                        <td>87368563</td>
-                        <td>0</td>
-                        <td>1047004362</td>
+                        <td>{{reth0[1]}}</td>
+                        <td>{{rbr_lan[1]}}</td>
+                        <td>{{r3g_wan[1]}}</td>
+                        <td>{{rwwan0[1]}}</td>
+                        <td>{{rtun0[1]}}</td>
+                        <td>{{rwlan0[1]}}</td>
+                        <td>{{rwlan1[1]}}</td>
+
                         </tr>
                     </tbody>
                   </table>
@@ -114,32 +136,11 @@
 
             <div class="row" style="padding: 1%;width: 100%;margin:0%">
             
-                <div class="col-sm-2" style="border: 3px dotted gray;
+                <div class="col-sm-2" *ngFor="let l of lan_clients" style="border: 3px dotted gray;
                 text-align: center;margin: 1%;">
                     <div></div>
-                    <div><p>C8:2B:96:BF:36:08</p></div>
-                    <div><p>192.168.8.210</p></div>
-                </div>
-
-                <div class="col-sm-2" style="border: 3px dotted gray;
-                text-align: center;margin: 1%;">
-                    <div></div>
-                    <div><p>C8:2B:96:BF:36:08</p></div>
-                    <div><p>192.168.8.210</p></div>
-                </div>
-
-                <div class="col-sm-2" style="border: 3px dotted gray;
-                text-align: center;margin: 1%;">
-                    <div></div>
-                    <div><p>C8:2B:96:BF:36:08</p></div>
-                    <div><p>192.168.8.210</p></div>
-                </div>
-
-                <div class="col-sm-2" style="border: 3px dotted gray;
-                text-align: center;margin: 1%;">
-                    <div></div>
-                    <div><p>C8:2B:96:BF:36:08</p></div>
-                    <div><p>192.168.8.210</p></div>
+                    <div><p>{{l.a}}</p></div>
+                    <div><p>{{l.b}}</p></div>
                 </div>
 
               

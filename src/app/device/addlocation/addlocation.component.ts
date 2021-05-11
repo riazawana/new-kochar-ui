@@ -388,7 +388,7 @@ export class AddlocationComponent implements OnInit {
        //this.nextStep();
 
        if(data["success"] == true){
-        Swal.fire("Location Added Successfully!");
+        Swal.fire("IN Gateway Added Successfully!");
         this.router.navigate(["/kochar/Devices"]);
        }
 

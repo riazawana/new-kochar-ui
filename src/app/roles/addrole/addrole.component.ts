@@ -195,7 +195,7 @@ export class AddroleComponent implements OnInit {
   addmodule(){
     var m;
 
-// console.log(this.submodule_name)
+ console.log(this.submodule_name)
     if(this.submodule_name != undefined){
    
      var new_smn_arr = [];
@@ -218,9 +218,25 @@ export class AddroleComponent implements OnInit {
       "modulename": this.module_name
     }
   }
- 
-  this.mapping.push(m);
 
+ 
+  if(this.mapping.length == 0){
+    this.mapping.push(m);
+  }
+  else{
+    for(var k = 0; k < this.mapping.length; k++){
+    
+      if(this.mapping[k].modulename == m.modulename){
+        // alert("Same module Exist")
+  
+        this.mapping.splice(k,1);
+      }
+    }
+    this.mapping.push(m);
+  }
+ 
+ 
+  
         this.submodule_name = undefined;
         this.module_name = '';
 

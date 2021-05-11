@@ -41,46 +41,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   notification:any;
   notificationcount:number = 0;
 
-  create(title,content,id,cli) {
-
-    var data = content //JSON.parse(content);
-     console.log(data);
-    
-     var type = "success";
-     if(type == "success"){
-      this.notification = this._notifications.success(title, data, {
-        timeOut: 3000,
-        showProgressBar: true,
-        pauseOnHover: true
-      });
-     }if(type == "warn"){
-      this.notification = this._notifications.warn(title, data, {
-        timeOut: 3000,
-        showProgressBar: true,
-        pauseOnHover: true
-      });
-     }if(type == "error"){
-      this.notification = this._notifications.error(title, data, {
-        timeOut: 3000,
-        showProgressBar: true,
-        pauseOnHover: true
-      });
-     }
-
-
-
-  
-    this.notifyMe(data);
-    this.notification.click.subscribe(function(notif, mouseEvent){
-   // alert(id);
-    this.router.navigate(['kochar/Notifications/notification-details',id,cli]);
-
-   // console.log(notif);
-    
-  }.bind(this, this.notification));
-
-  }
-  
+ 
   
 
   sendMessage() {
@@ -95,6 +56,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
    
  }
+ 
+ 
 
   ngOnInit(): void {
 
@@ -156,45 +119,87 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   
     this.soc.messages.subscribe(msg => {
+      console.log(msg);
+
       console.log(JSON.parse(msg.text[0]));
       var da = JSON.parse(msg.text[0]);
       var x = da._id;
       var cli = da.client;
       
       if(this.notif == true){
-        this.create("Notification",JSON.parse(msg.text[0]).data.notification,x,cli);
+        console.log(JSON.parse(msg.text[0])[0].data.notification);
+        var notdata = JSON.parse(msg.text[0])[0].data.notification;
+        this.create("Notification",notdata,x,cli);
+        this.backend.getNotificationCount()
+        .subscribe((data)=> { 
+         console.log(data)
+          this.notificationcount = data["opencount"]; 
+        })
       }
 
     })
 
    
       this.w3_open();
+
       if( this.notif == true){
-        this.notificationcounter();
+       this.backend.getNotificationCount()
+       .subscribe((data)=> { 
+        console.log(data)
+         this.notificationcount = data["opencount"]; 
+       })
+   
       }
       
       
      
   }
 
-  knot:any;
-  notificationcounter(){
-   
-   
-        this.knot = setInterval(() =>{
-         this.backend.getNotificationCount()
-      .subscribe((data)=> { 
-      //  console.log(data)
-        this.notificationcount = data["opencount"]; 
-      })
-    }
-         , 1000);
-      
+  create(title,content,id,cli) {
+
+    var data = content //JSON.parse(content);
+     console.log(data);
+    
+     var type = "success";
+     if(type == "success"){
+      this.notification = this._notifications.success(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }if(type == "warn"){
+      this.notification = this._notifications.warn(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }if(type == "error"){
+      this.notification = this._notifications.error(title, data, {
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
+     }
+
+
+
+  
+    this.notifyMe(data);
+    this.notification.click.subscribe(function(noti, mouseEvent){
+   // alert(id);
+    this.router.navigate(['kochar/Notifications/notification-details',id,cli]);
+
+   // console.log(notif);
+    
+  }.bind(this, this.notification));
 
   }
+  
+
+ 
 
   ngOnDestroy(){
-    clearInterval(this.knot);
+   
   }
 
   w3_open() {
@@ -218,11 +223,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   logout(){
     // alert("logout");
      this.router.navigate(['kochar/profile']);
-     this.knot = setInterval(() =>{
-    sessionStorage.clear();
-    this.keycloakService.logout();
-  }
-  , 1000);
+     sessionStorage.clear();
+     this.keycloakService.logout();
 
 
   }

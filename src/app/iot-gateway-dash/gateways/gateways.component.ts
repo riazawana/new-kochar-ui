@@ -28,10 +28,13 @@ export class GatewaysComponent implements OnInit {
 
   arm = false;
   disarm = false;
-  relay1 = false;
-  relay2 = false;
+  relay1on = false;
+  relay2on = false;
+  relay1off = false;
+  relay2off = false;
   refresh = false;
-
+  command_setting = false;
+  port_setting = false;
 
   
 
@@ -50,13 +53,93 @@ export class GatewaysComponent implements OnInit {
   temp2 = 'NA';   
   ngOnInit() {
     var da = JSON.parse(sessionStorage.getItem('userdata'));
+    var role = sessionStorage.getItem('role');
 
+    if(role == 'admin'){
+      setTimeout(() => {
+         this.arm = true;
+      this.disarm = true;
+      this.relay1on = true;
+      this.relay2on = true;
+      this.relay1off = true;
+      this.relay2off = true;
+      this.refresh = true;
+      this.command_setting = true;
+      this.port_setting = true;
+      });
+    }else{
+    
+      setTimeout(() => {
+        var features = JSON.parse(sessionStorage.getItem('features'));
+        for(var i = 0; i < features.length; i++){
+          // alert(this.arm+",arm")
+          // alert(this.disarm+",disarm")
+          // alert(this.refresh+",refresh")
+          // alert(this.command_setting+",comman")
+
+          if(features[i].feature_name == 'ARM'){
+             if(features[i].action == true){
+            this.arm = true;
+             }
+            }
+          if(features[i].feature_name == 'DISARM'){
+
+             if(features[i].action == true){
+              this.disarm = true;
+               }
+              }
+          if(features[i].feature_name == 'Refresh'){
+
+               if(features[i].action == true){
+                this.refresh = true;
+                 }
+                }
+          if(features[i].feature_name == 'Relay 1 ON'){
+
+                if(features[i].action == true){
+                  this.relay1on = true;
+                   }
+                   }
+                   if(features[i].feature_name == 'Relay 1 OFF'){
+
+                    if(features[i].action == true){
+                      this.relay1off = true;
+                       }
+                       }
+                       if(features[i].feature_name == 'Relay 2 ON'){
+
+                        if(features[i].action == true){
+                          this.relay2on = true;
+                           }
+                           }
+          if(features[i].feature_name == 'Relay 2 OFF'){
+                   
+                   if(features[i].action == true){
+                    this.relay2off = true;
+                     }
+                    }
+          if(features[i].feature_name == 'Command Settings'){
+                    
+                    if(features[i].action == true){
+                      this.command_setting = true;
+                       }
+                      }
+          if(features[i].feature_name == 'Port Settings'){
+                      
+                      if(features[i].action == true){
+                        this.port_setting = true;
+                         }
+                        }
+    
+          } 
+        
+        
+       }, 1);
+    }
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      // console.log("All gateways:",data["data"][0][0]);
-      // alert(data["data"])
-      // alert(typeof data["data"])
+    
       console.log(data)
 
 

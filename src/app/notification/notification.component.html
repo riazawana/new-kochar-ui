@@ -18,7 +18,7 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
               -->
-        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 mt-4" style="position: sticky;">
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 mt-4" style="position: sticky;" #t1Sort="matSort" matSort>
   
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
@@ -90,7 +90,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>  
   
-        <mat-paginator #subTablePaginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <!-- <mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
 
        </div>
 
@@ -107,7 +107,7 @@
     <div class="row">
       <h3>Health Notification</h3>
       
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-4"  style="position:sticky">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-4"  style="position:sticky" #t2Sort="matSort" matSort>
 
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
@@ -177,7 +177,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>     
-        <mat-paginator #TablePaginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <!-- <mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
      
     </div>
                   

@@ -110,7 +110,20 @@ export class EditRoleComponent implements OnInit {
       }
     }
    
-    this.mapping.push(m);
+    if(this.mapping.length == 0){
+      this.mapping.push(m);
+    }
+    else{
+      for(var k = 0; k < this.mapping.length; k++){
+      
+        if(this.mapping[k].modulename == m.modulename){
+          alert("Same module Exist")
+    
+          this.mapping.splice(k,1);
+        }
+      }
+      this.mapping.push(m);
+    }
   
           this.submodule_name = undefined;
           this.module_name = '';
