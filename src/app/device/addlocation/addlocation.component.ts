@@ -237,6 +237,26 @@ export class AddlocationComponent implements OnInit {
   location_name:string;
   user_id:any;
 
+  formatMAC_gl_mac(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.gl_mac= str.slice(0, 17);
+};
+
+formatMAC(e) {
+  // alert(e);
+  var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+      str = e.replace(/[^a-f0-9]/ig, "");
+  while (r.test(str)) {
+      str = str.replace(r, '$1' + ':' + '$2');
+  }
+  this.w_c_m_a= str.slice(0, 17);
+};
+
   ngOnInit(): void {
 
     this.user_id =  sessionStorage.getItem('userid');

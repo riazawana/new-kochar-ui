@@ -51,6 +51,18 @@ export class EditenergyMeterComponent implements OnInit {
   keycloak_user_id:any;
   ports:any;
   relays:any;
+
+  formatMAC(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.mac= str.slice(0, 17);
+  };
+
+  
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {

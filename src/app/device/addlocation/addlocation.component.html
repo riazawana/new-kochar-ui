@@ -39,7 +39,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Wired Controller Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="w_c_m_a" name="w_c_m_a" placeholder="(00:00:00:00:00:00)">
+                                  <input matInput [(ngModel)]="w_c_m_a" name="w_c_m_a" (keyup)="formatMAC(w_c_m_a)" placeholder="(00:00:00:00:00:00)">
                                   <mat-hint>Wired Controller Mac Address</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -47,7 +47,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>GL Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="gl_mac" name="gl_mac" placeholder="(00:00:00:00:00:00)">
+                                  <input matInput [(ngModel)]="gl_mac" name="gl_mac" (keyup)="formatMAC_gl_mac(gl_mac)" placeholder="(00:00:00:00:00:00)">
                                   <mat-hint>GL Mac Address</mat-hint>
                                 </mat-form-field>
                               </p>

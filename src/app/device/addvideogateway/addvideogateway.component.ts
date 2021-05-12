@@ -54,8 +54,20 @@ export class AddvideogatewayComponent implements OnInit {
        this.location_name = data["data"][0].name;
       })
 
+     //this.mac_id.addEventListener("keyup", this.formatMAC, false);
+   
     
   }
+
+  formatMAC(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.mac_id= str.slice(0, 17);
+};
 
 
   selectedIndex: number = 0;
@@ -67,6 +79,8 @@ export class AddvideogatewayComponent implements OnInit {
   previousStep(x) {
     this.selectedIndex = x;
   }
+
+
 
 
   submit(){
@@ -93,7 +107,7 @@ export class AddvideogatewayComponent implements OnInit {
     }
  
 
-  //  console.log(data);
+   console.log(data);
     
     this.backend.addvideogateways(data)
     .subscribe((data)=> { 

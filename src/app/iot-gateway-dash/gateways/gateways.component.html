@@ -67,15 +67,15 @@
                      </div>
                     
                     <div class="row col-md-3">
-                      <button type="button" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g[0].relay1_name}} / ON</button>
-                      <button type="button" class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g[0].relay1_name}} / OFF</button>
+                      <button type="button" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g[0].mac_id)" style="font-size: 60%;">{{g[0].relay1_name}} / ON</button>
+                      <button type="button" class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g[0].mac_id)" style="font-size: 60%;">{{g[0].relay1_name}} / OFF</button>
 
                     </div>
 
                     <div class="row col-md-3">
 
-                      <button type="button" class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g[0].relay2_name}}  / ON</button>
-                      <button type="button" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g[0].relay2_name}}  / OFF</button>
+                      <button type="button" class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g[0].mac_id)" style="font-size: 60%;">{{g[0].relay2_name}}  / ON</button>
+                      <button type="button" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g[0].mac_id)" style="font-size: 60%;">{{g[0].relay2_name}}  / OFF</button>
                     </div>              
                
                
@@ -103,7 +103,7 @@
                 <hr>
   
                 <div class="row" *ngFor="let p of g[0].devices">
-                    <div class="col-sm-3">Port {{p.port_number}} </div>
+                    <div class="col-sm-3">{{p.sensor_name}} </div>
   
                     <div class="col-sm-3"> {{p.sensor_status}} </div>
   

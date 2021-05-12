@@ -171,6 +171,41 @@ export class AddrouterComponent implements OnInit {
     /* Alert the copied text */
     alert("Copied the text: " + copyText.value);
   }
+
+
+  formatMAC(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.m_a= str.slice(0, 17);
+  };
+
+
+  formatMAC_gl(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.gl_mac_id= str.slice(0, 17);
+  };
+  
+
+  formatMAC_d(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.d_mac_id= str.slice(0, 17);
+  };
+  
+  
   
 
 

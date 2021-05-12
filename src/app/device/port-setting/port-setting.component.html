@@ -18,7 +18,7 @@
 
                          
             
-                          <p>
+                          <p *ngIf="newdata.for_temperature == false">
                             <mat-form-field appearance="outline">
                               <mat-label>Port Number</mat-label>
                               <input matInput [(ngModel)]="port_no" name="port_no" placeholder="Number">
@@ -35,7 +35,7 @@
                           </p>
 
                           <p>
-                            <mat-form-field appearance="outline">
+                            <mat-form-field appearance="outline" >
                                 <mat-label>Sensor Type</mat-label>
                                 <mat-select placeholder="sensor_type" [(ngModel)]="sensor_type" name="sensor_type">
                                   <mat-option  value="panic sensor" >Panic Sensor</mat-option>
@@ -47,10 +47,16 @@
                                   <mat-option  value="thermal sensor" >Thermal Sensor</mat-option>
                                   <mat-option  value="seismic sensor" >Seismic Sensor</mat-option>
                                   <mat-option  value="vibration sensor" >Vibration Sensor</mat-option>
+                                  <mat-option  value="temperature sensor" >Temperature Sensor</mat-option>
+
+                                 
                                 </mat-select>
                               <mat-hint>Sensor Type</mat-hint>
                             </mat-form-field>
                           </p>
+
+
+                         
             
             
                           <p>
@@ -61,7 +67,7 @@
                             </mat-form-field>
                           </p>
             
-                          <p>
+                          <p *ngIf="newdata.for_temperature == false">
                             <mat-label>Default</mat-label>
                             &nbsp;
                             &nbsp;
@@ -82,8 +88,29 @@
                           </mat-radio-group>
                           </p>
 
+                          <p *ngIf="newdata.for_temperature == true">
+                            <mat-label>Temprature Status</mat-label>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <br>
+                            <mat-radio-group
+                            aria-labelledby="example-radio-group-label"
+                            class="example-radio-group"
+                            [(ngModel)]="temp_status">
+                            <mat-radio-button class="example-radio-button"  [value]="0">
+                            0 (Disable)
+                            </mat-radio-button>
+<br>
+                            <mat-radio-button class="example-radio-button"  [value]="1">
+                                1 (Enable)
+                                </mat-radio-button>
+                          </mat-radio-group>
+                          </p>
 
-                          <p>
+
+                          <p *ngIf="newdata.for_temperature == false">
                             <mat-label>Alarm Type</mat-label>
                              &nbsp;
                              &nbsp;

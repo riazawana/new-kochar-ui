@@ -53,7 +53,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="m_a" name="m_a" placeholder="(00:00:00:00:00:00)">
+                                  <input matInput [(ngModel)]="m_a" name="m_a" (keyup)="formatMAC(m_a)" placeholder="(00:00:00:00:00:00)">
                                   <mat-hint>Mac Address</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -108,7 +108,7 @@
                         <p>
                             <mat-form-field appearance="outline">
                               <mat-label>GL MAC ID</mat-label>
-                              <input matInput [(ngModel)]="gl_mac_id" name="gl_mac_id" placeholder="(00:00:00:00:00:00)">
+                              <input matInput [(ngModel)]="gl_mac_id" name="gl_mac_id" (keyup)="formatMAC_gl(gl_mac_id)" placeholder="(00:00:00:00:00:00)">
                               <mat-hint>IMSI Number</mat-hint>
                             </mat-form-field>
                           </p>
@@ -132,7 +132,7 @@
                         <p>
                             <mat-form-field appearance="outline">
                               <mat-label>Device Mac ID</mat-label>
-                              <input matInput [(ngModel)]="d_mac_id" name="d_mac_id" placeholder="(00:00:00:00:00:00)">
+                              <input matInput [(ngModel)]="d_mac_id" name="d_mac_id" (keyup)="formatMAC_d(d_mac_id)"  placeholder="(00:00:00:00:00:00)">
                               <mat-hint>Device Mac ID</mat-hint>
                             </mat-form-field>
                           </p>

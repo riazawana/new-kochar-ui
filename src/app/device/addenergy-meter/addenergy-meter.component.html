@@ -49,7 +49,7 @@
                                     <p>
                                         <mat-form-field appearance="outline">
                                           <mat-label>Mac Address</mat-label>
-                                          <input matInput [(ngModel)]="mac" name="mac" placeholder="(00:00:00:00:00:00)">
+                                          <input matInput [(ngModel)]="mac" name="mac" (keyup)="formatMAC(mac)" placeholder="(00:00:00:00:00:00)">
                                           <mat-hint>Mac Address</mat-hint>
                                         </mat-form-field>
                                       </p>

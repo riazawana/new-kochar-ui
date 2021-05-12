@@ -36,6 +36,16 @@ export class EditrouterComponent implements OnInit {
   user_id:any;
   selectedIndex:any;
 
+  formatMAC(e) {
+    // alert(e);
+    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+        str = e.replace(/[^a-f0-9]/ig, "");
+    while (r.test(str)) {
+        str = str.replace(r, '$1' + ':' + '$2');
+    }
+    this.m_a= str.slice(0, 17);
+  };
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");

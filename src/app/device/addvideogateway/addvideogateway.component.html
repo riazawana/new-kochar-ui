@@ -57,10 +57,10 @@
                                 </mat-form-field>
                               </p>
 
-                              <p *ngIf="brand == 'Hikvision'">
+                              <p >
                                 <mat-form-field appearance="outline">
                                   <mat-label>Mac ID</mat-label>
-                                  <input matInput [(ngModel)]="mac_id" name="mac_id" placeholder="00:00:00:00:00:00">
+                                  <input matInput [(ngModel)]="mac_id" name="mac_id" (keyup)="formatMAC(mac_id)" placeholder="00:00:00:00:00:00">
                                   <mat-hint>Mac ID</mat-hint>
                                 </mat-form-field>
                               </p>
