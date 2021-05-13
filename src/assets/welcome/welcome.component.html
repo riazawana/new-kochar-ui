@@ -49,13 +49,14 @@
                 <button id="closeNav" class="w3-button w3-teal w3-xlarge" (click)="w3_close()" style="display: none;">&#9776;</button>     
               </div> 
               
-              <div class="col-sm-7"></div>
+              <div class="col-sm-8"></div>
              
               <div class="col-sm-1">
-                  <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()"><i class="fa fa-bell-o bellcls mt-2"></i></span>
+                  <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()">
+                    <i class="fa fa-bell-o bellcls mt-2"></i></span>
               </div>
 
-              <div class="col-sm-2">
+              <div class="col-sm-1">
                 <button id="logout" class="w3-button w3-teal w3-xlarge" (click)="logout()" >logout 
                   <fa-icon [icon]="faSignOutAlt"></fa-icon>
                 </button> 

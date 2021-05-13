@@ -279,6 +279,9 @@ svg{
     }
 }
 
+
+
+
 }
 .nav-btn{
 border: none;
@@ -294,4 +297,15 @@ padding-left: 0;
 }
 .padding-left-0{
     padding-left: 0;
+}
+.bell-align{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.log-btn:hover{
+ color: #E94B26;
+}
+.pointer-cursor{
+    cursor: pointer;
 }

@@ -4,3 +4,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.containt{
+    padding: 0px 1rem;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+}
+
