@@ -30,7 +30,7 @@ export class AddnewlocationComponent implements OnInit {
   state_id:string;
   city_id:string;
   pincode_id:string;
-  site_live:boolean;
+  site_live:boolean = false;
 
  
   location_id:string = "0";
@@ -65,7 +65,7 @@ export class AddnewlocationComponent implements OnInit {
 
 
   selectedIndex: number = 0;
-
+  
 //  nextStep(x) {
 //     // if (this.selectedIndex != 3) {
 //     //   this.selectedIndex = this.selectedIndex + 1;

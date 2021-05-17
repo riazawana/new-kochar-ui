@@ -214,7 +214,7 @@ export class GatewayListComponent implements OnInit {
  delete(x,y){
   this.backend.deleteiotgateway(x,y)
   .subscribe((data)=> { 
-   //  console.log(data);
+    console.log(data);
   });
 }
 

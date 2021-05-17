@@ -323,13 +323,15 @@ formatMAC(e) {
   sel_temp = "0"
   submit_seltemp(x){
      
-
+//alert(x);
     this.backend.gettemplate(x)
     .subscribe((data)=> { 
        console.log("Data:",data);
+       console.log(data["data"][0].configuration)
         var getiotgatway = data["data"][0].configuration;
 
-    var newdata = this.sensordata.concat(this.tempsensor);
+        this.gatewaytype = data["data"][0].gatewaytype;
+    var newdata = getiotgatway //.concat(this.tempsensor);
     
     for(var k = 0; k < newdata.length; k++){
 
@@ -342,6 +344,8 @@ formatMAC(e) {
       newdata[k].sensor_type = getiotgatway[k].sensor_type;
     }
 
+    this.sensordata = newdata;
+
     this.nextStep(2);
 
     });
@@ -349,7 +353,7 @@ formatMAC(e) {
   }
 
  
-
+  gatewaytype:any;
   client:any;
 
   submot_iotgateway(){
@@ -388,8 +392,8 @@ formatMAC(e) {
   submit_port(){
     var da = JSON.parse(sessionStorage.getItem('userdata'));
 
-    var data = this.sensordata.concat(this.tempsensor);
-    //console.log(data);
+    var data = this.sensordata
+    console.log(data);
     for(var k = 0; k<data.length; k++){
               data[k].created_by = da["name"];
               data[k].user_id = this.user_id;

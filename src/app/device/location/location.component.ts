@@ -36,7 +36,7 @@ export class LocationComponent implements OnInit {
 
         this.backend.getlocationzonewise(this.id)
         .subscribe((data)=> { 
-         //  console.log("All location:",data["data"]);
+          console.log("All location:",data["data"]);
            this.locations = data["data"];
         });
       // }else{

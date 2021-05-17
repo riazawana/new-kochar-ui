@@ -97,7 +97,10 @@
                     <div class="row" *ngFor="let p of g.devices">
                         <div class="col-sm-3">{{p.sensor_name}} </div>
     
-                        <div class="col-sm-3"> {{p.sensor_status}} </div>
+                        <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}} </div>
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 0)"> Disable </div>
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 1)"> Enable </div>
+
     
     
                         <div class="col-sm-3"> <a (click)="port_set(p)" style="color: blue;" [disabled]="!port_setting">Port Settings </a> </div>
