@@ -55,7 +55,7 @@
                     <div class="row col-md-3">
                      <span class="label label-primary tempclass">Temp 1</span><br>                     
                      <span class="label label-primary tempclass">Temp 2</span><br>                     
-                     <i class="fa fa-refresh refreshcls pt-2" aria-hidden="true"></i>
+                     <i class="fa fa-refresh refreshcls pt-2" (click)="refreshtemp()"  aria-hidden="true"></i>
                       </div>
  
                       <div class="row col-md-3">
@@ -68,7 +68,9 @@
 
                        <button type="button" class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
                        <button type="button" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
-                     </div>              
+                       <i class="fa fa-refresh refreshcls pt-2" (click)="refresh2()" aria-hidden="true"></i>
+                    
+                      </div>              
                 
                 </div>
 

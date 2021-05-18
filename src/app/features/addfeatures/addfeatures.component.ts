@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-addfeatures',
@@ -17,6 +18,8 @@ export class AddfeaturesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
+    private _location:Location,
+
     private backend: BackendconnectionService 
   ) { }
 
@@ -76,8 +79,8 @@ export class AddfeaturesComponent implements OnInit {
  
 
   cancel(){
-    this.router.navigate(["/kochar/Features"]);
-  }
+    this._location.back();
+   }
 
   addsubmodule(){
     this.router.navigate(["/kochar/Features/addsubmodule"]);

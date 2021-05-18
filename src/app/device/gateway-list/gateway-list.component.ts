@@ -218,4 +218,11 @@ export class GatewayListComponent implements OnInit {
   });
 }
 
+refresh2(){
+
+}
+
+refreshtemp(){
+
+} 
 }

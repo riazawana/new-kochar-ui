@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { BackendconnectionService } from '../../backendconnection.service';
 import { CameraModalComponent } from '../camera-modal/camera-modal.component';  
 import * as CryptoJS from 'crypto-js';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-getallrecord-modal',
@@ -17,6 +19,7 @@ export class GetallrecordModalComponent implements OnInit {
     public dialogRef2: MatDialogRef<GetallrecordModalComponent>,
     private dialog: MatDialog,
     private dialog2: MatDialog,
+    private _location:Location,
 
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     
@@ -169,6 +172,10 @@ export class GetallrecordModalComponent implements OnInit {
       }
       })
       }
+
+      cancel(){
+        this._location.back();
+       }
 
       
       }

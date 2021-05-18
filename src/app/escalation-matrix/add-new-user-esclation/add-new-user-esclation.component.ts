@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-add-new-user-esclation',
@@ -13,7 +14,8 @@ export class AddNewUserEsclationComponent implements OnInit {
   constructor(
     private backend: BackendconnectionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _location:Location
 
   ) { }
   hub:string;
@@ -129,8 +131,8 @@ export class AddNewUserEsclationComponent implements OnInit {
     }
 
     cancel(){
-      this.router.navigate(["/kochar/Escalation Matrix"]);
-    }
+      this._location.back();
+     }
 
   }
 

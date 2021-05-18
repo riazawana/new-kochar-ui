@@ -2,6 +2,8 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackendconnectionService } from '../../backendconnection.service';
 import { EditEscalationUserModalComponent } from '../edit-escalation-user-modal/edit-escalation-user-modal.component';  
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-escalation-details',
   templateUrl: './escalation-details.component.html',
@@ -13,6 +15,7 @@ export class EscalationDetailsComponent implements OnInit {
     private backend: BackendconnectionService,
     public dialogRef: MatDialogRef<EscalationDetailsComponent>,
     private dialog: MatDialog,
+    private _location:Location,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     
     alluser:any;
@@ -80,6 +83,10 @@ edit(gateway_name,mac_id,client,email,phone,level,designation,tat,name){
        //  console.log('The dialog  two was closed');
       });
     
+   }
+
+   cancel(){
+    this._location.back();
    }
 
 }
