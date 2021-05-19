@@ -1,22 +1,21 @@
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="background-color: #022656;color: white;    font-size: 13px;
-" id="mySidebar">
-<div>
-  <img src="assets/company_logo/logo.png" (click)="redirect()" style="width: 100%;height: 38px;">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left white-bg mainsideBar" id="mySidebar">
+<div class="logo-container">
+  <img src="assets/company_logo/logo.png" (click)="redirect()">
 </div>
     <div *ngFor="let s of sidebar"> 
 
           <div *ngIf="s.submodulename.length != 0;else elseBlock">
-                <ul class="list-unstyled components">   
-                  <li>
-                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="w3-bar-item w3-button">
+                <ul class="list-unstyled components mb-0">   
+                  <li class="navbarList">
+                      <a href="#{{s.modulename.replace(' ','')}}"  data-toggle="collapse" aria-expanded="false" class="navlinks">
                         <img src="assets/svg/{{s.modulename}}.svg"> &nbsp;&nbsp;&nbsp;
                         {{s.modulename}}
                       <fa-icon [icon]="faCaretDown" style="float: right;"></fa-icon>
 
                       </a>
-                      <ul class="collapse list-unstyled" id="{{s.modulename.replace(' ','')}}" style="margin-left: 10%;">
-                          <li *ngFor="let ss of s.submodulename">
-                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="w3-bar-item w3-button">
+                      <ul class="collapse list-unstyled mb-0" id="{{s.modulename.replace(' ','')}}" style="margin-left: 1rem;">
+                          <li *ngFor="let ss of s.submodulename" class="navbarList">
+                              <a  (click)="next('/kochar/'+s.modulename+'/'+ss.submodule_name)" class="navlinks">
                                 
                                 <img src="assets/svg/{{ss.submodule_name}}.svg"> &nbsp;&nbsp;&nbsp;
                                 {{ss.submodule_name}}</a>
@@ -27,7 +26,7 @@
           </div>
         
           <ng-template #elseBlock>
-            <a  (click)="next('/kochar/'+s.modulename)"  class="w3-bar-item w3-button">
+            <a  (click)="next('/kochar/'+s.modulename)"  class="navlinks">
               <img src="assets/svg/{{s.modulename}}.svg"> &nbsp;&nbsp;&nbsp;
               {{s.modulename}}</a>
           </ng-template>
