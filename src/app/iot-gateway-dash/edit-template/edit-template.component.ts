@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-edit-template',
@@ -17,27 +18,8 @@ export class EditTemplateComponent implements OnInit {
 
   template_name:any;
 
-  tempsensor = [
-    {
-      sensor_name: "Temp 1",
-      room_name: "",
-      port_number: 1,
-      default_state: 0,
-      gateway_id: "",
-      alarm_type: 0,
-      for_temperature: true,
-      sensor_type: "temperature sensor"
-    },
-    {
-      sensor_name: "Temp 2",
-      room_name: "",
-      port_number: 2,
-      default_state: 0,
-      alarm_type: 0,
-      for_temperature: true,
-      sensor_type: "temperature sensor"
-    }
-  ]
+  view:boolean = true;
+
 
   id:string;
   template:any;
@@ -46,6 +28,7 @@ export class EditTemplateComponent implements OnInit {
   room_name:any;
   default_state:any;
   alarm_type:any;
+  tem_data:any;
 
   ngOnInit(): void {
 
@@ -58,19 +41,31 @@ export class EditTemplateComponent implements OnInit {
       })
         this.backend.getTemplate(this.id)
     .subscribe((data)=> { 
-     // console.log("Template Data for edit",data);
-      this.template = data["data"][0].configuration;        
+        this.tem_data = data["data"][0];
+        console.log(this.tem_data);
 
-      //  for(var k = 0; k <this.template.length; k++){
+      this.template = data["data"][0].configuration; 
+      this.template_name = data["data"][0].name; 
 
-      //   this.template[k] = this.
+    });
+  }
 
-      //  }
+  update(){
+    var da = {
+      "_id":  this.tem_data._id,
+      "configuration": this.template,
+      "status": this.tem_data.status,
+      "name": this.template_name
+    }
 
-      // this.port_number = this.template.port_number;
-      // this.sensor_name = this.template.sensor_name;
-      // this.room_name = this.template.room_name;
-      
+   console.log(da);
+    this.backend.updatetemplate(da)
+    .subscribe((data)=> { 
+        console.log(data);
+        if(data["success"] == true){
+          Swal.fire("Template update successfully!");
+          this.router.navigate(["/kochar/IOT Gateway/Templates"]);
+         }
     });
   }
             cancel(){

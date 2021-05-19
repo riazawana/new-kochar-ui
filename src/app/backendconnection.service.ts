@@ -104,6 +104,11 @@ export class BackendconnectionService {
     return this.httpClient.post(this.api+'/addmodule',data,this.httpOptions);
   }
 
+  updatetemplate(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/updatetemplate',data,this.httpOptions);
+  }
+
   addrole_module_mapping(data){
     this.auth();
     return this.httpClient.post(this.api+'/addrole_module_mapping',data,this.httpOptions);
