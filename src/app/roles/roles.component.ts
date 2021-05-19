@@ -40,6 +40,7 @@ export class RolesComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
+    //alert("role1")
    
     var role = sessionStorage.getItem('role');
 

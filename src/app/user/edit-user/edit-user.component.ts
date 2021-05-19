@@ -108,9 +108,9 @@ export class EditUserComponent implements OnInit {
        this.rolesarray = this.user.roles;
        this.zonesname = this.user.zones;
         this.keycloak = this.user.keycloak_user_id;
-        // this.client = this.user.client;
-
-        console.log(this.user.zones);
+        this.client = this.user.client;
+        
+        console.log("client 1:", this.client);
 
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);
@@ -162,26 +162,43 @@ export class EditUserComponent implements OnInit {
 
  onchange(x,y){
   this.rolesarray = [];
-  if(x == "business"){
-    this.role_name = "business";
-    var newarray = {
-      id:y,
-      name:x
-    }
-    this.rolesarray.push(newarray);
-  // console.log(this.rolesarray);
+//   if(x == "business"){
+//     this.role_name = "business";
+//     var newarray = {
+//       id:y,
+//       name:x
+//     }
+//     this.client = [this.name];
+//     console.log("client 2:", this.client);
 
-   this.zonesname =this.zonesname;
-   document.getElementById("zone").style.display = "none";
- }else{
+//     this.rolesarray.push(newarray);
+//   // console.log(this.rolesarray);
+
+//    this.zonesname =this.zonesname;
+//    document.getElementById("zone").style.display = "none";
+//  }else{
    var newarray = {
      id:y,
      name:x
    }
+
+   this.client = [];
+
+   for(var i = 0; i < this.zonesname.length; i++ ){
+       this.backend.getzoneinfobyname(this.zonesname[i])
+       .subscribe((data)=> { 
+          console.log(data["data"][0])
+         var c = data["data"][0].client;
+         this.client.push(c);
+       });
+      
+   }
+   console.log("client 3:", this.client);
+
    this.rolesarray.push(newarray);
   // console.log(this.rolesarray);
    document.getElementById("zone").style.display = "block";
- }
+//  }
 }
 
 
@@ -189,7 +206,7 @@ rolesarray:any;
 client:any=[];
 zones_arr:any=[];
 mod_name:any;
-
+disableSelect = new FormControl(false);  
  onsubmit(){
   var da = JSON.parse(sessionStorage.getItem('userdata'));
  this.mod_name = da.name;
@@ -197,17 +214,7 @@ mod_name:any;
 
     // console.log(this.zonesname);
 
-    this.client = [];
-
-     for(var i = 0; i < this.zonesname.length; i++ ){
-         this.backend.getzoneinfobyname(this.zonesname[i])
-         .subscribe((data)=> { 
-          //  console.log(data["data"][0])
-           var c = data["data"][0].client;
-           this.client.push(c);
-         });
-
-     }
+   
 
      
      this.zones_arr = this.zonesname;
@@ -229,8 +236,9 @@ mod_name:any;
     "keycloak_user_id": this.keycloak,
     "modified_by" : this.mod_name
 }
+console.log("client 4:", this.client);
 
-// console.log(data)
+ console.log(data)
 this.backend.updateuser(data)
 .subscribe((data)=> { 
     console.log("Data:",data["data"]);

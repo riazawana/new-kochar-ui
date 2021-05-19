@@ -293,17 +293,19 @@ export class AddtemplateComponent implements OnInit {
    gateway_type:any;
  
    submit_port(){
+    var data;
 
     if(this.template_no == 12){
       this.sensordata = this.sensordata12;
       this.gateway_type = "IN-12"
+      data = this.sensordata.concat(this.tempsensor);
     }else{
       this.sensordata = this.sensordata14;
       this.gateway_type = "IN-14"
+      data = this.sensordata;
     }
     var da = JSON.parse(sessionStorage.getItem('userdata'));
 
-    var data = this.sensordata.concat(this.tempsensor);
     //console.log(data);
    
     

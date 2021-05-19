@@ -100,11 +100,11 @@
                             class="example-radio-group"
                             [(ngModel)]="temp_status">
                             <mat-radio-button class="example-radio-button"  [value]="0">
-                            0 (Disable)
+                            Disable
                             </mat-radio-button>
 <br>
                             <mat-radio-button class="example-radio-button"  [value]="1">
-                                1 (Enable)
+                                Enable
                                 </mat-radio-button>
                           </mat-radio-group>
                           </p>
@@ -141,7 +141,7 @@
 
                           <button type="button" class="btn btn-primary" (click)="onsubmit()">Submit</button>
 &nbsp;&nbsp;&nbsp;&nbsp;
-                          <button type="button" class="btn btn-danger">Cancel</button>
+                          <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
                      
                 </div>
                 <div class="col-sm-2"></div>

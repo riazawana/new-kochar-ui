@@ -134,11 +134,11 @@
                           </mat-form-field>
                         </p>
 
-                        <p>
+                        <p [style.display]="role_id !='business' ? 'block' : 'none'">
                           <mat-form-field appearance="outline">
                               <mat-label>Role</mat-label>
-                              <mat-select placeholder="Role" [(ngModel)]="role_id" name="role_id" required formControlName="role_id">
-                                <mat-option *ngFor="let r of roles" value="{{r.name}}" (click)="onchange(r.name,r.id)">{{r.name}}</mat-option>
+                              <mat-select placeholder="Role" [(ngModel)]="role_id" name="role_id" required formControlName="role_id" [disabled]="disableSelect.value">
+                                <mat-option *ngFor="let r of roles" value="{{r.name}}" (click)="onchange(r.name,r.id)" [disabled]="r.name == 'business'">{{r.name}}</mat-option>
                               </mat-select>
                               <mat-error *ngIf="edituserformGroup.get('role_id').hasError('required')">
                                 Please Select Role!
@@ -154,9 +154,11 @@
                       <p [style.display]="role_id !='business' ? 'block' : 'none'">
                           <mat-form-field appearance="outline" id="zone">
                             <mat-label>Zones</mat-label>
-                            <mat-select placeholder="Zone" [(ngModel)]="zonesname" name="zonesname" multiple required formControlName="zonesname">
+                            <mat-select placeholder="Zone" [(ngModel)]="zonesname" name="zonesname" multiple required formControlName="zonesname" >
                             
-                              <mat-option *ngFor="let z of zones" value="{{z.zone_name}}"  >{{z.zone_name}}</mat-option>
+                              <mat-option *ngFor="let z of zones" [value]="z.zone_name" disabled>{{z.zone_name}}</mat-option>
+
+                            
 
                             </mat-select>
                             <mat-error *ngIf="edituserformGroup.get('zonesname').hasError('required')">

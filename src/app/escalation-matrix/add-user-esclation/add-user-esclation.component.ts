@@ -38,6 +38,10 @@ export class AddUserEsclationComponent implements OnInit {
 
     }
 
+    cancel(){
+      
+    }
+
   }
 
 

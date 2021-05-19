@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-port-setting',
   templateUrl: './port-setting.component.html',
@@ -15,6 +15,7 @@ export class PortSettingComponent implements OnInit {
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
     private router:Router,
+    private _location: Location
   ) { }
 
   alarm:any;
@@ -139,6 +140,10 @@ export class PortSettingComponent implements OnInit {
    this.soc.sendMsg(data);
 
    
+ }
+
+ cancel(){
+  this._location.back();
  }
 
 }

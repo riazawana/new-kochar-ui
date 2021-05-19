@@ -140,7 +140,9 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
     this.backend.getallnotifications()
     .subscribe((data)=> { 
-      //  console.log("All Notifications health:",data["data"][0]); 
+      console.log("All Notifications:",data); 
+
+       console.log("All Notifications health:",data["data"][0]); 
         for(var k = 0; k < data["data"][0].length;k++){
             if(data["data"][0][k]._id == 'Risk Assessment'){
               this.risk = data["data"][0][k].notification;

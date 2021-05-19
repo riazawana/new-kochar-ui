@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-addrole',
   templateUrl: './addrole.component.html',
@@ -11,6 +13,7 @@ export class AddroleComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService ,
+    private _location:Location,
     private router: Router,
   ) { }
 
@@ -250,9 +253,9 @@ export class AddroleComponent implements OnInit {
 
 
 
- cancel(){
-  this.router.navigate(["/kochar/Roles"]);
-}
 
+ cancel(){
+  this._location.back();
+ }
  
 }

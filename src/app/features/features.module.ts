@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeaturesComponent } from './features.component';
 import { AddfeaturesComponent } from './addfeatures/addfeatures.component';
-import { EditfeaturesComponent } from './editfeatures/editfeatures.component';
 import { ViewfeaturesComponent } from './viewfeatures/viewfeatures.component';
 import { AddsubModuleComponent } from './addsub-module/addsub-module.component';
 
@@ -40,7 +39,6 @@ const userRoutes: Routes =[
     {path:'Features',component: FeaturesComponent , canActivate:[AuthGuard]},
     {path:'addfeatures',component: AddfeaturesComponent , canActivate:[AuthGuard]},
     {path:'addsubmodule',component: AddsubModuleComponent , canActivate:[AuthGuard]},
-    {path:'editfeatures/:id',component: EditfeaturesComponent , canActivate:[AuthGuard]},
     {path:'viewfeatures/:id',component: ViewfeaturesComponent , canActivate:[AuthGuard]},
   ]
 
@@ -48,7 +46,6 @@ const userRoutes: Routes =[
 @NgModule({
   declarations: [
     FeaturesComponent,
-    EditfeaturesComponent,
     AddfeaturesComponent,
     ViewfeaturesComponent,
     AddsubModuleComponent

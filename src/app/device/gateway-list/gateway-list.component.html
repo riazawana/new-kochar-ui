@@ -55,7 +55,7 @@
                     <div class="row col-md-3">
                      <span class="label label-primary tempclass">Temp 1</span><br>                     
                      <span class="label label-primary tempclass">Temp 2</span><br>                     
-                     <i class="fa fa-refresh refreshcls pt-2" aria-hidden="true"></i>
+                     <i class="fa fa-refresh refreshcls pt-2" (click)="refreshtemp()"  aria-hidden="true"></i>
                       </div>
  
                       <div class="row col-md-3">
@@ -68,7 +68,9 @@
 
                        <button type="button" class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
                        <button type="button" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
-                     </div>              
+                       <i class="fa fa-refresh refreshcls pt-2" (click)="refresh2()" aria-hidden="true"></i>
+                    
+                      </div>              
                 
                 </div>
 
@@ -97,7 +99,10 @@
                     <div class="row" *ngFor="let p of g.devices">
                         <div class="col-sm-3">{{p.sensor_name}} </div>
     
-                        <div class="col-sm-3"> {{p.sensor_status}} </div>
+                        <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}} </div>
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 0)"> Disable </div>
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 1)"> Enable </div>
+
     
     
                         <div class="col-sm-3"> <a (click)="port_set(p)" style="color: blue;" [disabled]="!port_setting">Port Settings </a> </div>
