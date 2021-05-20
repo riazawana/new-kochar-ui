@@ -21,6 +21,7 @@ export class PortSettingComponent implements OnInit {
   alarm:any;
   default:any;
   port_no:any;
+  port_no_soc:any;
   name:any;
   sensor_type:any;
   room:any;
@@ -42,12 +43,12 @@ export class PortSettingComponent implements OnInit {
     this.room = this.newdata.room_name;
     this.sensor_type = this.newdata.sensor_type;
 
-    this.temp_status = this.newdata.sensor_status
+    this.temp_status = this.newdata.default_state
   
     if(this.newdata.sensor_name == "Temp 1"){
-      this.port_no = "01"
+      this.port_no_soc = "1"
     }if(this.newdata.sensor_name == "Temp 2"){
-      this.port_no = "02"
+      this.port_no_soc = "2"
     }
 
       })
@@ -59,7 +60,7 @@ export class PortSettingComponent implements OnInit {
   onsubmit(){
 
     if(this.newdata.for_temperature != true){
-      if((this.port_no == 11)||(this.port_no == 12)||(this.port_no == 13)||(this.port_no == 14)){
+      if((this.port_no == 10)||(this.port_no == 11)||(this.port_no == 12)||(this.port_no == 13)||(this.port_no == 14)){
         this.valuesend = this.port_no+""+this.default+""+this.alarm;
         }else{
         this.valuesend = "0"+this.port_no+""+this.default+""+this.alarm;
@@ -67,6 +68,7 @@ export class PortSettingComponent implements OnInit {
          console.log(this.valuesend);
 
          this.sendMessage("portsettings",this.valuesend);
+         this.newdata.sensor_name =  this.name;
 
          this.newdata.port_number = this.port_no ;
          this.newdata.alarm_type = this.alarm;
@@ -80,8 +82,8 @@ export class PortSettingComponent implements OnInit {
             console.log("Data:",data);
             
             if(data["success"] == true){
-             this.router.navigate(["/kochar/Devices"]);
-     
+              this._location.back();
+
             }
      
          });
@@ -89,19 +91,19 @@ export class PortSettingComponent implements OnInit {
     }
       else{
         
-        this.valuesend = this.port_no+""+this.temp_status;
+        this.valuesend = this.port_no_soc+""+this.temp_status;
 
         console.log(this.valuesend);
 
         this.sendMessage("temperature",this.valuesend);
-
+        this.newdata.sensor_name =  this.name;
         this.newdata.port_number = this.port_no ;
         this.newdata.alarm_type = this.alarm;
-        this.newdata.default_state = this.default;
+        // this.newdata.default_state = this.default;
         this.newdata.sensor_name = this.name;
         this.newdata.room_name = this.room;
         this.newdata.sensor_type = this.sensor_type;
-        this.newdata.sensor_status = this.temp_status;
+        this.newdata.default_state = this.temp_status;
 
           console.log(this.newdata);
         this.backend.updatedevice(this.newdata)
@@ -113,8 +115,8 @@ export class PortSettingComponent implements OnInit {
             
            
            if(data["success"] == true){
-            this.router.navigate(["/kochar/Devices"]);
-    
+            this._location.back();
+
            }
     
     
