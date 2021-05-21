@@ -59,7 +59,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://202.164.38.204:9002/auth',
         realm: 'TestIOT',
-        clientId: 'test-client1',
+        clientId: 'test-client2',
       },
       initOptions: {
         onLoad: 'check-sso',
