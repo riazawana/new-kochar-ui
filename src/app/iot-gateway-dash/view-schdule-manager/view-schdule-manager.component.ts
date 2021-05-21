@@ -188,7 +188,7 @@ edit:boolean =false;
       .subscribe((data)=> { 
         
         console.log(data);
-          this.gateways = data["data"];
+          this.gateways = data["data"][0];
   
       });
 

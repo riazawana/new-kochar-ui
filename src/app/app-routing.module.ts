@@ -4,12 +4,17 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './keycloak.guard'
 import { ErrorComponent } from './error/error.component';
+import { Extra1Component } from './extra1/extra1.component';
+import { Extra2Component } from './extra2/extra2.component';
+
 const routes: Routes =[{
   path:'',redirectTo: 'kochar/profile', pathMatch: 'full'  , canActivate:[AuthGuard]
 }
 ,{
   path:'kochar',component: WelcomeComponent,children:  [
     {path:'profile',component: ProfileComponent},
+    {path:'extra1',component: Extra1Component},
+    {path:'extra2',component: Extra2Component},
 
     {
       path: 'Users',
@@ -64,6 +69,7 @@ const routes: Routes =[{
       loadChildren: () => import('./iot-gateway-dash/iot-gateway.module').then(m => m.IotGatewayModule)
 
     },
+
    ]  , canActivate:[AuthGuard]
   },
   {

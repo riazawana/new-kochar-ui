@@ -33,7 +33,7 @@ export class GatwaysStatusComponent implements AfterViewInit {
     .subscribe((data)=> { 
       // console.log("All gateways:",data["data"]);
 
-       this.gateways = data["data"];
+       this.gateways = data["data"][0];
    
 
     });

@@ -16,7 +16,7 @@
                             <mat-form-field appearance="outline" id="gateway">
                               <mat-label>Select Gateway</mat-label>
                               <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
-                                <mat-option *ngFor="let g of gateways" value="{{g[0].gateway_id}}"  >{{g[0].name}}</mat-option>
+                                <mat-option *ngFor="let g of gateways" value="{{g.gateway_id}}"  >{{g.name}}</mat-option>
                               </mat-select>
                             </mat-form-field>
                         </p>

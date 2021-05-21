@@ -154,9 +154,9 @@
                       <p [style.display]="role_id !='business' ? 'block' : 'none'">
                           <mat-form-field appearance="outline" id="zone">
                             <mat-label>Zones</mat-label>
-                            <mat-select placeholder="Zone" [(ngModel)]="zonesname" name="zonesname" multiple required formControlName="zonesname" >
+                            <mat-select placeholder="Zone" [(ngModel)]="zonesname" name="zonesname"  multiple required formControlName="zonesname" >
                             
-                              <mat-option *ngFor="let z of zones" [value]="z.zone_name" disabled>{{z.zone_name}}</mat-option>
+                              <mat-option *ngFor="let z of zones" [value]="z.zone_name"  (click)="zoneonchnage()">{{z.zone_name}}</mat-option>
 
                             
 

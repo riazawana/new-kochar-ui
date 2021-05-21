@@ -24,7 +24,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
       await this.keycloak.login({
-        redirectUri: 'http://b09468e69416.ngrok.io/#/kochar/profile/',
+        redirectUri: 'http://b9ff7108d37c.ngrok.io/#/kochar/profile/',
       });
     }
      // 202.164.38.204:3003

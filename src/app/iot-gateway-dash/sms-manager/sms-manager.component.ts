@@ -66,8 +66,8 @@ delete:any=false;
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-        console.log("Data:",data);
-        this.gateways = data["data"];
+        console.log("Data:",data["data"][0]);
+        this.gateways = data["data"][0];
     });
     
   }

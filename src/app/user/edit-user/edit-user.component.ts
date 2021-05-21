@@ -162,43 +162,14 @@ export class EditUserComponent implements OnInit {
 
  onchange(x,y){
   this.rolesarray = [];
-//   if(x == "business"){
-//     this.role_name = "business";
-//     var newarray = {
-//       id:y,
-//       name:x
-//     }
-//     this.client = [this.name];
-//     console.log("client 2:", this.client);
 
-//     this.rolesarray.push(newarray);
-//   // console.log(this.rolesarray);
-
-//    this.zonesname =this.zonesname;
-//    document.getElementById("zone").style.display = "none";
-//  }else{
    var newarray = {
      id:y,
      name:x
    }
 
-   this.client = [];
-
-   for(var i = 0; i < this.zonesname.length; i++ ){
-       this.backend.getzoneinfobyname(this.zonesname[i])
-       .subscribe((data)=> { 
-          console.log(data["data"][0])
-         var c = data["data"][0].client;
-         this.client.push(c);
-       });
-      
-   }
-   console.log("client 3:", this.client);
-
    this.rolesarray.push(newarray);
-  // console.log(this.rolesarray);
    document.getElementById("zone").style.display = "block";
-//  }
 }
 
 
@@ -207,20 +178,30 @@ client:any=[];
 zones_arr:any=[];
 mod_name:any;
 disableSelect = new FormControl(false);  
- onsubmit(){
-  var da = JSON.parse(sessionStorage.getItem('userdata'));
- this.mod_name = da.name;
-    // alert(this.zonesname);
 
-    // console.log(this.zonesname);
+zoneonchnage(){
+  alert("zonechange")
+  this.client = [];
 
-   
-
+  for(var i = 0; i < this.zonesname.length; i++ ){
+      this.backend.getzoneinfobyname(this.zonesname[i])
+      .subscribe((data)=> { 
+         console.log(data["data"][0])
+        var c = data["data"][0].client;
+        this.client.push(c);
+      });
      
-     this.zones_arr = this.zonesname;
+  }
+  console.log("client 3:", this.client);
+}
+
+ onsubmit(){
 
 
 
+  var da = JSON.parse(sessionStorage.getItem('userdata'));
+  this.mod_name = da.name;
+    this.zones_arr = this.zonesname;
 
  var data = {
     "zones": this.zones_arr,
@@ -242,8 +223,7 @@ console.log("client 4:", this.client);
 this.backend.updateuser(data)
 .subscribe((data)=> { 
     console.log("Data:",data["data"]);
-  // this.city_list = data["data"];
-
+ 
    if(data["success"] == true){
      Swal.fire("User updated successfully!");
     this.router.navigate(["/kochar/Users"]);

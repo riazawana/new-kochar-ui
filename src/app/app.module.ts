@@ -38,6 +38,8 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ErrorComponent } from './error/error.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Extra1Component } from './extra1/extra1.component';
+import { Extra2Component } from './extra2/extra2.component';
 // import { UserModule } from './user/user.module';
 // import { ZoneModule } from './zone/zone.module';
 // import { FeaturesModule } from './features/features.module';
@@ -118,7 +120,9 @@ const customNotifierOptions: NotifierOptions = {
     CommandSettingComponent,
     CommandSettingMeterComponent,
     CommandSettingSmartmeterComponent,
-    ErrorComponent, 
+    ErrorComponent,
+    Extra1Component,
+    Extra2Component, 
   ],
   imports: [
     HttpClientModule,

@@ -165,7 +165,7 @@ gateways:any;
        
 
 
-        this.gateways = data["data"];
+        this.gateways = data["data"][0];
 
     });
     

@@ -179,6 +179,11 @@ export class BackendconnectionService {
     return this.httpClient.get(this.api+'/getallfeatures',this.httpOptions);
   }
 
+  getiotgatewaylist(){
+    this.auth();
+    return this.httpClient.get(this.api+'/getiotgatewaylist',this.httpOptions);
+  }
+
   getfeatures(x){
     this.auth();
     return this.httpClient.get(this.api+'/getfeature?_id='+x,this.httpOptions);

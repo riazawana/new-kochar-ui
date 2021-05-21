@@ -76,7 +76,7 @@ export class ViewSmsManagerComponent implements OnInit {
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
         console.log("Data:",data["data"]);
-        this.gateways = data["data"];
+        this.gateways = data["data"][0];
     });
   }
 

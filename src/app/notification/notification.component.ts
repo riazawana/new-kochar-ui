@@ -1,15 +1,18 @@
-import { AfterViewInit,OnInit,Component,Inject ,OnDestroy,ViewChild } from '@angular/core';
+import { AfterViewInit,OnInit,Component,Inject ,OnDestroy,ViewChild,ViewChildren,QueryList } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import {SocketioService} from "../socketio.service";
+import {SocketioSendmsgService} from "../socketio-sendmsg.service";
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
+
 
 
 export interface health {
@@ -48,10 +51,17 @@ export class NotificationComponent implements OnInit , OnDestroy {
   dataSource: MatTableDataSource<health>;
   dataSource2: MatTableDataSource<risk>;
 
+  
+
   // @ViewChild('MatPaginator') paginator: MatPaginator;
   // @ViewChild('MatPaginator2') paginator2: MatPaginator;
-  @ViewChild('MatSort') t1Sort: MatSort;
-  @ViewChild('MatSort2') t2Sort: MatSort;
+
+ 
+  // @ViewChild('MatSort') t1Sort: MatSort;
+  // @ViewChild('MatSort2') t2Sort: MatSort;
+
+  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  @ViewChildren(MatSort) sort = new QueryList<MatSort>();
 
 
   add:any = false;
@@ -63,11 +73,15 @@ export class NotificationComponent implements OnInit , OnDestroy {
   constructor(
     private backend: BackendconnectionService,
     private router:Router,   
+    private soc:SocketioSendmsgService,
     
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.dataSource = new MatTableDataSource;
     this.dataSource2 = new MatTableDataSource;
+
+    // this.dataSource1 = new MatTableDataSource<AssignmentElement>(ASSIGNMENT_ELEMENT_DATA);
+    // this.dataSource2 = new MatTableDataSource<RoleElement>(ROLE_ELEMENT_DATA);
    }
    myVar:any;
    client:any;
@@ -75,10 +89,15 @@ export class NotificationComponent implements OnInit , OnDestroy {
   ngOnInit() {
      const that = this;
      that.fetchdata();
-   this.myVar = setInterval(function(){ 
-            that.fetchdata();
-     }, 5000);
+  //  this.myVar = setInterval(function(){ 
+  //           that.fetchdata();
+  //    }, 5000);
 
+
+  this.soc.messages.subscribe(msg => {
+    console.log(msg);
+    that.fetchdata();
+  })
 
      var role = sessionStorage.getItem('role');
      if(role == 'admin'){
@@ -125,6 +144,15 @@ export class NotificationComponent implements OnInit , OnDestroy {
     }
   }
 
+  applyFilter2(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 
   ngOnDestroy(){
     clearInterval(this.myVar);
@@ -162,11 +190,18 @@ export class NotificationComponent implements OnInit , OnDestroy {
        this.dataSource2 = new MatTableDataSource( this.risk );
        this.dataSource = new MatTableDataSource( this.health );
 
+       this.dataSource.paginator = this.paginator.toArray()[1];
+       this.dataSource.sort = this.sort.toArray()[1];
+       this.dataSource2.paginator = this.paginator.toArray()[0];
+       this.dataSource2.sort = this.sort.toArray()[0];
+
       //  this.dataSource.paginator = this.paginator;
-       this.dataSource.sort = this.t1Sort;
+
+      
+      //  this.dataSource.sort = this.t1Sort;
 
       //  this.dataSource2.paginator = this.paginator2;
-       this.dataSource2.sort = this.t2Sort;
+      //  this.dataSource2.sort = this.t2Sort;
 
     });
   }

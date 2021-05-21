@@ -78,7 +78,7 @@ export class AddSchduleManagerComponent implements OnInit {
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
      console.log(data);
-     this.gateways = data["data"];
+     this.gateways = data["data"][0];
      
 
     })
