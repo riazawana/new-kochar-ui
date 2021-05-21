@@ -26,7 +26,8 @@ legend{color:inherit;display:table;max-width:100%;padding:0;white-space:normal}t
 /* End extract */
 html,body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}html{overflow-x:hidden}
 h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
-.w3-serif{font-family:serif}.w3-sans-serif{font-family:sans-serif}.w3-cursive{font-family:cursive}.w3-monospace{font-family:monospace}
+.w3-serif{font-family:serif}.w3-sans-serif{font-family:sans-serif}.w3-
+{font-family:cursive}.w3-monospace{font-family:monospace}
 h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
 hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-image{max-width:100%;height:auto}img{vertical-align:middle}a{color:inherit}
@@ -145,7 +146,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-padding-top-64{padding-top:64px!important}.w3-padding-top-48{padding-top:48px!important}
 .w3-padding-top-32{padding-top:32px!important}.w3-padding-top-24{padding-top:24px!important}
 .w3-left{float:left!important}.w3-right{float:right!important}
-.w3-button:hover{color:#000!important;background-color:#284872!important}
+.w3-button:hover{color:#000;background-color:#284872}
 .w3-transparent,.w3-hover-none:hover{background-color:transparent!important}
 .w3-hover-none:hover{box-shadow:none!important}
 /* Colors */
@@ -260,10 +261,11 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .navlinks{
 display: flex;
 padding: 1rem 0px;
-font-size: 14px;
+font-size: 16px;
 color:var(--black);
 font-weight: 600;
 font-family: var(--second-font);
+cursor: pointer;
 
 &:hover{
     color:var(--prime-color);
@@ -275,3 +277,38 @@ font-family: var(--second-font);
 .mb-0{margin-bottom: 0px;}
 #mySidebar{padding:0px}
 #mySidebar > div{padding:0px  1rem;}
+.navbtnbox{
+    .navbtnNew{
+        color:#A9AEB6;
+        &:hover{
+            color:var(--prime-color);
+            background: none;
+        }       
+    }
+    .w3-button{
+        &:hover{
+            background: none;
+        }
+    }
+}
+.btn-hov{
+    background:none;
+    border: none;
+}
+.btn-hov:hover{
+    color: orange;
+}
+.rightsectionHeader{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    justify-content: flex-end;
+    .fa-bell-o{font-size: 20px;}
+}
+.footersection{
+    span{
+        font-family:  var(--prime-font);
+        font-size: 16px;
+        color:var(--black);
+    }
+}

@@ -42,20 +42,19 @@
   
 <div id="main">
         <div class="w3-teal">
-            <div class="row" style="width: 100%;margin: 0%;">
-              <div class="col-sm-2">
-                <button id="openNav" class="w3-button w3-teal w3-xlarge" (click)="w3_open()">&#9776;</button>
-                <button id="closeNav" class="w3-button w3-teal w3-xlarge" (click)="w3_close()" style="display: none;">&#9776;</button>     
+            <div class="row py-3" style="width: 100%;margin: 0%;">
+              <div class="col-sm-2 navbtnbox">
+                <button id="openNav" class="w3-button w3-xlarge navbtnNew" (click)="w3_open()">&#9776;</button>
+                <button id="closeNav" class="w3-button  w3-xlarge navbtnNew" (click)="w3_close()" style="display: none;">&#9776;</button>     
               </div> 
               
-              <div class="col-sm-7"></div>
-             
-              <div class="col-sm-1">
-                  <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small" style="position: absolute;margin-top: 10%;" (click)="goto_notification()"><i class="fa fa-bell-o bellcls mt-2"></i></span>
-              </div>
+              <div class="col-sm-3  ml-auto rightsectionHeader">
 
-              <div class="col-sm-2">
-                <button id="logout" class="w3-button w3-teal w3-xlarge" (click)="logout()" >logout 
+                <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small"  (click)="goto_notification()">
+                  <i class="fa fa-bell-o mt-2"></i>
+                </span>
+
+                <button id="logout" class="btn-hov w3-teal w3-xlarge" (click)="logout()" >Debsis Pardhan 
                   <fa-icon [icon]="faSignOutAlt"></fa-icon>
                 </button> 
 
@@ -75,8 +74,8 @@
         
               <router-outlet></router-outlet>
 
-              <div style="width:100%;text-align: center;">
-                <span style="color: gray;font-size: 90%;">Copyright © 2021 KocharTech. All Right Reserved</span>
+              <div class="text-center my-3 footersection">
+                <span>Copyright © 2021 KocharTech. All Right Reserved</span>
               </div>
 
         </div>

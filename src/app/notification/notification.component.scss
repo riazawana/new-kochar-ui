@@ -8,7 +8,9 @@ table {
   }
   
   td, th {
-    width: 10%;
+    // width: 10%;
+
+    &:nth-last-child(1),&:nth-last-child(3),&:nth-last-child(3){text-align: center;}
   }
 
 
