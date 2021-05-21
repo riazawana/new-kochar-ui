@@ -261,7 +261,7 @@ export class AddtemplateComponent implements OnInit {
     {
       sensor_name: "Temp 1",
       room_name: "",
-      port_number: 1,
+      port_number: 13,
       default_state: 0,
       gateway_id: "",
       alarm_type: 0,
@@ -271,7 +271,7 @@ export class AddtemplateComponent implements OnInit {
     {
       sensor_name: "Temp 2",
       room_name: "",
-      port_number: 2,
+      port_number: 14,
       default_state: 0,
       alarm_type: 0,
       for_temperature: true,

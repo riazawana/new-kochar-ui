@@ -2,11 +2,10 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
-
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommandSettingComponent } from '../../command-setting/command-setting.component';  
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-gateway-list',
@@ -21,13 +20,7 @@ export class GatewayListComponent implements OnInit {
    idz:any;
    gateway:any;
    faMapMarker = faMapMarkerAlt;
-
    panelOpenState = false;
-
-   temp1 = 'NA';
-   temp2 = 'NA';
-   
- 
    constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
@@ -157,45 +150,64 @@ export class GatewayListComponent implements OnInit {
        }, 1);
     }
 
+      this.getdata();
+   
+
+  }
+
+  getdata(){
+    this.temparray = [];
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       this.idz = params.get("idz");
 
       })
 
-      
-
       this.backend.getlocation(this.id)
       .subscribe((data)=> { 
-       console.log("location clinet data:",data["data"][0].client);
+      //  console.log("location clinet data:",data["data"][0].client);
         var c = data["data"][0].client;
        this.backend.getgatewaylocationwise(this.id,c)
        .subscribe((data)=> { 
           console.log("All gateway:",data["data"]);
           this.gateway = data["data"];
+
+          for(var k = 0; k < this.gateway.length; k++){
+
+            if(this.gateway[k].temp.length != 0){
+              var val = this.gateway[k].temp[0].value.split("");
+              this.temparray.push(
+                {
+                  temp1:val[29]+""+val[30]+""+val[31]+""+val[32],
+                  temp2:val[33]+""+val[34]+""+val[35]+""+val[36],
+                  relay1:this.gateway[k].temp[0].relay1_satus,
+                  relay2:this.gateway[k].temp[0].relay2_satus
+                 })
+            }else{
+              this.temparray.push([])
+            }
+           
+          }
+
+
        });
       });
-      
-   
-
   }
 
+  temparray:any = [];
 
   sendMessage(x,y,mac) {
     var data = {
       mac_id:mac,
       type:x,
       value:y
-    }
-     
+    }   
    this.soc.sendMsg(data);
-
-   
+   this.getdata();
  }
 
 
  port_set(p){
-  // console.log("port:",p)
    this.router.navigate(['/kochar/Devices/port_set',JSON.stringify(p)]);
 
  }
@@ -203,26 +215,67 @@ export class GatewayListComponent implements OnInit {
 
  addgatways(){
   this.router.navigate(['/kochar/Devices/addgateway',this.idz,this.id]);
-
  }
 
  edit(x,y){
-  // alert(x);
-  // alert(y);
+ 
  }
   
- delete(x,y){
-  this.backend.deleteiotgateway(x,y)
+//  delete(x,y){
+//   this.backend.deleteiotgateway(x,y)
+//   .subscribe((data)=> { 
+//     console.log(data);
+//     this.getdata();
+//   });
+// }
+
+delete(x,y){
+
+  //  alert(x)
+  // if (confirm('Are you sure to delete this record ?') == true) {
+    
+
+ 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this Gateway!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+
+         this.backend.deleteiotgateway(x,y)
   .subscribe((data)=> { 
-    console.log(data);
+
+    //  console.log(data);
+    this.getdata();
+    Swal.fire(
+      'Deleted!',
+      'Gateway has been deleted.',
+      'success'
+    )
   });
+        
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Gateway is safe :)',
+          'error'
+        )
+      }
+    }) 
+ 
+// }
 }
 
-refresh2(){
 
-}
 
 refreshtemp(){
-
+  this.getdata();
 } 
+
 }

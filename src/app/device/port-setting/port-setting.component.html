@@ -21,7 +21,7 @@
                           <p *ngIf="newdata.for_temperature == false">
                             <mat-form-field appearance="outline">
                               <mat-label>Port Number</mat-label>
-                              <input matInput [(ngModel)]="port_no" name="port_no" placeholder="Number">
+                              <input matInput [(ngModel)]="port_no" name="port_no" placeholder="Number" disabled>
                               <mat-hint>Port Number</mat-hint>
                             </mat-form-field>
                           </p>
@@ -29,7 +29,7 @@
                           <p>
                             <mat-form-field appearance="outline">
                               <mat-label>Name</mat-label>
-                              <input matInput [(ngModel)]="name" name="name" placeholder="Name">
+                              <input matInput [(ngModel)]="name" name="name" placeholder="Name" disabled>
                               <mat-hint>Name</mat-hint>
                             </mat-form-field>
                           </p>
@@ -62,7 +62,7 @@
                           <p>
                             <mat-form-field appearance="outline">
                               <mat-label>Room</mat-label>
-                              <input matInput [(ngModel)]="room" name="room" placeholder="room">
+                              <input matInput [(ngModel)]="room" name="room" placeholder="room" disabled>
                               <mat-hint>Room</mat-hint>
                             </mat-form-field>
                           </p>
