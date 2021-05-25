@@ -29,7 +29,7 @@
                                       
                                 <div class="row">
                                   <div class="col-sm-6">
-                                    <p>
+                                    <!-- <p>
                                       <mat-form-field appearance="outline">
                                           <mat-label>Module</mat-label>
                                           <mat-select placeholder="Module" [(ngModel)]="module_name" name="module_name" >
@@ -38,7 +38,16 @@
                                         <mat-hint>Module</mat-hint>
                                       </mat-form-field>
                                     </p>
-                
+                 -->
+                                    <p>
+                                      <mat-form-field appearance="outline">
+                                          <mat-label>Module</mat-label>
+                                          <mat-select placeholder="Module" [(ngModel)]="module_name" name="module_name" [disabled]="disableSelect.value">
+                                              <mat-option *ngFor="let m of modules" value="{{m.name}}" (click)="getsubmodulebyname(m.name)" [disabled]="m.name == 'Roles' || m.name == 'Users'">{{m.name}}</mat-option>
+                                          </mat-select>
+                                        <mat-hint>Module</mat-hint>
+                                      </mat-form-field>
+                                    </p>
                                  
                                   </div>
                                   

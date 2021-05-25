@@ -57,21 +57,14 @@ export class WelcomeComponent implements OnInit, OnDestroy {
    
  }
  
- 
+ profile_name:any;
+ client :any;
 
   ngOnInit(): void {
 
     try {
       let userDetails = this.keycloakService;
-      // console.log(userDetails);
-      // console.log("%cInstance : ","color:green", userDetails["_instance"]);
-      // console.log("%cRole : ", "color:green", userDetails["_instance"].realmAccess.roles);
-      // console.log("%cToken : ", "color:green", userDetails["_instance"].token);
-      // console.log("%cRefresh - Token : ", "color:green", userDetails["_instance"].refreshToken);
-      
-      //console.log("%cTokeninfo : ", "color:green", userDetails["_instance"].tokenParsed);
-      // console.log("%cUser Info : ", "color:green", userDetails["_userProfile"]);
-
+    
 
       sessionStorage.setItem('token', userDetails["_instance"].token);
       sessionStorage.setItem('userdata', JSON.stringify(userDetails["_instance"].tokenParsed));
@@ -85,6 +78,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       }
 
 
+      this.profile_name = userDetails["_instance"].tokenParsed.name;
+      
+      this.backend.getUserInfo(userDetails["_instance"].tokenParsed.email)
+      .subscribe((data)=> {  
+        console.log("userInfo:",data)
+        this.client = data["data"][0].client;
+      })
 
       this.backend.getrole(userDetails["_instance"].realmAccess.roles[0])
       .subscribe((data)=> { 
@@ -94,14 +94,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         if(role == 'admin'){
           sessionStorage.setItem('features',  JSON.stringify('admin'));
         }else{
-          // console.log("data:",data['data'][0].feature_mapping[0].mapping);
-
-          // console.log("data:",data['data'][0].feature_mapping[0].mapping);
-           // this.sidebar = data["data"][0].mapping;
-     
-           sessionStorage.setItem('features',  JSON.stringify(data['data'][0].feature_mapping[0].mapping));
-     
-     
+           sessionStorage.setItem('features',  JSON.stringify(data['data'][0].feature_mapping[0].mapping)); 
         }
   
       })
@@ -123,18 +116,30 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
       console.log(JSON.parse(msg.text[0]));
       var da = JSON.parse(msg.text[0]);
-      var x = da._id;
-      var cli = da.client;
-      
+      var x = da[0]._id;
+      var cli = da[0].client;
+        alert(cli);
       if(this.notif == true){
-        console.log(JSON.parse(msg.text[0])[0].data.notification);
-        var notdata = JSON.parse(msg.text[0])[0].data.notification;
-        this.create("Notification",notdata,x,cli);
-        this.backend.getNotificationCount()
-        .subscribe((data)=> { 
-         console.log(data)
-          this.notificationcount = data["opencount"]; 
-        })
+
+        for(var i = 0; i < this.client.length; i++){
+        alert(this.client[i]);
+
+          if(this.client[i] == cli){
+            if(msg.type == "iot-gateway-notification"){
+              console.log(JSON.parse(msg.text[0])[0].data.notification);
+              var notdata = JSON.parse(msg.text[0])[0].data.notification;
+              this.create("Notification",notdata,x,cli);
+              this.backend.getNotificationCount()
+              .subscribe((data)=> { 
+               console.log(data)
+                this.notificationcount = data["opencount"]; 
+              })
+            }
+          }
+        }
+       
+       
+      
       }
 
     })
@@ -163,19 +168,19 @@ export class WelcomeComponent implements OnInit, OnDestroy {
      var type = "success";
      if(type == "success"){
       this.notification = this._notifications.success(title, data, {
-        timeOut: 3000,
+        timeOut: 300000,
         showProgressBar: true,
         pauseOnHover: true
       });
      }if(type == "warn"){
       this.notification = this._notifications.warn(title, data, {
-        timeOut: 3000,
+        timeOut: 300000,
         showProgressBar: true,
         pauseOnHover: true
       });
      }if(type == "error"){
       this.notification = this._notifications.error(title, data, {
-        timeOut: 3000,
+        timeOut: 300000,
         showProgressBar: true,
         pauseOnHover: true
       });

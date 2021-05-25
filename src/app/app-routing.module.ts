@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './keycloak.guard'
 import { ErrorComponent } from './error/error.component';
 import { Extra1Component } from './extra1/extra1.component';
@@ -12,9 +11,14 @@ const routes: Routes =[{
 }
 ,{
   path:'kochar',component: WelcomeComponent,children:  [
-    {path:'profile',component: ProfileComponent},
+    // {path:'profile',component: ProfileComponent},
     {path:'extra1',component: Extra1Component},
     {path:'extra2',component: Extra2Component},
+    {
+      path: 'profile',
+      loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+
+    },
 
     {
       path: 'Users',

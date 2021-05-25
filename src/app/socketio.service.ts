@@ -36,6 +36,14 @@ export class SocketioService {
         }
         )
 
+        this.socket.on('iot_gateway_command_response', (data) => {
+          console.log("Received message from Websocket Server")
+          observer.next(data);
+        }
+        )
+
+        
+
         // this.socket.on('iot_gateway_commands', (data) => {
         //   console.log("Received message from Websocket Server")
         //   observer.next(data);

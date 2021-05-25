@@ -61,7 +61,12 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Mobile Number</mat-label>
-                                  <input matInput [(ngModel)]="mob" name="mob" placeholder="Mobile">
+                                  <input matInput [(ngModel)]="mob" name="mob" placeholder="Mobile"  [maxlength]="10" (keypress)="keyPress($event)">
+
+                                  <!-- <mat-error *ngIf="mob.length != 10">
+                                    Mobile is Required!
+                                  </mat-error> -->
+
                                   <mat-hint>Mobile Number</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -69,7 +74,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>IMSI Number</mat-label>
-                                  <input matInput [(ngModel)]="imsi" name="imsi" placeholder="IMSI Number">
+                                  <input matInput [(ngModel)]="imsi" name="imsi" placeholder="IMSI Number" (keypress)="keyPress($event)">
                                   <mat-hint>IMSI Number</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -149,7 +154,7 @@
 
                   
 
-                    <button type="button" class="btn btn-primary" (click)="tunneling()">Skip</button>
+                    <button type="button" class="btn btn-primary" (click)="skip()">Skip</button>
                     <button type="button" class="btn btn-primary" (click)="registertunnel()">Submit</button>
                     <button type="button" class="btn btn-primary"  (click)="getliveport()" [disabled]="!flag">Get Live Ports</button>
 

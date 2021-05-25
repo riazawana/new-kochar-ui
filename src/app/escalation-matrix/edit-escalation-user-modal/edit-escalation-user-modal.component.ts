@@ -1,6 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackendconnectionService } from '../../backendconnection.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 
 @Component({
@@ -22,7 +23,7 @@ export class EditEscalationUserModalComponent implements OnInit {
    this.location_id = this.data.location_id;
    this.edit_data = this.data.edit_data;
 
-    alert(this.location_id);
+    // alert(this.location_id);
     console.log(this.edit_data);
 
    this.email = this.edit_data.email;
@@ -68,8 +69,16 @@ edit(){
     this.backend.updateescalationmatrix(data)
     .subscribe((data)=> { 
         console.log("dara:",data);
+        if(data["success"]==true){
+          Swal.fire("Escalation matrix updated successfully!");
+          this.onNoClick();
+        }
     });
    }
+
+   onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 }
 

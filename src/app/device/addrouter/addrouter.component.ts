@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-addrouter',
@@ -13,6 +14,7 @@ export class AddrouterComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
+    private _location:Location,
     private router:Router) { }
 
   
@@ -47,6 +49,17 @@ export class AddrouterComponent implements OnInit {
   location_name:any;
   zone_name:any;
   client:any;
+
+   keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
@@ -81,7 +94,9 @@ export class AddrouterComponent implements OnInit {
 
 
  
- 
+  skip(){
+    this._location.back();
+  }
 
  
 
@@ -111,10 +126,7 @@ export class AddrouterComponent implements OnInit {
     });
   }
 
-  tunneling(){
 
-  }
-  
   
 
    flag = false;
@@ -207,7 +219,6 @@ export class AddrouterComponent implements OnInit {
   
   
   
-
 
 
 

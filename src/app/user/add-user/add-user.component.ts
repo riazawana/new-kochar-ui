@@ -262,8 +262,38 @@ export class AddUserComponent implements OnInit {
   }
 
   role_name:any;
+  showemail:boolean = false;
+  showename:boolean = false;
 
+  checkUserExistse(x){
+    this.backend.checkUserExistse(x)
+    .subscribe((data)=> { 
+      console.log(data);
+      if(data["msg"]=="get user info"){
+        this.showemail = true;
+        // alert(this.showemail );
 
+      }else{
+        this.showemail = false;
+        // alert(this.showemail );
+      }
+    })
+  }
+
+  checkUserExistsn(x){
+    this.backend.checkUserExistsn(x)
+    .subscribe((data)=> { 
+      console.log(data);
+      if(data["msg"] =="get user info"){
+        this.showename = true;
+        // alert(this.showename );
+
+      }else{
+        this.showename = false;
+        // alert(this.showename );
+      }
+    })
+  }
 
   cancel(){
     this.router.navigate(["/kochar/Users"]);

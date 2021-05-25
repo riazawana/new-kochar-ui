@@ -73,6 +73,7 @@ export class AddNewUserEsclationComponent implements OnInit {
       console.log(data);
       if(data["success"]==true){
         Swal.fire("Escalation matrix added successfully");
+       this._location.back();
       }
       
     })    

@@ -109,13 +109,18 @@ export class EditUserComponent implements OnInit {
        this.zonesname = this.user.zones;
         this.keycloak = this.user.keycloak_user_id;
         this.client = this.user.client;
+
+        // alert(this.role_id);
         
         console.log("client 1:", this.client);
 
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);
        this.getstate(this.country_id);
+       this.zoneonchnage();
     });
+
+
   }
 
 
@@ -180,7 +185,7 @@ mod_name:any;
 disableSelect = new FormControl(false);  
 
 zoneonchnage(){
-  alert("zonechange")
+  // alert("zonechange")
   this.client = [];
 
   for(var i = 0; i < this.zonesname.length; i++ ){

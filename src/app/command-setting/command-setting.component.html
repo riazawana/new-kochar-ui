@@ -73,56 +73,49 @@
 
              <div class="row col-sm-12">
                <label class="col-sm-6">Firmware Version</label>
-               <div class="form-group col-sm-5">
-                 <input class="form-control form-control-sm" [(ngModel)]="Firmware" type="text">
+               <div class="form-group col-sm-3">
+                 <input class="form-control form-control-sm" [(ngModel)]="firmwarevirsion" type="text">
                </div>
-               <div class="col-sm-1">
-                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('updatefirmwareversion',Firmware,data.id)">Update</button>
+               <div class="col-sm-2">
+                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('updatefirmwareversion',firmwarevirsion,data.id)">Update</button>
                  </div>
+                 <div class="col-sm-1">
+                  <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('getfirmwareversion','get',data.id)">Get</button>
+                  </div>
+                 
              </div>
 
              <div class="row col-sm-12">
                <label class="col-sm-6">Calibrate Temperature Sensor</label>                      
-               <div class="col-sm-6">
-                 <button type="button" class="btn btn-secondary tempsensor" (click)="sendMessage('gettemperaturecalibrationstatus','get',data.id)">Get</button>
-                 </div>
              </div>
 
              <div class="row col-sm-12">
-               <div class="col-sm-6"></div>                      
                <div class="col-sm-6">
-                 <button type="button" class="btn btn-secondary calicls mt-2" (click)="sendMessage('calibratetemperaturesensor','get',data.id)">Calibrate Temperature Sensor(s)</button>
+                 <button type="button" class="btn btn-secondary calicls mt-2" 
+                 (click)="sendMessage('gettemperaturecalibrationstatus','get',data.id)">Calibrate Temperature Sensor(s)</button>
                  </div>
+                 <div class="col-sm-3">
+                  <p>Calibrate : 
+                  <span *ngIf="tem_cal_status == true">Pass</span> 
+                  <span *ngIf="tem_cal_status == false">Fail</span>
+                </p> 
+
+                  </div>
+                  <div class="col-sm-3">
+                    <p (click)="sendMessage('calibratetemperaturesensor','get',data.id)">  <u>[ Update ]</u></p>
+                    </div>
              </div>
-             <div class="row col-sm-12">
-               <div class="col-sm-6"></div>                      
-               <div class="col-sm-3 statuscls">
-                 <label>Calibrate Status:</label>                        
-                 </div>
-              
-                 <div class="col-sm-1">
-                <p class="failcls">Fail</p>                        
-                   </div>
-                   <div class="col-sm-2">
-                     <p class="upcls">[ Update ]</p>
-                     </div>
+      
 
-             </div>
+  
 
-             <!-- <div class="row col-sm-12">
-               <label class="col-sm-6">Restart Router Over SMS</label>                      
-               <div class="col-sm-6">
-                 <button type="button" class="btn btn-secondary tempsensor" (click)="sendMessage('restart',1,data.id)">Restart Router Over SMS</button>
-                 </div>
-             </div> -->
-
-             <div class="row col-sm-12">
-               <label class="col-sm-6">Reboot Schedule <p class="hrscls">(in Hours)</p></label>
+             <div class="row">
+               <label class="col-sm-4">Reboot Schedule <p class="hrscls">(in Hours)</p></label>
                <div class="form-group col-sm-4">
-                 <input class="form-control form-control-sm" [(ngModel)]="Reboot" type="text">
+                 <input class="form-control form-control-sm" [(ngModel)]="boot_time" type="text">
                </div>
-               <div class="col-sm-1">
-                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('rebootschedule',Reboot,data.id)">Update</button>                        
+               <div class="col-sm-3">
+                 <button type="button" class="btn btn-secondary updatecls" (click)="sendMessage('rebootschedule',boot_time,data.id)">Update</button>                        
                  </div>
                  <div class="col-sm-1">
                    <button type="button" class="btn btn-secondary rebootget" (click)="sendMessage('getrebootscheduletime','get',data.id)">Get</button>
@@ -130,7 +123,24 @@
              </div>
              
            
-           
+             <div class="row col-sm-12">
+              <label class="col-sm-6">Calibrate smoke sensor payload :</label>
+              <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-secondary rebootget" (click)="sendMessage('calibratesmokesensor','get',data.id)">Update</button>
+
+              </div>
+             
+            </div>
+
+            <div class="row col-sm-12">
+              <label class="col-sm-6"> Restart router over sms : </label>
+              <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-secondary rebootget" (click)="routersendMessage('restartrouter',data.id,data.rmac,data.rnum)">Update</button>
+
+              </div>
+             
+            </div>
+            
          </div>
 
 </div>

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProfileComponent } from './profile/profile.component';
+// import { ProfileComponent } from './profile/profile.component';
 import {BackendconnectionService} from "./backendconnection.service";
 import {SocketioService} from "./socketio.service";
 import {SocketioSendmsgService} from "./socketio-sendmsg.service";
@@ -116,7 +116,7 @@ const customNotifierOptions: NotifierOptions = {
   declarations: [
     AppComponent,
     WelcomeComponent,
-    ProfileComponent,
+    // ProfileComponent,
     CommandSettingComponent,
     CommandSettingMeterComponent,
     CommandSettingSmartmeterComponent,

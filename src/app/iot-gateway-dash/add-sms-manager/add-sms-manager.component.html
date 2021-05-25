@@ -20,7 +20,7 @@
                               </mat-select>
                             </mat-form-field>
                         </p>
-                        <hr>
+                        <hr *ngIf="gateway != undefined">
                         <br>
 
                         <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
@@ -276,7 +276,7 @@
                                
                           </table>
 
-                         <hr>
+                         <hr *ngIf="gateway != undefined">
 
                          <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
                             <thead class="thead-dark">
@@ -764,7 +764,7 @@
                                
                           </table>
                           
-                          <hr>
+                          <hr *ngIf="gateway != undefined">
 
 
                           <table class="table" *ngIf="gateway != undefined" style="text-align: center;">

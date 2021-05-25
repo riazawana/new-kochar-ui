@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-addrole',
@@ -31,6 +32,7 @@ export class AddroleComponent implements OnInit {
   module_name:any;
 
   disable = false;
+  disableSelect = new FormControl(false);  
 
   ngOnInit(): void {
     this.getallfeatures();

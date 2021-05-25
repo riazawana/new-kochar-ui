@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,10 @@ export class ProfileComponent implements OnInit {
   email: any;
   role: any;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
    var userdata =  JSON.parse(sessionStorage.getItem('userdata'));
@@ -20,6 +24,10 @@ export class ProfileComponent implements OnInit {
    this.role = userdata.realm_access.roles[0];
 
 
+  }
+
+  editinfo(x){
+  this.router.navigate(["/kochar/profile/edituser",this.email]);
   }
 
 }

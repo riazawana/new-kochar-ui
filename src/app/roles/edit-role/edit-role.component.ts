@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-role',
@@ -27,6 +28,7 @@ export class EditRoleComponent implements OnInit {
   role_id:any;
 
   disable = true;
+  disableSelect = new FormControl(false);  
   
   ngOnInit(): void {
 
@@ -244,7 +246,7 @@ export class EditRoleComponent implements OnInit {
                  this.backend.updaterole_module_mapping(newmappingdataofmodule).subscribe((res)=>{  
                  console.log(res)
                 if(res["success"] == true){
-                  Swal.fire("Role update successfully!");
+                  Swal.fire("Role updated successfully!");
                  this.router.navigate(["/kochar/Roles"]);
                 }
                 

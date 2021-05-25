@@ -27,12 +27,14 @@ export class NotificationDetailsComponent implements OnInit {
                
             this.backend.getnotification(this.id,this.cli)
           .subscribe((data)=> { 
-             //console.log("Data:",data);
+             console.log("Data:",data);
             this.data = data["data"].notification[0];
               this.date = this.data.send_time;
             // console.log("Data:",this.data);
             this._id = this.data._id;
+            this.send_time = this.data.send_time;
 
+            // alert(this.send_time)
 
           });
 
@@ -47,6 +49,7 @@ export class NotificationDetailsComponent implements OnInit {
   voicelog:String = "";
   remarks:String = "";
   _id:String="";
+  send_time: string = "";
 
 
   update(){
@@ -55,7 +58,8 @@ export class NotificationDetailsComponent implements OnInit {
       valid:this.valid,
       voicelog:this.voicelog,
       remarks:this.remarks,
-      client:this.cli
+      client:this.cli,
+      send_time:this.send_time
     }
       //  console.log(data);
 

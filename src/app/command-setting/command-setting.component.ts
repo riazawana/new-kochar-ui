@@ -10,6 +10,8 @@ import {SocketioSendmsgService} from "../socketio-sendmsg.service";
   styleUrls: ['./command-setting.component.scss']
 })
 export class CommandSettingComponent implements OnInit {
+  relay1: any;
+  relay2: any;
 
   constructor( 
     private backend: BackendconnectionService,
@@ -30,18 +32,46 @@ export class CommandSettingComponent implements OnInit {
 
   url:any;
 
+
   
 
   KeyPad:any;  armval:any;  disarmval:any;  Firmware:any;  Calibrate:any;
   Restart:any;
   Reboot:any;
 
-
+  boot_time :any = "";
+    firmwarevirsion :any = "";
+    tem_cal_status : any = false;
     ngOnInit(): void {
      
      // console.log(typeof this.data.id)
 
-      alert(this.data.id)
+      alert(this.data.id);
+      this.soc.messages.subscribe(msg => {
+        console.log(msg);
+        if(msg.type == "iot-gateway-command-response"){
+            console.log(JSON.parse(msg.text[0]));
+            var text = JSON.parse(msg.text[0]);
+
+            if(text.mac_id == this.data.id){
+              if(text.type == "getfirmwareversion"){
+                 this.firmwarevirsion = text.version;
+              }if(text.type == "getrelaystatus"){
+                this.relay1 = text.relay1_status;
+                this.relay2 = text.relay2_status;
+  
+              }if(text.type == "getrebootscheduletime"){
+                    this.boot_time = text.boot_time;
+              }if(text.type == "calibratetemperaturesensor"){
+            console.log("calibratetemperaturesensor:",JSON.parse(msg.text[0]));
+              }if(text.type == "gettemperaturecalibrationstatus"){
+                  this.tem_cal_status = text.temperature_calibration_status
+              }
+            }
+           
+           
+        }
+      })
     }
 
     onNoClick(): void {
@@ -58,6 +88,20 @@ export class CommandSettingComponent implements OnInit {
      this.soc.sendMsg(data);
   
      
+   }
+
+   routersendMessage(x,mac,rmac,rphone){
+    var data = {
+      mac_id:mac,
+      type:x,
+      value: {
+        gl_mac : rmac,
+        gl_phone : rphone
+      }
+    }
+       console.log(data)
+   this.soc.sendMsg(data);
+
    }
 
     

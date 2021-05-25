@@ -3,7 +3,7 @@
   <div class="containt">
       <div class="sub-heading">
      
-          <h3>User Information</h3>
+          <h3>User Information</h3> 
           <hr>
        </div>
 
@@ -21,15 +21,19 @@
                       <p>
                           <mat-form-field appearance="outline">
                             <mat-label>Name</mat-label>
-                            <input matInput [(ngModel)]="name" name="name" placeholder="Name" required formControlName="name">
+                            <input matInput [(ngModel)]="name" name="name" placeholder="Name" (change)="checkUserExistsn(name)" required formControlName="name">
                             <mat-error *ngIf="userformGroup.get('name').hasError('required')">
                               User Name is Required!
                             </mat-error>
                             <mat-error *ngIf="userformGroup.get('name').hasError('minlength')">
                              User Name should be atleast 4 characters long!
                             </mat-error> 
+                          
                             <mat-hint>User Name</mat-hint>
                           </mat-form-field>
+                          <span *ngIf="showename == true" style="color: red;">
+                            User name already exists!
+                          </span> 
                         </p>
                                    
                         <p>
@@ -53,15 +57,20 @@
                         <p>
                           <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
-                            <input matInput [(ngModel)]="email" name="email" placeholder="Email" required formControlName="email">
+                            <input matInput [(ngModel)]="email" name="email" placeholder="Email" (change)="checkUserExistse(email)" required formControlName="email">
                             <mat-error *ngIf="userformGroup.get('email').hasError('required')">
                               Email is Required!
                             </mat-error>
                             <mat-error *ngIf="userformGroup.get('email').hasError('minlength')">
                               User Email should be atleast 4 characters long!
                             </mat-error> 
+                           
+                            
                             <mat-hint>User Email</mat-hint>
                           </mat-form-field>
+                          <span *ngIf="showemail == true" style="color: red;">
+                            User Email already exists!
+                          </span> 
                         </p>
           
           
@@ -162,7 +171,8 @@
 
                        
 
-                        <button type="button" class="btn btn-primary" (click)="onsubmit()" [disabled]="!userformGroup.valid">Submit</button>
+                        <button type="button" class="btn btn-primary" (click)="onsubmit()" [disabled]="!userformGroup.valid ">Submit</button>
+                        <!-- && showename != false && showemail != false -->
 &nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
                       </form>

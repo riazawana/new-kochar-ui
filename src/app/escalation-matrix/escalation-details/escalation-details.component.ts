@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { BackendconnectionService } from '../../backendconnection.service';
 import { EditEscalationUserModalComponent } from '../edit-escalation-user-modal/edit-escalation-user-modal.component';  
 import {Location} from '@angular/common';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-escalation-details',
@@ -44,11 +45,55 @@ export class EscalationDetailsComponent implements OnInit {
 
           console.log(data);       
    
+
+          Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this Escalation matrix!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+
+
+
+              // this.backend.(data)
+              // .subscribe((data)=> { 
+              //     console.log("dara:",data);
+              //     if(data["success"]==true){
+              //       Swal.fire("Escalation matrix deleted successfully");
+              //     //  this._location.back();
+              //     this.onNoClick();
+              //     }
+    
+               this.backend.deleteescalationmatrix(data)
+        .subscribe((data)=> { 
+    
+            console.log(data);
+            if(data["success"]==true){ 
+              Swal.fire(
+                'Deleted!',
+                'Escalation matrix deleted successfully.',
+                'success'
+              )
+            }
+       
+        });         
+            
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal.fire(
+                'Cancelled',
+                'Escalation matrix  is safe :)',
+                'error'
+              )
+            }
+          }) 
           
-          this.backend.deleteescalationmatrix(data)
-    .subscribe((data)=> { 
-        console.log("dara:",data);
-    });
+      
+
+        
+    // });
 
  
 }

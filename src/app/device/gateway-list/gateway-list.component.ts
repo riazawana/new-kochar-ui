@@ -49,11 +49,11 @@ export class GatewayListComponent implements OnInit {
 
 
   /////////////////////////modal 2/////////////////////////////////////
-     openDialog(id): void {
+     openDialog(id,rmac,rnum): void {
        const dialogRef = this.dialog.open(CommandSettingComponent, {
          width: '650px',
          height: '800px',
-         data: {id: id}    
+         data: {id: id,rmac:rmac,rnum:rnum}     
        },
        );
 

@@ -52,6 +52,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+    this.getescalation();
   }
 
 
@@ -117,7 +118,14 @@ export class EscalationMatrixComponent implements AfterViewInit {
         
        }, 1);
     }
-      var newdata = []
+
+      this.getescalation();
+
+   
+  }
+
+  getescalation(){
+    var newdata = []
 
     this.backend.getescalationmatrixuserwise()
     .subscribe((data)=> { 
@@ -133,8 +141,6 @@ export class EscalationMatrixComponent implements AfterViewInit {
        this.dataSource.sort = this.sort;
 
     });
-
-   
   }
 
   applyFilter(event: Event) {

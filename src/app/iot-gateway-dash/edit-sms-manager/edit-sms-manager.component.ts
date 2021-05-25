@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
   selector: 'app-edit-sms-manager',
@@ -147,7 +148,9 @@ export class EditSmsManagerComponent implements OnInit {
          console.log("Data:",data["data"][0]);
          console.log("Data:",data);
 
-         this.gateway = data["data"][0].gateway_id
+        //  this.gateway = data["data"][0].gateway_id
+         this.gateway = data["data"][0].gateway_id+','+data["data"][0].client+','+data["data"][0].mac_id;
+
          this.mac_id = data["data"][0].mac_id;
           this.client = data["data"][0].client;
           this.data = data["data"][0];
@@ -487,6 +490,9 @@ var data = {
     .subscribe((data)=> { 
         console.log("Data:",data);
         if(data["success"] == true){
+
+           Swal.fire("Updated Successfully!");
+
           this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
          }
     });

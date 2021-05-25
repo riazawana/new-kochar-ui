@@ -713,6 +713,38 @@ export class BackendconnectionService {
             this.auth();
             return this.httpClient.get(this.api+'/getmodbususerwise',this.httpOptions);
           }
+
+
+
+          // getUserInfo(x){
+          //   alert(x)
+          //   this.auth();
+          //   return this.httpClient.get(this.api+'/getUserInfo?email='+x,this.httpOptions);
+          // }
+          getUserInfo(x){
+            this.auth();
+            return this.httpClient.get(this.api+'/getUserInfo?email='+x,this.httpOptions);
+          }
+
+          checkUserExistsn(x){
+            this.auth();
+            return this.httpClient.get(this.api+'/checkUserExists?name='+x,this.httpOptions);
+          }
+
+          checkUserExistse(x){
+            this.auth();
+            return this.httpClient.get(this.api+'/checkUserExists?email='+x,this.httpOptions);
+          }
+
+        
+
+
+       
+
+          updateUserprofile(data){
+            this.auth();
+            return this.httpClient.post(this.api+'/executeshellcommand',data,this.httpOptions); 
+          }
     
         }
 

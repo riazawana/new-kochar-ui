@@ -75,7 +75,7 @@ delete:any=false;
 
   getsetting(x){
     
-    alert(x);
+    // alert(x);
 
 
     this.backend.getsmssetting(x)
@@ -102,17 +102,23 @@ delete:any=false;
   }
 
   smsEdit(id) : void {
-    this.router.navigate(['/kochar/IOT Gateway/editsmartmeter',id]);
+    this.router.navigate(['/kochar/IOT Gateway/editsmsmanger',id]);
 
   }
 
   smsDelete(mac_id,cli) : void {
-    alert(mac_id)
-    alert(cli)
+   
 
     this.backend.deletesmssetting(mac_id,cli)
     .subscribe((data)=> { 
         console.log("Data:",data);
+        if(data["success"] == true){
+
+          Swal.fire("Deleted Successfully!");
+
+        //  this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
+         this.getsetting(mac_id);
+        }
     });
   }
   
