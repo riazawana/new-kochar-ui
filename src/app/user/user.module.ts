@@ -13,6 +13,7 @@ import { MomentModule } from 'angular2-moment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -57,7 +58,7 @@ const userRoutes: Routes =[
     FormsModule,
     ReactiveFormsModule,
     // material //
-
+    MatButtonModule,
     MatFormFieldModule,
     MatCheckboxModule,
     MatSliderModule,
