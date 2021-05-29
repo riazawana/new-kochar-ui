@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
 :root{
     --prime-color:#FF3000;
-    --prime-hover:#FF3000;
+    --prime-hover:#ff2400;
     --white:#ffffff;
     --black:#000000;
     --lightgray:#eeeeee;
@@ -40,4 +40,13 @@
     background-color:var(--lightgray);
     color:var(--prime-color);
     text-decoration: none;
+}
+.btn-primary{
+    background-color: var(--prime-color);
+border-color: var(--prime-color);
+}
+
+.btn-primary:hover{
+    background-color: var(--prime-hover);
+border-color: var(--prime-hover);
 }

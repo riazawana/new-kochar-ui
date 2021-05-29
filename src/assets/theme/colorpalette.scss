@@ -1,0 +1,127 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48I2NjMzNjYSIsIj9lcjwjZjBjMmVmIiwiO2VyPCNiOTIwYjd$LCIlPmBePCM3OTc5NzkiLCI~ZXI8I2Q3ZDdkNyIsIjtlcjwjNWM1YzVjfiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz5mYWxzZSwidmVyc2lvbj4xMX0=
+*/
+
+@import '~@angular/material/theming';
+/* For use in src/lib/core/theming/_palette.scss */
+$md-primary: (
+    50 : #ffe6e0,
+    100 : #ffc1b3,
+    200 : #ff9880,
+    300 : #ff6e4d,
+    400 : #ff4f26,
+    500 : #ff3000,
+    600 : #ff2b00,
+    700 : #ff2400,
+    800 : #ff1e00,
+    900 : #ff1300,
+    A100 : #ffffff,
+    A200 : #fff3f2,
+    A400 : #ffc2bf,
+    A700 : #ffa9a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-accent: (
+    50 : #ffeee0,
+    100 : #ffd4b3,
+    200 : #ffb880,
+    300 : #ff9b4d,
+    400 : #ff8526,
+    500 : #ff7000,
+    600 : #ff6800,
+    700 : #ff5d00,
+    800 : #ff5300,
+    900 : #ff4100,
+    A100 : #ffffff,
+    A200 : #fff5f2,
+    A400 : #ffccbf,
+    A700 : #ffb7a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+@mixin custom($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Define any styles affected by the theme.
+  .candy-carousel {
+    // Use mat-color to extract individual colors from a palette.
+    background-color: mat-color($primary);
+    border-color: mat-color($accent, A400);
+  }
+}
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// @mixin global-theme($theme){
+//     $primary: map-get($thtme, primary);
+//     $accent: map-get($thtme, accent);
+//     $warn: map-get($thtme, warn);
+//     $forground: map-get($thtme, forground);
+//     $background: map-get($thtme, background);
+
+// }
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$default-primary: mat-palette($md-primary, 500, A100, A700);
+$default-accent: mat-palette($md-accent);
+
+// The warn palette is optional (defaults to red).
+
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($default-primary, $default-accent);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+// @include angular-material-theme($theme);
+
+@include custom($theme);
