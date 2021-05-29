@@ -29,13 +29,13 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let da of ports;let i = index;">
-                    <th scope="row">{{da.port_number}}</th>
-                    <td>{{da.sensor_name}}</td>
-                    <td>
-                        <mat-checkbox class="example-margin" [disabled]="!edit"  [checked]="da.notif_arm" (change)="onclick('notif_arm',$event.checked,da._id)" >  </mat-checkbox>
+                    <th scope="row" *ngIf="!(da.sensor_name == 'Temp 1' || da.sensor_name == 'Temp 2')">{{da.port_number}}</th>
+                    <td *ngIf="!(da.sensor_name == 'Temp 1' || da.sensor_name == 'Temp 2')">{{da.sensor_name}}</td>
+                    <td *ngIf="!(da.sensor_name == 'Temp 1' || da.sensor_name == 'Temp 2')">
+                        <mat-checkbox class="example-margin" [disabled]="!edit"  [checked]="da.notif_arm" (change)="onclick('notif_arm',$event.checked,da.port_number)" >  </mat-checkbox>
                       </td>
-                    <td>
-                        <mat-checkbox class="example-margin"  [disabled]="!edit"  [checked]="da.notif_diarm"  (change)="onclick('notif_diarm',$event.checked,da._id)">  </mat-checkbox>
+                    <td *ngIf="!(da.sensor_name == 'Temp 1' || da.sensor_name == 'Temp 2')">
+                        <mat-checkbox class="example-margin"  [disabled]="!edit"  [checked]="da.notif_diarm"  (change)="onclick('notif_diarm',$event.checked,da.port_number)">  </mat-checkbox>
                     </td>
         
                   </tr>

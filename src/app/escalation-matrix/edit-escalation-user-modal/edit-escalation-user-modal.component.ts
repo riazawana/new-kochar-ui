@@ -18,6 +18,12 @@ export class EditEscalationUserModalComponent implements OnInit {
     
     location_id:any;
     edit_data:any;
+    email:any;
+ phone:any;
+ level:any ;
+ designation:any;
+ tat:any;
+ name:any;
   ngOnInit(): void {
      
    this.location_id = this.data.location_id;
@@ -40,12 +46,7 @@ export class EditEscalationUserModalComponent implements OnInit {
  
   level_list = [1,2,3,4,5,6,7,8,9,10];
 
- email:any;
- phone:any;
- level:any;
- designation:any;
- tat:any;
- name:any;
+ 
 
 
 

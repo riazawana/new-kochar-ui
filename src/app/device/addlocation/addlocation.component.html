@@ -20,7 +20,7 @@
                             <p>
                                 <mat-form-field appearance="outline">
                                     <mat-label>Wired Controller Type</mat-label>
-                                    <mat-select placeholder="Type" [(ngModel)]="w_c_t" name="w_c_t">
+                                    <mat-select placeholder="Type" [(ngModel)]="w_c_t" name="w_c_t" (selectionChange)="getalltemplate(w_c_t)">
                                       <mat-option  value="IN-12" >IN-12</mat-option>
                                       <mat-option  value="IN-12T" >IN-12T</mat-option>
                                       <mat-option  value="IN-14" >IN-14</mat-option>
@@ -92,12 +92,12 @@
                   </div>
                   </div>
 
-                    <button type="button" class="btn btn-primary" (click)="submit_seltemp(sel_temp)" style="float: right;">Next</button>
-                    <button type="button" class="btn btn-primary" (click)="previousStep(0)" style="float: right;">Previous</button>
+                    <button type="button" class="btn btn-primary" (click)="submit_seltemp(sel_temp)" [disabled]="sel_temp == '0' " style="float: right;">Next</button>
+                    <button type="button" class="btn btn-primary" (click)="skip()" style="float: right;">Skip</button>
   
                   </mat-tab>
 
-                  <mat-tab label="Port Setting"  >
+                  <mat-tab label="Port Setting"  disabled>
                     <div class="example-large-box mat-elevation-z4" *ngFor="let s of sensordata">
                       <div class="row" *ngIf="s.for_temperature == false">
                         <div class="col-sm-1">
@@ -191,12 +191,12 @@
                     <div class="row" *ngIf="s.for_temperature == true">
                       <div class="col-sm-3">
                         <p>
-                          <mat-checkbox class="example-margin" [(ngModel)]="s.default_state"> Enable Temp {{s.port_number}} </mat-checkbox>
+                          <mat-checkbox class="example-margin" [(ngModel)]="s.default_state"> Enable {{s.sensor_name}} </mat-checkbox>
                         </p>
                       </div>
 
                       <div class="col-sm-2">
-                        <p>
+                        <p *ngIf="s.default_state == true">
                           <mat-form-field appearance="outline">
                             <mat-label>Sensor Name</mat-label>
                             <input matInput [(ngModel)]="s.sensor_name" name="sname" placeholder="Sensor Name">
@@ -206,7 +206,7 @@
                       </div>
 
                       <div class="col-sm-2">
-                        <p>
+                        <p *ngIf="s.default_state == true">
                           <mat-form-field appearance="outline">
                             <mat-label>Sensor Type</mat-label>
                             <input matInput [(ngModel)]="s.sensor_type" name="sensor_type" placeholder="Sensor Type" disabled>
@@ -219,7 +219,7 @@
 
 
                       <div class="col-sm-2">
-                        <p>
+                        <p *ngIf="s.default_state == true">
                           <mat-form-field appearance="outline">
                             <mat-label>Room Name</mat-label>
                             <input matInput [(ngModel)]="s.room_name" name="room" placeholder="Room Name">
@@ -231,58 +231,8 @@
                      
                   </div>
                     </div>
-<!-- 
-                    <div *ngIf="gatewaytype != 'IN-14'">
 
-                    <div class="example-large-box mat-elevation-z4" *ngFor="let s of tempsensor">
-                      <div class="row" >
-                        <div class="col-sm-3">
-                          <p>
-                            <mat-checkbox class="example-margin" [(ngModel)]="s.default_state"> Enable Temp {{s.port_number}} </mat-checkbox>
-                          </p>
-                        </div>
-
-                        <div class="col-sm-2">
-                          <p>
-                            <mat-form-field appearance="outline">
-                              <mat-label>Sensor Name</mat-label>
-                              <input matInput [(ngModel)]="s.sensor_name" name="sname" placeholder="Sensor Name">
-                              <mat-hint>Sensor Name</mat-hint>
-                            </mat-form-field>
-                          </p>
-                        </div>
-
-                        <div class="col-sm-2">
-                          <p>
-                            <mat-form-field appearance="outline">
-                              <mat-label>Sensor Type</mat-label>
-                              <input matInput [(ngModel)]="s.sensor_type" name="sensor_type" placeholder="Sensor Type" disabled>
-                              <mat-hint>Sensor Type</mat-hint>
-                            </mat-form-field>
-                          </p>
-                         
-
-                      </div>
-
-
-                        <div class="col-sm-2">
-                          <p>
-                            <mat-form-field appearance="outline">
-                              <mat-label>Room Name</mat-label>
-                              <input matInput [(ngModel)]="s.room_name" name="room" placeholder="Room Name">
-                              <mat-hint>Room Name</mat-hint>
-                            </mat-form-field>
-                          </p>
-                        </div>
-
-                       
-                    </div>
-                    </div>
-                  </div> -->
-
-
-                    <button type="button" class="btn btn-primary" (click)="submit_port()" style="float: right;">Next</button>
-                    <button type="button" class="btn btn-primary" (click)="previousStep(1)" style="float: right;">Previous</button>
+                    <button type="button" class="btn btn-primary" (click)="submit_port()" style="float: right;">Submit</button>
   
                   </mat-tab>
 

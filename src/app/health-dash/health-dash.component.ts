@@ -68,10 +68,10 @@ export class HealthDashComponent implements OnInit {
   
   detailsIN(x,y,z): void {
     var rssi_val = x[0].split("|");
-   
-    // alert(y);
-    const dialogRef = this.dialog.open(DetailsModalComponent, {
-      data: {type: 'IN',rssi:rssi_val[0],mode:y,keypad:z}    
+    var keypadValue = (rssi_val[rssi_val.length -1] == "R") || (rssi_val[rssi_val.length -1] == "T") ? "OK" : "Error"
+
+    const dialogRef = this.dialog.open(DetailsModalComponent, { 
+      data: {type: 'IN',rssi:rssi_val[0],mode:y,keypad:keypadValue}    
     },
     );
 
@@ -102,6 +102,16 @@ export class HealthDashComponent implements OnInit {
    this.dialogRef.close();
  }
 
+
+ router_route(x){
+  
+    window.open( 
+  "http://ecc93904a372.ngrok.io/#/kochar/Devices/openrouter/"+x,"_blank");
+}
+ 
+ IN_route(x){
+  // this.router.navigate(['/kochar/Devices/singlegateway',x]);
+ }
 }
 
 

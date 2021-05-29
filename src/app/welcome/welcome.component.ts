@@ -112,35 +112,47 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   
     this.soc.messages.subscribe(msg => {
-      console.log(msg);
 
+      if(msg.type == "iot-gateway-notification"){
+          var type;
+      console.log(msg);
+      
       console.log(JSON.parse(msg.text[0]));
       var da = JSON.parse(msg.text[0]);
       var x = da[0]._id;
       var cli = da[0].client;
-        alert(cli);
+        // alert(cli);
+
+    if(da[0].notification_category_name == "Health Check") {
+      type = "warn"
+    }else{
+      type = "error"
+    }
       if(this.notif == true){
 
         for(var i = 0; i < this.client.length; i++){
-        alert(this.client[i]);
+        // alert(this.client[i]);
 
           if(this.client[i] == cli){
-            if(msg.type == "iot-gateway-notification"){
               console.log(JSON.parse(msg.text[0])[0].data.notification);
               var notdata = JSON.parse(msg.text[0])[0].data.notification;
-              this.create("Notification",notdata,x,cli);
+              var send_time = JSON.parse(msg.text[0])[0].send_time;
+              this.create("Notification",notdata,send_time,x,cli,type);
               this.backend.getNotificationCount()
               .subscribe((data)=> { 
                console.log(data)
                 this.notificationcount = data["opencount"]; 
               })
-            }
+            
           }
         }
        
        
       
       }
+    }
+
+
 
     })
 
@@ -160,27 +172,31 @@ export class WelcomeComponent implements OnInit, OnDestroy {
      
   }
 
-  create(title,content,id,cli) {
+  clear(){
+    this._notifications.remove()
+  }
 
-    var data = content //JSON.parse(content);
+  create(title,content,send_time,id,cli,type) {
+
+    var data = content+"\r\n"+send_time //JSON.parse(content);
      console.log(data);
     
-     var type = "success";
+     
      if(type == "success"){
       this.notification = this._notifications.success(title, data, {
-        timeOut: 300000,
+        timeOut: 100000,
         showProgressBar: true,
         pauseOnHover: true
       });
      }if(type == "warn"){
       this.notification = this._notifications.warn(title, data, {
-        timeOut: 300000,
+        timeOut: 100000,
         showProgressBar: true,
         pauseOnHover: true
       });
      }if(type == "error"){
       this.notification = this._notifications.error(title, data, {
-        timeOut: 300000,
+        timeOut: 100000,
         showProgressBar: true,
         pauseOnHover: true
       });
@@ -228,8 +244,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   logout(){
     // alert("logout");
      this.router.navigate(['kochar/profile']);
-     sessionStorage.clear();
-     this.keycloakService.logout();
+
+     setTimeout(()=> {
+      sessionStorage.clear();
+      this.keycloakService.logout();
+     }, 2000);
+
+   
 
 
   }

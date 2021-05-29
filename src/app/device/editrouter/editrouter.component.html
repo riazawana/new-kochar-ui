@@ -28,7 +28,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="m_a" name="m_a"  (keyup)="formatMAC(m_a)" placeholder="(00:00:00:00:00:00)">
+                                  <input matInput [(ngModel)]="m_a" name="m_a"  (keyup)="formatMAC(m_a)" placeholder="(00:00:00:00:00:00)" disabled>
                                   <mat-hint>Mac Address</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -68,7 +68,7 @@
                     </div>
                   </div>
 
-                  <button type="button" class="btn btn-primary" (click)="submit()" style="float: right;">Next</button>
+                  <button type="button" class="btn btn-primary" (click)="submit()" style="float: right;">Update</button>
                   <!-- <button type="button" class="btn btn-primary" (click)="previousStep(1)" style="float: right;">Previous</button> -->
 
                 </mat-tab>

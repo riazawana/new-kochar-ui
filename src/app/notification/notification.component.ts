@@ -12,7 +12,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
-
+import { FilterModalComponent } from './filter-modal/filter-modal.component';         
 
 
 export interface health {
@@ -73,8 +73,8 @@ export class NotificationComponent implements OnInit , OnDestroy {
   constructor(
     private backend: BackendconnectionService,
     private router:Router,   
-    private soc:SocketioSendmsgService,
-    
+    private soc:SocketioSendmsgService,  private dialog: MatDialog,
+    public dialogRef: MatDialogRef<FilterModalComponent>,    
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.dataSource = new MatTableDataSource;
@@ -131,8 +131,12 @@ export class NotificationComponent implements OnInit , OnDestroy {
         }, 1);
      }
    
+     this.getlocation();
+     this.getgateway();
 
   }
+
+  totalfilter:any =""; 
 
 
   applyFilter(event: Event) {
@@ -162,56 +166,214 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
   health:any;
   risk:any;
+  filter:any = '';
+  filterdate:any = '';
+
+  
+
+val:any;
+status:any;
+gateway:any;
+tat:any;
+location:any;
+
+resetfilter(){
+  this.totalfilter = "";
+  this.filter = '';
+  this.filterdate = '';
+  this.fetchdata();
+}
+
+onsubmit(){
+
+  if(this.filter == "gateway"){
+     this.val = "macId="+this.gateway;
+  }if(this.filter == "tat"){
+    this.val = "tat="+this.tat;
+  }if(this.filter == "tatStatus"){
+    this.val = "locationName="+this.location;
+  }if(this.filter == "status"){
+    this.val = "status="+this.status;
+  }
+
+   if(this.totalfilter != ""){
+  this.totalfilter += "&"+this.val
+   }else{
+  this.totalfilter +=  "?"+this.val
+   }
+
+  //  alert(this.totalfilter);
+   this.filterfun(this.totalfilter);
+
+}
+locations:any;
+gateways:any;
+
+getlocation(){
+  this.backend.getlocationuserwise()
+  .subscribe((data)=> { 
+    console.log("All location:",data["data"]);
+     this.locations = data["data"][0].locations;
+  });
+}
+ 
+getgateway(){
+  this.gateways = [];
+  this.backend.getgatewayuserwise()
+  .subscribe((data)=> { 
+    console.log("All gateways:",data["data"]);
+    for(var i = 0; i < data["data"].length; i++)
+    {
+      this.gateways = this.gateways.concat(data["data"][i]);
+    }
+    console.log("All gateways:",this.gateways);
+  });
+}
+
+  
+  
+  dofilter(x){
+    // this.health = [];
+    // this.risk = [];
+
+    var from = '';
+    var to = '';
+
+    var today = new Date();
+    // var yes = new Date(today);
+    // yes.setDate(yes.getDate() - 1);
+    var yes = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000);
+    // alert(yes);
+
+    var yesterday = yes.getFullYear()+'-'+(yes.getMonth() + 1).toString().padStart(2, "0")+'-'+yes.getDate();
+    // alert(yesterday);
+    var date = today.getFullYear()+'-'+(today.getMonth() + 1).toString().padStart(2, "0")+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var sev = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    var sevenday = sev.getFullYear()+'-'+(sev.getMonth() + 1).toString().padStart(2, "0")+'-'+sev.getDate();
+    var twentyeight = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000);
+    var twentyeightday = twentyeight.getFullYear()+'-'+(twentyeight.getMonth() + 1).toString().padStart(2, "0")+'-'+twentyeight.getDate();
+    var ninty = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+    var nintyday = ninty.getFullYear()+'-'+(ninty.getMonth() + 1).toString().padStart(2, "0")+'-'+ninty.getDate();
+    var one = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000);
+    var oneyear = one.getFullYear()+'-'+(one.getMonth() + 1).toString().padStart(2, "0")+'-'+one.getDate();
+
+    var fildata = "";
+
+    if(x == 'today'){
+        from = date+"T"+"00:00:00";
+        to = date+"T"+time;
+        // alert(from+"-"+to);
+         fildata = "dateFrom="+from+"&dateTo="+to;
+    }if(x == 'yes'){
+      from = yesterday+"T"+"00:00:00";
+      to = date+"T"+time;
+      // alert(from+"-"+to);
+       fildata = "dateFrom="+from+"&dateTo="+to;
+    }if(x == '7'){
+      from = sevenday+"T"+"00:00:00";
+      to = date+"T"+time;
+      // alert(from+"-"+to);
+       fildata = "dateFrom="+from+"&dateTo="+to;
+    }if(x == '28'){
+      from = twentyeightday+"T"+"00:00:00";
+      to = date+"T"+time;
+      // alert(from+"-"+to);
+       fildata = "dateFrom="+from+"&dateTo="+to;
+    }if(x == '90'){
+      from = nintyday+"T"+"00:00:00";
+      to = date+"T"+time;
+      // alert(from+"-"+to);
+       fildata = "dateFrom="+from+"&dateTo="+to;
+    }if(x == '365'){
+      from = oneyear+"T"+"00:00:00";
+      to = date+"T"+time;
+      // alert(from+"-"+to);
+       fildata = "dateFrom="+from+"&dateTo="+to;
+    }
+
+  // alert(fildata);
+  
+  if(this.totalfilter != ""){
+    this.totalfilter += "&"+fildata
+     }else{
+    this.totalfilter +=  "?"+fildata
+     }
+  
+     alert(this.totalfilter);
+     this.filterfun(this.totalfilter);
+   
+  }
+
+  filterfun(x){
+
+    // this.notdata = [];
+    // this.risk = [];
+    // this.health = [];
+
+    this.backend.getallnotificationsbyfilter(x)
+      .subscribe((data)=> { 
+        console.log("All Notifications:",data); 
+  
+        var sorthealth = data["data"].heatlthCheck; 
+        var sortrisk =  data["data"].riskAssesment;
 
 
+   
+       this.dataSource2 = new MatTableDataSource( sortrisk );
+       this.dataSource = new MatTableDataSource( sorthealth );
+
+         this.dataSource.paginator = this.paginator.toArray()[1];
+         this.dataSource.sort = this.sort.toArray()[1];
+         this.dataSource2.paginator = this.paginator.toArray()[0];
+         this.dataSource2.sort = this.sort.toArray()[0];
+  
+  
+      });
+  }
+
+
+  notdata:any;
   fetchdata(){
+    // this.notdata = [];
+    // this.risk = [];
+    // this.health = [];
+
 
     this.backend.getallnotifications()
     .subscribe((data)=> { 
       console.log("All Notifications:",data); 
 
-       console.log("All Notifications health:",data["data"][0]); 
-        for(var k = 0; k < data["data"][0].length;k++){
-            if(data["data"][0][k]._id == 'Risk Assessment'){
-              this.risk = data["data"][0][k].notification;
-          console.log(this.risk);
-
-            }else{
-              this.health = data["data"][0][k].notification;
-        //  console.log(this.health);
-
-        }
+    
+         
+      
+        var sorthealth = data["data"].heatlthCheck; 
+        var sortrisk =  data["data"].riskAssesment;
 
 
-        }
+          console.log("Risk:",sortrisk);
 
-
+           console.log("Health:",sorthealth);
        
-       this.dataSource2 = new MatTableDataSource( this.risk );
-       this.dataSource = new MatTableDataSource( this.health );
+       this.dataSource2 = new MatTableDataSource( sortrisk );
+       this.dataSource = new MatTableDataSource( sorthealth );
 
        this.dataSource.paginator = this.paginator.toArray()[1];
        this.dataSource.sort = this.sort.toArray()[1];
        this.dataSource2.paginator = this.paginator.toArray()[0];
        this.dataSource2.sort = this.sort.toArray()[0];
 
-      //  this.dataSource.paginator = this.paginator;
-
-      
-      //  this.dataSource.sort = this.t1Sort;
-
-      //  this.dataSource2.paginator = this.paginator2;
-      //  this.dataSource2.sort = this.t2Sort;
 
     });
   }
 
   getnotificationdetails(x,y){
-    // alert(x)
-    // alert(y)
-
   
     this.router.navigate(['/kochar/Notifications/notification-details',x,y]);
+  }
+
+  reload(){
+    window.location.reload()
   }
 
 }

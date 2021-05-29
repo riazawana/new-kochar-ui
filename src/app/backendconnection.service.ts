@@ -189,6 +189,11 @@ export class BackendconnectionService {
     return this.httpClient.get(this.api+'/getfeature?_id='+x,this.httpOptions);
   }
 
+  getiotgateway(x,y){
+    this.auth();
+    return this.httpClient.get(this.api+'/getiotgateway?mac_id='+x+'&client='+y,this.httpOptions);
+  }
+
 
   
 
@@ -743,9 +748,13 @@ export class BackendconnectionService {
 
           updateUserprofile(data){
             this.auth();
-            return this.httpClient.post(this.api+'/executeshellcommand',data,this.httpOptions); 
+            return this.httpClient.post(this.api+'/updateUserprofile',data,this.httpOptions); 
           }
-    
+
+          getallnotificationsbyfilter(x){
+            this.auth();
+            return this.httpClient.get(this.api+'/getallnotifications'+x,this.httpOptions);
+          }
         }
 
 

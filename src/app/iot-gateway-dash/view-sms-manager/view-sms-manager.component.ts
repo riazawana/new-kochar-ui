@@ -74,11 +74,29 @@ export class ViewSmsManagerComponent implements OnInit {
       });
       
 
-    this.backend.getgatewayuserwise()
-    .subscribe((data)=> { 
-        console.log("Data:",data["data"]);
-        this.gateways = data["data"][0];
-    });
+    // this.backend.getgatewayuserwise()
+    // .subscribe((data)=> { 
+    //     console.log("Data:",data["data"]);
+    //     this.gateways = data["data"][0];
+    // });
+
+    this.gateways = [];
+      this.backend.getgatewayuserwise()
+      .subscribe((data)=> { 
+        console.log("All gateways:",data["data"]);
+
+ 
+        
+        for(var i = 0; i < data["data"].length; i++)
+        {
+          this.gateways = this.gateways.concat(data["data"][i]);
+        }
+        
+     
+
+        console.log("All gateways:",this.gateways);
+
+      });
   }
 
 

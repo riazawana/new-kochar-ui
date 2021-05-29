@@ -31,7 +31,7 @@ export class CommandSettingComponent implements OnInit {
   pollingtime:any;
 
   url:any;
-
+  temperature_calibration_status_last_updated_on:any;
 
   
 
@@ -46,7 +46,7 @@ export class CommandSettingComponent implements OnInit {
      
      // console.log(typeof this.data.id)
 
-      alert(this.data.id);
+      // alert(this.data.id);
       this.soc.messages.subscribe(msg => {
         console.log(msg);
         if(msg.type == "iot-gateway-command-response"){
@@ -65,7 +65,8 @@ export class CommandSettingComponent implements OnInit {
               }if(text.type == "calibratetemperaturesensor"){
             console.log("calibratetemperaturesensor:",JSON.parse(msg.text[0]));
               }if(text.type == "gettemperaturecalibrationstatus"){
-                  this.tem_cal_status = text.temperature_calibration_status
+                  this.tem_cal_status = text.temperature_calibration_status;
+                  this.temperature_calibration_status_last_updated_on  = text.temperature_calibration_status_last_updated_on;
               }
             }
            
@@ -86,9 +87,92 @@ export class CommandSettingComponent implements OnInit {
       }
          console.log(data)
      this.soc.sendMsg(data);
-  
+      alert("Command scheduled successfully");
      
    }
+
+   gettemperaturecalibrationstatus(x,y,mac) {
+    var data = {
+      mac_id:mac,
+      type:x,
+      value:y
+    }
+       console.log(data)
+   this.soc.sendMsg(data);
+
+   var newLine = "\r\n"
+   var msg = "Command scheduled successfully"
+   msg += newLine;
+   msg += '"Click on update if calibration status fail"'
+    alert(msg);
+   
+ }
+
+   updatepollingurl(x,y,mac){
+    if (confirm('Do you want to change url ?')) {
+      var data = {
+        mac_id:mac,
+        type:x,
+        value:y
+      }
+         console.log(data)
+     this.soc.sendMsg(data);
+      alert("Command scheduled successfully");
+     
+    } else {
+     
+    }
+   }
+
+   updatepassword(x,y,mac){
+    if (confirm('Do you want to change passowrd ?')) {
+      var data = {
+        mac_id:mac,
+        type:x,
+        value:y
+      }
+         console.log(data)
+     this.soc.sendMsg(data);
+      alert("Command scheduled successfully");
+     
+    } else {
+     
+    }
+   }
+
+   updatefirmwareversion(x,y,mac){
+    if (confirm('Do You Want to Change Firmware Version ?')) {
+      var data = {
+        mac_id:mac,
+        type:x,
+        value:y
+      }
+         console.log(data)
+     this.soc.sendMsg(data);
+      alert("Command scheduled successfully");
+     
+    } else {
+     
+    }
+   }
+
+   rebootschedule(x,y,mac){
+    if (confirm('Do You Want to Schedule IN Reboot ?')) {
+      var data = {
+        mac_id:mac,
+        type:x,
+        value:y
+      }
+         console.log(data)
+     this.soc.sendMsg(data);
+      alert("Command scheduled successfully");
+     
+    } else {
+     
+    }
+   }
+
+   
 
    routersendMessage(x,mac,rmac,rphone){
     var data = {

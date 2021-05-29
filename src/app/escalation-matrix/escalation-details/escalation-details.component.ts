@@ -72,6 +72,7 @@ export class EscalationDetailsComponent implements OnInit {
     
             console.log(data);
             if(data["success"]==true){ 
+              this.onNoClick();
               Swal.fire(
                 'Deleted!',
                 'Escalation matrix deleted successfully.',
@@ -130,8 +131,8 @@ edit(gateway_name,mac_id,client,email,phone,level,designation,tat,name){
     
    }
 
-   cancel(){
-    this._location.back();
-   }
+  //  cancel(){
+  //   this._location.back();
+  //  }
 
 }

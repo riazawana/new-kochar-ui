@@ -4,7 +4,9 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { CommandSettingComponent } from '../../command-setting/command-setting.component';  
+import { CommandSettingComponent } from '../../command-setting/command-setting.component'; 
+import { RelaychangeModalComponent } from '../relaychange-modal/relaychange-modal.component';  
+
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 @Component({
@@ -21,11 +23,22 @@ export class GatewayListComponent implements OnInit {
    gateway:any;
    faMapMarker = faMapMarkerAlt;
    panelOpenState = false;
+
+  relay1ons: boolean = false;
+  relay1offs: boolean = true;
+  relay2ons: boolean = false;
+  relay2offs: boolean = true;
+  macsingle: string;
+  clisingle: string;
+
    constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
     private dialog: MatDialog,
+    private dialog2: MatDialog,
     public dialogRef: MatDialogRef<CommandSettingComponent>,
+    public dialogRef2: MatDialogRef<RelaychangeModalComponent>,
+
     private router:Router,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
@@ -47,6 +60,11 @@ export class GatewayListComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onNoClick2(): void {
+    this.dialogRef2.close();
+  }
+
+
 
   /////////////////////////modal 2/////////////////////////////////////
      openDialog(id,rmac,rnum): void {
@@ -61,8 +79,23 @@ export class GatewayListComponent implements OnInit {
         //  console.log('The dialog  two was closed');
        });
      }
-   
+
+     macid:any;
+     singleGatewayList: boolean = false;
   ngOnInit(): void {
+
+    var url = this.router.url.split("/");
+    console.log(url);
+    if(url[3] == "singleGatewayList"){
+       this.singleGatewayList = true;
+       this.route.paramMap.subscribe(params => {
+        this.macsingle = params.get("mac");
+        this.clisingle = params.get("cli");
+     this.singlegateway(this.macsingle,this.clisingle);
+        })
+    }else{
+      this.singleGatewayList = false;
+    }
 
     var role = sessionStorage.getItem('role');
 
@@ -149,11 +182,60 @@ export class GatewayListComponent implements OnInit {
         
        }, 1);
     }
-
+      
       this.getdata();
    
 
+      this.soc.messages.subscribe(msg => {
+        console.log(msg);
+        if(msg.type == "iot-gateway-command-response"){
+            console.log(JSON.parse(msg.text[0]));
+            var text = JSON.parse(msg.text[0]);
+  //           alert(1);
+  // alert(this.macid);
+  // alert(text.mac_id );
+
+            if(text.mac_id == this.macid){
+              // alert(1);
+             if(text.type == "getrelaystatus"){
+              // alert(2);
+
+                 if(text.relay1_satus == true){
+              // alert(3);
+                  this.relay1ons = true;
+                  this.relay1offs = false;
+                 }if(text.relay1_satus == false){
+              // alert(4);
+                  this.relay1ons = false;
+                  this.relay1offs = true;
+                 }
+                 if(text.relay2_satus== true){
+              // alert(5);
+                  this.relay2ons = true;
+                  this.relay2offs = false;
+                 }if(text.relay2_satus == false){
+              // alert(6);
+                  this.relay2ons = false;
+                  this.relay2offs = true;
+                 }
+                  // alert("this.relay1ons:"+this.relay1ons)
+                  // alert("this.relay1offs:"+this.relay1offs)
+                  // alert("this.relay2ons:"+this.relay2ons)
+                  // alert("this.relay2offs:"+this.relay2offs)
+
+              }
+            }
+           
+           
+        }
+      })
+
   }
+  macs(macs: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  
 
   getdata(){
     this.temparray = [];
@@ -202,8 +284,11 @@ export class GatewayListComponent implements OnInit {
       type:x,
       value:y
     }   
+    this.macid = mac;
+    console.log(data);
    this.soc.sendMsg(data);
    this.getdata();
+   alert("Command executed succesfully")
  }
 
 
@@ -277,5 +362,45 @@ delete(x,y){
 refreshtemp(){
   this.getdata();
 } 
+
+
+editrelay(g){
+  const dialogRef2 = this.dialog2.open(RelaychangeModalComponent, {
+    width: '300px',
+    height: '350px',
+    data: {g: g}     
+  },
+  );
+
+  dialogRef2.afterClosed().subscribe(result => {
+   //  console.log('The dialog  two was closed');
+  });
+}
+
+singlegateway(x,y){
+
+  this.backend.getiotgateway(x,y)
+  .subscribe((data)=> {
+    console.log("All gateway:",data["data"]);
+          this.gateway = data["data"];
+
+          for(var k = 0; k < this.gateway.length; k++){
+
+            if(this.gateway[k].temp.length != 0){
+              var val = this.gateway[k].temp[0].value.split("");
+              this.temparray.push(
+                {
+                  temp1:val[29]+""+val[30]+""+val[31]+""+val[32],
+                  temp2:val[33]+""+val[34]+""+val[35]+""+val[36],
+                  relay1:this.gateway[k].temp[0].relay1_satus,
+                  relay2:this.gateway[k].temp[0].relay2_satus
+                 })
+            }else{
+              this.temparray.push([])
+            }
+           
+          } 
+  })
+}
 
 }

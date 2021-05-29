@@ -156,75 +156,75 @@ export class EditSmsManagerComponent implements OnInit {
           this.data = data["data"][0];
 
 
-          this.arm_by_platform1 = this.data.arm_by_platform[0];
-          this.arm_by_platform2 = this.data.arm_by_platform[1];
-          this.arm_by_platform3 = this.data.arm_by_platform[2];
-          this.arm_by_platform4 = this.data.arm_by_platform[3];
-          this.arm_by_platform5 = this.data.arm_by_platform[4];
-          this.arm_by_platform6 = this.data.arm_by_platform[5];
-          this.arm_by_platform7 = this.data.arm_by_platform[6];
-          this.arm_by_platform8 = this.data.arm_by_platform[7];
-          this.arm_by_platform9 = this.data.arm_by_platform[8];
-          this.arm_by_platform10 = this.data.arm_by_platform[9];
+          // this.arm_by_platform1 = this.data.arm_by_platform[0];
+          // this.arm_by_platform2 = this.data.arm_by_platform[1];
+          // this.arm_by_platform3 = this.data.arm_by_platform[2];
+          // this.arm_by_platform4 = this.data.arm_by_platform[3];
+          // this.arm_by_platform5 = this.data.arm_by_platform[4];
+          // this.arm_by_platform6 = this.data.arm_by_platform[5];
+          // this.arm_by_platform7 = this.data.arm_by_platform[6];
+          // this.arm_by_platform8 = this.data.arm_by_platform[7];
+          // this.arm_by_platform9 = this.data.arm_by_platform[8];
+          // this.arm_by_platform10 = this.data.arm_by_platform[9];
 
-          this.arm_by_keypad1 = this.data.arm_by_keypad[0];
-          this.arm_by_keypad2 = this.data.arm_by_keypad[1];
-          this.arm_by_keypad3 = this.data.arm_by_keypad[2];
-          this.arm_by_keypad4 = this.data.arm_by_keypad[3];
-          this.arm_by_keypad5 = this.data.arm_by_keypad[4];
-          this.arm_by_keypad6 = this.data.arm_by_keypad[5];
-          this.arm_by_keypad7 = this.data.arm_by_keypad[6];
-          this.arm_by_keypad8 = this.data.arm_by_keypad[7];
-          this.arm_by_keypad9 = this.data.arm_by_keypad[8];
-          this.arm_by_keypad10 = this.data.arm_by_keypad[9];
+          // this.arm_by_keypad1 = this.data.arm_by_keypad[0];
+          // this.arm_by_keypad2 = this.data.arm_by_keypad[1];
+          // this.arm_by_keypad3 = this.data.arm_by_keypad[2];
+          // this.arm_by_keypad4 = this.data.arm_by_keypad[3];
+          // this.arm_by_keypad5 = this.data.arm_by_keypad[4];
+          // this.arm_by_keypad6 = this.data.arm_by_keypad[5];
+          // this.arm_by_keypad7 = this.data.arm_by_keypad[6];
+          // this.arm_by_keypad8 = this.data.arm_by_keypad[7];
+          // this.arm_by_keypad9 = this.data.arm_by_keypad[8];
+          // this.arm_by_keypad10 = this.data.arm_by_keypad[9];
 
 
-          this.disarm_by_platform1 = this.data.disarm_by_platform[0];
-          this.disarm_by_platform2 = this.data.disarm_by_platform[1];
-          this.disarm_by_platform3 = this.data.disarm_by_platform[2];
-          this.disarm_by_platform4 = this.data.disarm_by_platform[3];
-          this.disarm_by_platform5 = this.data.disarm_by_platform[4];
-          this.disarm_by_platform6 = this.data.disarm_by_platform[5];
-          this.disarm_by_platform7 = this.data.disarm_by_platform[6];
-          this.disarm_by_platform8 = this.data.disarm_by_platform[7];
-          this.disarm_by_platform9 = this.data.disarm_by_platform[8];
-          this.disarm_by_platform10 = this.data.disarm_by_platform[9];
+          // this.disarm_by_platform1 = this.data.disarm_by_platform[0];
+          // this.disarm_by_platform2 = this.data.disarm_by_platform[1];
+          // this.disarm_by_platform3 = this.data.disarm_by_platform[2];
+          // this.disarm_by_platform4 = this.data.disarm_by_platform[3];
+          // this.disarm_by_platform5 = this.data.disarm_by_platform[4];
+          // this.disarm_by_platform6 = this.data.disarm_by_platform[5];
+          // this.disarm_by_platform7 = this.data.disarm_by_platform[6];
+          // this.disarm_by_platform8 = this.data.disarm_by_platform[7];
+          // this.disarm_by_platform9 = this.data.disarm_by_platform[8];
+          // this.disarm_by_platform10 = this.data.disarm_by_platform[9];
 
-          this.disarm_by_keypad1 = this.data.disarm_by_keypad[0];
-          this.disarm_by_keypad2 = this.data.disarm_by_keypad[1];
-          this.disarm_by_keypad3 = this.data.disarm_by_keypad[2];
-          this.disarm_by_keypad4 = this.data.disarm_by_keypad[3];
-          this.disarm_by_keypad5 = this.data.disarm_by_keypad[4];
-          this.disarm_by_keypad6 = this.data.disarm_by_keypad[5];
-          this.disarm_by_keypad7 = this.data.disarm_by_keypad[6];
-          this.disarm_by_keypad8 = this.data.disarm_by_keypad[7];
-          this.disarm_by_keypad9 = this.data.disarm_by_keypad[8];
-          this.disarm_by_keypad10 = this.data.disarm_by_keypad[9];
+          // this.disarm_by_keypad1 = this.data.disarm_by_keypad[0];
+          // this.disarm_by_keypad2 = this.data.disarm_by_keypad[1];
+          // this.disarm_by_keypad3 = this.data.disarm_by_keypad[2];
+          // this.disarm_by_keypad4 = this.data.disarm_by_keypad[3];
+          // this.disarm_by_keypad5 = this.data.disarm_by_keypad[4];
+          // this.disarm_by_keypad6 = this.data.disarm_by_keypad[5];
+          // this.disarm_by_keypad7 = this.data.disarm_by_keypad[6];
+          // this.disarm_by_keypad8 = this.data.disarm_by_keypad[7];
+          // this.disarm_by_keypad9 = this.data.disarm_by_keypad[8];
+          // this.disarm_by_keypad10 = this.data.disarm_by_keypad[9];
 
-          this.online1 = this.data.online[0];
-          this.online2 = this.data.online[1];
-          this.online3 = this.data.online[2];
-          this.online4 = this.data.online[3];
-          this.online5 = this.data.online[4];
-          this.online6 = this.data.online[5];
-          this.online7 = this.data.online[6];
-          this.online8 = this.data.online[7];
-          this.online9 = this.data.online[8];
-          this.online10 = this.data.online[9];
+          // this.online1 = this.data.online[0];
+          // this.online2 = this.data.online[1];
+          // this.online3 = this.data.online[2];
+          // this.online4 = this.data.online[3];
+          // this.online5 = this.data.online[4];
+          // this.online6 = this.data.online[5];
+          // this.online7 = this.data.online[6];
+          // this.online8 = this.data.online[7];
+          // this.online9 = this.data.online[8];
+          // this.online10 = this.data.online[9];
 
-          this.offline1 = this.data.offline[0];
-          this.offline2 = this.data.offline[1];
-          this.offline3 = this.data.offline[2];
-          this.offline4 = this.data.offline[3];
-          this.offline5 = this.data.offline[4];
-          this.offline6 = this.data.offline[5];
-          this.offline7 = this.data.offline[6];
-          this.offline8 = this.data.offline[7];
-          this.offline9 = this.data.offline[8];
-          this.offline10 = this.data.offline[9];
+          // this.offline1 = this.data.offline[0];
+          // this.offline2 = this.data.offline[1];
+          // this.offline3 = this.data.offline[2];
+          // this.offline4 = this.data.offline[3];
+          // this.offline5 = this.data.offline[4];
+          // this.offline6 = this.data.offline[5];
+          // this.offline7 = this.data.offline[6];
+          // this.offline8 = this.data.offline[7];
+          // this.offline9 = this.data.offline[8];
+          // this.offline10 = this.data.offline[9];
 
-          this.armda = this.data.arm;
-          this.disarmda = this.data.disarm;
+          // this.armda = this.data.arm;
+          // this.disarmda = this.data.disarm;
 
           
 
@@ -232,17 +232,42 @@ export class EditSmsManagerComponent implements OnInit {
       });
       
 
-    this.backend.getgatewayuserwise()
-    .subscribe((data)=> { 
-        console.log("Data:",data["data"]);
-        this.gateways = data["data"][0];
-    });
+    // this.backend.getgatewayuserwise()
+    // .subscribe((data)=> { 
+    //     console.log("Data:",data["data"]);
+    //     this.gateways = data["data"][0];
+    // });
+    this.gateways = [];
+      this.backend.getgatewayuserwise()
+      .subscribe((data)=> { 
+        console.log("All gateways:",data["data"]);
+
+ 
+        
+        for(var i = 0; i < data["data"].length; i++)
+        {
+          this.gateways = this.gateways.concat(data["data"][i]);
+        }
+        
+     
+
+        console.log("All gateways:",this.gateways);
+
+      });
   }
 
  
  
   onclick(z,x,y){
+
+ 
+
     if(z == 'arm_by_platform'){
+      if(x == 11){
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm_by_platform[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm_by_platform.length;k++){
         if(k+1 == x){
           this.data.arm_by_platform[k] = y;
@@ -250,6 +275,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'disarm_by_platform'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm_by_platform[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.disarm_by_platform.length;k++){
         if(k+1 == x){
           this.data.disarm_by_platform[k] = y;
@@ -257,6 +288,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'offline'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.offline[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.offline.length;k++){
         if(k+1 == x){
           this.data.offline[k] = y;
@@ -264,6 +301,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'online'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.online[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.online.length;k++){
         if(k+1 == x){
           this.data.online[k] = y;
@@ -271,6 +314,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'arm_by_keypad'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm_by_keypad[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm_by_keypad.length;k++){
         if(k+1 == x){
           this.data.arm_by_keypad[k] = y;
@@ -278,6 +327,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'disarm_by_keypad'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm_by_keypad[i] = y;
+        }
+      }
       for(var k = 0; k<this.data.disarm_by_keypad.length;k++){
         if(k+1 == x){
           this.data.disarm_by_keypad[k] = y;
@@ -287,99 +342,15 @@ export class EditSmsManagerComponent implements OnInit {
 
   }
 
-
-  
-  disarm(z,x,y){
-
-    if(z == 'first'){
-      for(var k = 0; k<this.data.disarm["1"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["1"][k] = y;
-        }
-      }
-    }
-    if(z == 'second'){
-      for(var k = 0; k<this.data.disarm["2"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["2"][k] = y;
-        }
-      }
-    }
-    if(z == 'third'){
-      for(var k = 0; k<this.data.disarm["3"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["3"][k] = y;
-        }
-      }
-    }
-    if(z == 'fourth'){
-      for(var k = 0; k<this.data.disarm["4"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["4"][k] = y;
-        }
-      }
-    }
-    if(z == 'fifth'){
-      for(var k = 0; k<this.data.disarm["5"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["5"][k] = y;
-        }
-      }
-    }
-    if(z == 'sixth'){
-      for(var k = 0; k<this.data.disarm["6"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["6"][k] = y;
-        }
-      }
-    }
-    if(z == 'seventh'){
-      for(var k = 0; k<this.data.disarm["7"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["7"][k] = y;
-        }
-      }
-    }
-    if(z == 'eighth'){
-      for(var k = 0; k<this.data.disarm["8"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["8"][k] = y;
-        }
-      }
-    }
-    if(z == 'nineth'){
-      for(var k = 0; k<this.data.disarm["9"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["9"][k] = y;
-        }
-      }
-    }
-    if(z == 'tenth'){
-      for(var k = 0; k<this.data.disarm["10"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["10"][k] = y;
-        }
-      }
-    }if(z == 'eleventh'){
-      for(var k = 0; k<this.data.disarm["11"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["11"][k] = y;
-        }
-      }
-    }if(z == 'tewelth'){
-      for(var k = 0; k<this.data.disarm["12"].length;k++){
-        if(k+1 == x){
-          this.data.disarm["12"][k] = y;
-        }
-      }
-    }
-
-  }
-
-
   arm(z,x,y){
 
     if(z == 'first'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["1"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["1"].length;k++){
         if(k+1 == x){
           this.data.arm["1"][k] = y;
@@ -387,6 +358,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'second'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["2"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["2"].length;k++){
         if(k+1 == x){
           this.data.arm["2"][k] = y;
@@ -394,6 +371,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'third'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["3"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["3"].length;k++){
         if(k+1 == x){
           this.data.arm["3"][k] = y;
@@ -401,6 +384,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'fourth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["4"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["4"].length;k++){
         if(k+1 == x){
           this.data.arm["4"][k] = y;
@@ -408,6 +397,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'fifth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["5"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["5"].length;k++){
         if(k+1 == x){
           this.data.arm["5"][k] = y;
@@ -415,6 +410,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'sixth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["6"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["6"].length;k++){
         if(k+1 == x){
           this.data.arm["6"][k] = y;
@@ -422,6 +423,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'seventh'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["7"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["7"].length;k++){
         if(k+1 == x){
           this.data.arm["7"][k] = y;
@@ -429,6 +436,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'eighth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["8"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["8"].length;k++){
         if(k+1 == x){
           this.data.arm["8"][k] = y;
@@ -436,6 +449,12 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'nineth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["9"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["9"].length;k++){
         if(k+1 == x){
           this.data.arm["9"][k] = y;
@@ -443,18 +462,36 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
     if(z == 'tenth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["10"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["10"].length;k++){
         if(k+1 == x){
           this.data.arm["10"][k] = y;
         }
       }
     }if(z == 'eleventh'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["11"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["11"].length;k++){
         if(k+1 == x){
           this.data.arm["11"][k] = y;
         }
       }
     }if(z == 'tewelth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.arm["12"][i] = y;
+        }
+      }
       for(var k = 0; k<this.data.arm["12"].length;k++){
         if(k+1 == x){
           this.data.arm["12"][k] = y;
@@ -462,7 +499,166 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
 
-   // console.log(this.data)
+    //console.log(this.data)
+  }
+
+  disarm(z,x,y){
+
+    if(z == 'first'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["1"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["1"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["1"][k] = y;
+        }
+      }
+    }
+    if(z == 'second'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["2"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["2"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["2"][k] = y;
+        }
+      }
+    }
+    if(z == 'third'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["3"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["3"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["3"][k] = y;
+        }
+      }
+    }
+    if(z == 'fourth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["4"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["4"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["4"][k] = y;
+        }
+      }
+    }
+    if(z == 'fifth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["5"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["5"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["5"][k] = y;
+        }
+      }
+    }
+    if(z == 'sixth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["6"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["6"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["6"][k] = y;
+        }
+      }
+    }
+    if(z == 'seventh'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["7"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["7"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["7"][k] = y;
+        }
+      }
+    }
+    if(z == 'eighth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["8"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["8"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["8"][k] = y;
+        }
+      }
+    }
+    if(z == 'nineth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["9"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["9"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["9"][k] = y;
+        }
+      }
+    }
+    if(z == 'tenth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["10"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["10"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["10"][k] = y;
+        }
+      }
+    }if(z == 'eleventh'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["11"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["11"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["11"][k] = y;
+        }
+      }
+    }if(z == 'tewelth'){
+      if(x == 11){
+        // alert("yes1")
+        for(var i = 0; i < 10 ; i++){
+           this.data.disarm["12"][i] = y;
+        }
+      }
+      for(var k = 0; k<this.data.disarm["12"].length;k++){
+        if(k+1 == x){
+          this.data.disarm["12"][k] = y;
+        }
+      }
+    }
+
   }
 
 

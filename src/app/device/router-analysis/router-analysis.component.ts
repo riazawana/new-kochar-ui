@@ -66,18 +66,20 @@ export class RouterAnalysisComponent implements OnInit {
 
   }
 
+  result:any = "";
+
   cmmd(x){
         var data = {
           "gl_mac_id":this.mac,
           "cmd": x
         }
 
-       // console.log(data);
+        console.log(data);
          
         this.backend.executeshellcommand(data)
         .subscribe((data)=> { 
-         //   console.log("Data:",data);
-  
+            console.log("Data:",data);
+             this.result = data["data"];
         });
 
 

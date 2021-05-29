@@ -2,6 +2,7 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-schdule-manager',
@@ -60,19 +61,41 @@ gateway:any;
        }, 1);
     }
 
+    // this.backend.getgatewayuserwise()
+    // .subscribe((data)=> { 
+      
+    //   console.log(data);
+    //     this.gateways = data["data"][0];
+
+    // });
+
+    this.getgatewaydata();
+    
+  }
+
+  getgatewaydata(){
+    this.gateways = [];
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
+      console.log("All gateways:",data["data"]);
+
+
       
-      console.log(data);
-        this.gateways = data["data"][0];
+      for(var i = 0; i < data["data"].length; i++)
+      {
+        this.gateways = this.gateways.concat(data["data"][i]);
+      }
+      
+   
+
+      console.log("All gateways:",this.gateways);
 
     });
-    
   }
 
   schdata:any = [];
 
-  getdata(x,y){
+  getdata(x){
     this.backend.getiotgatewayschedule(x)
     .subscribe((data)=> { 
       
@@ -95,13 +118,62 @@ gateway:any;
   }
 
 
-  deletefun(x,y){
-    this.backend.deleteiotgatewayschedule(x)
-    .subscribe((data)=> { 
+  // deletefun(x,y){
+  //   this.backend.deleteiotgatewayschedule(x)
+  //   .subscribe((data)=> { 
       
-      console.log(data);
+  //     console.log(data);
 
-    });
+  //   });
+  // }
+
+  deletefun(x){
+    //  alert(x)
+    // if (confirm('Are you sure to delete this record ?') == true) {
+  
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this Schedule!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+
+           this.backend.deleteiotgatewayschedule(x)
+    .subscribe((data)=> { 
+      this.gateways = [];
+      this.backend.getgatewayuserwise()
+      .subscribe((data)=> { 
+        console.log("All gateways:",data["data"]);
+        for(var i = 0; i < data["data"].length; i++)
+        {
+          this.gateways = this.gateways.concat(data["data"][i]);
+        }
+        console.log("All gateways:",this.gateways);
+      });
+        console.log(data);
+        this.getdata(x);
+        
+        
+      Swal.fire(
+        'Deleted!',
+        'Schedule has been deleted.',
+        'success'
+      )
+    });         
+        
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Schedule is safe :)',
+            'error'
+          )
+        }
+      }) 
+   
+  // }
   }
 
   addfun(){
@@ -109,4 +181,5 @@ gateway:any;
 
   }
 
+ 
 }

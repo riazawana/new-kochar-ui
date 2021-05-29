@@ -1,0 +1,70 @@
+
+<div class="row">
+    <div class="containt">
+        <div class="sub-heading">
+         
+            <h3>Tag Nearest Camera</h3>
+            <hr>
+         </div>
+  
+        <div class="form_holder" >
+
+            
+
+  <div class="row">
+     <div class="col-sm-4">
+      <p>      
+        <mat-form-field appearance="outline" id="gateway" class="selectcls">
+          <mat-label>Select Gateway</mat-label>
+          <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+            <mat-option *ngFor="let g of gateways" value="{{g.name}},{{g.mac_id}},{{g.client}}" (click)="selgateway(gateway)">{{g.name}}-{{g.location_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </p>
+     </div>
+     <div class="col-sm-4">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Sensor Name</mat-label>
+          <input matInput [(ngModel)]="sensor_name" name="sname" placeholder="Sensor Name">
+          <mat-hint>Sensor Name</mat-hint>
+        </mat-form-field>
+      </p>
+     </div>
+
+  
+
+  </div>
+  
+  <hr>
+
+  <div class="row">
+
+    <div class="col-sm-6"><p><b>Sensor Name</b></p></div>
+    <div class="col-sm-6"><p><b>Camera</b></p></div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6"><p>Sensorname1</p></div>
+    <div class="col-sm-6"><p>
+      <mat-form-field appearance="outline" id="gateway" class="selectcls">
+        <mat-label>Select Gateway</mat-label>
+        <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+          <mat-option *ngFor="let g of gateways" value="{{g.name}},{{g.mac_id}},{{g.client}}" >{{g.name}}-{{g.location_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p></div>
+
+  </div>
+            
+        </div>
+  
+    </div>
+    
+  </div>
+  
+  
+  
+  

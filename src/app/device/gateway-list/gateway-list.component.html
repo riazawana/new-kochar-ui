@@ -43,9 +43,9 @@
                 </div>
              
 
-                  <a (click)="edit(g.mac_id,g.client)">Edit</a>
+                  <!-- <a (click)="edit(g.mac_id,g.client)">Edit</a> -->
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <a (click)="delete(g.mac_id,g.client)">Delete</a>
+                  <a (click)="delete(g.mac_id,g.client)"><i class="fa fa-trash" aria-hidden="true"></i></a>
 
                 </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -56,16 +56,25 @@
                       <div>
                         <span class="label label-primary tempclass">Temp 1</span>                    
                         <span class="label label-primary tempclass">Temp 2</span>  
-                         &nbsp;&nbsp;
+                         &nbsp;
                         <i class="fa fa-refresh refreshcls pt-2" (click)="refreshtemp()"  aria-hidden="true"></i>   
                       </div>
                         <br>
-                      <div>
+                      <div *ngIf="temparray.length != 0">
                         <div *ngIf="temparray[i].length != 0">
-                          <span class="naclass ml-2">{{temparray[i].temp1}}</span>
-                          <span class="naclass ml-4">{{temparray[i].temp2}}</span> 
+                          <span class="naclass ml-2" *ngIf="g.devices[12].default_state == 1">{{temparray[i].temp1}}</span>
+                          <span class="naclass ml-2" *ngIf="g.devices[12].default_state == 0">NA</span>
+
+                          <span class="naclass ml-4" *ngIf="g.devices[13].default_state == 1">{{temparray[i].temp2}}</span> 
+                          <span class="naclass ml-4" *ngIf="g.devices[13].default_state == 0">NA</span> 
                         </div> 
                         <div *ngIf="temparray[i].length == 0">
+                          <span class="naclass ml-2">NA</span>
+                          <span class="naclass ml-4">NA</span> 
+                        </div> 
+                      </div>
+                      <div  *ngIf="temparray.length == 0">
+                        <div>
                           <span class="naclass ml-2">NA</span>
                           <span class="naclass ml-4">NA</span> 
                         </div> 
@@ -73,57 +82,32 @@
                     
                     </div>
  
-                      <div class="col-md-3" *ngIf="temparray[i].length != 0">
-                       <button type="button" *ngIf="temparray[i].relay1 == false" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
-                       <button type="button" *ngIf="temparray[i].relay1 == true" class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
-                       <button type="button" *ngIf="temparray[i].relay1 == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
-                       <button type="button" *ngIf="temparray[i].relay1 == false" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
-                     </div>
- 
-                     <div class="col-md-3"  *ngIf="temparray[i].length != 0">
-                       <button type="button" *ngIf="temparray[i].relay2 == false" class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
-                       <button type="button" *ngIf="temparray[i].relay2 == false" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}} / OFF</button>
-                       <button type="button" *ngIf="temparray[i].relay2 == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}} / ON</button>
-                       <button type="button" *ngIf="temparray[i].relay2 == true" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
-                  
-                       <!-- <i class="fa fa-refresh refreshcls pt-2"  (click)="sendMessage('relayrefresh',0,g.mac_id)" aria-hidden="true"></i> -->
-                    
-                      </div>  
-                      
-                      <div class="col-md-3" *ngIf="temparray[i].length == 0">
-                        <button type="button" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
-                        <button type="button" class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
+                 
+                      <div class="col-md-3" >
+                        <button type="button" *ngIf="relay1ons == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
+                        <button type="button" *ngIf="relay1ons == false" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
+                        
+                        <button type="button" *ngIf="relay1offs == true" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
+                        <button type="button" *ngIf="relay1offs == false"class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
+                     
                       </div>
-  
-                      <div class="col-md-3"  *ngIf="temparray[i].length == 0">
-                        <button type="button"  class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
-                        <button type="button"  class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
-                   
-                        <!-- <i class="fa fa-refresh refreshcls pt-2"  (click)="sendMessage('relayrefresh',0,g.mac_id)" aria-hidden="true"></i> -->
+ 
+                      <div class="col-md-3" >
+                        <button type="button" *ngIf="relay2ons == true" class="btn btn-success" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
+                        <button type="button" *ngIf="relay2ons == false"  class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
+                       
+                        <button type="button"  *ngIf="relay2offs == true" class="btn btn-success" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
+                        <button type="button"  *ngIf="relay2offs == false" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-edit" (click)="editrelay(g)"></i>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-refresh refreshcls pt-2" (click)="sendMessage('getrelaystatus','get',g.mac_id)"  aria-hidden="true"></i>   
                      
                        </div>  
                 
                 </div>
 
-                <!-- <div class="row" *ngIf="g.configuration != 'IN-14'">
-                 <div class="col-sm-3">
-
-                 </div> 
-                 <div class="col-sm-3" *ngIf="temparray[i].length != 0">
-                  <span class="naclass ml-2">{{temparray[i].temp1}}</span>
-                  <span class="naclass ml-4">{{temparray[i].temp2}}</span> 
-                </div> 
-                <div class="col-sm-3" *ngIf="temparray[i].length == 0">
-                  <span class="naclass ml-2">NA</span>
-                  <span class="naclass ml-4">NA</span> 
-                </div> 
-                <div class="col-sm-3">
-
-                </div> 
-                <div class="col-sm-3">
-
-                </div> 
-                </div> -->
+              
                    <hr> 
                    
                    <div class="row">
@@ -145,9 +129,10 @@
                     <div class="row" *ngFor="let p of g.devices">
                         <div class="col-sm-3">{{p.sensor_name}} </div>
     
-                        <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}} </div>
-                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 0)"> Disable </div>
-                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.sensor_status == 1)"> Enable </div>
+                <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}}  <span *ngIf="p.sensor_status == 0">(Non Triggered)</span> <span *ngIf="p.sensor_status == 1">(Triggered)</span> </div>
+
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 0)" > Disable </div>
+                        <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 1)"> Enable </div>
 
     
     

@@ -1,0 +1,20 @@
+<h3>Edit Relay</h3>
+
+<br>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Relay 1</mat-label>
+    <input matInput [(ngModel)]="relay1_name" name="relay1_name" >
+    <mat-hint>Relay 1</mat-hint>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Relay 2</mat-label>
+    <input matInput [(ngModel)]="relay2_name" name="relay2_name" >
+    <mat-hint>Relay 2</mat-hint>
+  </mat-form-field>
+</p>
+
+<button type="button" class="btn btn-primary" (click)="submit()">Submit</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-editrouter',
@@ -11,6 +12,7 @@ export class EditrouterComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
     private route: ActivatedRoute,
+    private _location:Location,
     private router: Router) { }
 
   
@@ -52,9 +54,9 @@ export class EditrouterComponent implements OnInit {
 
       this.backend.getrouter(this.id)
       .subscribe((data)=> { 
-          // console.log("Data:",data["data"][0]);
+           console.log("Data:",data["data"]);
 
-          this.data = data["data"][0];
+          this.data = data["data"].result[0];
 
 
           this.r_name = this.data.name;
@@ -77,6 +79,8 @@ export class EditrouterComponent implements OnInit {
   }
 
  submit(){
+  var da = JSON.parse(sessionStorage.getItem('userdata'));
+
    var data = {
     name: this.r_name,
     mac_id: this.m_a,
@@ -87,17 +91,22 @@ export class EditrouterComponent implements OnInit {
     zone_name: this.zone_name,
     location_name: this.location_name,
     client: this.client,
-    user_id:this.user_id
+    modified_by: da.name
+
    }
+
+
    
-  //  console.log(data);
+   
+   console.log(data);
 
    this.backend.updaterouter(data)
    .subscribe((data)=>{
            console.log(data);
 
        if(data["success"] == true){
-        this.router.navigate(["/kochar/Devices"]);
+        // this.router.navigate(["/kochar/Devices"]);
+      this._location.back();
        }
    })
 

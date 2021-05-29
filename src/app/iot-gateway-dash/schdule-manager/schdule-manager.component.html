@@ -38,8 +38,14 @@
                     <th scope="row">{{i+1}}</th>
                     <td>{{da.name}}</td>
                     <td>{{da.mac_id}}</td>
-                    <td>{{da.createdAt}}</td>
-                    <td><p (click)="viewfun(da.mac_id,da.client)">view</p> | <p (click)="editfun(da.mac_id,da.client)"> edit</p> | <p (click)="deletefun(da.mac_id,da.client)">delete</p></td>
+                    <td>{{ da.createdAt | date: 'dd/MM/yyyy'}}</td>
+                    <td><span (click)="viewfun(da.mac_id,da.client)">
+              <i class="fa fa-eye" ></i>
+                    </span> &nbsp;&nbsp;  <span (click)="editfun(da.mac_id,da.client)"> 
+              <i class="fa fa-edit" ></i>
+                    </span> &nbsp;&nbsp; <span (click)="deletefun(da.mac_id,da.client)">
+              <i class="fa fa-trash" ></i>
+                    </span></td>
                  
         
                   </tr>

@@ -110,7 +110,7 @@
           <div class="row" *ngIf="s.for_temperature == true">
             <div class="col-sm-3">
               <p>
-                <mat-checkbox class="example-margin" [(ngModel)]="s.default_state" [disabled]="!view"> Enable Temp {{s.port_number}} </mat-checkbox>
+                <mat-checkbox class="example-margin" [(ngModel)]="s.default_state" [disabled]="!view"> Enable {{s.sensor_name}} </mat-checkbox>
               </p>
             </div>
 

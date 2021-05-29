@@ -72,7 +72,7 @@ export class EditProfileComponent implements OnInit {
        this.state_id = this.user.state_id;
        this.city_id = this.user.city_id;
        this.pincode_id = this.user.pincode_id;
-        this.keycloak = this.user.keycloak_user_id;
+        this.keycloak = sessionStorage.getItem("userid");//this.user.keycloak_user_id;
 
         // alert(this.role_id);
         
@@ -154,13 +154,13 @@ this.backend.updateUserprofile(data)
  
    if(data["success"] == true){
      Swal.fire("User updated successfully!");
-    this.router.navigate(["/kochar/Profile"]);
+    this.router.navigate(["/kochar/profile"]);
    }
 });
 
 }
 
 cancel(){
-  this.router.navigate(["/kochar/Users"]);
+  this.router.navigate(["/kochar/profile"]);
 }
 }

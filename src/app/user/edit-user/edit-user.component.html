@@ -14,8 +14,8 @@
                       <br>
                   
                    <form  [formGroup]="edituserformGroup">
-                      <p>
-                          <mat-form-field appearance="outline" *ngIf="role_id !='business'">
+                      <p [style.display]="role_id !='business' ? 'block' : 'none'">
+                          <mat-form-field appearance="outline">
                             <mat-label>Name</mat-label>
                             <input matInput [(ngModel)]="name" name="name" placeholder="Name" required formControlName="name" >
                             <mat-error *ngIf="edituserformGroup.get('name').hasError('required')">

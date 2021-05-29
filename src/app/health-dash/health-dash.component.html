@@ -32,10 +32,12 @@
                       </th>
                       <td>
                           <div *ngFor="let r of da.routers;">
-                            <span *ngIf="r.is_online == false" class="reddot"></span>
-                            <span *ngIf="r.is_online == true" class="greendot"></span> 
+                            <span *ngIf="r.router_info.is_online == false" class="reddot"></span>
+                            <span *ngIf="r.router_info.is_online == undefined" class="reddot"></span>
+                            <span *ngIf="r.router_info.is_online == true" class="greendot"></span> 
+                            <a target="_blank" [routerLink]="['/kochar/Devices/openrouter',r.mac_id]">{{r.mac_id}}</a>
                      
-                              <span>{{r.mac_id}}</span>
+                              <!-- <span (click)="router_route(r.mac_id)">{{r.mac_id}}</span> -->
                                 <br>
                               <span (click)="detailsRouer(r.router_info.mode,r.router_info.version,r.router_info.meminfo,r.router_info.uptime,r.router_info.loadaverage)"><b>Details</b></span>
 
@@ -46,7 +48,10 @@
                             <span *ngIf="r.is_online == false" class="reddot"></span>
                             <span *ngIf="r.is_online == true" class="greendot"></span> 
                      
-                            <span>{{r.mac_id}}</span>
+                            <!-- <span (click)="IN_route(r.mac_id)">{{r.mac_id}}</span> -->
+                            
+                            <a target="_blank" [routerLink]="['/kochar/Devices/singleGatewayList',r.mac_id,r.client]">{{r.mac_id}}</a>
+
                               <br>
                               <span (click)="detailsIN(r.status,r.mode,r.keypad_status)"><b>Details</b></span>
 

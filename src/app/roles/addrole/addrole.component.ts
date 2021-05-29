@@ -200,50 +200,53 @@ export class AddroleComponent implements OnInit {
   addmodule(){
     var m;
 
- console.log(this.submodule_name)
-    if(this.submodule_name != undefined){
+    if(this.module_name != undefined){
+      console.log(this.submodule_name)
+      if(this.submodule_name != undefined){
+     
+       var new_smn_arr = [];
+      for(var k = 0; k < this.submodule_name.length; k++){
+        var newm = {
+          "submodule_name":this.submodule_name[k]
+        }
+        new_smn_arr.push(newm);
+      }
+        
+      m = {
+        "submodulemapping": true,
+        "submodulename": new_smn_arr,
+        "modulename": this.module_name
+      }
+    }else{
+      m = {
+        "submodulemapping": false,
+        "submodulename": [],
+        "modulename": this.module_name
+      }
+    }
+  
    
-     var new_smn_arr = [];
-    for(var k = 0; k < this.submodule_name.length; k++){
-      var newm = {
-        "submodule_name":this.submodule_name[k]
-      }
-      new_smn_arr.push(newm);
+    if(this.mapping.length == 0){
+      this.mapping.push(m);
     }
+    else{
+      for(var k = 0; k < this.mapping.length; k++){
       
-    m = {
-      "submodulemapping": true,
-      "submodulename": new_smn_arr,
-      "modulename": this.module_name
-    }
-  }else{
-    m = {
-      "submodulemapping": false,
-      "submodulename": [],
-      "modulename": this.module_name
-    }
-  }
-
- 
-  if(this.mapping.length == 0){
-    this.mapping.push(m);
-  }
-  else{
-    for(var k = 0; k < this.mapping.length; k++){
+        if(this.mapping[k].modulename == m.modulename){
+          // alert("Same module Exist")
     
-      if(this.mapping[k].modulename == m.modulename){
-        // alert("Same module Exist")
-  
-        this.mapping.splice(k,1);
+          this.mapping.splice(k,1);
+        }
       }
+      this.mapping.push(m);
     }
-    this.mapping.push(m);
-  }
- 
- 
+   
+   
+    
+          this.submodule_name = undefined;
+          this.module_name = '';
   
-        this.submodule_name = undefined;
-        this.module_name = '';
+    }
 
 
 

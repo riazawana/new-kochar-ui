@@ -299,10 +299,14 @@ export class AddtemplateComponent implements OnInit {
       this.sensordata = this.sensordata12;
       this.gateway_type = "IN-12"
       data = this.sensordata.concat(this.tempsensor);
-    }else{
+    } if(this.template_no == 14){
       this.sensordata = this.sensordata14;
       this.gateway_type = "IN-14"
       data = this.sensordata;
+    }else{
+      this.sensordata = this.sensordata12;
+      this.gateway_type = "IN-12T"
+      data = this.sensordata.concat(this.tempsensor);
     }
     var da = JSON.parse(sessionStorage.getItem('userdata'));
 
@@ -328,13 +332,20 @@ export class AddtemplateComponent implements OnInit {
     });
 
   }
-
+ portcount:any = 12;
   temp(x){
     
     if(x == 12){
       this.sensordata = this.sensordata12;
-    }else{
+      this.portcount = 12;
+    }if(x == 14){
       this.sensordata = this.sensordata14;
+      this.portcount = 14;
+
+    }else{
+      this.sensordata = this.sensordata12;
+      this.portcount = 12;
+
     }
   }
 

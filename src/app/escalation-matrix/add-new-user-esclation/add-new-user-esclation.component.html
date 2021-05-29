@@ -75,7 +75,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Phone</mat-label>
-                                  <input matInput [(ngModel)]="phone" name="phone" placeholder="Number">
+                                  <input matInput type="number" [(ngModel)]="phone" name="phone" [maxlength]="10"  placeholder="Number">
                                   <mat-hint>Phone</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -92,7 +92,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Email</mat-label>
-                                  <input matInput [(ngModel)]="email" name="email" placeholder="Email">
+                                  <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Email">
                                   <mat-hint>User Email</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -101,7 +101,7 @@
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>TAT</mat-label>
-                                  <input matInput [(ngModel)]="tat" name="tat" placeholder="tat">
+                                  <input matInput type="number" [(ngModel)]="tat" name="tat" placeholder="tat">
                                   <mat-hint>TAT</mat-hint>
                                 </mat-form-field>
                               </p>
@@ -112,7 +112,49 @@
                       </div>
 
                       <div style="width: 100%;text-align: center;">
-                        <button type="button" class="btn btn-danger" (click)="add()">add</button>
+                        <button type="button" class="btn btn-danger" (click)="add()">Add More</button>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <p>S.No</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>Name</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>Mobile</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>Designation</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>Email</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>Action</p>
+                        </div>
+                      </div>
+
+                      <div class="row" *ngFor = "let l of array.data; let i = index;">
+                        <div class="col-sm-2">
+                          <p>{{i+1}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>{{l.name}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>{{l.phone}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>{{l.designation}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p>{{l.email}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p (click)="del(i)">Delete</p>
+                        </div>
                       </div>
                          
 

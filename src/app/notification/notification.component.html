@@ -7,6 +7,116 @@
         <h3>Notification</h3>
         <hr>
      </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field appearance="outline" id="filter">
+          <mat-label>Filter</mat-label>
+          <mat-select [(ngModel)]="filter"  name="filter"  > 
+          <!-- (selectionChange)="dofilteran(filter)" -->
+            <mat-option  value="status"  >Status</mat-option>
+            <mat-option  value="tat" >TAT</mat-option>
+            <mat-option  value="location"  >Location</mat-option>
+            <mat-option  value="gateway" >Gateway</mat-option>
+    
+          </mat-select>
+        </mat-form-field>
+
+        <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+        <div *ngIf="filter == 'status'">
+          <h3><b>Status </b></h3>
+             
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [(ngModel)]="status">
+          <mat-radio-button class="example-radio-button" [value]="false">
+            Open
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button" [value]="true">
+            Closed
+          </mat-radio-button>
+          </mat-radio-group>
+              
+          </div>
+          
+          <div *ngIf="filter == 'tat'">
+              <h3><b>TAT </b></h3>
+                 
+              <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="tat">
+              <mat-radio-button class="example-radio-button" [value]="true">
+                On Time
+              </mat-radio-button>
+              <mat-radio-button class="example-radio-button" [value]="false">
+                Missed
+              </mat-radio-button>
+              </mat-radio-group>
+              </div>
+          
+          
+              <div *ngIf="filter == 'location'">
+                  <h3><b>Location </b></h3>
+                  <mat-form-field appearance="outline" id="hub">
+                      <mat-label>Location</mat-label>
+                      <mat-select  [(ngModel)]="location"  name="location">
+                      
+                        <mat-option *ngFor="let l of locations"  value="{{l.name}}"  >{{l.name}}</mat-option>
+          
+                      </mat-select>
+                    </mat-form-field>
+                   
+                      
+                  </div>
+          
+          
+                  <div *ngIf="filter == 'gateway'">
+                      <h3><b>Gateway </b></h3>
+                      <mat-form-field appearance="outline" id="hub">
+                          <mat-label>Gateway</mat-label>
+                          <mat-select  [(ngModel)]="gateway"  name="gateway">
+                          
+                            <mat-option *ngFor="let g of gateways"  value="{{g.mac_id}}"  >{{g.name}}</mat-option>
+              
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+            <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+                      
+        <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+      </div>
+      <div class="col-sm-4">
+
+        {{totalfilter}}
+
+        <button (click)="resetfilter()">Reset</button>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field appearance="outline" id="filterdate">
+          <mat-label>Filter by date</mat-label>
+          <mat-select [(ngModel)]="filterdate"  name="filterdate"  (selectionChange)="dofilter(filterdate)">
+          
+            <mat-option  value="today"  >Today</mat-option>
+            <mat-option  value="yes" >Today & Yesterday</mat-option>
+            <mat-option  value="7" >Last 7 days</mat-option>
+            <mat-option  value="28" >Last 28 days</mat-option>
+            <mat-option  value="90" >Last 90 days</mat-option>
+            <mat-option  value="365" >Last 365 days</mat-option>
+
+    
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  
+
      <mat-card>
        
       <div class="row">
@@ -67,7 +177,12 @@
           <!-- TaT Column -->
           <ng-container matColumnDef="tat">
             <th mat-header-cell *matHeaderCellDef> TaT </th>
-            <td mat-cell *matCellDef="let row"> {{row.tat}} </td>
+            <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
+              <br>
+              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed </span>
+              <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
+
+             </td>
           </ng-container>
   
           <!-- Remark Column -->
@@ -160,7 +275,12 @@
           <!-- TaT Column -->
           <ng-container matColumnDef="tat">
             <th mat-header-cell *matHeaderCellDef> TaT </th>
-            <td mat-cell *matCellDef="let row"> {{row.tat}} </td>
+            <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
+              <br>
+              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed </span>
+              <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
+
+             </td>
           </ng-container>
 
           <!-- Remark Column -->
@@ -189,6 +309,4 @@
   </div>
   
 </div>
-
-
 

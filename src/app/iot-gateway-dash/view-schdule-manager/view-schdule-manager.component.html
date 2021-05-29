@@ -3,7 +3,9 @@
   <div class="containt">
       <div class="sub-heading">
      
-          <h3>View Schedule manager</h3>
+          <h3 *ngIf="edit != true">View Schedule manager</h3>
+          <h3 *ngIf="edit == true">Edit Schedule manager</h3>
+
           <hr>
        </div>
 
@@ -13,9 +15,9 @@
               <div class="col-sm-8" style="font-size: 80%;">
                       <br>
                       <p>      
-                          <mat-form-field appearance="outline" id="gateway" class="selectcls">
+                          <mat-form-field appearance="outline" id="gateway" class="selectcls" >
                             <mat-label>Select Gateway</mat-label>
-                            <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+                            <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway" > 
                               <mat-option *ngFor="let g of gateways" value="{{g.mac_id}}" >{{g.name}}-{{g.location_name}}</mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -24,212 +26,45 @@
                       <hr>
                       <br>
 
-                       <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col">Days</th>
-                              <th scope="col">ARM</th>
-                              <th scope="col">DISARM</th>  
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">Monday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.monday.arm" name="mona" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.monday.disarm" name="mond" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Tuesday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.tuesday.arm" name="tuea" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.tuesday.disarm" name="tued" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-
-                            <tr>
-                              <th scope="row">Wednesday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.wednesday.arm" name="weda" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.wednesday.disarm" name="wedd" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Thursday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.thursday.arm" name="thua" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.thursday.disarm" name="thud" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-
-                            <tr>
-                              <th scope="row">Friday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.friday.arm" name="fria" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.friday.disarm" name="frid" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Saturday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.saturday.arm" name="sata" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.saturday.disarm" name="satd" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Sunday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.sunday.arm" name="suna" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.arm.sunday.disarm" name="sund" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-          
-                                       
-                          </tbody>
-                             
-                        </table>
-
-
-
-                       <hr>
-
                     
-<table class="table" *ngIf="gateway != undefined" style="text-align: center;">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col">Days</th>
-                              <th scope="col">RELAY 1 ON</th>
-                              <th scope="col">RELAY 1 OFF</th>    
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">Monday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.monday.on" name="mon1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.monday.off" name="mon1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
 
-                            <tr>
-                              <th scope="row">Tuesday</th>
-                              <td>
-                                  <input matInput  type="time" [(ngModel)]="da.relay1.tuesday.on" name="tue1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.tuesday.off" name="tue1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
+                      <div *ngIf="disable == true">
 
-
-                            <tr>
-                              <th scope="row">Wednesday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.wednesday.on" name="wed1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.tuesday.off" name="wed1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Thursday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.thursday.on" name="thu1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.thursday.off" name="thu1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-
-                            <tr>
-                              <th scope="row">Friday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.friday.on" name="fri1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.friday.off" name="fri1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Saturday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.saturday.on" name="sat1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.saturday.off" name="sat1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">Sunday</th>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.sunday.on" name="sun1o" placeholder="HH:MM" >
-                              </td>
-                              <td>
-                                  <input matInput type="time" [(ngModel)]="da.relay1.sunday.off" name="sun1f" placeholder="HH:MM" >
-                              </td>
-                            </tr>
-          
-                                       
-                          </tbody>
-                             
-                        </table>
-
-                      
-                          <hr>
-
-                          <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                            <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
                               <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">Days</th>
-                                  <th scope="col">RELAY 2 ON</th>
-                                  <th scope="col">RELAY 2 OFF</th>  
+                                  <th scope="col">ARM</th>
+                                  <th scope="col">DISARM</th>  
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
                                   <th scope="row">Monday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.monday.on" name="mon2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="mona" name="mona" placeholder="HH:MM"  > 
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mona')" ></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mona,'a')" ></i>
+  
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.monday.off" name="mon2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="mond" name="mond" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mond')" ></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mond,'aa')" ></i>
                                   </td>
                                 </tr>
   
                                 <tr>
                                   <th scope="row">Tuesday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.tuesday.on" name="tue2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="tuea" name="tuea" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tuea')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tuea,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.tuesday.off" name="tue2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="tued" name="tued" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tued')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tued,'aa')"></i>
                                   </td>
                                 </tr>
   
@@ -237,20 +72,28 @@
                                 <tr>
                                   <th scope="row">Wednesday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.wednesday.on" name="wed2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="weda" name="weda" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('weda')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(weda,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.wednesday.off" name="wed2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="wedd" name="wedd" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('wedd')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(wedd,'aa')"></i>
                                   </td>
                                 </tr>
   
                                 <tr>
                                   <th scope="row">Thursday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.thursday.on" name="thu2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="thua" name="thua" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thua')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thua,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.thursday.off" name="thu2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="thud" name="thud" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thud')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thud,'aa')"></i>
                                   </td>
                                 </tr>
   
@@ -258,30 +101,42 @@
                                 <tr>
                                   <th scope="row">Friday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.friday.on" name="fri2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="fria" name="fria" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('fria')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(fria,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.friday.off" name="fri2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="frid" name="frid" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('frid')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(frid,'aa')"></i>
                                   </td>
                                 </tr>
   
                                 <tr>
                                   <th scope="row">Saturday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.saturday.on" name="sat2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="sata" name="sata" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sata')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sata,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.saturday.off" name="sat2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="satd" name="satd" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('satd')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(satd,'aa')"></i>
                                   </td>
                                 </tr>
   
                                 <tr>
                                   <th scope="row">Sunday</th>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.sunday.on" name="sun2o" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="suna" name="suna" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('suna')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(suna,'a')"></i>
                                   </td>
                                   <td>
-                                      <input matInput type="time" [(ngModel)]="da.relay2.sunday.off" name="sun2f" placeholder="HH:MM" >
+                                      <input class="ip" matInput type="time" [(ngModel)]="sund" name="sund" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sund')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sund,'aa')"></i>
                                   </td>
                                 </tr>
               
@@ -289,11 +144,607 @@
                               </tbody>
                                  
                             </table>
+  
+  
+  
+                           <hr>
+  
+                        
+   <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">Days</th>
+                                  <th scope="col">RELAY 1 ON</th>
+                                  <th scope="col">RELAY 1 OFF</th>    
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Monday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="mon1o" name="mon1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mon1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mon1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="mon1f" name="mon1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mon1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mon1f,'bb')"></i>
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Tuesday</th>
+                                  <td>
+                                      <input class="ip" matInput  type="time" [(ngModel)]="tue1o" name="tue1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tue1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tue1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="tue1f" name="tue1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tue1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tue1f,'bb')"></i>
+                                  </td>
+                                </tr>
+  
+  
+                                <tr>
+                                  <th scope="row">Wednesday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="wed1o" name="wed1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('wed1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(wed1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="wed1f" name="wed1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('wed1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(wed1f,'bb')"></i>
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Thursday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="thu1o" name="thu1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thu1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thu1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="thu1f" name="thu1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thu1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thu1f,'bb')"></i>
+                                    </td>
+                                </tr>
+  
+  
+                                <tr>
+                                  <th scope="row">Friday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="fri1o" name="fri1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('fri1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(fri1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="fri1f" name="fri1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('fri1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(fri1f,'bb')"></i>
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Saturday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="sat1o" name="sat1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sat1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sat1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="sat1f" name="sat1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sat1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sat1f,'bb')"></i>
+                                  </td>
+                                </tr>
+  
+                                <tr>
+                                  <th scope="row">Sunday</th>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="sun1o" name="sun1o" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sun1o')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sun1o,'b')"></i>
+                                  </td>
+                                  <td>
+                                      <input class="ip" matInput type="time" [(ngModel)]="sun1f" name="sun1f" placeholder="HH:MM" >
+                                      &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sun1f')"></i>
+                                      &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sun1f,'bb')"></i>
+                                  </td>
+                                </tr>
+              
+                                           
+                              </tbody>
+                                 
+                            </table>
+  
+                          
+                              <hr>
+  
+                              <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Days</th>
+                                      <th scope="col">RELAY 2 ON</th>
+                                      <th scope="col">RELAY 2 OFF</th>  
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Monday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="mon2o" name="mon2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mon2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mon2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="mon2f" name="mon2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('mon2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(mon2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+                                    <tr>
+                                      <th scope="row">Tuesday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="tue2o" name="tue2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tue2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tue2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="tue2f" name="tue2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('tue2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(tue2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+      
+                                    <tr>
+                                      <th scope="row">Wednesday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="wed2o" name="wed2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('wed2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(wed2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="wed2f" name="wed2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('wed2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(wed2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+                                    <tr>
+                                      <th scope="row">Thursday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="thu2o" name="thu2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thu2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thu2o,'cc')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="thu2f" name="thu2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('thu2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(thu2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+      
+                                    <tr>
+                                      <th scope="row">Friday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="fri2o" name="fri2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('fri2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(fri2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="fri2f" name="fri2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('fri2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(fri2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+                                    <tr>
+                                      <th scope="row">Saturday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="sat2o" name="sat2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sat2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sat2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="sat2f" name="sat2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sat2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sat2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+      
+                                    <tr>
+                                      <th scope="row">Sunday</th>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="sun2o" name="sun2o" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sun2o')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sun2o,'c')"></i>
+                                      </td>
+                                      <td>
+                                          <input class="ip" matInput type="time" [(ngModel)]="sun2f" name="sun2f" placeholder="HH:MM" >
+                                          &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" (click)="clear('sun2f')"></i>
+                                          &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" (click)="copy(sun2f,'cc')"></i>
+                                      </td>
+                                    </tr>
+                  
+                                               
+                                  </tbody>
+                                     
+                                </table>
 
 
+</div>
+
+
+
+
+                                <div *ngIf="disable == false">
+                                  <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">Days</th>
+                                        <th scope="col">ARM</th>
+                                        <th scope="col">DISARM</th>  
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Monday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="mona" name="mona" placeholder="HH:MM" [disabled]="!disable" > 
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+        
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="mond" name="mond" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"   ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"   ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Tuesday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="tuea" name="tuea" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="tued" name="tued" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+                                        </td>
+                                      </tr>
+        
+        
+                                      <tr>
+                                        <th scope="row">Wednesday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="weda" name="weda" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="wedd" name="wedd" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Thursday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="thua" name="thua" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="thud" name="thud" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+        
+                                      <tr>
+                                        <th scope="row">Friday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="fria" name="fria" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="frid" name="frid" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Saturday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sata" name="sata" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="satd" name="satd" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Sunday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="suna" name="suna" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sund" name="sund" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+                    
+                                                 
+                                    </tbody>
+                                       
+                                  </table>
+        
+        
+        
+                                 <hr>
+        
+                              
+         <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">Days</th>
+                                        <th scope="col">RELAY 1 ON</th>
+                                        <th scope="col">RELAY 1 OFF</th>    
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Monday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="mon1o" name="mon1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="mon1f" name="mon1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Tuesday</th>
+                                        <td>
+                                            <input class="ip" matInput  type="time" [(ngModel)]="tue1o" name="tue1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="tue1f" name="tue1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+        
+                                      <tr>
+                                        <th scope="row">Wednesday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="wed1o" name="wed1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="wed1f" name="wed1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Thursday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="thu1o" name="thu1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="thu1f" name="thu1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                          </td>
+                                      </tr>
+        
+        
+                                      <tr>
+                                        <th scope="row">Friday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="fri1o" name="fri1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="fri1f" name="fri1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Saturday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sat1o" name="sat1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sat1f" name="sat1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+        
+                                      <tr>
+                                        <th scope="row">Sunday</th>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sun1o" name="sun1o" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                        <td>
+                                            <input class="ip" matInput type="time" [(ngModel)]="sun1f" name="sun1f" placeholder="HH:MM" [disabled]="!disable">
+                                            &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                            &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                        </td>
+                                      </tr>
+                    
+                                                 
+                                    </tbody>
+                                       
+                                  </table>
+        
+                                
+                                    <hr>
+        
+                                    <table class="table" *ngIf="gateway != undefined" style="text-align: center;">
+                                        <thead class="thead-dark">
+                                          <tr>
+                                            <th scope="col">Days</th>
+                                            <th scope="col">RELAY 2 ON</th>
+                                            <th scope="col">RELAY 2 OFF</th>  
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">Monday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="mon2o" name="mon2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="mon2f" name="mon2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                          </tr>
+            
+                                          <tr>
+                                            <th scope="row">Tuesday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="tue2o" name="tue2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="tue2f" name="tue2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                          </tr>
+            
+            
+                                          <tr>
+                                            <th scope="row">Wednesday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="wed2o" name="wed2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="wed2f" name="wed2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                          </tr>
+            
+                                          <tr>
+                                            <th scope="row">Thursday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="thu2o" name="thu2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="thu2f" name="thu2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                          </tr>
+            
+            
+                                          <tr>
+                                            <th scope="row">Friday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="fri2o" name="fri2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="fri2f" name="fri2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                          </tr>
+            
+                                          <tr>
+                                            <th scope="row">Saturday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="sat2o" name="sat2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true" ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="sat2f" name="sat2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+                                            </td>
+                                          </tr>
+            
+                                          <tr>
+                                            <th scope="row">Sunday</th>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="sun2o" name="sun2o" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true" ></i>
+                                            </td>
+                                            <td>
+                                                <input class="ip" matInput type="time" [(ngModel)]="sun2f" name="sun2f" placeholder="HH:MM" [disabled]="!disable">
+                                                &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"  ></i>
+                                                &nbsp;&nbsp; <i class="fa fa-copy" aria-hidden="true"  ></i>
+                                            </td>
+                                          </tr>
+                        
+                                                     
+                                        </tbody>
+                                           
+                                      </table>
+        
+                                </div>
+  
 
 
                         <button type="button" *ngIf="edit == true" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+                        <button type="button" *ngIf="edit == true" class="btn btn-danger" (click)="cancel()">Cancel</button>
 
               </div>
               <div class="col-sm-2"></div>

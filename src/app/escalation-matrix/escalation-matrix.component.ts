@@ -52,7 +52,6 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.getescalation();
   }
 
 
@@ -68,6 +67,8 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
        dialogRef.afterClosed().subscribe(result => {
         //  console.log('The dialog  two was closed');
+        this.getescalation();
+
        });
      }
 

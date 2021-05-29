@@ -4,6 +4,8 @@ import { IotGatewayDashComponent } from './iot-gateway-dash.component';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { GatewaysComponent } from './gateways/gateways.component';
 import { AddtemplateComponent } from './addtemplate/addtemplate.component';
+import { TagcameraComponent } from './tagcamera/tagcamera.component';
+
 
 import { GatwaysStatusComponent } from './gatways-status/gatways-status.component';
 import { NotificationManagerComponent } from './notification-manager/notification-manager.component';
@@ -53,6 +55,7 @@ const userRoutes: Routes =[
     {path:'viewschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
     {path:'editschedule/:id/:cli',component: ViewSchduleManagerComponent,canActivate:[AuthGuard]},
     {path:'addschedule',component: AddSchduleManagerComponent,canActivate:[AuthGuard]},
+    {path:'Tag Camera',component: TagcameraComponent,canActivate:[AuthGuard]},
 
     
     {path:'Templates',component: TemplateListComponent,canActivate:[AuthGuard]},
@@ -85,7 +88,8 @@ const userRoutes: Routes =[
     SchduleManagerComponent,
     ViewSmsManagerComponent,
     EditSmsManagerComponent, 
-    AddSchduleManagerComponent
+    AddSchduleManagerComponent,
+    TagcameraComponent,
   ],
   imports: [
     RouterModule.forChild(userRoutes),

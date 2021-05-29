@@ -66,35 +66,80 @@ export class AddNewUserEsclationComponent implements OnInit {
 
   }
 
-  onsubmit(){   
-
-    this.backend.addescalationmatrix(this.array)
-    .subscribe((data)=> { 
-      console.log(data);
-      if(data["success"]==true){
-        Swal.fire("Escalation matrix added successfully");
-       this._location.back();
-      }
-      
-    })    
-    }
-
-    array:any = {
-      data:[]
-    };
-
-
-    add(){
+  onsubmit(){  
+    // alert("sub");
+    console.log(this.array);
+    if(this.array.data.length == 0){
+      // alert("direct submit")
 
       var da = JSON.parse(sessionStorage.getItem('userdata'));
       var h = this.hub.split(",");
       var la = this.location_id.split(",");
       this.client =  la[2];
 
-      // alert(la[0]);
-      // alert(la[1]);
-      // alert(la[2]);
+      var single =
+        {
+      email:this.email,
+      phone:this.phone,
+      name:this.name,
+      notification_category:this.notification_category,
+      location_id:la[0],
+      location_name:la[1],
+      gateway_id: h[2],
+      level:this.level,
+      designation:this.designation,
+      tat:this.tat,
+      created_by:da["name"],
+      client:this.client,
+      device_type:[
+        {
+          "type": "iot_gateway",
+          "mac_id": h[1],
+          "gateway_name": h[0]
+        }
+      ]
+        }
 
+        this.array.data.push(single);
+
+      this.backend.addescalationmatrix(this.array)
+      .subscribe((data)=> { 
+        console.log(data);
+        if(data["success"]==true){
+          Swal.fire("Escalation matrix added successfully");
+         this._location.back();
+        }
+        
+      })  
+    }else{
+      this.backend.addescalationmatrix(this.array)
+      .subscribe((data)=> { 
+        console.log(data);
+        if(data["success"]==true){
+          Swal.fire("Escalation matrix added successfully");
+         this._location.back();
+        }
+        
+      })  
+    }
+
+    
+    }
+
+    array:any = {
+      data:[]
+    };
+    del(x){
+      this.array.data.splice(x, 1);
+    }
+
+    add(){
+    
+
+      var da = JSON.parse(sessionStorage.getItem('userdata'));
+      var h = this.hub.split(",");
+      var la = this.location_id.split(",");
+      this.client =  la[2];
 
     var newadd =
         {

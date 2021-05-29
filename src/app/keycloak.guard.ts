@@ -25,7 +25,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     if (!this.authenticated) {
       await this.keycloak.login({
 
-        redirectUri: 'http://localhost:4200/#/kochar/profile/',
+        redirectUri: window.location.href,//'http://localhost:4200/#/kochar/profile/',
 
      });
     }

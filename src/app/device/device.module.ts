@@ -4,7 +4,7 @@ import { DeviceComponent } from './device.component';
 import { EditrouterComponent } from './editrouter/editrouter.component';
 import { EditenergyMeterComponent } from './editenergy-meter/editenergy-meter.component';
 import { VideogatewayComponent } from './videogateway/videogateway.component';
-
+import { RelaychangeModalComponent } from './relaychange-modal/relaychange-modal.component'
 import { LocationComponent } from './location/location.component';
 import { AddlocationComponent } from './addlocation/addlocation.component';
 // import { AddmoduleComponent } from './addmodule/addmodule.component';
@@ -74,6 +74,7 @@ const userRoutes: Routes =[
     {path:'addgateway/:idz/:id',component: AddlocationComponent,canActivate:[AuthGuard]},
     {path:'addnewlocation/:id',component: AddnewlocationComponent,canActivate:[AuthGuard]},
     {path:'GatewayList/:idz/:id',component: GatewayListComponent,canActivate:[AuthGuard]},
+    {path:'singleGatewayList/:mac/:cli',component: GatewayListComponent,canActivate:[AuthGuard]},
     {path:'editrouter/:id',component:EditrouterComponent,canActivate:[AuthGuard]},
     {path:'editenergymeter/:id',component:EditenergyMeterComponent,canActivate:[AuthGuard]},
     {path:'devicelist/:idz/:id',component: DeviceComponent,canActivate:[AuthGuard]},
@@ -103,6 +104,7 @@ const userRoutes: Routes =[
     AddrouterComponent,
     LocationComponent,
     AddlocationComponent,
+    RelaychangeModalComponent,
     // AddmoduleComponent,
     ZoneDeviceComponent,
     GatewayListComponent,

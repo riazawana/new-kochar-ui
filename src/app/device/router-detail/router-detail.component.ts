@@ -96,7 +96,18 @@ export class RouterDetailComponent implements OnInit {
   }
 
   reboot(){
+    var data = {
+      "gl_mac_id":this.data.mac_id,
+      "cmd": "REBOOT"
+    }
 
+    console.log(data);
+     
+    this.backend.executeshellcommand(data)
+    .subscribe((data)=> { 
+        console.log("Data:",data);
+        alert("Command has been schedule successfully, it will take some time!")
+    });
   }
 analysis(x,y)
 {
@@ -106,10 +117,13 @@ analysis(x,y)
 }
 
 firmware(x){
-  alert(x);
+  // alert(x);
   this.backend.routerfirmwareupdate(x)
   .subscribe((data)=> { 
-      // console.log("Data:",data["data"]);
+       console.log("Data:",data);
+        if(data["success"] == true){
+          alert(data["msg"]);
+        }
   });
 }
 

@@ -2,6 +2,7 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 
 @Component({
@@ -24,105 +25,105 @@ delete:boolean = false;
 
 gateways:any;
 
- data =  [
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 1
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 2
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 3
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 4
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 5
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 6
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 7
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 8
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 9
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 10
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 11
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 12
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 13
-  },
-  {
-      "_id": "",
-      "notif_arm": false,
-      "notif_diarm": false,
-      "sensor_name": "",
-      "port_number": 14
-  }
+ data =  [ 
+   {
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 1
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 2
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 3
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 4
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 5
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 6
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 7
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 8
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 9
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 10
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 11
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 12
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 13
+},
+{
+  "client": "",
+  "notif_arm": false,
+  "notif_diarm": false,
+  "mac_id": "",
+  "port_number": 14
+}
 ]
 
   ngOnInit(){
@@ -160,14 +161,20 @@ gateways:any;
        }, 1);
     }
 
-    this.backend.getgatewayuserwise()
-    .subscribe((data)=> { 
-       
+  
+    this.gateways = [];
+      this.backend.getgatewayuserwise()
+      .subscribe((data)=> { 
+        console.log("All gateways:",data["data"]);
 
+        for(var i = 0; i < data["data"].length; i++)
+        {
+          this.gateways = this.gateways.concat(data["data"][i]);
+        }
+  
+        console.log("All gateways:",this.gateways);
 
-        this.gateways = data["data"][0];
-
-    });
+      });
     
   }
   ports:any = [];
@@ -178,17 +185,16 @@ gateway:any;
     .subscribe((data)=> { 
       console.log("Data:",data);
         this.ports = data["data"];
-        
         this.data = data["data"];
 
     });
 
   }
 
-  onclick(type,value,id){
+  onclick(type,value,port_number){
        
    for(var k = 0; k<this.data.length; k++){
-        if(this.data[k]._id == id){
+        if(this.data[k].port_number == port_number){
           if(type == "notif_arm"){
             this.data[k].notif_arm = value;
           }else{
@@ -202,7 +208,7 @@ gateway:any;
 
 
   submit(){
-    // console.log(this.data);
+     console.log(this.data);
      var da = {
        data:this.data
      }
@@ -210,9 +216,20 @@ gateway:any;
     .subscribe((data)=> { 
         console.log("Data:",data);
 
+        if(data["success"]== true){
+         Swal.fire("Notification Setting updated successfully!");
+        }
+
     });
 
   }
   
 
 }
+
+
+
+
+
+ 
+ 
