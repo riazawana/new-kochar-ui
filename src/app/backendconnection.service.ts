@@ -195,7 +195,33 @@ export class BackendconnectionService {
   }
 
 
+  //////////camera tag ////////////////
+
+   //202.164.38.204:3003/getCameraInfoLocationWise?location_name=medical enclave&client=amit_sharma
+
+   getCameraInfoLocationWise(x,y){
+    this.auth();
+    return this.httpClient.get(this.api+'/getCameraInfoLocationWise?location_name='+x+'&client='+y,this.httpOptions);
+  }
+
+
+
+   //202.164.38.204:3003/getdevicecameramapping?mac_id=12:12:12:12:12:12
+
+   getdevicecameramapping(x){
+    this.auth();
+    return this.httpClient.get(this.api+'/getdevicecameramapping?mac_id='+x,this.httpOptions);
+  }
+
+   //202.164.38.204:3003/updatedevicecameramapping
+
+   updatedevicecameramapping(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/updatedevicecameramapping',data,this.httpOptions);
   
+  }
+
+  ////////////////////////////////////
 
   deletefeature(x,t){
     this.auth();

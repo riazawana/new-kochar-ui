@@ -50,3 +50,5 @@ border-color: var(--prime-color);
     background-color: var(--prime-hover);
 border-color: var(--prime-hover);
 }
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick{color:#ff3000;}

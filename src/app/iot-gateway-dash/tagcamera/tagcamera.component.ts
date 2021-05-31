@@ -36,7 +36,9 @@ export class TagcameraComponent implements OnInit {
 selgateway(gateway){
     alert(gateway);
      var val = gateway.split(",")
-    this.backend.getiotgateway(val[1],val[2])
+     var cli = val[2] ;
+     var mac = val[1];
+    this.backend.getdevicecameramapping(mac)
   .subscribe((data)=> { 
     console.log(data)
   })
