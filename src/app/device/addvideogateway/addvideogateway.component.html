@@ -21,16 +21,16 @@
                                 <mat-form-field appearance="outline">
                                     <mat-label>Select Brand</mat-label>
                                     <mat-select placeholder="Type" [(ngModel)]="brand" name="brand">
-                                      <mat-option  value="Shinobi" >Shinobi</mat-option>
-                                      <mat-option  value="Hikvision" >Hikvision</mat-option>
-                                      <mat-option  value="Camera Manager" >Camera Manager</mat-option>
+                                      <mat-option  value="shinobi" >Shinobi</mat-option>
+                                      <mat-option  value="hikvision" >Hikvision</mat-option>
+                                      <mat-option  value="camera manager" >Camera Manager</mat-option>
                                       
                                     </mat-select>
                                   <mat-hint>Select Brand</mat-hint>
                                 </mat-form-field>
                               </p>
 
-                              <p *ngIf="brand == 'Hikvision'">
+                              <p *ngIf="brand == 'hikvision'">
                                 <mat-label>Category</mat-label>
                                 <mat-radio-group aria-label="Category" [(ngModel)]="cat" name="cat">
                                     <mat-radio-button value="nvr"> NVR </mat-radio-button>
@@ -41,7 +41,7 @@
         
                      
 
-                              <p *ngIf="brand != 'Camera Manager'">
+                              <p *ngIf="brand != 'camera manager'">
                                 <mat-form-field appearance="outline">
                                   <mat-label>HOST Address</mat-label>
                                   <input matInput [(ngModel)]="host_add" name="host_add" placeholder="Eg:'https://example.com'">
@@ -49,7 +49,7 @@
                                 </mat-form-field>
                               </p>
 
-                              <p *ngIf="brand == 'Hikvision'">
+                              <p *ngIf="brand == 'hikvision'">
                                 <mat-form-field appearance="outline">
                                   <mat-label>RTSP PORT</mat-label>
                                   <input matInput [(ngModel)]="rtsp_port" name="rtsp_port" placeholder="554">
@@ -65,7 +65,7 @@
                                 </mat-form-field>
                               </p>
 
-                              <p *ngIf="(brand == 'Hikvision')&&((cat == 'xvr')||(cat == 'dvr'))">
+                              <p *ngIf="(brand == 'hikvision')&&((cat == 'xvr')||(cat == 'dvr'))">
                                 <mat-form-field appearance="outline">
                                     <mat-label>No of analog port</mat-label>
                                     <mat-select placeholder="analog_ports_count" [(ngModel)]="analog_ports_count" name="analog_ports_count">

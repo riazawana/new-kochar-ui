@@ -1,7 +1,6 @@
-import { AfterViewInit,OnInit,Component,Inject ,OnDestroy,ViewChild,ViewChildren,QueryList } from '@angular/core';
+import { AfterViewInit,OnInit,Component ,OnDestroy,ViewChild,ViewChildren,QueryList } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import {SocketioService} from "../socketio.service";
@@ -12,7 +11,6 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
-import { FilterModalComponent } from './filter-modal/filter-modal.component';         
 
 
 export interface health {
@@ -73,9 +71,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
   constructor(
     private backend: BackendconnectionService,
     private router:Router,   
-    private soc:SocketioSendmsgService,  private dialog: MatDialog,
-    public dialogRef: MatDialogRef<FilterModalComponent>,    
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private soc:SocketioSendmsgService,    
   ) {
     this.dataSource = new MatTableDataSource;
     this.dataSource2 = new MatTableDataSource;
@@ -300,7 +296,7 @@ getgateway(){
     this.totalfilter +=  "?"+fildata
      }
   
-     alert(this.totalfilter);
+    // alert(this.totalfilter);
      this.filterfun(this.totalfilter);
    
   }

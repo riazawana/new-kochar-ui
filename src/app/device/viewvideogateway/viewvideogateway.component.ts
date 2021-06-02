@@ -86,7 +86,12 @@ onNoClick2(): void {
   
   getallRtspinterval:any;
   cameralistinterval:any;
-
+  cameradetails :any = {
+    location_name:'',
+    zone_name:'',
+    name:'',
+    host:''
+  };
   ngOnInit(): void {
 
 
@@ -98,6 +103,7 @@ onNoClick2(): void {
     this.backend.getvideogateways(this.id)
     .subscribe((data)=> { 
        console.log("User Data",data);
+       this.cameradetails = data["data"][0];
        this.mac_id = data['data'][0].mac_id;
 
 

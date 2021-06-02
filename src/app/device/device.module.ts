@@ -12,6 +12,7 @@ import { ZoneDeviceComponent } from './zone-device/zone-device.component';
 import { GatewayListComponent } from './gateway-list/gateway-list.component';
 import { RouterDetailComponent } from './router-detail/router-detail.component';
 import { AddvideogatewayComponent } from './addvideogateway/addvideogateway.component';
+import { EditvideogatewayComponent } from './editvideogateway/editvideogateway.component';
 import { ViewvideogatewayComponent } from './viewvideogateway/viewvideogateway.component';
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import { PortSettingComponent } from './port-setting/port-setting.component';
@@ -77,8 +78,8 @@ const userRoutes: Routes =[
     {path:'singleGatewayList/:mac/:cli',component: GatewayListComponent,canActivate:[AuthGuard]},
     {path:'editrouter/:id',component:EditrouterComponent,canActivate:[AuthGuard]},
     {path:'editenergymeter/:id',component:EditenergyMeterComponent,canActivate:[AuthGuard]},
+    {path:'editvideogateway/:id',component:EditvideogatewayComponent,canActivate:[AuthGuard]},
     {path:'devicelist/:idz/:id',component: DeviceComponent,canActivate:[AuthGuard]},
-
     {path:'addvideogateway/:idz/:id',component:AddvideogatewayComponent,canActivate:[AuthGuard]},
     {path:'Video/:idz/:id',component:VideogatewayComponent,canActivate:[AuthGuard]},
     {path:'viewvideo/:id',component: ViewvideogatewayComponent,canActivate:[AuthGuard]},
@@ -87,6 +88,7 @@ const userRoutes: Routes =[
     {path:'Energy Management/Secondary Gateway',component: SecondryGatewayComponent,canActivate:[AuthGuard]},
     {path:'Energy Management/Smartmeter',component: SmartMeterComponent,canActivate:[AuthGuard]},
     {path:'Zones',component: ZoneDeviceComponent,canActivate:[AuthGuard]},
+    
   ]
 
 
@@ -97,6 +99,7 @@ const userRoutes: Routes =[
     EditenergyMeterComponent,
     VideogatewayComponent,
     AddvideogatewayComponent,
+    EditvideogatewayComponent,
     ViewvideogatewayComponent,
     CameraModalComponent,
     PortSettingComponent,

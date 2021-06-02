@@ -19,14 +19,14 @@
         </div>
        </div>
 
-       <div class="row">
+       <div class="row" >
         <div class="col-sm-4">
-            <p>Name : asdf</p>
-            <p>Address : asdf</p>
+            <p>Name : {{cameradetails.location_name}}</p>
+            <p>Zone : {{cameradetails.zone_name}}</p>
         </div>
         <div class="col-sm-4">
-            <p>Name :  TestNVR IOT</p>
-            <p>Host :  http://123.53.345:1312</p>
+            <p>Name :  {{cameradetails.name}}</p>
+            <p>Host :  {{cameradetails.host}}</p>
         </div>
         <div class="col-sm-4">
             <p>Camera Zero <button (click)="getlivefeed(this.zero.hls)">b</button></p>

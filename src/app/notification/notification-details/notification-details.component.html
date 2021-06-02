@@ -16,8 +16,8 @@
         </div>
         <div class="row col-md-12 divclass pt-2">
             <div class="col-md-4">
-             <label>Priority: {{data.priority}}</label>
-             <span class="priorityclass ml-1 pb-1 pt-1 pr-1 pl-1">P1</span>
+             <label>Priority: </label>
+             <span class="priorityclass ml-1 pb-1 pt-1 pr-1 pl-1">{{data.priority}}</span>
             </div>
             <div class="col-md-4">
                 <label *ngIf="data.notification_category_name == 'Risk Assessment' && data.notification_type ==  'iot gateway'">Room: {{data.data.room_name}} </label>
@@ -74,7 +74,20 @@
                     
 
                     <div class="row col-md-6">
-                        <h3 class="footage pt-4">Your Footage is loading...</h3>
+                      <p (click)="onclose()"><b>X</b></p>
+                      <video id="video"  controls style="width:500px;height:270px;"></video>
+                        <!-- <h3 class="footage pt-4">Your Footage is loading...</h3> -->
+                        <mat-form-field appearance="outline" id="cuncamera">
+                          <mat-label>Select Camera</mat-label>
+                          <mat-select [(ngModel)]="cuncamera"  name="cuncamera"  (selectionChange)="runcamera(cuncamera)">
+                            <mat-option *ngFor="let c of camdata"  value="{{c.rtsp_url}}"  > 
+                              <span class="reddot" *ngIf="c.status == 'false'"></span>
+                              <span class="greendot" *ngIf="c.status == 'true'"></span> {{c.name}} - {{nvrname}}
+                            </mat-option>
+                            <mat-option value="channel_zero_resp.rtsp_url">{{channel_zero_resp.name}} - {{nvrname}}</mat-option>
+                          </mat-select>
+
+                        </mat-form-field>
                     </div>
 
                 </div>
@@ -83,22 +96,22 @@
                   <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
                   <div class="col-md-2 mt-2">
                   
-                  <h5>E-mail To Management</h5>
+                  <h5 (click)="openDialog('email')">E-mail To Management</h5>
                   </div>
                   <span><i class="fa fa-briefcase" aria-hidden="true"></i></span>
                   <div class="col-md-2 mt-2">
                     
-                    <h5>SMS To Management</h5>
+                    <h5 (click)="openDialog('sms')">SMS To Management</h5>
                     </div>
                     <span><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     <div class="col-md-4 mt-2">
                      
-                      <h5>Call To Branch</h5>
+                      <h5 (click)="openDialog('call')">Call To Branch</h5>
                       </div>
                       <span><i class="fa fa-user-o" aria-hidden="true"></i></span>
                       <div class="col-md-4 mt-2">
                         
-                        <h5>Call To Police</h5>
+                        <h5 (click)="openDialog('police')">Call To Police</h5>
                         </div>
                   </div>
 </div>    

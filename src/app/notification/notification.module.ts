@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../keycloak.guard'
 import { NotificationDetailsComponent } from './notification-details/notification-details.component';
 import { NotificationComponent } from './notification.component';
-import { FilterModalComponent } from './filter-modal/filter-modal.component';
+import { DetailModalComponent } from './detail-modal/detail-modal.component';
 
 import { ReactiveFormsModule,FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
@@ -43,7 +43,7 @@ const notifRoutes: Routes =[
   declarations: [
     NotificationComponent,
     NotificationDetailsComponent, 
-    FilterModalComponent, 
+    DetailModalComponent, 
   ],
   imports: [
     RouterModule.forChild(notifRoutes),

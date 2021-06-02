@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-addvideogateway',
   templateUrl: './addvideogateway.component.html',
@@ -11,6 +12,7 @@ export class AddvideogatewayComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
+    private _location:Location,
     private router:Router) { }
 
 
@@ -114,7 +116,10 @@ export class AddvideogatewayComponent implements OnInit {
       console.log("Data:",data);
 
       if(data["success"] == true){
-        this.router.navigate(["/kochar/Devices"]);
+        Swal.fire("Video gateway Added Successfully!");
+        // this.router.navigate(["/kochar/Devices"]);
+      this._location.back();
+
        }
     });
 

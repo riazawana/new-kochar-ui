@@ -21,77 +21,13 @@ export class EditSmsManagerComponent implements OnInit {
   gateway:any;
   mac_id:any;
 
-  arm_by_platform1:any;
-  arm_by_platform2:any;
-  arm_by_platform3:any;
-  arm_by_platform4:any;
-  arm_by_platform5:any;
-  arm_by_platform6:any;
-  arm_by_platform7:any;
-  arm_by_platform8:any;
-  arm_by_platform9:any;
-  arm_by_platform10:any;
-
-  arm_by_keypad1:any;
-  arm_by_keypad2:any;
-  arm_by_keypad3:any;
-  arm_by_keypad4:any;
-  arm_by_keypad5:any;
-  arm_by_keypad6:any;
-  arm_by_keypad7:any;
-  arm_by_keypad8:any;
-  arm_by_keypad9:any;
-  arm_by_keypad10:any;
-
-  disarm_by_platform1:any;
-  disarm_by_platform2:any;
-  disarm_by_platform3:any;
-  disarm_by_platform4:any;
-  disarm_by_platform5:any;
-  disarm_by_platform6:any;
-  disarm_by_platform7:any;
-  disarm_by_platform8:any;
-  disarm_by_platform9:any;
-  disarm_by_platform10:any;
-
-  disarm_by_keypad1:any;
-  disarm_by_keypad2:any;
-  disarm_by_keypad3:any;
-  disarm_by_keypad4:any;
-  disarm_by_keypad5:any;
-  disarm_by_keypad6:any;
-  disarm_by_keypad7:any;
-  disarm_by_keypad8:any;
-  disarm_by_keypad9:any;
-  disarm_by_keypad10:any;
-
-
-  offline1:any;
-  offline2:any;
-  offline3:any;
-  offline4:any;
-  offline5:any;
-  offline6:any;
-  offline7:any;
-  offline8:any;
-  offline9:any;
-  offline10:any;
-
-  online1:any;
-  online2:any;
-  online3:any;
-  online4:any;
-  online5:any;
-  online6:any;
-  online7:any;
-  online8:any;
-  online9:any;
-  online10:any;
+  
  
   armda :any;
   disarmda:any;
   client:any;
 
+  arr:any = [1,2,3,4,5,6,7,8,9,10];
 
 
    data = {
@@ -136,7 +72,7 @@ export class EditSmsManagerComponent implements OnInit {
    
     
   id:any;
-
+  selall = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
@@ -150,117 +86,109 @@ export class EditSmsManagerComponent implements OnInit {
 
         //  this.gateway = data["data"][0].gateway_id
          this.gateway = data["data"][0].gateway_id+','+data["data"][0].client+','+data["data"][0].mac_id;
-
          this.mac_id = data["data"][0].mac_id;
           this.client = data["data"][0].client;
           this.data = data["data"][0];
-
-
-          // this.arm_by_platform1 = this.data.arm_by_platform[0];
-          // this.arm_by_platform2 = this.data.arm_by_platform[1];
-          // this.arm_by_platform3 = this.data.arm_by_platform[2];
-          // this.arm_by_platform4 = this.data.arm_by_platform[3];
-          // this.arm_by_platform5 = this.data.arm_by_platform[4];
-          // this.arm_by_platform6 = this.data.arm_by_platform[5];
-          // this.arm_by_platform7 = this.data.arm_by_platform[6];
-          // this.arm_by_platform8 = this.data.arm_by_platform[7];
-          // this.arm_by_platform9 = this.data.arm_by_platform[8];
-          // this.arm_by_platform10 = this.data.arm_by_platform[9];
-
-          // this.arm_by_keypad1 = this.data.arm_by_keypad[0];
-          // this.arm_by_keypad2 = this.data.arm_by_keypad[1];
-          // this.arm_by_keypad3 = this.data.arm_by_keypad[2];
-          // this.arm_by_keypad4 = this.data.arm_by_keypad[3];
-          // this.arm_by_keypad5 = this.data.arm_by_keypad[4];
-          // this.arm_by_keypad6 = this.data.arm_by_keypad[5];
-          // this.arm_by_keypad7 = this.data.arm_by_keypad[6];
-          // this.arm_by_keypad8 = this.data.arm_by_keypad[7];
-          // this.arm_by_keypad9 = this.data.arm_by_keypad[8];
-          // this.arm_by_keypad10 = this.data.arm_by_keypad[9];
-
-
-          // this.disarm_by_platform1 = this.data.disarm_by_platform[0];
-          // this.disarm_by_platform2 = this.data.disarm_by_platform[1];
-          // this.disarm_by_platform3 = this.data.disarm_by_platform[2];
-          // this.disarm_by_platform4 = this.data.disarm_by_platform[3];
-          // this.disarm_by_platform5 = this.data.disarm_by_platform[4];
-          // this.disarm_by_platform6 = this.data.disarm_by_platform[5];
-          // this.disarm_by_platform7 = this.data.disarm_by_platform[6];
-          // this.disarm_by_platform8 = this.data.disarm_by_platform[7];
-          // this.disarm_by_platform9 = this.data.disarm_by_platform[8];
-          // this.disarm_by_platform10 = this.data.disarm_by_platform[9];
-
-          // this.disarm_by_keypad1 = this.data.disarm_by_keypad[0];
-          // this.disarm_by_keypad2 = this.data.disarm_by_keypad[1];
-          // this.disarm_by_keypad3 = this.data.disarm_by_keypad[2];
-          // this.disarm_by_keypad4 = this.data.disarm_by_keypad[3];
-          // this.disarm_by_keypad5 = this.data.disarm_by_keypad[4];
-          // this.disarm_by_keypad6 = this.data.disarm_by_keypad[5];
-          // this.disarm_by_keypad7 = this.data.disarm_by_keypad[6];
-          // this.disarm_by_keypad8 = this.data.disarm_by_keypad[7];
-          // this.disarm_by_keypad9 = this.data.disarm_by_keypad[8];
-          // this.disarm_by_keypad10 = this.data.disarm_by_keypad[9];
-
-          // this.online1 = this.data.online[0];
-          // this.online2 = this.data.online[1];
-          // this.online3 = this.data.online[2];
-          // this.online4 = this.data.online[3];
-          // this.online5 = this.data.online[4];
-          // this.online6 = this.data.online[5];
-          // this.online7 = this.data.online[6];
-          // this.online8 = this.data.online[7];
-          // this.online9 = this.data.online[8];
-          // this.online10 = this.data.online[9];
-
-          // this.offline1 = this.data.offline[0];
-          // this.offline2 = this.data.offline[1];
-          // this.offline3 = this.data.offline[2];
-          // this.offline4 = this.data.offline[3];
-          // this.offline5 = this.data.offline[4];
-          // this.offline6 = this.data.offline[5];
-          // this.offline7 = this.data.offline[6];
-          // this.offline8 = this.data.offline[7];
-          // this.offline9 = this.data.offline[8];
-          // this.offline10 = this.data.offline[9];
-
-          // this.armda = this.data.arm;
-          // this.disarmda = this.data.disarm;
-
-          
+   
+            // console.log(this.selall.length)
+          this.checkallfun();
 
 
       });
       
 
-    // this.backend.getgatewayuserwise()
-    // .subscribe((data)=> { 
-    //     console.log("Data:",data["data"]);
-    //     this.gateways = data["data"][0];
-    // });
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
         console.log("All gateways:",data["data"]);
-
- 
-        
         for(var i = 0; i < data["data"].length; i++)
         {
           this.gateways = this.gateways.concat(data["data"][i]);
         }
-        
-     
-
-        console.log("All gateways:",this.gateways);
-
+       console.log("All gateways:",this.gateways);
       });
   }
 
  
+  checkallfun(){
+    
+    var data = this.data;
+
+    for(var j = 0; j < data.arm_by_platform.length; j++){
+      if(  data.arm_by_platform[j] == false ){
+            this.selall[0] = false;
+      }
+      if(  data.disarm_by_platform[j] == false ){
+        this.selall[1] = false;
+      }
+      if(  data.disarm_by_platform[j] == false ){
+        this.selall[1] = false;
+      }
+      if(  data.arm_by_keypad[j] == false ){
+        this.selall[2] = false;
+      }
+      if(  data.disarm_by_keypad[j] == false ){
+        this.selall[3] = false;
+      }
+      if(  data.offline[j] == false ){
+        this.selall[4] = false;
+      }if(  data.online[j] == false ){
+        this.selall[5] = false;
+      }
+      if(  data.arm['1'][j] == false ){
+        this.selall[6] = false;
+      }
+      if(  data.arm['2'][j] == false ){
+        this.selall[7] = false;
+      }if(  data.arm['3'][j] == false ){
+        this.selall[8] = false;
+      }if(  data.arm['4'][j] == false ){
+        this.selall[9] = false;
+      }if(  data.arm['5'][j] == false ){
+        this.selall[10] = false;
+      }if(  data.arm['6'][j] == false ){
+        this.selall[11] = false;
+      }if(  data.arm['7'][j] == false ){
+        this.selall[12] = false;
+      }if(  data.arm['8'][j] == false ){
+        this.selall[13] = false;
+      }if(  data.arm['9'][j] == false ){
+        this.selall[14] = false;
+      }if(  data.arm['10'][j] == false ){
+        this.selall[15] = false;
+      }if(  data.arm['11'][j] == false ){
+        this.selall[16] = false;
+      }if(  data.arm['12'][j] == false ){
+        this.selall[17] = false;
+      }if(  data.disarm['1'][j] == false ){
+        this.selall[18] = false;
+      }if(  data.disarm['2'][j] == false ){
+        this.selall[19] = false;
+      }if(  data.disarm['3'][j] == false ){
+        this.selall[20] = false;
+      }if(  data.disarm['4'][j] == false ){
+        this.selall[21] = false;
+      }if(  data.disarm['5'][j] == false ){
+        this.selall[22] = false;
+      }if(  data.disarm['6'][j] == false ){
+        this.selall[23] = false;
+      }if(  data.disarm['7'][j] == false ){
+        this.selall[24] = false;
+      }if(  data.disarm['8'][j] == false ){
+        this.selall[25] = false;
+      }if(  data.disarm['9'][j] == false ){
+        this.selall[26] = false;
+      }if(  data.disarm['10'][j] == false ){
+        this.selall[27] = false;
+      }if(  data.disarm['11'][j] == false ){
+        this.selall[28] = false;
+      }if(  data.disarm['12'][j] == false ){
+        this.selall[29] = false;
+      }
+    }
+  }
  
   onclick(z,x,y){
-
- 
 
     if(z == 'arm_by_platform'){
       if(x == 11){
@@ -270,6 +198,7 @@ export class EditSmsManagerComponent implements OnInit {
       }
       for(var k = 0; k<this.data.arm_by_platform.length;k++){
         if(k+1 == x){
+          // alert(k)
           this.data.arm_by_platform[k] = y;
         }
       }
@@ -339,6 +268,9 @@ export class EditSmsManagerComponent implements OnInit {
         }
       }
     }
+
+    this.checkallfun();
+
 
   }
 
@@ -498,6 +430,7 @@ export class EditSmsManagerComponent implements OnInit {
         }
       }
     }
+    this.checkallfun();
 
     //console.log(this.data)
   }
@@ -659,14 +592,15 @@ export class EditSmsManagerComponent implements OnInit {
       }
     }
 
+    this.checkallfun();
+
+
   }
 
 
   onsubmit(){
     console.log(this.data);
-
-    var da = JSON.parse(sessionStorage.getItem('userdata'));
-    
+    var da = JSON.parse(sessionStorage.getItem('userdata')); 
 var data = {
   "arm_by_platform": this.data.arm_by_platform,
   "disarm_by_platform": this.data.disarm_by_platform,
@@ -691,6 +625,7 @@ var data = {
 
           this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
          }
+
     });
 
   }

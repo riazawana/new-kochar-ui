@@ -353,6 +353,11 @@ if(x == "mon2f"){
           Swal.fire("Schedule added successfully");
         this._location.back();
 
+       }else{
+        // if(data["msg"] == "sms settings already exists for the selected mac id")
+        Swal.fire("Schedule already exists");
+        this._location.back();
+
        }
     })
 

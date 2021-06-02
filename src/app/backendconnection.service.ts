@@ -316,6 +316,12 @@ export class BackendconnectionService {
     return this.httpClient.get(this.api+'/getgatewaylocationwise?location_id='+location_id+'&client='+c,this.httpOptions);
   }
 
+  getvideogatewaylocationwise(location_id){
+    this.auth();
+    return this.httpClient.get(this.api+'/getvideogatewaylocationwise?location_id='+location_id,this.httpOptions);
+  
+  }
+
 
   getall_role_feature_mapping(){
     this.auth();
@@ -345,6 +351,11 @@ export class BackendconnectionService {
   addescalationmatrix(data){
     this.auth();
     return this.httpClient.post(this.api+'/addescalationmatrix',data,this.httpOptions);
+  }
+
+  updatevideogateway(data){
+    this.auth();
+    return this.httpClient.post(this.api+'/updatevideogateway',data,this.httpOptions);
   }
 
   getescalationmatrix(id,m_id,name){

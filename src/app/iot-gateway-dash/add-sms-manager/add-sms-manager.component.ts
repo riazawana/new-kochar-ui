@@ -506,6 +506,12 @@ export class AddSmsManagerComponent implements OnInit {
          Swal.fire("SMS Setting added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
        }
+       else{
+        if(data["msg"] == "sms settings already exists for the selected mac id"){
+          Swal.fire("Sms Setting already exists");
+        }
+        this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
+       }
     });
 
   }

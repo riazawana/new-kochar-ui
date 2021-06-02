@@ -30,7 +30,7 @@ export class VideogatewayComponent implements OnInit {
 
   getvideo(){
 
-    this.backend.getallvideogateways()
+    this.backend.getvideogatewaylocationwise(this.id)
     .subscribe((data)=> { 
          console.log("Data:",data["data"]);
        this.videolist = data["data"];
@@ -89,9 +89,9 @@ export class VideogatewayComponent implements OnInit {
   }
 
 
-  // edit(x,y){
-  //   this.router.navigate(['/kochar/editrouter',x]);
+  edit(x,){
+    this.router.navigate(['/kochar/Devices/editvideogateway',x]);
 
-  // }
+  }
 
 }

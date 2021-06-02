@@ -145,6 +145,9 @@ export class AddrouterComponent implements OnInit {
     this.backend.registertunnel(data)
     .subscribe((data)=> { 
      //  console.log("Data:",data);
+     if(data["success"] == true){
+      Swal.fire("Tunnel Successfull!"); 
+  }
        this.flag = true;
     });
 
@@ -159,7 +162,9 @@ export class AddrouterComponent implements OnInit {
     this.backend.getports(x)
     .subscribe((data)=> { 
        // console.log("Data:",data);
-
+       if(data["success"] == true){
+        Swal.fire("Get Live Port Successfull!"); 
+    }
        this.live = data["data"];
        this.liveport = data["data"].liveport;
        this.liveurl = data["data"].liveurl;

@@ -1,0 +1,40 @@
+
+<div *ngIf="data.type != 'police'">
+  <h4 *ngIf="data.type == 'email'"><b>Send Email To : </b></h4>
+  <h4 *ngIf="data.type == 'sms'"><b>Send SMS To : </b></h4>
+  <h4 *ngIf="data.type == 'call'"><b>Number To Call : </b></h4>
+
+  
+
+   <div class="row">
+    <div class="col-sm-3"><p><b>Name</b></p></div>
+    <div class="col-sm-3" *ngIf="data.type == 'email'"><p><b>Email</b></p></div>
+    <div class="col-sm-3" *ngIf="data.type == 'sms' || data.type == 'call'"><p><b>Phone</b></p></div>
+    <div class="col-sm-2"><p><b>Level</b></p></div>
+    <div class="col-sm-2"><p><b>Designation</b></p></div>
+    <div class="col-sm-1"><p><b>TAT</b></p></div>
+    <div class="col-sm-1"><p><b>Copy</b></p></div>
+   </div>
+
+   <div class="row" *ngFor="let d of da">
+    <div class="col-sm-3"><p><b>{{d.name}}</b></p></div>
+    <div class="col-sm-3" *ngIf="data.type == 'email'"><p><b>{{d.email}}</b></p></div>
+    <div class="col-sm-3" *ngIf="data.type == 'sms' || data.type == 'call'"><p><b>{{d.phone}}</b></p></div>
+    <div class="col-sm-2"><p><b>Level {{d.level}}</b></p></div>
+    <div class="col-sm-2"><p><b>{{d.designation}}</b></p></div>
+    <div class="col-sm-1"><p><b>{{d.tat}}</b></p></div>
+    <div class="col-sm-1" *ngIf="data.type == 'email'"><p (click)="copy(d.email)"><b><i class="fa fa-copy"></i></b></p></div>
+    <div class="col-sm-1" *ngIf="data.type == 'sms' || data.type == 'call'"><p (click)="copy(d.phone)"><b><i class="fa fa-copy"></i></b></p></div>
+
+    <input type="text" style="display: none;" [(ngModel)]="inp" id="inp">
+   </div>
+</div>
+
+<div *ngIf="data.type == 'police'">
+  <h4><b>Call To Police : </b></h4>
+  
+  <input class="form-control form-control-sm" [(ngModel)]="police_value" type="text" disabled style="margin-bottom: 2%;">
+
+</div>
+
+<button type="button" class="btn btn-primary btnclass" (click)="onclose()">Cancel</button>

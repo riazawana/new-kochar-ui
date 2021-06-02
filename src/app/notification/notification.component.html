@@ -179,7 +179,14 @@
             <th mat-header-cell *matHeaderCellDef> TaT </th>
             <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
               <br>
-              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed </span>
+              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed by
+                <span *ngFor="let s of row.tatDifference?.split(',');let i = index">
+                  <span *ngIf="i == 0 && s != '0'">{{s}} days,</span>
+                  <span *ngIf="i == 1 && s != '0'">{{s}} hours,</span>
+                  <span *ngIf="i == 2 && s != '0'">{{s}} mins</span>
+
+               </span>
+              </span>
               <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
 
              </td>
@@ -277,7 +284,15 @@
             <th mat-header-cell *matHeaderCellDef> TaT </th>
             <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
               <br>
-              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed </span>
+              <!-- <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed </span> -->
+              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed by
+                <span *ngFor="let s of row.tatDifference?.split(',');let i = index">
+                  <span *ngIf="i == 0 && s != '0'">{{s}} days,</span>
+                  <span *ngIf="i == 1 && s != '0'">{{s}} hours,</span>
+                  <span *ngIf="i == 2 && s != '0'">{{s}} mins</span>
+
+               </span>
+              </span>
               <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
 
              </td>
