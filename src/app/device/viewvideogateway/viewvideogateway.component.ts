@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { GetallrecordModalComponent } from '../getallrecord-modal/getallrecord-modal.component';  
 import { CameraModalComponent } from '../camera-modal/camera-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import * as moment from 'moment';
 
 export interface CameraData {
   camera_status: string;
@@ -53,12 +54,57 @@ export class ViewvideogatewayComponent implements OnInit {
   zero:any;
   mac_id:any;
   start:any=[];
+  starttime:any=[];
+
   end:any=[];
+  endtime:any=[];
+
   ft:any = [];
 
-  openDialog(x,y,z,e): void {
+  openDialog(x,y,z,e,st,et): void {
+
+     var sy = y.getFullYear();
+     var sm = y.getMonth();
+     var sd = y.getDate();
+     var stt = [];
+     var ett = [];
+
+     if(st == undefined){
+       stt[0] = '00';
+       stt[1] = '00';
+     }else{
+     stt = st.split(':');
+     }
+
+     if(et == undefined){
+      ett[0] = '00';
+      ett[1] = '00';
+    }else{
+     ett = et.split(':');
+    }
+
+
+    //  alert(sy);
+    // alert(sm);
+    // alert(sd);
+    // alert(stt);
+
+
+     var ey = z.getFullYear();
+     var em = z.getMonth();
+     var ed = z.getDate();
+
+
+
+    var ds = new Date(sy, sm, sd, stt[0], stt[1], 0, 0);
+    var de = new Date(ey, em, ed, ett[0], ett[1], 0, 0);
+ 
+    // alert(ds);
+    // alert(de);
+
+
      const dialogRef = this.dialog.open(GetallrecordModalComponent, {
-       data: {mac: x,start:y,end:z,id:e}    
+       data: {mac: x,start:ds,end:de,id:e}    
      },
      );
 
@@ -265,6 +311,7 @@ onNoClick2(): void {
 
 
 
+   
 }
 
 

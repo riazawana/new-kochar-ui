@@ -51,7 +51,7 @@ import { Extra2Component } from './extra2/extra2.component';
 // import { IotGatewayModule } from './iot-gateway-dash/iot-gateway.module';
 
 
-
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -59,7 +59,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://202.164.38.204:9002/auth',
         realm: 'TestIOT',
-        clientId: 'test-client2',
+        clientId: 'test-client1',
       },
       initOptions: {
         onLoad: 'check-sso',
@@ -129,7 +129,8 @@ const customNotifierOptions: NotifierOptions = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
     // UserModule,
     // ZoneModule,
     // FeaturesModule,

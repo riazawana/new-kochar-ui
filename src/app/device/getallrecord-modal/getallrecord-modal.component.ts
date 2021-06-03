@@ -40,12 +40,18 @@ export class GetallrecordModalComponent implements OnInit {
     }
     
     ngOnInit(): void {
+
+   
+
       var start = this.data.start.toISOString();
       var end = this.data.end.toISOString();
+
+
+
       
       this.backend.recordedVideos(this.data.mac,start,end,this.data.id)
       .subscribe((data)=> { 
-          // console.log("All Record:",data["data"].data);
+           console.log("All Record:",data);
           this.records = data["data"].data;
       });
 
@@ -174,7 +180,7 @@ export class GetallrecordModalComponent implements OnInit {
       }
 
       cancel(){
-        this._location.back();
+        this.dialogRef2.close();
        }
 
       
