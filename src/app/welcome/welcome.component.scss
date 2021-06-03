@@ -312,3 +312,9 @@ cursor: pointer;
         color:var(--black);
     }
 }
+
+.footer {  
+    position: fixed;  
+    bottom: 0;  
+    z-index: 100;  
+}

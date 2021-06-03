@@ -792,6 +792,16 @@ export class BackendconnectionService {
             this.auth();
             return this.httpClient.get(this.api+'/getallnotifications'+x,this.httpOptions);
           }
+
+          updatevideogateways(data){
+            this.auth();
+            return this.httpClient.post(this.api+'/updatevideogateways',data,this.httpOptions);
+          }
+        
+              sendSMS(mac_id,phone,msg,client){
+                this.auth();
+                return this.httpClient.get(this.api+'/sendSMS??mac_id='+mac_id+'&phone='+phone+'&msg='+msg+'&client='+client,this.httpOptions);
+              }
         }
 
 

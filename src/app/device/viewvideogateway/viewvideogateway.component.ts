@@ -251,6 +251,15 @@ onNoClick2(): void {
 
   
 
+    statushide:boolean = true;
+
+    hide(){
+      if(this.statushide == true){
+        this.statushide = false;
+      }else{
+        this.statushide = true
+      }
+    }
 
 
 

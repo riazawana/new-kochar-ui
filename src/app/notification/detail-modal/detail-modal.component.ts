@@ -52,4 +52,11 @@ export class DetailModalComponent implements OnInit {
 
     police_value : any = "100";
    
+    sendmssg(mac_id,phone,msg,client){
+      this.backend.sendSMS(mac_id,phone,msg,client)
+  .subscribe((data)=> { 
+    console.log("Send mssf",data["data"]);
+  });
+    }
+
       }

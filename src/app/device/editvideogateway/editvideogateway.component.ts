@@ -120,7 +120,7 @@ export class EditvideogatewayComponent implements OnInit {
 
    console.log(data);
     
-    this.backend.updatevideogateway(data)
+    this.backend.updatevideogateways(data)
     .subscribe((data)=> { 
       console.log("Data:",data);
 
