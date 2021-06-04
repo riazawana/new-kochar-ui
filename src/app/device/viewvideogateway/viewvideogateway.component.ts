@@ -140,6 +140,7 @@ onNoClick2(): void {
   };
   ngOnInit(): void {
 
+    alert("Please install Desktop App and start it to watch rtsp footage!");
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");

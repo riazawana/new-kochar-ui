@@ -1,3 +1,4 @@
+
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left white-bg mainsideBar" id="mySidebar">
   <div class="logo-container">
     <img src="assets/company_logo/logo.png" (click)="redirect()">
@@ -75,12 +76,20 @@
   
   
         <div class="w3-container">
+
+            
+  <div ngxUiLoaderBlurred>
+   
           
                 <router-outlet></router-outlet>
   
                 <div class="text-center my-3 footersection">
                   <span>Copyright © 2021 KocharTech. All Right Reserved</span>
                 </div>
+
+
+  </div>
+  
           </div>
   </div>   
   
@@ -103,17 +112,8 @@
   
   
   
+<ngx-ui-loader></ngx-ui-loader>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <simple-notifications  ></simple-notifications>
+<simple-notifications  ></simple-notifications>
   

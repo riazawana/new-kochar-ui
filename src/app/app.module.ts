@@ -49,9 +49,37 @@ import { Extra2Component } from './extra2/extra2.component';
 // import { HealthDashModule } from './health-dash/health-dash.module';
 // import { DeviceModule } from './device/device.module';
 // import { IotGatewayModule } from './iot-gateway-dash/iot-gateway.module';
+// import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  "bgsColor": "#f44336",
+  "bgsOpacity": 0.5,
+  "bgsPosition": "bottom-right",
+  "bgsSize": 60,
+  "bgsType": "square-loader",
+  "blur": 5,
+  "fgsColor": "#f44336",
+  "fgsPosition": "center-center",
+  "fgsSize": 60,
+  "fgsType": "square-loader",
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 120,
+  "logoUrl": "",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "#f44336",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": true,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center"
+};
 
-import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+// import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -59,7 +87,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://202.164.38.204:9002/auth',
         realm: 'TestIOT',
-        clientId: 'test-client1',
+        clientId: 'test-client2',
       },
       initOptions: {
         onLoad: 'check-sso',
@@ -129,8 +157,8 @@ const customNotifierOptions: NotifierOptions = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule,
+    // NgxUiLoaderModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     // UserModule,
     // ZoneModule,
     // FeaturesModule,

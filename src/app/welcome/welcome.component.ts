@@ -7,6 +7,7 @@ import {SocketioSendmsgService} from "../socketio-sendmsg.service";
 import { NotifierService } from 'angular-notifier';
 import { NotificationsService } from 'angular2-notifications';
 import { KeycloakService } from 'keycloak-angular';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-welcome',
@@ -29,7 +30,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private backend: BackendconnectionService,
     private keycloakService : KeycloakService,
-    notifier: NotifierService 
+    notifier: NotifierService,
+    private ngxLoader: NgxUiLoaderService
   ) {
 
     this.notifier = notifier;
@@ -61,7 +63,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
  client :any;
 
   ngOnInit(): void {
-
+    // this.ngxLoader.start();
     try {
       let userDetails = this.keycloakService;
     
@@ -84,6 +86,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       .subscribe((data)=> {  
         console.log("userInfo:",data)
         this.client = data["data"][0].client;
+        // this.ngxLoader.stop();
       })
 
       this.backend.getrole(userDetails["_instance"].realmAccess.roles[0])
