@@ -4,6 +4,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,7 +17,8 @@ export class EditProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   email:string; 
@@ -47,6 +49,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ngxLoader.start();
     
     this.edituserformGroup = this.formBuilder.group({
       mobile: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]],
@@ -64,6 +67,8 @@ export class EditProfileComponent implements OnInit {
      
     this.backend.getUserInfo(this.email)
     .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
        console.log("User Data for edit",data);
       this.user = data['data'][0];
        this.mobile = this.user.mobile;

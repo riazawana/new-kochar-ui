@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AddnewlocationComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
 
@@ -47,6 +49,7 @@ export class AddnewlocationComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.zone_id = params.get("id");
@@ -64,33 +67,15 @@ export class AddnewlocationComponent implements OnInit {
   }
 
 
-  selectedIndex: number = 0;
-  
-//  nextStep(x) {
-//     // if (this.selectedIndex != 3) {
-//     //   this.selectedIndex = this.selectedIndex + 1;
-//     // }
-//     this.selectedIndex = x;
-//     // console.log(this.selectedIndex);
-//   }
-
-//   previousStep(x) {
-//     // if (this.selectedIndex != 0) {
-//     //   this.selectedIndex = this.selectedIndex - 1;
-//     // }
-//     this.selectedIndex = x;
-
-//     // console.log(this.selectedIndex);
-//   }
-
-  
-  
+  selectedIndex: number = 0;  
 
   getcountry(){
     
 
     this.backend.getcountry()
     .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
       //  console.log("Data:",data["data"]);
        this.country_list = data["data"];
     });

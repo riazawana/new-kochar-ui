@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BackendconnectionService } from '../../backendconnection.service';
 @Component({
   selector: 'app-energy-meter',
@@ -9,6 +10,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 export class EnergyMeterComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -16,12 +18,16 @@ export class EnergyMeterComponent implements OnInit {
   id:any;
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       })
 
       this.backend.getmodbuslocationwise(this.id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
            console.log("Data:",data["data"]);
          this.energylist = data["data"];
         

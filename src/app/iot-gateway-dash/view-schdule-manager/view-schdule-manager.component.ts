@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-schdule-manager',
@@ -13,6 +14,7 @@ export class ViewSchduleManagerComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService ,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router,
     private _location:Location,
@@ -175,6 +177,7 @@ edit:boolean =false;
 disable = true;
   ngOnInit(): void {
 
+    this.ngxLoader.start();
 
     var url = this.router.url.split("/");
     console.log(url);
@@ -198,6 +201,9 @@ disable = true;
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
         console.log("All gateways:",data["data"]);
 
  

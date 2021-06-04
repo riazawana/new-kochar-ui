@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackendconnectionService } from '../backendconnection.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-profile',
@@ -18,10 +19,14 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router:Router,
-    private backend: BackendconnectionService
+    private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
+
+    this.ngxLoader.start();
+
    var userdata =  JSON.parse(sessionStorage.getItem('userdata'));
     
    this.name = userdata.name;
@@ -30,6 +35,8 @@ export class ProfileComponent implements OnInit {
 
    this.backend.getUserInfo(this.email)
    .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
       console.log("User Data for edit",data);
      this.user = data['data'][0];
       this.mobile = this.user.mobile;

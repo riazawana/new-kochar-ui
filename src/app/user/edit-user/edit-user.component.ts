@@ -4,6 +4,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-user',
@@ -16,7 +17,9 @@ export class EditUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private ngxLoader: NgxUiLoaderService
+
   ) { }
 
   id:string; 
@@ -71,6 +74,9 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.ngxLoader.start();
+
     
     this.edituserformGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
@@ -113,7 +119,8 @@ export class EditUserComponent implements OnInit {
         // alert(this.role_id);
         
         console.log("client 1:", this.client);
-
+      this.ngxLoader.stop();
+       
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);
        this.getstate(this.country_id);

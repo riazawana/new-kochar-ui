@@ -2,6 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-relaychange-modal',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RelaychangeModalComponent implements OnInit {
 
   constructor( 
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService,
     public dialogRef: MatDialogRef<RelaychangeModalComponent>,
     private dialog: MatDialog,
@@ -22,9 +24,13 @@ export class RelaychangeModalComponent implements OnInit {
     relay2_name:any;
 
     ngOnInit(): void {
+    this.ngxLoader.start();
+
       console.log("data:",this.data)
       this.relay1_name = this.data.g.relay1_name;
       this.relay2_name = this.data.g.relay2_name;
+    this.ngxLoader.stop();
+
     }
 
      submit(){

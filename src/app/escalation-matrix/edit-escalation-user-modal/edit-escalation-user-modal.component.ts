@@ -2,6 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class EditEscalationUserModalComponent implements OnInit {
 
   constructor( 
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService,
     public dialogRef: MatDialogRef<EditEscalationUserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -25,6 +27,7 @@ export class EditEscalationUserModalComponent implements OnInit {
  tat:any;
  name:any;
   ngOnInit(): void {
+    this.ngxLoader.start();
      
    this.location_id = this.data.location_id;
    this.edit_data = this.data.edit_data;
@@ -39,6 +42,7 @@ export class EditEscalationUserModalComponent implements OnInit {
    this.tat = this.edit_data.tat;
    this.name = this.edit_data.name;
 
+   this.ngxLoader.stop();
 
 
   }

@@ -11,6 +11,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 export interface health {
@@ -71,7 +72,8 @@ export class NotificationComponent implements OnInit , OnDestroy {
   constructor(
     private backend: BackendconnectionService,
     private router:Router,   
-    private soc:SocketioSendmsgService,    
+    private soc:SocketioSendmsgService,  
+    private ngxLoader: NgxUiLoaderService
   ) {
     this.dataSource = new MatTableDataSource;
     this.dataSource2 = new MatTableDataSource;
@@ -83,6 +85,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
    client:any;
 
   ngOnInit() {
+    this.ngxLoader.start();
      const that = this;
      that.fetchdata();
   //  this.myVar = setInterval(function(){ 
@@ -129,6 +132,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
    
      this.getlocation();
      this.getgateway();
+     this.ngxLoader.stop();
 
   }
 

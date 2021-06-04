@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 @Component({
   selector: 'app-edit-zone',
   templateUrl: './edit-zone.component.html',
@@ -12,7 +14,8 @@ export class EditZoneComponent implements OnInit {
   constructor(
     private backend: BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router 
+    private router:Router,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   
@@ -26,6 +29,7 @@ export class EditZoneComponent implements OnInit {
   business_user = [];
 
   ngOnInit(): void {
+    this.ngxLoader.start();
     
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -33,6 +37,7 @@ export class EditZoneComponent implements OnInit {
 
       this.backend.getallusers()
       .subscribe((data)=> { 
+        this.ngxLoader.stop();
   
         //  console.log("All Users:",data['data']);
   

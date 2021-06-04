@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-template',
@@ -11,6 +12,7 @@ export class ViewTemplateComponent implements OnInit {
 
   constructor(
     private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router
   ) { }
@@ -157,12 +159,14 @@ export class ViewTemplateComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       })
         this.backend.getTemplate(this.id)
     .subscribe((data)=> { 
+      this.ngxLoader.stop();
 
       this.template_name = data["data"][0].name
      // console.log("Template Data for edit",data);

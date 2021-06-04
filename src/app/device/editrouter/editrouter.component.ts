@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Location} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-editrouter',
@@ -12,6 +13,7 @@ export class EditrouterComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
     private route: ActivatedRoute,
+    private ngxLoader: NgxUiLoaderService,
     private _location:Location,
     private router: Router) { }
 
@@ -49,11 +51,17 @@ export class EditrouterComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
+    this.ngxLoader.start();
+
     this.route.paramMap.subscribe(params => {
+
       this.id = params.get("id");
 
       this.backend.getrouter(this.id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
            console.log("Data:",data["data"]);
 
           this.data = data["data"].result[0];

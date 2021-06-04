@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 @Component({
   selector: 'app-add-sms-manager',
   templateUrl: './add-sms-manager.component.html',
@@ -10,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AddSmsManagerComponent implements OnInit {
 
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService ,
     private router:Router
 
@@ -62,6 +65,8 @@ export class AddSmsManagerComponent implements OnInit {
    
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     // this.backend.getgatewayuserwise()
     // .subscribe((data)=> { 
     //    console.log("Data:",data);
@@ -70,6 +75,8 @@ export class AddSmsManagerComponent implements OnInit {
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
         console.log("All gateways:",data["data"]);
 
  

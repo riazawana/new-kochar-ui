@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-add-user-esclation',
@@ -9,6 +10,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 export class AddUserEsclationComponent implements OnInit {
 
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService 
   ) { }
   hub:string;

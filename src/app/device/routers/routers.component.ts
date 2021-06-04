@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-routers',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RoutersComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -18,6 +20,9 @@ export class RoutersComponent implements OnInit {
   id:any;
 
   ngOnInit(): void {
+
+    this.ngxLoader.start();
+
    
     this.getdata();
 
@@ -30,6 +35,8 @@ export class RoutersComponent implements OnInit {
 
       this.backend.getrouterlocationwise(this.id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
            console.log("Data:",data["data"]);
          this.routerslist = data["data"];
         

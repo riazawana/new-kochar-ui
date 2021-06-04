@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-sms-manager',
@@ -12,6 +13,7 @@ export class EditSmsManagerComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router
   ) { }
@@ -75,12 +77,16 @@ export class EditSmsManagerComponent implements OnInit {
   selall = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
   ngOnInit(): void {
 
+    this.ngxLoader.start();
+
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       })
 
       this.backend.getsmssetting(this.id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
          console.log("Data:",data["data"][0]);
          console.log("Data:",data);
 

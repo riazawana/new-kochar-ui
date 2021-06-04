@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {Location} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AddSchduleManagerComponent implements OnInit {
   constructor(
     private backend: BackendconnectionService ,
     private route: ActivatedRoute,
+    private ngxLoader: NgxUiLoaderService,
     private router:Router,
     private _location:Location,
   ) { }
@@ -224,9 +226,12 @@ if(x == "mon2f"){
 
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
         console.log("All gateways:",data["data"]);
         for(var i = 0; i < data["data"].length; i++)
         {

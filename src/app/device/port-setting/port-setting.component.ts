@@ -3,6 +3,8 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 import {Location} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 @Component({
   selector: 'app-port-setting',
   templateUrl: './port-setting.component.html',
@@ -12,6 +14,7 @@ export class PortSettingComponent implements OnInit {
 
   constructor(
     private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
     private router:Router,
@@ -30,6 +33,8 @@ export class PortSettingComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     this.route.paramMap.subscribe(params => {
       console.log("Data in port setting",JSON.parse(params.get("data")));
 
@@ -52,6 +57,9 @@ export class PortSettingComponent implements OnInit {
     }
 
       })
+
+    this.ngxLoader.stop();
+
   }
 
   valuesend : any;

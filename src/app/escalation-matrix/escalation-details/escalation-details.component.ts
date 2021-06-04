@@ -4,6 +4,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import { EditEscalationUserModalComponent } from '../edit-escalation-user-modal/edit-escalation-user-modal.component';  
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-escalation-details',
@@ -16,6 +17,7 @@ export class EscalationDetailsComponent implements OnInit {
     private backend: BackendconnectionService,
     public dialogRef: MatDialogRef<EscalationDetailsComponent>,
     private dialog: MatDialog,
+    private ngxLoader: NgxUiLoaderService,
     private _location:Location,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     
@@ -23,11 +25,13 @@ export class EscalationDetailsComponent implements OnInit {
     location_id:any;
 
   ngOnInit(): void {
+    this.ngxLoader.start();
      
     console.log("escalation:",this.data.location_id);
     this.alluser = this.data.data;
     this.location_id = this.data.location_id;
-
+    this.ngxLoader.stop();
+ 
 
   }
 

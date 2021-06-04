@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface UserData {
   sr_no: string;
@@ -29,7 +30,9 @@ export class RolesComponent implements AfterViewInit {
 
   constructor(
     private backend: BackendconnectionService,
-    private router: Router
+    private router: Router,
+    private ngxLoader: NgxUiLoaderService
+
   ) {
   }
 
@@ -39,6 +42,7 @@ export class RolesComponent implements AfterViewInit {
   add:boolean = true;
 
   ngAfterViewInit() {
+    this.ngxLoader.start();
 
     //alert("role1")
    
@@ -79,6 +83,8 @@ export class RolesComponent implements AfterViewInit {
   }
 
      getAllRoles(){
+    this.ngxLoader.stop();
+
       this.backend.getallroles()
       .subscribe((data)=> { 
           console.log("All roles:",data['data']);
@@ -104,7 +110,7 @@ export class RolesComponent implements AfterViewInit {
   }
 
   viewrole(x){
-    alert(x)
+    // alert(x)
     this.router.navigate(['/kochar/Roles/viewrole',x]);
   }
 
