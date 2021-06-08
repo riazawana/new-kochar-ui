@@ -8,6 +8,9 @@
 </div>
 
 <div *ngIf="type == 'Video'">
+  
+    <p *ngIf="online != ''">Last Footage: N/A</p>
+
     <p *ngIf="online != ''">Online/Offline Value : {{online}}/{{offline}}</p>
 </div>
 

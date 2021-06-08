@@ -169,7 +169,7 @@ wholedata:any;
   }
 
   changecam(x){
-    alert(x);
+    // alert(x);
     this.onclose();
     this.runcamera(x);
   }
