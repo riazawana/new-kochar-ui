@@ -62,7 +62,7 @@ export class NotificationDetailsComponent implements OnInit {
               this.backend.getCameraInfoLocationWise(this.data.locationname,this.cli)
               .subscribe((data)=> {  
                 console.log("heath data:", data);
-                alert(data["data"][0].cameras[0].camera_id);
+                // alert(data["data"][0].cameras[0].camera_id);
               this.initial_cam_id = data["data"][0].cameras[0].camera_id;
               this.getcam(data["data"][0].mac_id);
 
@@ -185,7 +185,7 @@ wholedata:any;
   }
 
   changecam(x){
-    alert(x);
+    // alert(x);
     this.onclose();
     this.runcamera(x);
   }

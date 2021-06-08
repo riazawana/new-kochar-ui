@@ -28,7 +28,15 @@ export class HealthDashComponent implements OnInit {
     healthdata:any;
    faMapMarker = faMapMarkerAlt;
 
-  
+   citys:any = [];
+   states:any =  [];
+   zones:any= [];
+   city:any= [];
+   state:any= [];
+   zone:any= [];
+   filter:any;
+
+
    
   ngOnInit(): void {
 

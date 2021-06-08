@@ -225,7 +225,7 @@ selgateway_nocam(gateway){
 }
 
 putcam(i,x,y){
-  alert(i)
+  // alert(i)
     this.portlist[i].camera_id = x;
     this.portlist[i].nvr_mac = y;
    
