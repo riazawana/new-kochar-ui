@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -15,7 +14,6 @@ export class NotificationManagerComponent implements OnInit {
 
   constructor(
               private router: Router,
-    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService 
             ){ }
 
@@ -129,7 +127,6 @@ gateways:any;
 ]
 
   ngOnInit(){
-    this.ngxLoader.start();
 
     var role = sessionStorage.getItem('role');
 
@@ -168,8 +165,6 @@ gateways:any;
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
         console.log("All gateways:",data["data"]);
 
         for(var i = 0; i < data["data"].length; i++)

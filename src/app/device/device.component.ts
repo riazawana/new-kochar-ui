@@ -3,7 +3,6 @@ import { BackendconnectionService } from '../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 
 import { faPodcast,faServer,faWifi,faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 
@@ -34,8 +33,7 @@ export interface UserData {
 
       constructor( 
         private backend: BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
-    private router: Router,
+        private router: Router,
         private route: ActivatedRoute) { }
         
      id:any;
@@ -47,8 +45,6 @@ export interface UserData {
      edit:boolean = false;
 
       ngOnInit(): void {
-
-    this.ngxLoader.start();
 
         var features = JSON.parse(sessionStorage.getItem('features'));
         for(var i = 0; i < features.length; i++){
@@ -76,8 +72,6 @@ export interface UserData {
 
     this.backend.getallusers()
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
       // console.log("All Users:",data['data']);
      
     });

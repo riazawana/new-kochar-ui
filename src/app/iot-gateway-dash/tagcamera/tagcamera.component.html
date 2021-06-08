@@ -48,7 +48,7 @@
   </div>
 
   <div *ngIf="portlist != undefined">
-    <div class="row" *ngFor="let p of portlist;let i = index">
+    <div class="row" *ngFor="let p of portlist">
 
      
      <div class="row" [hidden]="(p.sensor_name == 'Temp 1') || (p.sensor_name == 'Temp 2')">
@@ -57,7 +57,7 @@
         <mat-form-field appearance="outline" id="cam" class="selectcls">
           <mat-label>Select Camera</mat-label>
           <mat-select placeholder="camera" [(ngModel)]="p.camera_id" name="camera"> 
-            <mat-option *ngFor="let g of camera_list;" value="{{g.camera_id}}" (click)="putcam(i,g.camera_id,nvr_mac)">{{g.camera_name}}</mat-option>
+            <mat-option *ngFor="let g of camera_list" value="{{g.camera_id}}">{{g.camera_name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </p></div>

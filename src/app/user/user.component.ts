@@ -6,7 +6,6 @@ import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface UserData {
   sr_no: string;
@@ -37,9 +36,7 @@ export class UserComponent implements AfterViewInit {
   constructor(
     private backend: BackendconnectionService,
     private router: Router,
-    private route:ActivatedRoute,
-    private ngxLoader: NgxUiLoaderService
-
+    private route:ActivatedRoute
   ) {}
 
   business = false;
@@ -50,8 +47,6 @@ export class UserComponent implements AfterViewInit {
   add:boolean = false;
 
   ngAfterViewInit() {
-
-    this.ngxLoader.start();
 
     var role = sessionStorage.getItem('role');
 
@@ -99,7 +94,6 @@ if(role == 'admin'){
   getuser(){
     this.backend.getallusers()
     .subscribe((data)=> { 
-      this.ngxLoader.stop();
 
         console.log("All Users:",data);
        var users = data["data"];

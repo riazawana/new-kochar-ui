@@ -301,7 +301,7 @@ cursor: pointer;
 .rightsectionHeader{
     display: flex;
     align-items: center;
-    gap:1rem;
+    gap:0.5rem;
     justify-content: flex-end;
     .fa-bell-o{font-size: 20px;}
 }
@@ -319,19 +319,9 @@ cursor: pointer;
     z-index: 100;  
 }
 
+.customname{font-size: 16px; font-family:'lato'; background: none; border: none; outline: 0;}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.profileavt{width: 25px; height: 25px;}
 
 
 

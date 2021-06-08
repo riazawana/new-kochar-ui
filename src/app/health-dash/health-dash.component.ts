@@ -4,7 +4,6 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { DetailsModalComponent } from './details-modal/details-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -19,7 +18,6 @@ export class HealthDashComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<HealthDashComponent>,
-    private ngxLoader: NgxUiLoaderService,
     private router:Router,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
@@ -28,26 +26,15 @@ export class HealthDashComponent implements OnInit {
     healthdata:any;
    faMapMarker = faMapMarkerAlt;
 
-   citys:any = [];
-   states:any =  [];
-   zones:any= [];
-   city:any= [];
-   state:any= [];
-   zone:any= [];
-   filter:any;
-
-
+  
    
   ngOnInit(): void {
 
-    this.ngxLoader.start();
     
 
 
         this.backend.healthDashboard()
         .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
            console.log("All location:",data["data"]);
            this.healthdata = data["data"];
         });

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-router-detail',
@@ -13,7 +12,6 @@ export class RouterDetailComponent implements OnInit {
   avilmem:any;
   cached:any;
   constructor( private backend: BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -45,15 +43,11 @@ export class RouterDetailComponent implements OnInit {
   lan_clients:any = [];
 
   ngOnInit(): void {
-    this.ngxLoader.start();
-
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
 
       this.backend.getrouter(this.id)
       .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
           console.log("Data:",data);
 
           this.data = data["data"].result[0];

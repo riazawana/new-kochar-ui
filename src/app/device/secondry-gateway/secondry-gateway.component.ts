@@ -10,7 +10,6 @@ import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommandSettingMeterComponent } from '../../command-setting-meter/command-setting-meter.component';  
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-secondry-gateway',
@@ -29,7 +28,6 @@ export class SecondryGatewayComponent implements OnInit {
     private soc:SocketioSendmsgService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<CommandSettingMeterComponent>,
-    private ngxLoader: NgxUiLoaderService,
     private router:Router,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
@@ -73,13 +71,10 @@ export class SecondryGatewayComponent implements OnInit {
    
   ngOnInit(): void {
 
-    this.ngxLoader.start();
   
 
     this.backend.getmodbususerwise()
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
       //  console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 

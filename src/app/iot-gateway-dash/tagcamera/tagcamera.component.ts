@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-
 @Component({
   selector: 'app-tagcamera',
   templateUrl: './tagcamera.component.html',
@@ -12,7 +10,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class TagcameraComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
 
@@ -21,14 +18,11 @@ export class TagcameraComponent implements OnInit {
     gateway:any;
     sensor_name:any;
   ngOnInit(): void {
-    this.ngxLoader.start();
   
  
     this.gateways = [];
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
       console.log("All gateways:",data["data"]);
       for(var i = 0; i < data["data"].length; i++)
       {
@@ -148,8 +142,6 @@ config =  [
 },
   ];
 
-  nvr_mac:any;
-
 selgateway(gateway){
 
    this.camera_list = [];
@@ -170,8 +162,6 @@ selgateway(gateway){
   .subscribe((data)=> { 
     console.log(data)
     this.camera_list = data["data"][0].cameras;
-    this.nvr_mac = data["data"][0].mac_id;
-
 
     // multiple camera list append
 
@@ -221,16 +211,6 @@ selgateway_nocam(gateway){
    // multiple camera list append
 
  });
-
-}
-
-putcam(i,x,y){
-  // alert(i)
-    this.portlist[i].camera_id = x;
-    this.portlist[i].nvr_mac = y;
-   
-    console.log(this.portlist[i])
-    console.log(this.portlist)
 
 }
 

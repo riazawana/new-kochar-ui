@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-template',
@@ -13,7 +12,6 @@ export class EditTemplateComponent implements OnInit {
 
   constructor(
     private backend:BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router
   ) { }
@@ -36,7 +34,6 @@ export class EditTemplateComponent implements OnInit {
 
 
 
-    this.ngxLoader.start();
    
 
     this.route.paramMap.subscribe(params => {
@@ -44,7 +41,6 @@ export class EditTemplateComponent implements OnInit {
       })
         this.backend.getTemplate(this.id)
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
         this.tem_data = data["data"][0];
         console.log(this.tem_data);
 

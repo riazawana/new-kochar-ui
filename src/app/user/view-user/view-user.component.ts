@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-user',
@@ -13,9 +12,7 @@ export class ViewUserComponent implements OnInit {
   constructor(
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router,
-    private ngxLoader: NgxUiLoaderService
-
+    private router:Router
   ) { }
 
   id:string;
@@ -59,10 +56,6 @@ export class ViewUserComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
-    this.ngxLoader.start();
-
-
     this.getallroles();
     this.getcountry();   
     this.getallzone();
@@ -72,9 +65,6 @@ export class ViewUserComponent implements OnInit {
      
     this.backend.getSingleUser(this.id)
     .subscribe((data)=> { 
-
-      this.ngxLoader.stop();
-
        console.log("User Data",data);
        this.user = data['data'][0];
 

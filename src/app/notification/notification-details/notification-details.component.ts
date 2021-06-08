@@ -4,7 +4,6 @@ import { BackendconnectionService } from '../../backendconnection.service';
 declare const Hls: any;
 import { DetailModalComponent } from '../detail-modal/detail-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-notification-details',
@@ -17,7 +16,6 @@ export class NotificationDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<DetailModalComponent>, 
-    private ngxLoader: NgxUiLoaderService,
     @Inject(MAT_DIALOG_DATA) public data2: any,
     private router:Router) { }
 
@@ -28,9 +26,7 @@ export class NotificationDetailsComponent implements OnInit {
 
 
   initial_cam_id:any = '';
-  
   ngOnInit(): void {
-    this.ngxLoader.start();
     
 
      this.route.paramMap.subscribe(params => {
@@ -41,8 +37,6 @@ export class NotificationDetailsComponent implements OnInit {
                
             this.backend.getnotification(this.id,this.cli)
           .subscribe((data)=> { 
-      this.ngxLoader.stop();
-
              console.log("Data:",data);
              this.wholedata = data["data"];
              this.data = data["data"].notification[0];
@@ -57,16 +51,6 @@ export class NotificationDetailsComponent implements OnInit {
               this.getcam(this.data.data.nvr_mac);
             }else{
               console.log("health");
-
-              
-              this.backend.getCameraInfoLocationWise(this.data.locationname,this.cli)
-              .subscribe((data)=> {  
-                console.log("heath data:", data);
-                // alert(data["data"][0].cameras[0].camera_id);
-              this.initial_cam_id = data["data"][0].cameras[0].camera_id;
-              this.getcam(data["data"][0].mac_id);
-
-              })
             }
 
           });
@@ -185,7 +169,7 @@ wholedata:any;
   }
 
   changecam(x){
-    // alert(x);
+    alert(x);
     this.onclose();
     this.runcamera(x);
   }

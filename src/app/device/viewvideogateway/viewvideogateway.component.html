@@ -87,43 +87,31 @@
 
         <ng-container matColumnDef="live">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Live Feed </th>
-          <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" (click)="getlivefeed(row.rtsp_url)" style="font-size: 75%;"><i class="fa fa-eye"></i></button> </td>
+          <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" (click)="getlivefeed(row.rtsp_url)" style="font-size: 75%;">Get Recording</button> </td>
         </ng-container>
 
         <ng-container matColumnDef="get">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Get Recording </th>
           <td mat-cell *matCellDef="let row;let i = index;" > 
 
-            <div class="row">
-              <div class="col-sm-8">
-                <mat-form-field appearance="fill">
-                  <mat-label>Start date</mat-label>
-                  <input matInput [matDatepicker]="picker1"  [(ngModel)]="start[i]" >
-                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                  <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>
-
-               
-              </div>
-              <div class="col-sm-4">
-            <span><input class="ip" matInput type="time" [(ngModel)]="starttime[i]"  placeholder="HH:MM" > </span>
-              </div>
-
-            </div>
-
-          <div class="row">
-            <div class="col-sm-8"> 
-              <mat-form-field appearance="fill">
-                <mat-label>End date</mat-label>
-                <input matInput [matDatepicker]="picker2"  [(ngModel)]="end[i]" >
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-              <span> <input class="ip" matInput type="time" [(ngModel)]="endtime[i]"  placeholder="HH:MM" > </span>
-            </div>
-          </div>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a start date</mat-label>
+              <input matInput [matDatepicker]="picker1"  [(ngModel)]="start[i]" >
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <input class="ip" matInput type="time" [(ngModel)]="starttime[i]"  placeholder="HH:MM" > 
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a end date</mat-label>
+              <input matInput [matDatepicker]="picker2"  [(ngModel)]="end[i]" >
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <input class="ip" matInput type="time" [(ngModel)]="endtime[i]"  placeholder="HH:MM" > 
+            <br>
             <!-- <button (click)="recordedVideos(this.mac_id,start[i],end[i],row.camera_id)">Get all</button> -->
             <button class="btn btn-primary" (click)="openDialog(this.mac_id,start[i],end[i],row.camera_id,starttime[i],endtime[i])">Get all</button>
 
@@ -202,7 +190,6 @@
   </table>
 </div>
 </div>
-
 
 
 

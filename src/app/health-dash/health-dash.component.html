@@ -11,63 +11,6 @@
   
         <div class="main">
 
-          <div class="row">
-            <div class="col-sm-4">
-              <mat-form-field appearance="outline" id="filter">
-                <mat-label>Filter</mat-label>
-                <mat-select [(ngModel)]="filter"  name="filter"  > 
-                <!-- (selectionChange)="dofilteran(filter)" -->
-                  <mat-option  value="Zone"  >Zone</mat-option>
-                  <mat-option  value="State" >State</mat-option>
-                  <mat-option  value="City"  >City</mat-option>
-          
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div *ngIf="filter == 'Zone'">
-              <h3><b>Zone </b></h3>
-                 
-              <mat-form-field appearance="outline" id="hub">
-                <mat-label>Zone</mat-label>
-                <mat-select  [(ngModel)]="zone"  name="zone">
-                
-                  <mat-option *ngFor="let l of zones"  value="{{l.name}}"  >{{l.name}}</mat-option>
-    
-                </mat-select>
-              </mat-form-field>
-                  
-              </div>
-
-              <div *ngIf="filter == 'State'">
-                <h3><b>State </b></h3>
-                   
-                <mat-form-field appearance="outline" id="hub">
-                  <mat-label>State</mat-label>
-                  <mat-select  [(ngModel)]="state"  name="state">
-                  
-                    <mat-option *ngFor="let l of states"  value="{{l.name}}"  >{{l.name}}</mat-option>
-      
-                  </mat-select>
-                </mat-form-field>
-                    
-                </div>
-
-                <div *ngIf="filter == 'City'">
-                  <h3><b>City </b></h3>
-                     
-                  <mat-form-field appearance="outline" id="hub">
-                    <mat-label>City</mat-label>
-                    <mat-select  [(ngModel)]="city"  name="city">
-                    
-                      <mat-option *ngFor="let l of citys"  value="{{l.name}}"  >{{l.name}}</mat-option>
-        
-                    </mat-select>
-                  </mat-form-field>
-                      
-                  </div>
-          </div>
-
             <div>
                 <table class="table">
                   <thead class="thead-dark">
@@ -120,7 +63,7 @@
                             <span *ngIf="r.is_online == false" class="reddot"></span>
                             <span *ngIf="r.is_online == true" class="greendot"></span> 
                      
-                            <span>NVR Status</span>
+                            <span>{{r.mac_id}}</span>
                               <br>
                               <span (click)="detailsVideo(r.cameras)"><b>Details</b></span>
 

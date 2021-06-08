@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-role',
@@ -13,9 +12,7 @@ export class ViewRoleComponent implements OnInit {
   constructor(
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router,
-    private ngxLoader: NgxUiLoaderService
-
+    private router:Router
   ) { }
 
   id:any;
@@ -29,7 +26,6 @@ export class ViewRoleComponent implements OnInit {
   disable = false;
   
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     this.backend.getallfeatures().subscribe((data)=>{
       this.features = data["data"];
@@ -91,8 +87,6 @@ export class ViewRoleComponent implements OnInit {
      
       this.backend.getrole(this.id)
       .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
         //  console.log("Data:",data["data"]);
          this.data = data["data"][0];
        this.name = this.data.name;

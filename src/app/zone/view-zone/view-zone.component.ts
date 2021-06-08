@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-zone',
@@ -13,9 +12,7 @@ export class ViewZoneComponent implements OnInit {
   constructor(
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router,
-    private ngxLoader: NgxUiLoaderService
-
+    private router:Router
   ) { }
 
   //name:string;
@@ -32,7 +29,6 @@ export class ViewZoneComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -40,7 +36,6 @@ export class ViewZoneComponent implements OnInit {
 
       this.backend.getallusers()
       .subscribe((data)=> { 
-        this.ngxLoader.stop();
   
         // console.log("All Users:",data["data"]);
   

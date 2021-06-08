@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-videogateway',
@@ -12,7 +11,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class VideogatewayComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -21,8 +19,6 @@ export class VideogatewayComponent implements OnInit {
   idz:any;
 
   ngOnInit(): void {
-    this.ngxLoader.start();
-
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       this.idz = params.get("idz");
@@ -35,9 +31,7 @@ export class VideogatewayComponent implements OnInit {
   getvideo(){
 
     this.backend.getvideogatewaylocationwise(this.id)
-    .subscribe((data)=> {
-    this.ngxLoader.stop();
-
+    .subscribe((data)=> { 
          console.log("Data:",data["data"]);
        this.videolist = data["data"];
       

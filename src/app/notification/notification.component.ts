@@ -11,7 +11,6 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 export interface health {
@@ -72,8 +71,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
   constructor(
     private backend: BackendconnectionService,
     private router:Router,   
-    private soc:SocketioSendmsgService,  
-    private ngxLoader: NgxUiLoaderService
+    private soc:SocketioSendmsgService,    
   ) {
     this.dataSource = new MatTableDataSource;
     this.dataSource2 = new MatTableDataSource;
@@ -85,7 +83,6 @@ export class NotificationComponent implements OnInit , OnDestroy {
    client:any;
 
   ngOnInit() {
-    this.ngxLoader.start();
      const that = this;
      that.fetchdata();
   //  this.myVar = setInterval(function(){ 
@@ -132,7 +129,6 @@ export class NotificationComponent implements OnInit , OnDestroy {
    
      this.getlocation();
      this.getgateway();
-     this.ngxLoader.stop();
 
   }
 
@@ -245,18 +241,18 @@ getgateway(){
     var yes = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000);
     // alert(yes);
 
-    var yesterday = yes.getFullYear()+'-'+(yes.getMonth() + 1).toString().padStart(2, "0")+'-'+(yes.getDate()).toString().padStart(2, "0");
+    var yesterday = yes.getFullYear()+'-'+(yes.getMonth() + 1).toString().padStart(2, "0")+'-'+yes.getDate();
     // alert(yesterday);
-    var date = today.getFullYear()+'-'+(today.getMonth() + 1).toString().padStart(2, "0")+'-'+(today.getDate()).toString().padStart(2, "0");
+    var date = today.getFullYear()+'-'+(today.getMonth() + 1).toString().padStart(2, "0")+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var sev = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    var sevenday = sev.getFullYear()+'-'+(sev.getMonth() + 1).toString().padStart(2, "0")+'-'+(sev.getDate()).toString().padStart(2, "0");
+    var sevenday = sev.getFullYear()+'-'+(sev.getMonth() + 1).toString().padStart(2, "0")+'-'+sev.getDate();
     var twentyeight = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000);
-    var twentyeightday = twentyeight.getFullYear()+'-'+(twentyeight.getMonth() + 1).toString().padStart(2, "0")+'-'+(twentyeight.getDate()).toString().padStart(2, "0");
+    var twentyeightday = twentyeight.getFullYear()+'-'+(twentyeight.getMonth() + 1).toString().padStart(2, "0")+'-'+twentyeight.getDate();
     var ninty = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
-    var nintyday = ninty.getFullYear()+'-'+(ninty.getMonth() + 1).toString().padStart(2, "0")+'-'+(ninty.getDate()).toString().padStart(2, "0");
+    var nintyday = ninty.getFullYear()+'-'+(ninty.getMonth() + 1).toString().padStart(2, "0")+'-'+ninty.getDate();
     var one = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000);
-    var oneyear = one.getFullYear()+'-'+(one.getMonth() + 1).toString().padStart(2, "0")+'-'+(one.getDate()).toString().padStart(2, "0");
+    var oneyear = one.getFullYear()+'-'+(one.getMonth() + 1).toString().padStart(2, "0")+'-'+one.getDate();
 
     var fildata = "";
 

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-schdule-manager',
@@ -13,8 +12,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class SchduleManagerComponent implements OnInit {
 
   constructor(
-    private ngxLoader: NgxUiLoaderService,
-    private router: Router,
+              private router: Router,
     private backend: BackendconnectionService 
             ){ }
 
@@ -30,7 +28,6 @@ gateway:any;
 
   ngOnInit(){
 
-    this.ngxLoader.start();
     var role = sessionStorage.getItem('role');
 
     if(role == 'admin'){
@@ -77,7 +74,6 @@ gateway:any;
   }
 
   getgatewaydata(){
-    this.ngxLoader.stop();
     this.gateways = [];
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 

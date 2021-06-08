@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-addrole',
@@ -17,7 +16,6 @@ export class AddroleComponent implements OnInit {
     private backend: BackendconnectionService ,
     private _location:Location,
     private router: Router,
-    private ngxLoader: NgxUiLoaderService
   ) { }
 
   name:string;
@@ -37,13 +35,9 @@ export class AddroleComponent implements OnInit {
   disableSelect = new FormControl(false);  
 
   ngOnInit(): void {
-    this.ngxLoader.start();
-
     this.getallfeatures();
     this.getallmodules();
     // this.getallsubmodules();
-
-    this.ngxLoader.stop();
 
   }
 

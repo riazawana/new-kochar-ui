@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EscalationDetailsComponent } from './escalation-details/escalation-details.component';                    // modal two load
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface DialogData {
   select_s_e : string;
@@ -45,7 +44,6 @@ export class EscalationMatrixComponent implements AfterViewInit {
     private backend: BackendconnectionService,
     private router: Router,   private dialog: MatDialog,
     public dialogRef: MatDialogRef<EscalationMatrixComponent>,
-    private ngxLoader: NgxUiLoaderService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
@@ -84,7 +82,6 @@ export class EscalationMatrixComponent implements AfterViewInit {
    
      ngAfterViewInit() {
    
-      this.ngxLoader.start();
    
      
     var role = sessionStorage.getItem('role');
@@ -134,7 +131,6 @@ export class EscalationMatrixComponent implements AfterViewInit {
     this.backend.getescalationmatrixuserwise()
     .subscribe((data)=> { 
         console.log("All escalation:",data);
-        this.ngxLoader.stop();
 
      
       newdata = data["data"];

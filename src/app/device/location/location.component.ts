@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -13,7 +12,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class LocationComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
-    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
    id:string;
@@ -22,7 +20,6 @@ export class LocationComponent implements OnInit {
    faMapMarker = faMapMarkerAlt;
    
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -39,8 +36,6 @@ export class LocationComponent implements OnInit {
 
         this.backend.getlocationzonewise(this.id)
         .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
           console.log("All location:",data["data"]);
            this.locations = data["data"];
         });

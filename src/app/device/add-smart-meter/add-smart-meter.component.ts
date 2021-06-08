@@ -3,7 +3,6 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-add-smart-meter',
@@ -16,7 +15,6 @@ export class AddSmartMeterComponent implements OnInit {
   constructor(
     private backend: BackendconnectionService,
     private route: ActivatedRoute,
-    private ngxLoader: NgxUiLoaderService,
     private router:Router,
     private _location:Location
   ) { }
@@ -29,7 +27,6 @@ export class AddSmartMeterComponent implements OnInit {
   client:any;
 
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -37,7 +34,6 @@ export class AddSmartMeterComponent implements OnInit {
 
       this.backend.getlocation(this.id)
      .subscribe((data)=> {
-    this.ngxLoader.stop();
       // console.log(data);
        this.location = data["data"][0].name;
        this.client = data["data"][0].client;

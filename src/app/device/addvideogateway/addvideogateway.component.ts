@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 import {Location} from '@angular/common';
 @Component({
   selector: 'app-addvideogateway',
@@ -13,7 +12,6 @@ export class AddvideogatewayComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private ngxLoader: NgxUiLoaderService,
     private _location:Location,
     private router:Router) { }
 
@@ -36,7 +34,6 @@ export class AddvideogatewayComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     this.user_id =  sessionStorage.getItem('userid');
     this.route.paramMap.subscribe(params => {
@@ -46,8 +43,6 @@ export class AddvideogatewayComponent implements OnInit {
 
       this.backend.getZone(this.zone_id)
     .subscribe((data)=> {
-    this.ngxLoader.stop();
-
       // console.log(data["data"]);
       this.zone_name = data["data"][0].name;
       this.client = data["data"][0].client;

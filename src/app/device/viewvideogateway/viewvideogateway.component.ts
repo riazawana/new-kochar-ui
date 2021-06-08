@@ -8,7 +8,6 @@ import { GetallrecordModalComponent } from '../getallrecord-modal/getallrecord-m
 import { CameraModalComponent } from '../camera-modal/camera-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import * as moment from 'moment';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface CameraData {
   camera_status: string;
@@ -32,7 +31,6 @@ export class ViewvideogatewayComponent implements OnInit {
   constructor(
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private ngxLoader: NgxUiLoaderService,
     private router:Router,
     private dialog: MatDialog,
     private dialog2: MatDialog,
@@ -142,8 +140,6 @@ onNoClick2(): void {
   };
   ngOnInit(): void {
 
-    this.ngxLoader.start();
-
     alert("Please install Desktop App and start it to watch rtsp footage!");
 
     this.route.paramMap.subscribe(params => {
@@ -153,8 +149,6 @@ onNoClick2(): void {
       
     this.backend.getvideogateways(this.id)
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
        console.log("User Data",data);
        this.cameradetails = data["data"][0];
        this.mac_id = data['data'][0].mac_id;

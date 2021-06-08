@@ -6,7 +6,6 @@ import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommandSettingComponent } from '../../command-setting/command-setting.component'; 
 import { RelaychangeModalComponent } from '../relaychange-modal/relaychange-modal.component';  
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
@@ -36,7 +35,6 @@ export class GatewayListComponent implements OnInit {
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
     private dialog: MatDialog,
-    private ngxLoader: NgxUiLoaderService,
     private dialog2: MatDialog,
     public dialogRef: MatDialogRef<CommandSettingComponent>,
     public dialogRef2: MatDialogRef<RelaychangeModalComponent>,
@@ -85,7 +83,6 @@ export class GatewayListComponent implements OnInit {
      macid:any;
      singleGatewayList: boolean = false;
   ngOnInit(): void {
-    this.ngxLoader.start();
 
     var url = this.router.url.split("/");
     console.log(url);
@@ -250,9 +247,6 @@ export class GatewayListComponent implements OnInit {
 
       this.backend.getlocation(this.id)
       .subscribe((data)=> { 
-
-    this.ngxLoader.stop();
-
       //  console.log("location clinet data:",data["data"][0].client);
         var c = data["data"][0].client;
        this.backend.getgatewaylocationwise(this.id,c)

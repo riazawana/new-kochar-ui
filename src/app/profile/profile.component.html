@@ -1,70 +1,56 @@
-<div class="row px-3">
-    <div class="containt">
-        <div class="sub-heading">
-            <h3>Profile</h3>
-            <hr>
-         </div>
+<div class="container">
+    <div class="sub-heading">
+        <h3>Profile</h3>
+       
+     </div>
 
-         <div class="form_holder">
-          
-    <div class="col-md-12 p-0">
-        <div class="profile_heading">
-            <h4>Kochar Infra.</h4>
-        </div>
-        
-        <div class="profile_details">
-            
-            <div class="row latto-medium">
-                <div class="col-sm-4">
-                <span><b>Name</b></span>
-                    <br>
-                    <br>
-                <span><b>Phone</b></span>
-                <br>
-                <br>
-                <span><b>Address</b></span>
-                <br>
-                <br>
-                <span><b>Email</b></span>
-                <br>
-                <br>
-                <span><b>Role</b></span>
-                <br>
-                <br>
-                </div>
-                <div class="col-sm-8">
-                <span>{{name}}</span>
-                <br>
-                <br>
-                <span>{{mobile}}</span>
-                <br>
-                <br>
-                <span>{{address}}</span>
-                <br>
-                <br>
-                <span>{{email}}</span>
-                <br>
-                <br>
-                <span>{{role}}</span>
-                <br>
-                <br>
-                </div>
-            </div>
-
-           
-
-            <div class="col-md-12 text-center" style="margin-top: 20px;">
-                <a alt="Edit" title="Edit" (click)="editinfo(email)" class="add_new_grp editbtn"> Edit </a>
-            </div>    
-           
-            
-        </div>
-
-        </div>
-            
-    </div>
+     <div class="form_holder">
+      
+<div class="col-md-12 p-2">
+    <div class="profile_heading">
+        <h4 class="heading-card">Kochar Infra.</h4>
     </div>
     
-</div>
+    <div class="profile_details">
+        
+        <div class="row latto-medium">
+            <div class="col-sm-4 d-flex gap-1 flex-column">
+            <span><b>Name</b></span>
+               
+            <span><b>Phone</b></span>
+           
+            <span><b>Address</b></span>
+         
+            <span><b>Email</b></span>
+          
+            <span><b>Role</b></span>
+           
+            </div>
+            <div class="col-sm-8 d-flex gap-1 flex-column">
+            <span>{{name}}</span>
+            
+            <span>{{mobile}}</span>
+            
+            <span>{{address}}</span>
+            
+            <span>{{email}}</span>
+             
+            <span>{{role}}</span>
+             
+            </div>
+        </div>
 
+       
+
+        <div class="col-md-12 text-center" style="margin-top: 20px;">
+            <a alt="Edit" title="Edit" (click)="editinfo(email)" class="add_new_grp editbtn"> Edit </a>
+        </div>    
+       
+        
+    </div>
+
+    </div>
+        
+</div>
+</div>
 

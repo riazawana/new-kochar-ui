@@ -20,10 +20,10 @@
     font-family: var(--prime-font);
     font-weight:400;
 }
-.profile_heading h4{
+.profile_heading h4, .profile_heading h4.heading-card{
     font-family:var(--font);
     font-size:18px;
-    font-weight: 400;
+    font-weight: 600;
     color:var(--black)
 }
 .latto-medium{
@@ -52,3 +52,6 @@ border-color: var(--prime-hover);
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick{color:#ff3000;}
+.gap-1{
+    gap:1rem;
+}

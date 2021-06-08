@@ -4,7 +4,6 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {Location} from '@angular/common';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-addrouter',
@@ -15,7 +14,6 @@ export class AddrouterComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private ngxLoader: NgxUiLoaderService,
     private _location:Location,
     private router:Router) { }
 
@@ -63,8 +61,6 @@ export class AddrouterComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.ngxLoader.start();
-
 
     this.route.paramMap.subscribe(params => {
       this.location_id = params.get("id");
@@ -72,8 +68,6 @@ export class AddrouterComponent implements OnInit {
 
       this.backend.getlocation(this.location_id)
     .subscribe((data)=> { 
-    this.ngxLoader.stop();
-
     //  console.log(data);
       this.location_name = data["data"][0].name;
       this.zone_name = data["data"][0].zone_name; 
