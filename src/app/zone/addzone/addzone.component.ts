@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-addzone',
@@ -15,6 +16,7 @@ export class AddzoneComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
@@ -26,6 +28,7 @@ export class AddzoneComponent implements OnInit {
   userdata:any;
 
   ngOnInit(): void {
+    this.ngxLoader.start();
 
     this.backend.getallusers()
     .subscribe((data)=> { 
@@ -34,6 +37,7 @@ export class AddzoneComponent implements OnInit {
        this.userdata = JSON.parse(sessionStorage.getItem('userdata'));
 
        //console.log('userdaata',this.userdata);
+    this.ngxLoader.stop();
        
        for(var k = 0; k< data['data'].length; k++){
          

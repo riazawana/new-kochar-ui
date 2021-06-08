@@ -29,7 +29,7 @@
           <p>Host :  {{cameradetails.host}}</p>
       </div>
       <div class="col-sm-4">
-          <p>Camera Zero <button  class="btn btn-primary" (click)="getlivefeed(this.zero.hls)">b</button></p>
+          <p>Channel Zero <button  class="btn btn-primary" (click)="getlivefeed(this.zero.hls)"><i class="fa fa-eye"></i></button></p>
       </div>
      </div>
 
@@ -87,7 +87,7 @@
 
         <ng-container matColumnDef="live">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Live Feed </th>
-          <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" (click)="getlivefeed(row.rtsp_url)" style="font-size: 75%;">Get Recording</button> </td>
+          <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" (click)="getlivefeed(row.rtsp_url)" style="font-size: 75%;"><i class="fa fa-eye"></i></button> </td>
         </ng-container>
 
         <ng-container matColumnDef="get">

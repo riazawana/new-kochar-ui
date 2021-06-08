@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BackendconnectionService } from '../../backendconnection.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 export class RouterAnalysisComponent implements OnInit {
 
   constructor( private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -55,6 +57,9 @@ export class RouterAnalysisComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
+    this.ngxLoader.start();
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       this.mac = params.get("mac");
@@ -62,6 +67,7 @@ export class RouterAnalysisComponent implements OnInit {
 
       })
 
+    this.ngxLoader.stop();
      
 
   }

@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface UserData {
   sr_no: string;
@@ -40,11 +41,13 @@ export class TemplateListComponent implements AfterViewInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private router: Router
   ) {
   }
 
   ngAfterViewInit() {
+    this.ngxLoader.start();
 
     var role = sessionStorage.getItem('role');
 
@@ -86,6 +89,9 @@ export class TemplateListComponent implements AfterViewInit {
       getAllTemplateList(){
         this.backend.getalltemplate()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       //  console.log("All Template:",data["data"]);
        this.dataSource = new MatTableDataSource(data["data"]);
 

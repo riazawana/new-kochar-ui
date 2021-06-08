@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -12,8 +14,14 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AddnewlocationComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private formBuilder: FormBuilder,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
+    userformGroup: FormGroup;
+
+
+    name:any;
 
   country_list:any;
   state_list:any;
@@ -44,9 +52,21 @@ export class AddnewlocationComponent implements OnInit {
 
   zone_id:string;
   client:string;
-
+  
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
+    this.userformGroup = this.formBuilder.group({
+      lo_name: ['', [Validators.required, Validators.minLength(4)]],
+      site:['', [Validators.required, Validators.minLength(4)]],
+      add:['', [Validators.required]],
+      country_id : ['', [Validators.required]],
+      state_id : ['', [Validators.required]],
+      city_id : ['', [Validators.required]],
+      pincode_id : ['', [Validators.required]],
+      site_live : ['', [Validators.required]],
+    })
 
     this.route.paramMap.subscribe(params => {
       this.zone_id = params.get("id");
@@ -54,6 +74,8 @@ export class AddnewlocationComponent implements OnInit {
 
       this.backend.getZone(this.zone_id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
          // console.log("Zone data:",data);
           this.zone_name = data["data"][0].name;
           this.client = data["data"][0].client;

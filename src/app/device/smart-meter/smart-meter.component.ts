@@ -4,6 +4,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommandSettingSmartmeterComponent } from '../../command-setting-smartmeter/command-setting-smartmeter.component';  
@@ -20,6 +21,7 @@ export class SmartMeterComponent implements OnInit {
    
  
    constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
     private dialog: MatDialog,
@@ -60,10 +62,14 @@ export class SmartMeterComponent implements OnInit {
    
   ngOnInit(): void {
 
+    this.ngxLoader.start();
    
 
     this.backend.getmodbususerwise()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       //  console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 

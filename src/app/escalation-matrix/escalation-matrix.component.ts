@@ -3,6 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import {Router} from '@angular/router';
 
@@ -41,6 +42,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
   
 
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService,
     private router: Router,   private dialog: MatDialog,
     public dialogRef: MatDialogRef<EscalationMatrixComponent>,
@@ -82,6 +84,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
    
      ngAfterViewInit() {
    
+      this.ngxLoader.start();
    
      
     var role = sessionStorage.getItem('role');
@@ -131,6 +134,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
     this.backend.getescalationmatrixuserwise()
     .subscribe((data)=> { 
         console.log("All escalation:",data);
+        this.ngxLoader.stop();
 
      
       newdata = data["data"];

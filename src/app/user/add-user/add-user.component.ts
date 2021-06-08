@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-add-user',
@@ -14,6 +15,7 @@ export class AddUserComponent implements OnInit {
   userformGroup: FormGroup;
   constructor(
     private route: ActivatedRoute,
+    private ngxLoader: NgxUiLoaderService,
     private router: Router,
     private formBuilder: FormBuilder,
     private backend: BackendconnectionService 
@@ -46,6 +48,8 @@ export class AddUserComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
        
     this.userformGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
@@ -79,6 +83,8 @@ export class AddUserComponent implements OnInit {
   getallzone(){
     this.backend.getallzones()
     .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
       // console.log("zones:",data["data"]);
        this.zones = data["data"];
      console.log(this.zones);

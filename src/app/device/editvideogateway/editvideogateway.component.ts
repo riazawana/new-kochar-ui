@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import {Location} from '@angular/common';
 @Component({
   selector: 'app-editvideogateway',
@@ -11,6 +12,7 @@ import {Location} from '@angular/common';
 export class EditvideogatewayComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private _location:Location,
     private router:Router) { }
@@ -35,6 +37,7 @@ export class EditvideogatewayComponent implements OnInit {
   cameradetails:any;
 
   ngOnInit(): void {
+    this.ngxLoader.start();
 
     this.user_id =  sessionStorage.getItem('userid');
     this.route.paramMap.subscribe(params => {
@@ -44,6 +47,9 @@ export class EditvideogatewayComponent implements OnInit {
 
       this.backend.getvideogateways(this.video_id)
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
        console.log("Video Data",data);
        this.cameradetails = data["data"][0];
        this.mac_id = data['data'][0].mac_id;

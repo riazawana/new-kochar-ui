@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class TagcameraComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
 
@@ -19,10 +21,14 @@ export class TagcameraComponent implements OnInit {
     sensor_name:any;
   ngOnInit(): void {
   
+    this.ngxLoader.start();
  
     this.gateways = [];
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       console.log("All gateways:",data["data"]);
       for(var i = 0; i < data["data"].length; i++)
       {

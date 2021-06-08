@@ -16,56 +16,69 @@
                   <div class="example-large-box mat-elevation-z4">
                        <div class="row" id="row">
                         <div class="col-sm-12">
+                          <form  [formGroup]="formGroup1">
 
                             <p>
                                 <mat-form-field appearance="outline">
                                     <mat-label>Wired Controller Type</mat-label>
-                                    <mat-select placeholder="Type" [(ngModel)]="w_c_t" name="w_c_t" (selectionChange)="getalltemplate(w_c_t)">
+                                    <mat-select placeholder="Type" [(ngModel)]="w_c_t" name="w_c_t" (selectionChange)="getalltemplate(w_c_t)" required formControlName="w_c_t">
                                       <mat-option  value="IN-12" >IN-12</mat-option>
                                       <mat-option  value="IN-12T" >IN-12T</mat-option>
                                       <mat-option  value="IN-14" >IN-14</mat-option>
                                     </mat-select>
-                                  <mat-hint>Wired Controller Type</mat-hint>
+                                    <mat-error *ngIf="formGroup1.get('w_c_t').hasError('required')">
+                                      Wired Controller Type is Required!
+                                    </mat-error>
                                 </mat-form-field>
                               </p>
 
                             <p>
+
+                     
                                 <mat-form-field appearance="outline">
                                   <mat-label>Wired Controller Name</mat-label>
-                                  <input matInput [(ngModel)]="w_c_n" name="w_c_n" placeholder="Controller Name">
-                                  <mat-hint>Wired Controller Name</mat-hint>
+                                  <input matInput [(ngModel)]="w_c_n" name="w_c_n" placeholder="Controller Name" required formControlName="w_c_n">
+                                  <mat-error *ngIf="formGroup1.get('w_c_n').hasError('required')">
+                                    Wired Controller Name is Required!
+                                  </mat-error>
                                 </mat-form-field>
                               </p>
         
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>Wired Controller Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="w_c_m_a" name="w_c_m_a" (keyup)="formatMAC(w_c_m_a)" placeholder="(00:00:00:00:00:00)">
-                                  <mat-hint>Wired Controller Mac Address</mat-hint>
+                                  <input matInput [(ngModel)]="w_c_m_a" name="w_c_m_a" (keyup)="formatMAC(w_c_m_a)" placeholder="(00:00:00:00:00:00)" required formControlName="w_c_m_a">
+                                  <mat-error *ngIf="formGroup1.get('w_c_m_a').hasError('required')">
+                                    Wired Controller Mac Address is Required!
+                                  </mat-error>
                                 </mat-form-field>
                               </p>
         
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>GL Mac Address</mat-label>
-                                  <input matInput [(ngModel)]="gl_mac" name="gl_mac" (keyup)="formatMAC_gl_mac(gl_mac)" placeholder="(00:00:00:00:00:00)">
-                                  <mat-hint>GL Mac Address</mat-hint>
+                                  <input matInput [(ngModel)]="gl_mac" name="gl_mac" (keyup)="formatMAC_gl_mac(gl_mac)" placeholder="(00:00:00:00:00:00)" required formControlName="gl_mac">
+                                  <mat-error *ngIf="formGroup1.get('gl_mac').hasError('required')">
+                                    GL Mac Address is Required!
+                                  </mat-error>
                                 </mat-form-field>
                               </p>
         
                               <p>
                                 <mat-form-field appearance="outline">
                                   <mat-label>GL Number</mat-label>
-                                  <input matInput [(ngModel)]="gl_num" name="gl_num" placeholder="0000000000">
-                                  <mat-hint>GL Number</mat-hint>
+                                  <input matInput [(ngModel)]="gl_num" name="gl_num" placeholder="0000000000" required formControlName="gl_num">
+                                  <mat-error *ngIf="formGroup1.get('gl_num').hasError('required')">
+                                    GL Number is Required!
+                                  </mat-error>
                                 </mat-form-field>
                               </p>
-                              
+                              </form>
                         </div>
                     </div>
                   </div>
 
-                  <button type="button" class="btn btn-primary" (click)="submot_iotgateway()" style="float: right;">Next</button>
+                  <button type="button" class="btn btn-primary" (click)="submot_iotgateway()" style="float: right;" [disabled]="!formGroup1.valid ">Next</button>
                   <!-- <button type="button" class="btn btn-primary" (click)="previousStep()" style="float: right;">Previous</button> -->
 
                 </mat-tab>

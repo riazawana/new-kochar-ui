@@ -31,7 +31,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     private backend: BackendconnectionService,
     private keycloakService : KeycloakService,
     notifier: NotifierService,
-    private ngxLoader: NgxUiLoaderService
+    private ngxLoader: NgxUiLoaderService,
   ) {
 
     this.notifier = notifier;

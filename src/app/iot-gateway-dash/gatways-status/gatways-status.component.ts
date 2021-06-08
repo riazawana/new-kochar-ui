@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 
@@ -19,6 +20,7 @@ export class GatwaysStatusComponent implements AfterViewInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private router: Router
   ) {
   }
@@ -26,11 +28,17 @@ export class GatwaysStatusComponent implements AfterViewInit {
   gateways:any;
 
   ngAfterViewInit() {
+
+    this.ngxLoader.start();
+
     var da = JSON.parse(sessionStorage.getItem('userdata'));
 
 
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       // console.log("All gateways:",data["data"]);
 
        this.gateways = data["data"][0];

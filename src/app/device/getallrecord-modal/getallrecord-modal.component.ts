@@ -4,6 +4,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import { CameraModalComponent } from '../camera-modal/camera-modal.component';  
 import * as CryptoJS from 'crypto-js';
 import {Location} from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class GetallrecordModalComponent implements OnInit {
     public dialogRef: MatDialogRef<GetallrecordModalComponent>,
     public dialogRef2: MatDialogRef<GetallrecordModalComponent>,
     private dialog: MatDialog,
+    private ngxLoader: NgxUiLoaderService,
     private dialog2: MatDialog,
     private _location:Location,
 
@@ -40,6 +42,7 @@ export class GetallrecordModalComponent implements OnInit {
     }
     
     ngOnInit(): void {
+      this.ngxLoader.start();
 
    
 
@@ -51,6 +54,9 @@ export class GetallrecordModalComponent implements OnInit {
       
       this.backend.recordedVideos(this.data.mac,start,end,this.data.id)
       .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
            console.log("All Record:",data);
           this.records = data["data"].data;
       });

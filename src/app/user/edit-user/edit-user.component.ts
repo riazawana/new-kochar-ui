@@ -4,6 +4,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-user',
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class EditUserComponent implements OnInit {
   edituserformGroup: FormGroup;
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private formBuilder: FormBuilder,
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
@@ -71,6 +73,7 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ngxLoader.start();
     
     this.edituserformGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
@@ -94,6 +97,9 @@ export class EditUserComponent implements OnInit {
      
     this.backend.getSingleUser(this.id)
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
        console.log("User Data for edit",data);
       this.user = data['data'][0];
       this.name = this.user.name;

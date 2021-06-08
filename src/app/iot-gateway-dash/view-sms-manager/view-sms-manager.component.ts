@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-view-sms-manager',
@@ -11,6 +12,7 @@ export class ViewSmsManagerComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router
   ) { }
@@ -60,6 +62,7 @@ export class ViewSmsManagerComponent implements OnInit {
   id:any;
 
   ngOnInit(): void {
+    this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -67,6 +70,9 @@ export class ViewSmsManagerComponent implements OnInit {
 
       this.backend.getsmssetting(this.id)
       .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
           console.log("Data:",data);
          this.gateway = data["data"][0].gateway_id+','+data["data"][0].client+','+data["data"][0].mac_id;
         //  alert(this.gateway);

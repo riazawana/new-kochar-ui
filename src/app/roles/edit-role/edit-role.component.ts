@@ -4,6 +4,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-role',
@@ -14,6 +15,7 @@ export class EditRoleComponent implements OnInit {
 
   constructor(
     private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private _location:Location,
     private router:Router
@@ -31,6 +33,7 @@ export class EditRoleComponent implements OnInit {
   disableSelect = new FormControl(false);  
   
   ngOnInit(): void {
+    this.ngxLoader.start();
 
       this.backend.getallfeatures().subscribe((data)=>{
       this.features = data["data"];
@@ -55,6 +58,9 @@ export class EditRoleComponent implements OnInit {
     getallmodules(){
       this.backend.getallmodules()
       .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
         //  console.log("Modules:",data["data"]);
          this.modules = data["data"];
       });

@@ -1,18 +1,20 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject,OnDestroy } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 declare const Hls: any;
 import { DetailModalComponent } from '../detail-modal/detail-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-notification-details',
   templateUrl: './notification-details.component.html',
   styleUrls: ['./notification-details.component.scss']
 })
-export class NotificationDetailsComponent implements OnInit {
+export class NotificationDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<DetailModalComponent>, 
@@ -28,6 +30,7 @@ export class NotificationDetailsComponent implements OnInit {
   initial_cam_id:any = '';
   ngOnInit(): void {
     
+    this.ngxLoader.start();
 
      this.route.paramMap.subscribe(params => {
 
@@ -65,9 +68,20 @@ export class NotificationDetailsComponent implements OnInit {
 channel_zero_resp:any = [];
 nvrname:any;
 wholedata:any;
+
+
+ngOnDestroy(){
+  this.onclose();
+
+}
+
+
   getcam(mac_id){
     this.backend.getchannelinfo(mac_id)
     .subscribe((data)=> {  
+
+    this.ngxLoader.stop();
+      
            console.log("cam data:",data);
            this.camdata = data["data"].channel_info;
            this.channel_zero_resp = data["data"].channel_zero_resp;

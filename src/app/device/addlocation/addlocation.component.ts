@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-addlocation',
@@ -11,8 +13,12 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AddlocationComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router:Router) { }
+    
+    formGroup1: FormGroup;
 
 
   gateway_id:string = "0";
@@ -684,6 +690,16 @@ formatMAC(e) {
 
   ngOnInit(): void {
 
+    this.ngxLoader.start();
+
+    this.formGroup1 = this.formBuilder.group({
+      w_c_t: ['', [Validators.required,]],
+      w_c_n : ['', [Validators.required]],
+      w_c_m_a : ['', [Validators.required]],
+      gl_mac : ['', [Validators.required]],
+      gl_num : ['', [Validators.required]],
+    })
+
     this.user_id =  sessionStorage.getItem('userid');
 
     this.route.paramMap.subscribe(params => {
@@ -693,6 +709,8 @@ formatMAC(e) {
 
       this.backend.getZone(this.zone_id)
     .subscribe((data)=> {
+    this.ngxLoader.stop();
+
      // console.log(data["data"][0].name);
       this.zone_name = data["data"][0].name;
       this.client = data["data"][0].client;

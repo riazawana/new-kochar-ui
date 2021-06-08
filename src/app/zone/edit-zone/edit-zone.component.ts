@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 @Component({
   selector: 'app-edit-zone',
@@ -11,6 +12,7 @@ export class EditZoneComponent implements OnInit {
 
   constructor(
     private backend: BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router 
   ) { }
@@ -26,6 +28,7 @@ export class EditZoneComponent implements OnInit {
   business_user = [];
 
   ngOnInit(): void {
+    this.ngxLoader.start();
     
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -49,6 +52,8 @@ export class EditZoneComponent implements OnInit {
 
       this.backend.getZone(this.id)
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
         //  console.log("Zone data Rj Data",data["data"][0]);
          //this.zone = data[0].data[0];
          this.zone = data["data"][0];     

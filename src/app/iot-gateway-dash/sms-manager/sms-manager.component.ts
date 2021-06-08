@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-sms-manager',
@@ -12,7 +13,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class SmsManagerComponent implements OnInit {
 
   constructor(
-              private router: Router,
+    private ngxLoader: NgxUiLoaderService,
+    private router: Router,
     private backend: BackendconnectionService 
             ){ }
 
@@ -31,6 +33,9 @@ delete:any=false;
 
 
   ngOnInit(){
+
+    this.ngxLoader.start();
+
     var role = sessionStorage.getItem('role');
 
     if(role == 'admin'){
@@ -72,6 +77,8 @@ delete:any=false;
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
         console.log("All gateways:",data["data"]);
 
  

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-viewenergy',
@@ -10,6 +11,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 export class ViewenergyComponent implements OnInit {
 
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private backend:BackendconnectionService,
     private route: ActivatedRoute,
     private router:Router
@@ -19,6 +21,8 @@ export class ViewenergyComponent implements OnInit {
  
   
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
      // alert(this.id)
@@ -26,6 +30,9 @@ export class ViewenergyComponent implements OnInit {
      
     this.backend.getmodbus(this.id)
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
        console.log("User Data",data);
       
    

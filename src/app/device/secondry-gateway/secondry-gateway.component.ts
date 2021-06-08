@@ -5,6 +5,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 
@@ -26,6 +27,7 @@ export class SecondryGatewayComponent implements OnInit {
    constructor(private backend:BackendconnectionService,
     private route: ActivatedRoute,
     private soc:SocketioSendmsgService,
+    private ngxLoader: NgxUiLoaderService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<CommandSettingMeterComponent>,
     private router:Router,
@@ -70,11 +72,15 @@ export class SecondryGatewayComponent implements OnInit {
      }
    
   ngOnInit(): void {
+    this.ngxLoader.start();
 
   
 
     this.backend.getmodbususerwise()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       //  console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 

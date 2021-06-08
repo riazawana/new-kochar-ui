@@ -6,6 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 export interface UserData {
@@ -39,12 +40,14 @@ export class ZoneDeviceComponent implements AfterViewInit {
   constructor(
     private backend: BackendconnectionService,
     private router: Router,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
   ) {
   }
 
   ngAfterViewInit() {
 
+    this.ngxLoader.start();
 
     this.add = false;
     this.view = false;
@@ -91,6 +94,9 @@ export class ZoneDeviceComponent implements AfterViewInit {
 
     this.backend.getallzones()
     .subscribe((data)=> { 
+
+    this.ngxLoader.stop();
+
       // console.log("All zones:",data);
        this.dataSource = new MatTableDataSource(data["data"]);
 

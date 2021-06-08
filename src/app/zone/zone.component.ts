@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 export interface UserData {
@@ -31,6 +32,7 @@ export class ZoneComponent implements AfterViewInit {
   
  id: string;
   constructor(
+    private ngxLoader: NgxUiLoaderService,
     private backend: BackendconnectionService,
     private router: Router
   ) {
@@ -45,6 +47,7 @@ export class ZoneComponent implements AfterViewInit {
   ngAfterViewInit() {
    
   
+    this.ngxLoader.start();
 
   
     var role = sessionStorage.getItem('role');
@@ -90,6 +93,8 @@ export class ZoneComponent implements AfterViewInit {
     getAllZones(){
       this.backend.getallzones()
     .subscribe((data)=> { 
+    this.ngxLoader.stop();
+
       //  console.log("All zones:",data);
        this.dataSource = new MatTableDataSource(data["data"]);
 

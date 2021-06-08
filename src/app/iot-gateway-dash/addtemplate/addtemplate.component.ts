@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-addtemplate',
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AddtemplateComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute,
     private router:Router) { }
 
@@ -283,11 +285,16 @@ export class AddtemplateComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.ngxLoader.start();
+
     if(this.template_no == 12){
       this.sensordata = this.sensordata12;
     }else{
       this.sensordata = this.sensordata14;
     }
+
+    this.ngxLoader.stop();
+
   }
 
    gateway_type:any;
