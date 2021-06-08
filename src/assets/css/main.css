@@ -55,3 +55,11 @@ border-color: var(--prime-hover);
 .gap-1{
     gap:1rem;
 }
+
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #ff3000;
+    border-color: #ff3000;
+}
+
