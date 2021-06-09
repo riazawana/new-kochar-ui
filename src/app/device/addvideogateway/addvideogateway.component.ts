@@ -3,6 +3,7 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
@@ -14,6 +15,7 @@ export class AddvideogatewayComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private ngxLoader: NgxUiLoaderService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private _location:Location,
     private router:Router) { }
@@ -35,9 +37,20 @@ export class AddvideogatewayComponent implements OnInit {
   analog_ports_count:any;
   cat:any;
 
+  formGroup1: FormGroup;
 
+  
   ngOnInit(): void {
     this.ngxLoader.start();
+
+    this.formGroup1 = this.formBuilder.group({
+      brand: ['', [Validators.required,]],
+      host_add : ['', [Validators.required]],
+      mac_id : ['', [Validators.required]],
+      name : ['', [Validators.required]],
+      username : ['', [Validators.required]],
+      password : ['', [Validators.required]],
+    })
 
     this.user_id =  sessionStorage.getItem('userid');
     this.route.paramMap.subscribe(params => {

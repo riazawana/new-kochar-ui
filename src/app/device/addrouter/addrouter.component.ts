@@ -5,6 +5,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {Location} from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-addrouter',
@@ -15,6 +16,7 @@ export class AddrouterComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private ngxLoader: NgxUiLoaderService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private _location:Location,
     private router:Router) { }
@@ -61,9 +63,27 @@ export class AddrouterComponent implements OnInit {
     }
   }
 
+
+  formGroup1: FormGroup;
+  formGroup2: FormGroup;
+
   
   ngOnInit(): void {
     this.ngxLoader.start();
+
+    this.formGroup1 = this.formBuilder.group({
+      r_name: ['', [Validators.required,]],
+      m_a : ['', [Validators.required]],
+      mob : ['', [Validators.required]],
+      imsi : ['', [Validators.required]],
+      sim : ['', [Validators.required]],
+    })
+
+    this.formGroup2 = this.formBuilder.group({
+      gl_mac_id: ['', [Validators.required,]],
+      port : ['', [Validators.required]],
+      d_mac_id : ['', [Validators.required]],
+    })
 
     this.route.paramMap.subscribe(params => {
       this.location_id = params.get("id");
