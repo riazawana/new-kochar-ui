@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row px-3">
   <div class="containt">
       <div class="sub-heading">
      
@@ -8,17 +8,16 @@
        </div>
 
        <div class="form_holder">
-          <div class="row">
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8" style="font-size: 80%;">
-                      <br>
-                  
-                   <form  [formGroup]="edituserformGroup">
+          <div class="row p-3">
+              
+              <div class="col-sm-8 m-auto">
+                   
+                   <form  [formGroup]="edituserformGroup" class="grid-rowCols">
                      
 
                        
           
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                             <mat-label>Mobile</mat-label>
                             <input matInput [(ngModel)]="mobile" name="mobile" placeholder="Number" maxLength="10" (keypress)="keyPress($event)" required="true" formControlName="mobile">
@@ -34,16 +33,16 @@
                             <mat-error *ngIf="edituserformGroup.get('mobile').hasError('pattern')">
                               Mobile should be only Number!
                             </mat-error>
-                            <mat-hint>User Mobile</mat-hint>
+                           
                           </mat-form-field>
-                        </p>
+                        </div>
           
 
                         
           
                        
           
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                             <mat-label>Address</mat-label>
                             <input matInput [(ngModel)]="address" name="address" placeholder="Address" required formControlName="address">
@@ -53,11 +52,11 @@
                             <mat-error *ngIf="edituserformGroup.get('address').hasError('minlength')">
                               User Address should be atleast 4 characters long!
                             </mat-error> 
-                            <mat-hint>User Address</mat-hint>
+                            
                           </mat-form-field>
-                        </p>
+                        </div>
 
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                               <mat-label>Country</mat-label>
                               <mat-select placeholder="Country" [(ngModel)]="country_id" name="country_id" required formControlName="country_id">
@@ -66,11 +65,11 @@
                               <mat-error *ngIf="edituserformGroup.get('country_id').hasError('required')">
                                 Please Select Country!
                               </mat-error> 
-                            <mat-hint>Country</mat-hint>
+                          
                           </mat-form-field>
-                        </p>
+                        </div>
 
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                               <mat-label>State</mat-label>
                               <mat-select placeholder="State"  [(ngModel)]="state_id" name="state_id" required formControlName="state_id">
@@ -79,11 +78,11 @@
                               <mat-error *ngIf="edituserformGroup.get('state_id').hasError('required')">
                                 Please Select State!
                               </mat-error> 
-                            <mat-hint>State</mat-hint>
+                           
                           </mat-form-field>
-                        </p>
+                        </div>
 
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                               <mat-label>City</mat-label>
                               <mat-select placeholder="City" [(ngModel)]="city_id" name="city_id" required formControlName="city_id">
@@ -92,11 +91,11 @@
                               <mat-error *ngIf="edituserformGroup.get('city_id').hasError('required')">
                                 Please Select City!
                               </mat-error>
-                            <mat-hint>City</mat-hint>
+                           
                           </mat-form-field>
-                        </p>
+                        </div>
 
-                        <p>
+                        <div>
                           <mat-form-field appearance="outline">
                               <mat-label>Zipcode</mat-label>
                               <mat-select placeholder="Zipcode" [(ngModel)]="pincode_id" name="pincode_id" required formControlName="pincode_id">
@@ -105,19 +104,19 @@
                               <mat-error *ngIf="edituserformGroup.get('pincode_id').hasError('required')">
                                 Please Select Zipcode!
                               </mat-error>
-                            <mat-hint>Zipcode</mat-hint>
+                          
                           </mat-form-field>
-                        </p>
+                        </div>
 
                      
                        
 
-                        <button type="button" class="btn btn-primary" (click)="onsubmit()" [disabled]="!edituserformGroup.valid">Submit</button>
-&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                       
                    </form>
+                   <div class="d-flex gap-1 justify-content-center"> <button type="button" class="btn btn-primary" (click)="onsubmit()" [disabled]="!edituserformGroup.valid">Submit</button>
+                    <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button></div>
               </div>
-              <div class="col-sm-2"></div>
+              
           </div>
        </div>
     
