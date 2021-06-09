@@ -1,0 +1,13 @@
+.grid-rowarea {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
+  grid-gap: 1rem;
+}
+
+.listforswitchs {
+  gap: 1rem;
+
+  &:nth-child(even) {
+    background: #f8f9fa;
+  }
+}
