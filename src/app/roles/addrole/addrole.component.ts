@@ -31,7 +31,7 @@ export class AddroleComponent implements OnInit {
   modules:any;
   submodules:any;
   submodule_name:any;
-  module_name:any;
+  module_name:any = '';
 
   disable = false;
   disableSelect = new FormControl(false);  
