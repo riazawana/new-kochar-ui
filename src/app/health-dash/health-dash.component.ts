@@ -28,7 +28,13 @@ export class HealthDashComponent implements OnInit {
     healthdata:any;
    faMapMarker = faMapMarkerAlt;
 
-  
+    city:any;
+    citys:any;
+    state:any;
+    states:any;
+    zone:any;
+    zones:any;
+
    
   ngOnInit(): void {
 
@@ -45,7 +51,31 @@ export class HealthDashComponent implements OnInit {
            this.healthdata = data["data"];
         });
 
+
+        
+
+        this.backend.getallzones()
+        .subscribe((data)=> { 
+
+
+           console.log("All zones:",data["data"]);
+           this.zones = data["data"];
+        });
+
+
+        this.backend.getstate('101')
+        .subscribe((data)=> { 
+
+
+           console.log("All states:",data["data"]);
+           this.states = data["data"];
+        });
+
+
+
   }
+
+
 
 
 
@@ -89,9 +119,6 @@ export class HealthDashComponent implements OnInit {
   
 
   detailsRouer(m,v,mi,u,l): void {
-
-
-
     const dialogRef = this.dialog.open(DetailsModalComponent, {
       data: {type: 'Router',mode:m,version:v,meminfo:mi,uptime:u,loadavg:l}    
     },
@@ -115,16 +142,79 @@ export class HealthDashComponent implements OnInit {
   "http://ecc93904a372.ngrok.io/#/kochar/Devices/openrouter/"+x,"_blank");
 }
  
- IN_route(x){
-  // this.router.navigate(['/kochar/Devices/singlegateway',x]);
- }
+
+
+
+
+/////////////////////////filters  ////////////////////////
+
+filter:any;
+
+cityfind(){
+  this.backend.getcity(this.state)
+  .subscribe((data)=> { 
+     console.log("All citys:",data["data"]);
+     this.citys = data["data"];
+  });
+}
+
+val:any = '';
+
+totalfilter:any = '';
+
+onsubmit(){
+
+  if(this.filter == "state"){
+     this.val = "state_id="+this.state;
+     this.cityfind();
+  }if(this.filter == "city"){
+    this.val = "city_id="+this.city;
+  }if(this.filter == "zone"){
+    this.val = "zoneName="+this.zone;
+  }
+
+   if(this.totalfilter != ""){
+  this.totalfilter += "&"+this.val
+   }else{
+  this.totalfilter +=  "?"+this.val
+   }
+
+  //  alert(this.totalfilter);
+   this.filterfun(this.totalfilter);
+
+}
+
+reset(){
+  this.totalfilter = '';
+
+  this.backend.healthDashboard()
+  .subscribe((data)=> { 
+
+this.ngxLoader.stop();
+
+     console.log("All location:",data["data"]);
+     this.healthdata = data["data"];
+  });
+}
+
+
+
+ filterfun(x){
+
+  this.backend.healthDashboardfilter(x)
+    .subscribe((data)=> { 
+      console.log("All healthDashboardfilter:",data); 
+      this.healthdata = data["data"];
+    
+    })
+
 }
 
 
 
 
 
-
+}
 
 
 

@@ -793,6 +793,13 @@ export class BackendconnectionService {
             return this.httpClient.get(this.api+'/getallnotifications'+x,this.httpOptions);
           }
 
+          healthDashboardfilter(x){
+            this.auth();
+            return this.httpClient.get(this.api+'/healthDashboard'+x,this.httpOptions);
+          }
+
+        
+
           updatevideogateways(data){
             this.auth();
             return this.httpClient.post(this.api+'/updatevideogateways',data,this.httpOptions);
