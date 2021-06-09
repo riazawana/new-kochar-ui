@@ -17,7 +17,14 @@
                 </mat-form-field>
               </div>
                 <div class="col-md-12">
-                     
+                     <div class="row">
+                      <div class="col-sm-4 text-left">
+                        <p><b>Module</b></p>
+                      </div>
+                      <div class="col-sm-4 text-left">
+                        <p><b>Sub-module</b></p>
+                      </div>
+                     </div>
                           <div class="row align-items-center" *ngFor="let da of mapping;let i = index;">
                             <div class="col-sm-4 text-left">
                               {{da.modulename}}
@@ -30,7 +37,7 @@
                               </div>
                             </div>
                             <div class="col-sm-4">
-                              <p (click)="delete(i)">delete</p>
+                              <!-- <p (click)="delete(i)">delete</p> -->
                             </div>
                            </div>
 
