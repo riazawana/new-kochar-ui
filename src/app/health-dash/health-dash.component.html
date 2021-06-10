@@ -22,58 +22,62 @@
             <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
     
     
-            <div *ngIf="filter == 'zone'">
-                 
-              <mat-form-field appearance="outline" >
-                <mat-label>Zone</mat-label>
-                <mat-select  [(ngModel)]="zone"  name="zone">
-                
-                  <mat-option *ngFor="let l of zones"  value="{{l.zone_name}}"  >{{l.zone_name}}</mat-option>
-    
-                </mat-select>
-              </mat-form-field>
-                  
-              </div>
-              
-              <div *ngIf="filter == 'state'">
-                 
-                     
-                  <mat-form-field appearance="outline">
-                    <mat-label>State</mat-label>
-                    <mat-select  [(ngModel)]="state"  name="state">
-                    
-                      <mat-option *ngFor="let l of states"  value="{{l.state_id}}"  >{{l.name}}</mat-option>
-        
-                    </mat-select>
-                  </mat-form-field>
-                  </div>
-              
-              
-                  <div *ngIf="filter == 'city'">
-                      <mat-form-field appearance="outline" >
-                          <mat-label>City</mat-label>
-                          <mat-select  [(ngModel)]="city"  name="city">
-                          
-                            <mat-option *ngFor="let l of citys"  value="{{l.city_id}}"  >{{l.name}}</mat-option>
-              
-                          </mat-select>
-                        </mat-form-field>
-                       
-                          
-                      </div>
+          
               
               
     
-                <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
                           
           </div>
 
-          <div class="col-sm-4">
-            <button (click)="reset()">Reset</button>
-          </div>
-         </div>
+          <div class="col-md-4" *ngIf="filter == 'zone'">
+                 
+            <mat-form-field appearance="outline" >
+              <mat-label>Zone</mat-label>
+              <mat-select  [(ngModel)]="zone"  name="zone">
+              
+                <mat-option *ngFor="let l of zones"  value="{{l.zone_name}}"  >{{l.zone_name}}</mat-option>
   
-        <div class="main">
+              </mat-select>
+            </mat-form-field>
+                
+            </div>
+            
+         <div class="col-md-4" *ngIf="filter == 'state'">
+               
+                   
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select  [(ngModel)]="state"  name="state">
+                  
+                    <mat-option *ngFor="let l of states"  value="{{l.state_id}}"  >{{l.name}}</mat-option>
+      
+                  </mat-select>
+                </mat-form-field>
+         </div>
+            
+            
+         <div class="col-md-4" *ngIf="filter == 'city'">
+                    <mat-form-field appearance="outline" >
+                        <mat-label>City</mat-label>
+                        <mat-select  [(ngModel)]="city"  name="city">
+                        
+                          <mat-option *ngFor="let l of citys"  value="{{l.city_id}}"  >{{l.name}}</mat-option>
+            
+                        </mat-select>
+                      </mat-form-field>
+                     
+                        
+         </div>
+
+
+          </div>
+          <div class="row justify-content-center gap-1 my-3">
+            <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+            <button (click)="reset()" class="btn btn-light">Reset</button>
+  
+           </div>
+  
+        <div class="main my-3">
 
             <div>
                 <table class="table">

@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row px-3">
   <div class="containt">      
 
     <div class="sub-heading">
@@ -21,213 +21,211 @@
     
           </mat-select>
         </mat-form-field>
+  </div>
 
-        <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+      <div class="col-md-4" *ngIf="filter == 'location'">
+         
+        <mat-form-field appearance="outline" id="hub">
+            <mat-label>Location</mat-label>
+            <mat-select  [(ngModel)]="location"  name="location">
+            
+              <mat-option *ngFor="let l of locations"  value="{{l.name}}"  >{{l.name}}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+         
+            
+        </div>
 
 
-        <div *ngIf="filter == 'status'">
-          <h3><b>Status </b></h3>
-             
-          <mat-radio-group
-          aria-labelledby="example-radio-group-label"
-          class="example-radio-group"
-          [(ngModel)]="status">
-          <mat-radio-button class="example-radio-button" [value]="false">
-            Open
-          </mat-radio-button>
-          <mat-radio-button class="example-radio-button" [value]="true">
-            Closed
-          </mat-radio-button>
-          </mat-radio-group>
-              
-          </div>
-          
-          <div *ngIf="filter == 'tat'">
-              <h3><b>TAT </b></h3>
-                 
-              <mat-radio-group
-              aria-labelledby="example-radio-group-label"
-              class="example-radio-group"
-              [(ngModel)]="tat">
-              <mat-radio-button class="example-radio-button" [value]="true">
-                On Time
-              </mat-radio-button>
-              <mat-radio-button class="example-radio-button" [value]="false">
-                Missed
-              </mat-radio-button>
-              </mat-radio-group>
-              </div>
-          
-          
-              <div *ngIf="filter == 'location'">
-                  <h3><b>Location </b></h3>
-                  <mat-form-field appearance="outline" id="hub">
-                      <mat-label>Location</mat-label>
-                      <mat-select  [(ngModel)]="location"  name="location">
-                      
-                        <mat-option *ngFor="let l of locations"  value="{{l.name}}"  >{{l.name}}</mat-option>
-          
-                      </mat-select>
-                    </mat-form-field>
-                   
-                      
-                  </div>
-          
-          
-                  <div *ngIf="filter == 'gateway'">
-                      <h3><b>Gateway </b></h3>
-                      <mat-form-field appearance="outline" id="hub">
-                          <mat-label>Gateway</mat-label>
-                          <mat-select  [(ngModel)]="gateway"  name="gateway">
-                          
-                            <mat-option *ngFor="let g of gateways"  value="{{g.mac_id}}"  >{{g.name}}</mat-option>
-              
-                          </mat-select>
-                        </mat-form-field>
-                      </div>
+        <div class="col-md-4" *ngIf="filter == 'gateway'">
+            
+            <mat-form-field appearance="outline" id="hub">
+                <mat-label>Gateway</mat-label>
+                <mat-select  [(ngModel)]="gateway"  name="gateway">
+                
+                  <mat-option *ngFor="let g of gateways"  value="{{g.mac_id}}"  >{{g.name}}</mat-option>
+    
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-            <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
-                      
-        <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
-      </div>
+      
+      
+      <div class="col-md-4" *ngIf="filter == 'tat'">
+        <label>TAT </label>
+           
+        <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="tat">
+        <mat-radio-button class="example-radio-button" [value]="true">
+          On Time
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" [value]="false">
+          Missed
+        </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="col-md-4" *ngIf="filter == 'status'">
+        
+        
+      <label>Status </label>
+         
+      <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="d-flex gap-1"
+      [(ngModel)]="status">
+      <mat-radio-button class="example-radio-button" [value]="false">
+        Open
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="true">
+        Closed
+      </mat-radio-button>
+      </mat-radio-group>
+  
+  </div>
+    <div class="col-sm-4">
+      <mat-form-field appearance="outline" id="filterdate">
+        <mat-label>Filter by date</mat-label>
+        <mat-select [(ngModel)]="filterdate"  name="filterdate"  (selectionChange)="dofilter(filterdate)">
+        
+          <mat-option  value="today"  >Today</mat-option>
+          <mat-option  value="yes" >Today & Yesterday</mat-option>
+          <mat-option  value="7" >Last 7 days</mat-option>
+          <mat-option  value="28" >Last 28 days</mat-option>
+          <mat-option  value="90" >Last 90 days</mat-option>
+          <mat-option  value="365" >Last 365 days</mat-option>
+  
+  
+        </mat-select>
+      </mat-form-field>
+    </div>
       <div class="col-sm-4">
 
         {{totalfilter}}
 
-        <button (click)="resetfilter()">Reset</button>
       </div>
-      <div class="col-sm-4">
-        <mat-form-field appearance="outline" id="filterdate">
-          <mat-label>Filter by date</mat-label>
-          <mat-select [(ngModel)]="filterdate"  name="filterdate"  (selectionChange)="dofilter(filterdate)">
-          
-            <mat-option  value="today"  >Today</mat-option>
-            <mat-option  value="yes" >Today & Yesterday</mat-option>
-            <mat-option  value="7" >Last 7 days</mat-option>
-            <mat-option  value="28" >Last 28 days</mat-option>
-            <mat-option  value="90" >Last 90 days</mat-option>
-            <mat-option  value="365" >Last 365 days</mat-option>
+       
+    </div>
+    <div class="row justify-content-center gap-1">
+      <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
 
-    
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <button class="btn btn-light" (click)="resetfilter()">Reset</button>
 
     </div>
 
   
+    <div class="row my-3">
 
-     <mat-card>
+      <div class="col-md-12">
+
+        <h3 class="headingSmall">Risk Assesment Notification</h3>
+      </div>
+ 
+
+      <!-- <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field> -->
+           <div class="col-md-12">
+             <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 mt-4" style="position: sticky;" #t1Sort="matSort" matSort>
        
-      <div class="row">
-
-        <h3>Risk Assesment Notification</h3>
-
-        <!-- <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-        </mat-form-field> -->
+                 
+       
+               <!-- Sr no. Column -->
+               <ng-container matColumnDef="sr_no">
+                 <th mat-header-cell *matHeaderCellDef> Sr no. </th>
+                 <!-- <td mat-cell *matCellDef="let element; let i= index;"> {{ i + 1 }} </td> -->
+                 <td mat-cell *matCellDef="let row; let j = index"> {{ j + 1 + (myPaginator.pageIndex * myPaginator.pageSize)}} </td>
+               
+               </ng-container>         
+               
+               <!-- Status Column -->
+               <ng-container matColumnDef="status">
+                 <th mat-header-cell *matHeaderCellDef> Status </th>
+                 <td mat-cell *matCellDef="let row"> 
+                   <span *ngIf="row.status == false"> <b>Open</b> </span>
+                   <span *ngIf="row.status == true"> <b>Closed</b> </span>
+                 </td>
+               </ng-container>
              
-        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 mt-4" style="position: sticky;" #t1Sort="matSort" matSort>
-  
-            
-  
-          <!-- Sr no. Column -->
-          <ng-container matColumnDef="sr_no">
-            <th mat-header-cell *matHeaderCellDef> Sr no. </th>
-            <!-- <td mat-cell *matCellDef="let element; let i= index;"> {{ i + 1 }} </td> -->
-            <td mat-cell *matCellDef="let row; let j = index"> {{ j + 1 + (myPaginator.pageIndex * myPaginator.pageSize)}} </td>
-          
-          </ng-container>         
-          
-          <!-- Status Column -->
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let row"> 
-              <span *ngIf="row.status == false"> <b>Open</b> </span>
-              <span *ngIf="row.status == true"> <b>Closed</b> </span>
-            </td>
-          </ng-container>
-        
-          <!-- Location Column -->
-          <ng-container matColumnDef="locationname">
-            <th mat-header-cell *matHeaderCellDef> Location </th>
-            <td mat-cell *matCellDef="let row"> {{row.locationname}} </td>
-          </ng-container>
-  
-          <!-- Notification Column -->
-          <ng-container matColumnDef="notification">
-            <th mat-header-cell *matHeaderCellDef> Notification </th>
-            <td mat-cell *matCellDef="let row"> {{row.data.notification}} </td>
-          </ng-container>
-  
-          <!-- Opened At Column -->
-          <ng-container matColumnDef="createdAt">
-            <th mat-header-cell *matHeaderCellDef> Opened At </th>
-            <td mat-cell *matCellDef="let row"> {{row.send_time | date:'medium' }} </td>
-          </ng-container>
-  
-  
-          <!-- Closed At Column -->
-          <ng-container matColumnDef="updatedAt">
-            <th mat-header-cell *matHeaderCellDef> Closed At </th> 
-            <td mat-cell *matCellDef="let row"> {{row.action_taken_time | date:'medium' }} </td>             
-          </ng-container>
-        
-          <!-- TaT Column -->
-          <ng-container matColumnDef="tat">
-            <th mat-header-cell *matHeaderCellDef> TaT </th>
-            <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
-              <br>
-              <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed by
-                <span *ngFor="let s of row.tatDifference?.split(',');let i = index">
-                  <span *ngIf="i == 0 && s != '0'">{{s}} days,</span>
-                  <span *ngIf="i == 1 && s != '0'">{{s}} hours,</span>
-                  <span *ngIf="i == 2 && s != '0'">{{s}} mins</span>
-
-               </span>
-              </span>
-              <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
-
-             </td>
-          </ng-container>
-  
-          <!-- Remark Column -->
-          <ng-container matColumnDef="remark">
-            <th mat-header-cell *matHeaderCellDef> Remark </th>
-            <td mat-cell *matCellDef="let row"> {{row.remarks}} </td>
-          </ng-container>
-  
-          <!-- Action Column -->
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let row"> 
-              <span  *ngIf="row.status == true"><i class="fa fa-eye-slash" aria-hidden="true" ></i></span> 
-              <span  *ngIf="row.status == false" ><i class="fa fa-eye" aria-hidden="true" (click)="getnotificationdetails(row._id,row.client)"  ></i></span> 
-             </td>
-             <!-- <i class="fas fa-eye-slash"></i> -->
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>  
-  
-        <mat-paginator #myPaginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-       </div>
-
-     </mat-card>
-  
+               <!-- Location Column -->
+               <ng-container matColumnDef="locationname">
+                 <th mat-header-cell *matHeaderCellDef> Location </th>
+                 <td mat-cell *matCellDef="let row"> {{row.locationname}} </td>
+               </ng-container>
+       
+               <!-- Notification Column -->
+               <ng-container matColumnDef="notification">
+                 <th mat-header-cell *matHeaderCellDef> Notification </th>
+                 <td mat-cell *matCellDef="let row"> {{row.data.notification}} </td>
+               </ng-container>
+       
+               <!-- Opened At Column -->
+               <ng-container matColumnDef="createdAt">
+                 <th mat-header-cell *matHeaderCellDef> Opened At </th>
+                 <td mat-cell *matCellDef="let row"> {{row.send_time | date:'medium' }} </td>
+               </ng-container>
+       
+       
+               <!-- Closed At Column -->
+               <ng-container matColumnDef="updatedAt">
+                 <th mat-header-cell *matHeaderCellDef> Closed At </th> 
+                 <td mat-cell *matCellDef="let row"> {{row.action_taken_time | date:'medium' }} </td>             
+               </ng-container>
+             
+               <!-- TaT Column -->
+               <ng-container matColumnDef="tat">
+                 <th mat-header-cell *matHeaderCellDef> TaT </th>
+                 <td mat-cell *matCellDef="let row"> <span>{{row.tat}}</span>
+                   <br>
+                   <span *ngIf="row.tatStatus == false" style="color: red;font-size: 60%;font-weight: 800;">Missed by
+                     <span *ngFor="let s of row.tatDifference?.split(',');let i = index">
+                       <span *ngIf="i == 0 && s != '0'">{{s}} days,</span>
+                       <span *ngIf="i == 1 && s != '0'">{{s}} hours,</span>
+                       <span *ngIf="i == 2 && s != '0'">{{s}} mins</span>
+     
+                    </span>
+                   </span>
+                   <span *ngIf="row.tatStatus == true" style="color: green;font-size: 60%;font-weight: 800;">On Time</span>
+     
+                  </td>
+               </ng-container>
+       
+               <!-- Remark Column -->
+               <ng-container matColumnDef="remark">
+                 <th mat-header-cell *matHeaderCellDef> Remark </th>
+                 <td mat-cell *matCellDef="let row"> {{row.remarks}} </td>
+               </ng-container>
+       
+               <!-- Action Column -->
+               <ng-container matColumnDef="action">
+                 <th mat-header-cell *matHeaderCellDef> Action </th>
+                 <td mat-cell *matCellDef="let row"> 
+                   <span  *ngIf="row.status == true"><i class="fa fa-eye-slash" aria-hidden="true" ></i></span> 
+                   <span  *ngIf="row.status == false" ><i class="fa fa-eye" aria-hidden="true" (click)="getnotificationdetails(row._id,row.client)"  ></i></span> 
+                  </td>
+                  <!-- <i class="fas fa-eye-slash"></i> -->
+               </ng-container>
+             
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             </table>  
+             <mat-paginator #myPaginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+           </div>
 
 
-     <br/>
-     <hr>
-     <br>
+     </div>
+  
 
-     <mat-card>
-      
-    <div class="row">
-      <h3>Health Notification</h3>
+  <div class="row my-3">
+    <div class="col-md-12">
+
+      <h3 class="headingSmall">Health Notification</h3>
+    </div>
+    <div class="col-md-12">
       <!-- <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. Mia" #input>
@@ -318,8 +316,10 @@
         <mat-paginator #myPaginator2  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
      
     </div>
-                  
-  </mat-card>
+  </div>
+     
+
+     
 
   </div>
   
