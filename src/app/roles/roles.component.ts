@@ -110,7 +110,7 @@ export class RolesComponent implements AfterViewInit {
   }
 
   viewrole(x){
-    alert(x)
+    // alert(x)
     this.router.navigate(['/kochar/Roles/viewrole',x]);
   }
 
