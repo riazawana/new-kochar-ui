@@ -68,7 +68,7 @@
                   <mat-select placeholder="City" [(ngModel)]="city_id" [disabled]="isDisabled" name="city_id">
                     <mat-option *ngFor="let ci of city_list" value="{{ci.city_id}}" (click)="getpin(ci.state_id,ci.city_id)">{{ci.name}}</mat-option>
                   </mat-select>
-                <mat-hint>City</mat-hint>
+                
               </mat-form-field>
             </div>
 
