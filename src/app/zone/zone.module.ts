@@ -35,11 +35,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 const zoneRoutes: Routes =[
-  {path:'',component: ZoneComponent , canActivate:[AuthGuard]},
-    {path:'Zones',component: ZoneComponent , canActivate:[AuthGuard]},
-    {path:'addzone',component: AddzoneComponent , canActivate:[AuthGuard]},
-    {path:'editzone/:id',component: EditZoneComponent , canActivate:[AuthGuard]},
-    {path:'viewzone/:id',component: ViewZoneComponent , canActivate:[AuthGuard]},
+  {path:'',component: ZoneComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'Zones',component: ZoneComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'addzone',component: AddzoneComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'editzone/:id',component: EditZoneComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'viewzone/:id',component: ViewZoneComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
   ]
 
 

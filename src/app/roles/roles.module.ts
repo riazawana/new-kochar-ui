@@ -35,11 +35,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 const userRoutes: Routes =[
-  {path:'',component: RolesComponent , canActivate:[AuthGuard]},
-    {path:'Roles',component: RolesComponent , canActivate:[AuthGuard]},
-    {path:'addrole',component: AddroleComponent , canActivate:[AuthGuard]},
-    {path:'editrole/:id',component: EditRoleComponent , canActivate:[AuthGuard]},
-    {path:'viewrole/:id',component: ViewRoleComponent , canActivate:[AuthGuard]},
+  {path:'',component: RolesComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'Roles',component: RolesComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'addrole',component: AddroleComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'editrole/:id',component: EditRoleComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
+    {path:'viewrole/:id',component: ViewRoleComponent , canActivate:[AuthGuard],data: { roles: ['admin'] }},
   ]
 
 
