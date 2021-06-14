@@ -72,7 +72,7 @@
                               &nbsp;
                               &nbsp;
                           {{s.modulename}}    
-                        <fa-icon [icon]="faCaretDown" style="float: right;"></fa-icon>
+                        <fa-icon [icon]="faCaretDown" class="ml-1"></fa-icon>
   
                         </a>
                         <ul class="collapse list-unstyled mb-0" id="{{s.modulename.replace(' ','')}}" style="margin-left: 1rem;">
@@ -201,10 +201,10 @@
                 </div> 
                 
                 <div class="col-sm-3  ml-auto rightsectionHeader">
-  <img src="assets/images/default-avatar.png" class="profileavt" alt="">
-                  <span *ngIf="notif == true" matBadge="{{notificationcount}}" matBadgeSize="small"  (click)="goto_notification()">
-                    <i class="fa fa-bell-o mt-2"></i>
+                  <span *ngIf="notif == true" matBadge="{{notificationcount}}"  matBadgeSize="small"  (click)="goto_notification()">
+                    <i class="fa fa-bell-o "></i>
                   </span>
+                  <img src="assets/images/default-avatar.png" class="profileavt" alt="">
   
                   <button id="logout" class="customname" (click)="logout()" > {{profile_name}}
                     <fa-icon [icon]="faSignOutAlt"></fa-icon>
