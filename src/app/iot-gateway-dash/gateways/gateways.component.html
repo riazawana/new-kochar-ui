@@ -1,176 +1,181 @@
-<div class="row">
-  <div class="containt">
-      <div class="sub-heading">
-       
-        <h3>Gateway List</h3>
-        <hr>
-     </div>
-
-     <div class="row" style="padding: 1%;width: 100%;" *ngIf="gateway != 'undefined'">
-      <div class="col-sm-12" *ngFor="let g of gateway;let i = index" style="margin-bottom: 2%;">
-    
-
-     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-      <mat-panel-title>
-        Location - {{g.location_name}}
-      </mat-panel-title>
-      <mat-panel-description>
-   (Zone - {{g.zone_name}})
-      </mat-panel-description>
-      </mat-expansion-panel-header>
-      
-      <mat-accordion *ngFor="let gs of g.gateways;let j = index">
-     
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-            <mat-panel-title>
-           {{gs.name}}
-           <span *ngIf="gs.is_online == false" class="reddot"></span>
-           <span *ngIf="gs.is_online == true" class="greendot"></span> 
-          
-            </mat-panel-title>
-            <mat-panel-description>
-              <a (click)="openDialog(gs.mac_id,gs.router_mac_id,gs.router_number)" [disabled]="!command_setting">Command Settings</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
-            <div *ngIf="gs.mode == 1">
-              <button type="button" class="btn btn-success" [disabled]="!arm" (click)="sendMessage('arm',0,gs.mac_id)" style="font-size: 80%;">ARM</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
-              <button type="button" class="btn btn-primary" [disabled]="!disarm"  (click)="sendMessage('disarm',0,gs.mac_id)" style="font-size: 80%;">DISARM</button>  
-            </div>
-    
-            <div *ngIf="gs.mode == 0">
-              <button type="button" class="btn btn-primary" [disabled]="!arm" (click)="sendMessage('arm',0,gs.mac_id)" style="font-size: 80%;">ARM</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
-              <button type="button" class="btn btn-success" [disabled]="!disarm"  (click)="sendMessage('disarm',0,gs.mac_id)" style="font-size: 80%;">DISARM</button>  
-            </div>
+<section class="px-3">
+  <div class="row">
+    <div class="containt">
+        <div class="sub-heading">
          
-    
-              <!-- <a (click)="edit(gs.mac_id,gs.client)">Edit</a> -->
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a (click)="delete(gs.mac_id,gs.client)"><i class="fa fa-trash" aria-hidden="true"></i></a>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <i class="fa fa-power-off" aria-hidden="true"  (click)="sendMessage('restartiotgateway','get',gs.mac_id)"></i>
-            </mat-panel-description>
-            </mat-expansion-panel-header>
+          <h3>Gateway List</h3>
+          <hr>
+       </div>
+  
+       <div class="row"  *ngIf="gateway != 'undefined'">
+        <div class="col-sm-12 mb-2" *ngFor="let g of gateway;let i = index" >
+      
+  
+       <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+          Location - {{g.location_name}}
+        </mat-panel-title>
+        <mat-panel-description>
+     (Zone - {{g.zone_name}})
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        
+        <mat-accordion *ngFor="let gs of g.gateways;let j = index">
+       
+            <mat-expansion-panel class="InnersecondPanel mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="InnersecondPanel-header">
+              <mat-panel-title class="align-items-center">
+             {{gs.name}}
+             <span *ngIf="gs.is_online == false" class="reddot"></span>
+             <span *ngIf="gs.is_online == true" class="greendot"></span> 
             
-            <div class="row">
-                <div class="col-md-3"> {{gs.mac_id}} - <span *ngIf="gs.mode == 1">ARMED</span><span *ngIf="gs.mode == 0">DISARMED</span></div>
-                <div class="col-md-3" *ngIf="gs.configuration != 'IN-14'">
-                  <div>
-                    <span class="label label-primary tempclass">Temp 1</span>                    
-                    <span class="label label-primary tempclass">Temp 2</span>  
-                     &nbsp;
-                    <i class="fa fa-refresh refreshcls pt-2" (click)="refreshtemp()"  aria-hidden="true"></i>   
-                  </div>
-                    <br>
-                  <div *ngIf="temparray[i].length != 0">
-                    <div *ngIf="temparray[i][j].length != 0">
-                      <span class="naclass ml-2" *ngIf="gs.devices[12].default_state == 1">{{temparray[i][j].temp1}}</span>
-                      <span class="naclass ml-2" *ngIf="gs.devices[12].default_state == 0">NA</span>
-    
-                      <span class="naclass ml-4" *ngIf="gs.devices[13].default_state == 1">{{temparray[i][j].temp2}}</span> 
-                      <span class="naclass ml-4" *ngIf="gs.devices[13].default_state == 0">NA</span> 
-                    </div> 
-                    <div *ngIf="temparray[i][j].length == 0">
-                      <span class="naclass ml-2">NA</span>
-                      <span class="naclass ml-4">NA</span> 
-                    </div> 
-                  </div>
-                  <div  *ngIf="temparray[i].length == 0">
-                    <div>
-                      <span class="naclass ml-2">NA</span>
-                      <span class="naclass ml-4">NA</span> 
-                    </div> 
-                  </div>
-                
-                </div>
-    
-             
-                  <div class="col-md-3" >
-                    <button type="button" *ngIf="relay1ons == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / ON</button>
-                    <button type="button" *ngIf="relay1ons == false" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / ON</button>
-                    
-                    <button type="button" *ngIf="relay1offs == true" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / OFF</button>
-                    <button type="button" *ngIf="relay1offs == false"class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / OFF</button>
-                 
-                  </div>
-    
-                  <div class="col-md-3" >
-                    <button type="button" *ngIf="relay2ons == true" class="btn btn-success" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / ON</button>
-                    <button type="button" *ngIf="relay2ons == false"  class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / ON</button>
-                   
-                    <button type="button"  *ngIf="relay2offs == true" class="btn btn-success" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / OFF</button>
-                    <button type="button"  *ngIf="relay2offs == false" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / OFF</button>
-                    &nbsp;&nbsp;
-                    <i class="fa fa-edit" (click)="editrelay(gs)"></i>
-                    &nbsp;&nbsp;
-                    <i class="fa fa-refresh refreshcls pt-2" (click)="sendMessage('getrelaystatus','get',gs.mac_id)"  aria-hidden="true"></i>   
-                 
-                   </div>  
-            
-            </div>
-    
-          
-               <hr> 
+              </mat-panel-title>
+              <mat-panel-description class="d-flex gap-1 align-items-center">
+                <a (click)="openDialog(gs.mac_id,gs.router_mac_id,gs.router_number)" [disabled]="!command_setting">Command Settings</a>
                
-               <div class="row">
-                <div class="col-sm-3"> PORT NAME </div>
-    
-                <div class="col-sm-3"> CURRENT STATUS </div>
-    
-    
-                <div class="col-sm-3"> SETTINGS </div>
-    
-                <div class="col-sm-3"> 
-                      <button type="button" class="btn btn-primary" [disabled]="!refresh"  (click)="sendMessage('refresh',0,gs.mac_id)" style="font-size: 80%;">REFRESH</button>
-                </div>
-    
-    
-                </div>
-                <hr>
-    
-                <div class="row" *ngFor="let p of gs.devices">
-                    <div class="col-sm-3">{{p.sensor_name}} </div>
-    
-            <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}}  <span *ngIf="p.sensor_status == 0">(Non Triggered)</span> <span *ngIf="p.sensor_status == 1">(Triggered)</span> </div>
-    
-                    <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 0)" > Disable </div>
-                    <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 1)"> Enable </div>
-    
-    
-    
-                    <div class="col-sm-3"> <a (click)="port_set(p)" style="color: blue;" [disabled]="!port_setting">Port Settings </a> </div>
-    
-                    <div class="col-sm-3"> 
+      
+              <div *ngIf="gs.mode == 1">
+                <button type="button" class="btn btn-success" [disabled]="!arm" (click)="sendMessage('arm',0,gs.mac_id)" style="font-size: 80%;">ARM</button>
+                 
+                <button type="button" class="btn btn-primary ml-2" [disabled]="!disarm"  (click)="sendMessage('disarm',0,gs.mac_id)" style="font-size: 80%;">DISARM</button>  
+              </div>
+      
+              <div *ngIf="gs.mode == 0">
+                <button type="button" class="btn btn-primary" [disabled]="!arm" (click)="sendMessage('arm',0,gs.mac_id)" style="font-size: 80%;">ARM</button>
+                
+      
+                <button type="button" class="btn btn-success ml-2" [disabled]="!disarm"  (click)="sendMessage('disarm',0,gs.mac_id)" style="font-size: 80%;">DISARM</button>  
+              </div>
+           
+      
+                <!-- <a (click)="edit(gs.mac_id,gs.client)">Edit</a> -->
+               
+                <a (click)="delete(gs.mac_id,gs.client)" class="ml-auto"><i class="fa fa-trash" aria-hidden="true"></i></a>
+               
+                <i class="fa fa-power-off" aria-hidden="true"  (click)="sendMessage('restartiotgateway','get',gs.mac_id)"></i>
+              </mat-panel-description>
+              </mat-expansion-panel-header>
+              
+              <div class="row align-items-center my-3">
+                  <div class="col-md-3"> {{gs.mac_id}} - <span *ngIf="gs.mode == 1">ARMED</span><span *ngIf="gs.mode == 0">DISARMED</span></div>
+                  <div class="col-md-2" *ngIf="gs.configuration != 'IN-14'">
+                    <div>
+                      <span class="label label-primary tempclass">Temp 1</span>                    
+                      <span class="label label-primary tempclass">Temp 2</span>  
+                       &nbsp;
+                      <i class="fa fa-refresh refreshcls pt-2" (click)="refreshtemp()"  aria-hidden="true"></i>   
                     </div>
-    
-                    <hr>
+                      <br>
+                    <div *ngIf="temparray[i].length != 0">
+                      <div *ngIf="temparray[i][j].length != 0">
+                        <span class="naclass ml-2" *ngIf="gs.devices[12].default_state == 1">{{temparray[i][j].temp1}}</span>
+                        <span class="naclass ml-2" *ngIf="gs.devices[12].default_state == 0">NA</span>
+      
+                        <span class="naclass ml-4" *ngIf="gs.devices[13].default_state == 1">{{temparray[i][j].temp2}}</span> 
+                        <span class="naclass ml-4" *ngIf="gs.devices[13].default_state == 0">NA</span> 
+                      </div> 
+                      <div *ngIf="temparray[i][j].length == 0">
+                        <span class="naclass ml-2">NA</span>
+                        <span class="naclass ml-4">NA</span> 
+                      </div> 
                     </div>
-    
-            </mat-expansion-panel>
-
-
+                    <div  *ngIf="temparray[i].length == 0">
+                      <div>
+                        <span class="naclass ml-2">NA</span>
+                        <span class="naclass ml-4">NA</span> 
+                      </div> 
+                    </div>
+                  
+                  </div>
+      
+               
+                    <div class="col-md-3 d-flex flex-wrap  gap-h" >
+                      <button type="button" *ngIf="relay1ons == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / ON</button>
+                      <button type="button" *ngIf="relay1ons == false" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / ON</button>
+                      
+                      <button type="button" *ngIf="relay1offs == true" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / OFF</button>
+                      <button type="button" *ngIf="relay1offs == false"class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay1_name}} / OFF</button>
+                   
+                    </div>
+      
+                    <div class="col-md-3 d-flex flex-wrap gap-h" >
+                      <button type="button" *ngIf="relay2ons == true" class="btn btn-success" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / ON</button>
+                      <button type="button" *ngIf="relay2ons == false"  class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / ON</button>
+                     
+                      <button type="button"  *ngIf="relay2offs == true" class="btn btn-success" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / OFF</button>
+                      <button type="button"  *ngIf="relay2offs == false" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,gs.mac_id)" style="font-size: 60%;">{{gs.relay2_name}}  / OFF</button>
+                     
+                   
+                     </div>  
+                     <div class="fx-actionbtns">
+                      <i class="fa fa-edit" (click)="editrelay(gs)"></i>
+                      
+                      <i class="fa fa-refresh refreshcls ml-2" (click)="sendMessage('getrelaystatus','get',gs.mac_id)"  aria-hidden="true"></i>   
+                   
+                     </div>
+              
+              </div>
+      <div class="row">
+        <div class="col-md-12">
+          <hr> 
+        </div>
+      </div>
+            
+                
+                 
+                 <div class="row">
+                  <div class="col-sm-3"> PORT NAME </div>
+      
+                  <div class="col-sm-3"> CURRENT STATUS </div>
+      
+      
+                  <div class="col-sm-3"> SETTINGS </div>
+      
+                  <div class="col-sm-3"> 
+                        <button type="button" class="btn btn-primary" [disabled]="!refresh"  (click)="sendMessage('refresh',0,gs.mac_id)" style="font-size: 80%;">REFRESH</button>
+                  </div>
+      
+      
+                  </div>
+                  <hr>
+      
+                  <div class="row" *ngFor="let p of gs.devices">
+                      <div class="col-sm-3">{{p.sensor_name}} </div>
+      
+              <div class="col-sm-3" *ngIf="p.for_temperature == false"> {{p.sensor_status}}  <span *ngIf="p.sensor_status == 0">(Non Triggered)</span> <span *ngIf="p.sensor_status == 1">(Triggered)</span> </div>
+      
+                      <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 0)" > Disable </div>
+                      <div class="col-sm-3" *ngIf="(p.for_temperature == true)&&(p.default_state == 1)"> Enable </div>
+      
+      
+      
+                      <div class="col-sm-3"> <a (click)="port_set(p)" style="color: blue;" [disabled]="!port_setting">Port Settings </a> </div>
+      
+                      <div class="col-sm-3"> 
+                      </div>
+      
+                      <hr>
+                      </div>
+      
+              </mat-expansion-panel>
+  
+  
+          </mat-accordion>
+  
+        </mat-expansion-panel>
         </mat-accordion>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+  
+  </div>
 
-      </mat-expansion-panel>
-      </mat-accordion>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+   </section>  
 
 
 

@@ -227,8 +227,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   w3_open() {
-    document.getElementById("main").style.marginLeft = "200px";
-    document.getElementById("mySidebar").style.width = "200px";
+    document.getElementById("main").style.marginLeft = "221px";
+    document.getElementById("mySidebar").style.width = "221px";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
     document.getElementById("closeNav").style.display = 'block';

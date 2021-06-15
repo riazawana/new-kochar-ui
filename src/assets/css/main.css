@@ -1,65 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
-:root{
-    --prime-color:#FF3000;
-    --prime-hover:#ff2400;
-    --white:#ffffff;
-    --black:#000000;
-    --lightgray:#eeeeee;
-    --prime-font:'Lato', sans-serif;
-    --second-font:'Manrope', sans-serif;
-    --font: 'Titillium Web', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap");
+:root {
+  --prime-color: #ff3000;
+  --prime-hover: #ff2400;
+  --white: #ffffff;
+  --black: #000000;
+  --lightgray: #eeeeee;
+  --prime-font: "Lato", sans-serif;
+  --second-font: "Manrope", sans-serif;
+  --font: "Titillium Web", sans-serif;
 }
 
-*{
-    font-family: var(--prime-font);
+* {
+  font-family: var(--prime-font);
 }
-.mat-typography h3{
-    font-size:27px;
-    font-family: var(--prime-font);
-    font-weight:400;
+.mat-typography h3 {
+  font-size: 27px;
+  font-family: var(--prime-font);
+  font-weight: 400;
 }
-.profile_heading h4, .profile_heading h4.heading-card{
-    font-family:var(--font);
-    font-size:18px;
-    font-weight: 600;
-    color:var(--black)
+.profile_heading h4,
+.profile_heading h4.heading-card {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
 }
-.latto-medium{
-    font-family: var(--prime-font);
-    font-size: 16px;
+.latto-medium {
+  font-family: var(--prime-font);
+  font-size: 16px;
 }
-.editbtn{
-    padding: 0.75rem 1.5rem;
-    color:var(--prime-color);
-    font-size: 16px;
-    font-family: var(--prime-font);
+.editbtn {
+  padding: 0.75rem 1.5rem;
+  color: var(--prime-color);
+  font-size: 16px;
+  font-family: var(--prime-font);
 }
-.editbtn:hover{
-    background-color:var(--lightgray);
-    color:var(--prime-color);
-    text-decoration: none;
+.editbtn:hover {
+  background-color: var(--lightgray);
+  color: var(--prime-color);
+  text-decoration: none;
 }
-.btn-primary{
-    background-color: var(--prime-color);
-border-color: var(--prime-color);
-}
-
-.btn-primary:hover{
-    background-color: var(--prime-hover);
-border-color: var(--prime-hover);
+.btn-primary {
+  background-color: var(--prime-color);
+  border-color: var(--prime-color);
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline-thick{color:#ff3000;}
-.gap-1{
-    gap:1rem;
+.btn-primary:hover {
+  background-color: var(--prime-hover);
+  border-color: var(--prime-hover);
 }
 
-
-.btn-primary.disabled, .btn-primary:disabled {
-    color: #fff;
-    background-color: #ff3000;
-    border-color: #ff3000;
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #ff3000;
+}
+.gap-h {
+  gap: 0.5rem;
+}
+.gap-1 {
+  gap: 1rem;
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #ff3000;
+  border-color: #ff3000;
+}

@@ -1,68 +1,64 @@
 
-<div class="row">
+<div class="row px-3">
     <div class="containt">
-        <div class="sub-heading">
-          <button type="button" class="btn btn-primary" (click)="addfun()" style="float: right;">Add New Schedule</button>
-
-            <h3>Schedule Manager</h3>
+        <div class="sub-heading d-flex gap-1">
+          
+          <h3>Schedule Manager</h3>
+          <button type="button" class="btn btn-primary ml-auto" (click)="addfun()">Add New Schedule</button>
         </div>
         <hr>  
 
         
-
-        <div class="main">
-            <p>      
-                <mat-form-field appearance="outline" id="gateway" class="selectcls">
-                  <mat-label>Select Gateway</mat-label>
-                  <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
-                    <mat-option *ngFor="let g of gateways" value="{{g.gateway_id}},{{g.mac_id}}" (click)="getdata(g.mac_id)"  >{{g.name}}-{{g.location_name}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-            </p>
-
-
-            <table class="table" *ngIf="schdata.length != 0" style="text-align: center;">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Sr. No</th>
-                    <th scope="col">Gateway Name</th>
-                    <th scope="col">MAC Address</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Action</th>
-
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let da of schdata;let i = index;">
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{da.name}}</td>
-                    <td>{{da.mac_id}}</td>
-                    <td>{{ da.createdAt | date: 'dd/MM/yyyy'}}</td>
-                    <td><span (click)="viewfun(da.mac_id,da.client)">
-              <i class="fa fa-eye" ></i>
-                    </span> &nbsp;&nbsp;  <span (click)="editfun(da.mac_id,da.client)"> 
-              <i class="fa fa-edit" ></i>
-                    </span> &nbsp;&nbsp; <span (click)="deletefun(da.mac_id,da.client)">
-              <i class="fa fa-trash" ></i>
-                    </span></td>
-                 
-        
-                  </tr>
-
-                  <button type="button" class="btn btn-primary" *ngIf="isvalid == true" (click)="submit()" style="margin-left: 190%;">Update</button>
-
-                </tbody>
-                   
-              </table>
-
-         
-
-
-
-        </div>
+ 
 
     
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" id="gateway" class="selectcls">
+        <mat-label>Select Gateway</mat-label>
+        <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
+          <mat-option *ngFor="let g of gateways" value="{{g.gateway_id}},{{g.mac_id}}" (click)="getdata(g.mac_id)"  >{{g.name}}-{{g.location_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <table class="table" *ngIf="schdata.length != 0" style="text-align: center;">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr. No</th>
+            <th scope="col">Gateway Name</th>
+            <th scope="col">MAC Address</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Action</th>
+
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let da of schdata;let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{da.name}}</td>
+            <td>{{da.mac_id}}</td>
+            <td>{{ da.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td><span (click)="viewfun(da.mac_id,da.client)">
+      <i class="fa fa-eye" ></i>
+            </span> &nbsp;&nbsp;  <span (click)="editfun(da.mac_id,da.client)"> 
+      <i class="fa fa-edit" ></i>
+            </span> &nbsp;&nbsp; <span (click)="deletefun(da.mac_id,da.client)">
+      <i class="fa fa-trash" ></i>
+            </span></td>
+         
+
+          </tr>
+
+          <button type="button" class="btn btn-primary" *ngIf="isvalid == true" (click)="submit()" style="margin-left: 190%;">Update</button>
+
+        </tbody>
+           
+      </table>
+
     </div>
 </div>
   
