@@ -68,3 +68,13 @@
   background-color: #ff3000;
   border-color: #ff3000;
 }
+.color-prime {
+  color: var(--prime-color);
+  &:hover {
+    color: var(--black);
+  }
+}
+
+.border-radius-2 {
+  border-radius: 8px;
+}

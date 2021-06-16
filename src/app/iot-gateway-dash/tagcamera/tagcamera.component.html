@@ -1,38 +1,37 @@
 
-<div class="row">
+<div class="row px-3">
     <div class="containt">
         <div class="sub-heading">
-         
             <h3>Tag Nearest Camera</h3>
             <hr>
-         </div>
+        </div>
   
-        <div class="form_holder" >
+   <div class="form_holder p-3" >
 
             
 
-  <div class="row">
-     <div class="col-sm-4">
-      <p>      
-        <mat-form-field appearance="outline" id="gateway" class="selectcls">
+  <div class="row align-items-center">
+     <div class="col-sm-12 col-md-6 col-lg-4">
+          
+        <mat-form-field appearance="outline" id="gateway" >
           <mat-label>Select Gateway</mat-label>
           <mat-select placeholder="gateway" [(ngModel)]="gateway" name="gateway"> 
             <mat-option *ngFor="let g of gateways" value="{{g.location_name}},{{g.mac_id}},{{g.client}}" (click)="selgateway(gateway)">{{g.name}}-{{g.location_name}}</mat-option>
           </mat-select>
         </mat-form-field>
-    </p>
+    
      </div>
-     <div class="col-sm-4">
-      <p>
+     <div class="col-sm-12 col-md-6 col-lg-4">
+    
         <mat-form-field appearance="outline">
           <mat-label>Sensor Name</mat-label>
           <input matInput [(ngModel)]="filter" name="filter" placeholder="Sensor Name">
-          <mat-hint>Sensor Name</mat-hint>
+         
         </mat-form-field>
-      </p>
+     
      </div>
 
-     <div class="col-sm-4">
+     <div class="col-sm-12 col-md-6 col-lg-4">
       <mat-checkbox class="example-margin" [(ngModel)]="nocamera" (change)="nocamerafun(nocamera)"> Sensors having no camera tagged </mat-checkbox>
      </div>
 
@@ -40,28 +39,40 @@
   
   <hr>
 
-  <div class="row">
+  <!-- <div class="row">
 
-    <div class="col-sm-6"><p><b>Sensor Name</b></p></div>
-    <div class="col-sm-6"><p><b>Camera</b></p></div>
+    <div class="col-sm-6"><h3>Sensor Name</h3></div>
+    <div class="col-sm-6"><h3>Camera</h3></div>
 
-  </div>
+  </div> -->
 
-  <div *ngIf="portlist != undefined">
-    <div class="row" *ngFor="let p of portlist">
+  <div class="row" *ngIf="portlist != undefined">
+    <div  class="col-md-4 " *ngFor="let p of portlist">
 
-     
-     <div class="row" [hidden]="(p.sensor_name == 'Temp 1') || (p.sensor_name == 'Temp 2')">
+      <div class="" [hidden]="(p.sensor_name == 'Temp 1') || (p.sensor_name == 'Temp 2')">
+        <div class="align-items-start d-flex flex-column " *ngIf="filter == '' || filter == p.sensor_name" >
+          <label><b>Sensor: </b>{{p.sensor_name}}</label>
+          <mat-form-field appearance="outline" id="cam">
+            <mat-label>Select Camera</mat-label>
+            <mat-select placeholder="camera" [(ngModel)]="p.camera_id" name="camera"> 
+              <mat-option *ngFor="let g of camera_list" value="{{g.camera_id}}">{{g.camera_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+       </div>
+
+     <!-- <div class="row" [hidden]="(p.sensor_name == 'Temp 1') || (p.sensor_name == 'Temp 2')">
       <div class="col-sm-6" *ngIf="filter == '' || filter == p.sensor_name" ><p>{{p.sensor_name}}</p></div>
-      <div class="col-sm-6" *ngIf="filter == '' || filter == p.sensor_name" ><p>
+      <div class="col-sm-6" *ngIf="filter == '' || filter == p.sensor_name" >
         <mat-form-field appearance="outline" id="cam" class="selectcls">
           <mat-label>Select Camera</mat-label>
           <mat-select placeholder="camera" [(ngModel)]="p.camera_id" name="camera"> 
             <mat-option *ngFor="let g of camera_list" value="{{g.camera_id}}">{{g.camera_name}}</mat-option>
           </mat-select>
         </mat-form-field>
-      </p></div>
-     </div>
+      </div>
+     </div> -->
   
     </div>
   </div>

@@ -14,10 +14,10 @@
        <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title class="flex-bsCustom">
           Location - {{g.location_name}}
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description class="flex-bsCustom">
      (Zone - {{g.zone_name}})
         </mat-panel-description>
         </mat-expansion-panel-header>
@@ -151,9 +151,9 @@
       
       
       
-                      <div class="col-sm-3"> <a (click)="port_set(p)" style="color: blue;" [disabled]="!port_setting">Port Settings </a> </div>
+                      <div class="col-sm-3"> <a (click)="port_set(p)" class="color-prime" [disabled]="!port_setting">Port Settings </a> </div>
       
-                      <div class="col-sm-3"> 
+                      <div class="col-sm-3">
                       </div>
       
                       <hr>
