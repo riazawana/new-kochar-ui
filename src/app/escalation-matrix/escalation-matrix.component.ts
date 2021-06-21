@@ -4,9 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BackendconnectionService } from '../backendconnection.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-
 import {Router} from '@angular/router';
-
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EscalationDetailsComponent } from './escalation-details/escalation-details.component';                    // modal two load
 

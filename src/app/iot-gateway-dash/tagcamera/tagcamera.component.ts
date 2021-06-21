@@ -181,7 +181,7 @@ selgateway(gateway){
 nocamera:any;
 
 nocamerafun(x){
-  alert(x);
+  //alert(x);
   if(x == true){
     this.selgateway_nocam(this.gateway);
   }else{
