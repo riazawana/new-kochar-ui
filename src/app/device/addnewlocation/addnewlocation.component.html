@@ -1,5 +1,4 @@
-
-<div class="row">
+<div class="row px-3">
     <div class="containt">
         <div class="sub-heading">
          
@@ -9,128 +8,116 @@
   
         <div class="main">
             
-              <div class="example-large-box mat-elevation-z4">
+              <div class="large-box mat-elevation-z4">
                     
+                <form  [formGroup]="userformGroup">
                     <div class="row" >
-                        <div class="col-sm-12">
-
-                          <form  [formGroup]="userformGroup">
-                            <p>
-                                <mat-form-field appearance="outline">
-                                  <mat-label>Location Name</mat-label>
-                                  <input matInput [(ngModel)]="lo_name" name="lo_name" placeholder="Location Name"  required formControlName="lo_name">
-                                  <mat-error *ngIf="userformGroup.get('lo_name').hasError('required')">
-                                    Location Name is Required!
-                                  </mat-error>
-                                  <mat-error *ngIf="userformGroup.get('lo_name').hasError('minlength')">
-                                    Location Name should be atleast 4 characters long!
-                                  </mat-error> 
-                                </mat-form-field>
-                              </p>
+                      <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Location Name</mat-label>
+                            <input matInput [(ngModel)]="lo_name" name="lo_name" placeholder="Location Name"  required formControlName="lo_name">
+                            <mat-error *ngIf="userformGroup.get('lo_name').hasError('required')">
+                              Location Name is Required!
+                            </mat-error>
+                            <mat-error *ngIf="userformGroup.get('lo_name').hasError('minlength')">
+                              Location Name should be atleast 4 characters long!
+                            </mat-error> 
+                          </mat-form-field>
+                      </div>
 
 
-                              <p>
-                                <mat-form-field appearance="outline">
-                                  <mat-label>Site Type</mat-label>
-                                  <input matInput [(ngModel)]="site" name="site" placeholder="Site Type" required formControlName="site">
-                                  <mat-error *ngIf="userformGroup.get('site').hasError('required')">
-                                    Site Type is Required!
-                                  </mat-error>
-                                  <mat-error *ngIf="userformGroup.get('site').hasError('minlength')">
-                                    Site Type should be atleast 4 characters long!
-                                  </mat-error> 
-                                </mat-form-field>
-                              </p>
-        
-                              <p>
-                                <mat-form-field appearance="outline">
-                                  <mat-label>Address</mat-label>
-                                  <input matInput [(ngModel)]="add" name="add" placeholder="Address" required formControlName="add">
-                                  <mat-error *ngIf="userformGroup.get('add').hasError('required')">
-                                    Address is Required!
-                                  </mat-error>
-                                  <mat-error *ngIf="userformGroup.get('add').hasError('minlength')">
-                                    Address should be atleast 4 characters long!
-                                  </mat-error> 
-                                </mat-form-field>
-                              </p>
-        
-        
-                              <p>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Country</mat-label>
-                                    <mat-select placeholder="Country" [(ngModel)]="country_id" name="country_id" required formControlName="country_id">
-                                        <mat-option *ngFor="let c of country_list" value="{{c.country_id}}" (click)="getstate(c.country_id)">{{c.name}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="userformGroup.get('country_id').hasError('required')">
-                                      Country is Required!
-                                    </mat-error>
-                                </mat-form-field>
-                              </p>
-        
-                              <p>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>State</mat-label>
-                                    <mat-select placeholder="State"  [(ngModel)]="state_id" name="state_id" required formControlName="state_id">
-                                      <mat-option *ngFor="let s of state_list" value="{{s.state_id}}" (click)="getcity(s.state_id)">{{s.name}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="userformGroup.get('state_id').hasError('required')">
-                                      State is Required!
-                                    </mat-error>
-                                </mat-form-field>
-                              </p>
-        
-                              <p>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>City</mat-label>
-                                    <mat-select placeholder="City" [(ngModel)]="city_id" name="city_id" required formControlName="city_id">
-                                      <mat-option *ngFor="let ci of city_list" value="{{ci.city_id}}" (click)="getpin(ci.state_id,ci.city_id)">{{ci.name}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="userformGroup.get('city_id').hasError('required')">
-                                      City is Required!
-                                    </mat-error>
-                                </mat-form-field>
-                              </p>
-        
-                              <p>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Zipcode</mat-label>
-                                    <mat-select placeholder="Zipcode" [(ngModel)]="pincode_id" name="pincode_id" required formControlName="pincode_id">
-                                      <mat-option *ngFor="let p of pin_list" value="{{p.pincode_id}}" >{{p.pincode}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="userformGroup.get('pincode_id').hasError('required')">
-                                      Zipcode is Required!
-                                    </mat-error>
-                                </mat-form-field>
-                              </p>
-        
-                              <p>
-                                <mat-checkbox class="example-margin" [(ngModel)]="site_live" name="site_live" required formControlName="site_live">Site Live </mat-checkbox>
-                                <mat-error *ngIf="userformGroup.get('site_live').hasError('required')">
-                                  Site live should be check!
-                                </mat-error>
-                              </p>
-                              </form>
-                          
-        
-                             
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Site Type</mat-label>
+                            <input matInput [(ngModel)]="site" name="site" placeholder="Site Type" required formControlName="site">
+                            <mat-error *ngIf="userformGroup.get('site').hasError('required')">
+                              Site Type is Required!
+                            </mat-error>
+                            <mat-error *ngIf="userformGroup.get('site').hasError('minlength')">
+                              Site Type should be atleast 4 characters long!
+                            </mat-error> 
+                          </mat-form-field>
                         </div>
-                    </div>
+  
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <input matInput [(ngModel)]="add" name="add" placeholder="Address" required formControlName="add">
+                            <mat-error *ngIf="userformGroup.get('add').hasError('required')">
+                              Address is Required!
+                            </mat-error>
+                            <mat-error *ngIf="userformGroup.get('add').hasError('minlength')">
+                              Address should be atleast 4 characters long!
+                            </mat-error> 
+                          </mat-form-field>
+                        </div>
+  
+  
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                              <mat-label>Country</mat-label>
+                              <mat-select placeholder="Country" [(ngModel)]="country_id" name="country_id" required formControlName="country_id">
+                                  <mat-option *ngFor="let c of country_list" value="{{c.country_id}}" (click)="getstate(c.country_id)">{{c.name}}</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="userformGroup.get('country_id').hasError('required')">
+                                Country is Required!
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+  
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                              <mat-label>State</mat-label>
+                              <mat-select placeholder="State"  [(ngModel)]="state_id" name="state_id" required formControlName="state_id">
+                                <mat-option *ngFor="let s of state_list" value="{{s.state_id}}" (click)="getcity(s.state_id)">{{s.name}}</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="userformGroup.get('state_id').hasError('required')">
+                                State is Required!
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+  
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                              <mat-label>City</mat-label>
+                              <mat-select placeholder="City" [(ngModel)]="city_id" name="city_id" required formControlName="city_id">
+                                <mat-option *ngFor="let ci of city_list" value="{{ci.city_id}}" (click)="getpin(ci.state_id,ci.city_id)">{{ci.name}}</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="userformGroup.get('city_id').hasError('required')">
+                                City is Required!
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+  
+                        <div class="col-md-4">
+                          <mat-form-field appearance="outline">
+                              <mat-label>Zipcode</mat-label>
+                              <mat-select placeholder="Zipcode" [(ngModel)]="pincode_id" name="pincode_id" required formControlName="pincode_id">
+                                <mat-option *ngFor="let p of pin_list" value="{{p.pincode_id}}" >{{p.pincode}}</mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="userformGroup.get('pincode_id').hasError('required')">
+                                Zipcode is Required!
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+  
+                        <div class="col-md-4">
+                          <mat-checkbox class="example-margin" [(ngModel)]="site_live" name="site_live" required formControlName="site_live">Site Live </mat-checkbox>
+                          <mat-error *ngIf="userformGroup.get('site_live').hasError('required')">
+                            Site live should be check!
+                          </mat-error>
+                        </div>
+                         
+                          </div>
+                        </form>
+        <div class="row justify-content-end">
+          <div class="col-md-4 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" (click)="submit_location()" [disabled]="!userformGroup.valid ">Submit</button>
+          </div>
+        </div>
 
-
-                  </div>
-
-                  <button type="button" class="btn btn-primary" (click)="submit_location()" style="float: right;" [disabled]="!userformGroup.valid ">Submit</button>
-        
-              
-
-           
-
-              
-                
-
-             
-              
+                      </div>
+      
         </div>
   
     </div>

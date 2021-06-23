@@ -141,11 +141,14 @@ button {
   align-items: center;
   justify-content: center;
   margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
+
   width: 97%;
 }
-
+.large-box {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+}
 .example-radio-group {
   display: flex;
   flex-direction: column;
@@ -207,4 +210,7 @@ h3.headingSmall {
 
 .flex-bsCustom {
   flex-basis: 35%;
+}
+.minH {
+  min-height: calc(100vh - 49px);
 }
