@@ -74,6 +74,11 @@ const routes: Routes =[{
 
     },
 
+    {
+      path:"Energy Management",
+      loadChildren: () => import('./energy-meter/energy-meter.module').then(m => m.EnergyMeterModule)
+    }
+   
    ]  , canActivate:[AuthGuard]
   },
   {

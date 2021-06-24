@@ -3,7 +3,7 @@
     <div class="containt">
         <div class="sub-heading">
          
-            <h3>Add Router</h3>
+            <h3>Add Energy Meter</h3>
             <hr>
          </div>
   
@@ -62,7 +62,16 @@
                                         </mat-form-field>
                                       </p>
                 
-                                      
+                                      <p>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Select Version</mat-label>
+                                            <mat-select placeholder="version" [(ngModel)]="version" name="version">
+                                              <mat-option  value="1" >Version 1</mat-option>
+                                              <mat-option  value="2" >Version 2</mat-option>
+                                          
+                                            </mat-select>
+                                        </mat-form-field>
+                                      </p>
                 
                                     
                                       

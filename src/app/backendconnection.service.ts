@@ -736,9 +736,11 @@ export class BackendconnectionService {
             return this.httpClient.post(this.api+'/addsmartmeter',data,this.httpOptions); 
           }
 
-          getmodbus(x){
+          // getmodbus?mac_id&client
+
+          getmodbus(x,y){
             this.auth();
-            return this.httpClient.get(this.api+'/getmodbus?_id='+x,this.httpOptions);
+            return this.httpClient.get(this.api+'/getmodbus?mac_id='+x+'&client='+y,this.httpOptions);
           }
 
           getmodbuslocationwise(x){

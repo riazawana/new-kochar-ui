@@ -70,9 +70,11 @@ export class EditenergyMeterComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
+      this.client = params.get("client");
+
       })
 
-      this.backend.getmodbus(this.id)
+      this.backend.getmodbus(this.id,this.client)
       .subscribe((data)=> { 
         // console.log(data["data"][0]);
         this.ngxLoader.stop();

@@ -18,17 +18,18 @@ export class ViewenergyComponent implements OnInit {
   ) { }
 
   id:string;
- 
+  client:any;
   
   ngOnInit(): void {
     this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
+      this.client = params.get("client");
      // alert(this.id)
       })
      
-    this.backend.getmodbus(this.id)
+    this.backend.getmodbus(this.id,this.client)
     .subscribe((data)=> { 
 
     this.ngxLoader.stop();
