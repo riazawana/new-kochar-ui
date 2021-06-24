@@ -30,7 +30,7 @@ export class AddenergyMeterComponent implements OnInit {
   tempname2:any = "Temp 2";
   ncnodefault1:any = 0;
   ncnodefault2:any = 0;
-
+  version:any;
   ncnono1:any = 1;
   ncnono2:any = 2;
   ncnoname1:any;
@@ -112,6 +112,7 @@ export class AddenergyMeterComponent implements OnInit {
     "location_name":this.location_name,
     "zone_name":this.zone_name,
     "client":this.client,
+    "version":this.version,
     "relays":[{
       "relay_name": this.relayname,
       "relay_number": this.relayno

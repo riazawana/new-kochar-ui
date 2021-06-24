@@ -42,9 +42,9 @@ export class EnergyMeterComponent implements OnInit {
     this.router.navigate(['/kochar/Devices/addenergy',x]);
   }
 
-  openenergy(x){
+  openenergy(x,y){
     // alert(x)
-    this.router.navigate(['/kochar/Devices/viewenergy',x]);
+    this.router.navigate(['/kochar/Devices/viewenergy',x,y]);
   }
 
   delete(x,y){
@@ -54,8 +54,8 @@ export class EnergyMeterComponent implements OnInit {
     });
   }
 
-  edit(x){
-    this.router.navigate(['/kochar/Devices/editenergymeter',x]);
+  edit(x,y){
+    this.router.navigate(['/kochar/Devices/editenergymeter',x,y]);
 
   }
 
