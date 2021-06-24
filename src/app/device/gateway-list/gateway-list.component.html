@@ -14,41 +14,39 @@
             
               <mat-accordion>
               <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
+              <mat-expansion-panel-header >
               <mat-panel-title>
              {{g.name}}
              <span *ngIf="g.is_online == false" class="reddot"></span>
              <span *ngIf="g.is_online == true" class="greendot"></span> 
             
               </mat-panel-title>
-              <mat-panel-description>
+              <mat-panel-description >
+               <div class="d-flex align-items-center gap-1">
                 <a (click)="openDialog(g.mac_id,g.router_mac_id,g.router_number)" [disabled]="!command_setting">Command Settings</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
 
-              <div *ngIf="g.mode == 1">
+              <div *ngIf="g.mode == 1" class="d-flex gap-1">
                 <button type="button" class="btn btn-success" [disabled]="!arm" (click)="sendMessage('arm',0,g.mac_id)" style="font-size: 80%;">ARM</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
 
                 <button type="button" class="btn btn-primary" [disabled]="!disarm"  (click)="sendMessage('disarm',0,g.mac_id)" style="font-size: 80%;">DISARM</button>  
               </div>
 
-              <div *ngIf="g.mode == 0">
+              <div *ngIf="g.mode == 0" class="d-flex gap-1">
                 <button type="button" class="btn btn-primary" [disabled]="!arm" (click)="sendMessage('arm',0,g.mac_id)" style="font-size: 80%;">ARM</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
 
                 <button type="button" class="btn btn-success" [disabled]="!disarm"  (click)="sendMessage('disarm',0,g.mac_id)" style="font-size: 80%;">DISARM</button>  
               </div>
            
 
                 <!-- <a (click)="edit(g.mac_id,g.client)">Edit</a> -->
-                &nbsp;&nbsp;&nbsp;&nbsp;
+                
                 <a (click)="delete(g.mac_id,g.client)"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+                
                 <i class="fa fa-power-off" aria-hidden="true"  (click)="sendMessage('restartiotgateway','get',g.mac_id)"></i>
-
+            </div>
               </mat-panel-description>
               </mat-expansion-panel-header>
               
@@ -86,8 +84,8 @@
 
                
                     <div class="col-md-3" >
-                      <button type="button" *ngIf="relay1ons == true" class="btn btn-success" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
-                      <button type="button" *ngIf="relay1ons == false" class="btn btn-primary" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
+                      <button type="button" *ngIf="relay1ons == true" class="btn btn-success mr-2" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
+                      <button type="button" *ngIf="relay1ons == false" class="btn btn-primary mr-2" [disabled]="!relay1on"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / ON</button>
                       
                       <button type="button" *ngIf="relay1offs == true" class="btn btn-success" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
                       <button type="button" *ngIf="relay1offs == false"class="btn btn-primary" [disabled]="!relay1off"  (click)="sendMessage('relay1',0,g.mac_id)" style="font-size: 60%;">{{g.relay1_name}} / OFF</button>
@@ -95,8 +93,8 @@
                     </div>
 
                     <div class="col-md-3" >
-                      <button type="button" *ngIf="relay2ons == true" class="btn btn-success" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
-                      <button type="button" *ngIf="relay2ons == false"  class="btn btn-primary" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
+                      <button type="button" *ngIf="relay2ons == true" class="btn btn-success mr-2" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
+                      <button type="button" *ngIf="relay2ons == false"  class="btn btn-primary mr-2" [disabled]="!relay2on"  (click)="sendMessage('relay2',1,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / ON</button>
                      
                       <button type="button"  *ngIf="relay2offs == true" class="btn btn-success" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
                       <button type="button"  *ngIf="relay2offs == false" class="btn btn-primary" [disabled]="!relay2off"  (click)="sendMessage('relay2',0,g.mac_id)" style="font-size: 60%;">{{g.relay2_name}}  / OFF</button>
