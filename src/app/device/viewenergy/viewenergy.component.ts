@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CommandSettingMeterComponent } from '../../command-setting-meter/command-setting-meter.component';  
 
 @Component({
   selector: 'app-viewenergy',
@@ -11,15 +14,35 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class ViewenergyComponent implements OnInit {
 
   constructor(
-    private ngxLoader: NgxUiLoaderService,
-    private backend:BackendconnectionService,
     private route: ActivatedRoute,
-    private router:Router
+    private soc:SocketioSendmsgService,
+    private ngxLoader: NgxUiLoaderService,
+    private dialog: MatDialog,
+    public dialogRef: MatDialogRef<CommandSettingMeterComponent>,
+    private router:Router,
+    private backend: BackendconnectionService,
+    @Inject(MAT_DIALOG_DATA) public datan: any
   ) { }
+
+
+  openDialog(id): void {
+    //  alert(id)
+     this.dialogRef = this.dialog.open(CommandSettingMeterComponent, {
+       width: '600px',
+       height:'600px',
+       data: {id: id}    
+     },
+     );
+
+     this.dialogRef.afterClosed().subscribe(result => {
+      //  console.log('The dialog  two was closed');
+     });
+   }
 
   id:string;
   client:any;
-  
+  data:any;
+  status:any;
   ngOnInit(): void {
     this.ngxLoader.start();
 
@@ -34,9 +57,9 @@ export class ViewenergyComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-       console.log("User Data",data);
-      
-   
+       console.log("User Data",data["data"][0]);
+       this.data = data["data"][0];
+        this.status = this.data.modbus_info[0].status.split("|");
 
     });
     
@@ -44,7 +67,9 @@ export class ViewenergyComponent implements OnInit {
   }
 
   
-  
+  avg(x,y,z){
+    return (parseInt(x,10)+parseInt(y,10)+parseInt(z,10))/3
+  }
 
   
 
