@@ -11,19 +11,17 @@
 
             <div class="row">
 
-                <p style="color:rgb(0 126 255);">Command Settings</p>
+                <p style="color:rgb(0 126 255);" (click)="openDialog(data.mac_id)">Command Settings</p>
 
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="data != undefined">
 
                <div class="col-sm-3">
-                <p>#GGN Old Building</p>
-                <p>C8:2B:96:A3:84:44</p>
+                <p>#{{data.location_name}}</p>
+                <p>{{data.mac_id}}</p>
                 <br>
-                <p>Gurgaon</p>
-                <p>Gurgaon</p>
-                <p>Gurgaon Haryana - 122018</p>
+                <p>{{data.zone_name}}</p>
                </div>
 
                <div class="col-sm-6">
@@ -36,8 +34,8 @@
                </div>
                
                <div class="col-sm-3">
-                   <p>Last Ping Status : </p>
-                   <p>Ping Count : </p>
+                   <p>Last Ping Status : {{status[1]}} </p>
+                   <p>Ping Count : {{status[3]}} </p>
                    <p>Address Range : 1 - 125</p>
 
                </div>
@@ -62,63 +60,73 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="data != undefined">
 
                 <div class="col-sm-3">
                   <mat-card>
-                      <div><p>Port 1</p></div>
+                      <div><p>{{data.ports[0].port_name}}</p></div>
                       <hr>
                       <div>
-                          <p>N/A</p>
+                          <p *ngIf="data.ports[0].current_status == 0">Non Trigger</p>
+                          <p *ngIf="data.ports[0].current_status == 1">Trigger</p>
+
+                          <p>{{data.ports[0].current_status}}</p>
                       </div>
                       <hr>
                       <div>
-                          <p>Default 0 | Port NO.1 </p>
+                          <p> Port NO.{{data.ports[0].port_number}} </p>
                       </div>
                   </mat-card>
                 </div>
  
                 <div class="col-sm-3">
                     <mat-card>
-                        <div><p>Port 2</p></div>
+                        <div><p>{{data.ports[1].port_name}}</p></div>
                         <hr>
                         <div>
-                            <p>N/A</p>
+                            <p *ngIf="data.ports[1].current_status == 0">Non Trigger</p>
+                            <p *ngIf="data.ports[1].current_status == 1">Trigger</p>
+  
+                            <p>{{data.ports[1].current_status}}</p>
                         </div>
                         <hr>
                         <div>
-                            <p>Default 0 | Port NO.2 </p>
+                            <p> Port NO.{{data.ports[1].port_number}} </p>
                         </div>
                     </mat-card>
-                </div>
+                  </div>
 
-                <div class="col-sm-3">
+                  <div class="col-sm-3">
                     <mat-card>
-                        <div><p>Temp 1</p></div>
+                        <div><p>{{data.ports[2].port_name}}</p></div>
                         <hr>
                         <div>
-                            <p>RR.R C</p>
+                          
+                            <p>{{data.ports[2].current_status}}</p>
                         </div>
                         <hr>
                         <div>
-                            <p>Default RR.R | Port NO.3 </p>
+                            <p> Port NO.{{data.ports[2].port_number}} </p>
                         </div>
                     </mat-card>
-                </div>
+                  </div>
                 
-                <div class="col-sm-3">
+                  <div class="col-sm-3">
                     <mat-card>
-                        <div><p>Temp 2</p></div>
+                        <div><p>{{data.ports[3].port_name}}</p></div>
                         <hr>
                         <div>
-                            <p>RR.R C</p>
+                            <!-- <p *ngIf="data.ports[1].current_status == 0">Non Trigger</p>
+                            <p *ngIf="data.ports[1].current_status == 1">Trigger</p>
+   -->
+                            <p>{{data.ports[3].current_status}}</p>
                         </div>
                         <hr>
                         <div>
-                            <p>Default RR.R | Port NO.4 </p>
+                            <p> Port NO.{{data.ports[3].port_number}} </p>
                         </div>
                     </mat-card>
-                </div>
+                  </div>
  
              </div>
 
@@ -142,14 +150,17 @@
  
              </div>
 
-             <div class="row">
+             <div class="row" *ngIf="data != undefined">
 
-                <div class="col-sm-3">
+                <div class="col-sm-3" *ngFor="let l of data.relays">
                   <mat-card>
-                      <div><p>Relay 1</p></div>
+                      <div><p>{{l.relay_name}}</p></div>
                       <hr>
                       <div>
-                         ON/Off button
+                         <mat-slide-toggle [(ngModel)]="l.current_state" (change)="relayonclick(i,$event.checked)" style="width: 100%;">Relay: 
+                            <span *ngIf="l.current_state == 1">ON</span>
+                            <span *ngIf="l.current_state == 0">OFF</span>
+                        </mat-slide-toggle>
                       </div>
                       <hr>
                       <div>
@@ -158,43 +169,90 @@
                   </mat-card>
                 </div>
  
-                <div class="col-sm-3">
-                    <mat-card>
-                        <div><p>Relay 2</p></div>
-                        <hr>
-                        <div>
-                           ON/Off button
-                        </div>
-                        <hr>
-                        <div>
-                          <button>Get Status</button>
-                      </div>
-                    </mat-card>
-                </div>
-
-                <div class="col-sm-3">
-                  
-                </div>
-                
-                <div class="col-sm-3">
-                   
-                </div>
+               
  
              </div>
 
         <div class="row">
-            <div class="col-sm-3">
-                <p>Smartmeters</p>
-            </div>
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-3">
-            </div>
+             <p>Smartmeters</p>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="data != undefined">
+            <p>EM368</p>
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Address No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Configration</th>
+                        <th scope="col">Total Unit</th>
+                        <th scope="col">Apparent Energy</th>
+                        <th scope="col">Reactive Energy</th>
+                        <th scope="col">Average P.F</th>
+                        <th scope="col">Total Kilowatts</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let r of data.smartmeter">
+                        <th scope="row" *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.address_no}}</th>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeter_name}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.configuration}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data1}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data2}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data3}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data7}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data8}}</td>
+                        <td *ngIf="(r.meter_type =='EM368') && (r.smartmeterlogs_current.length != 0)">Del</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+        </div>
+
+        <div class="row" *ngIf="data != undefined">
+            <p>EM1320</p>
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Address No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Configration</th>
+                        <th scope="col">Avg Active Power</th>
+                        <th scope="col">Avg Apparent Power</th>
+                        <th scope="col">Average P.F</th>
+                        <th scope="col">System Active Power</th>
+                        <th scope="col">System Power Factor</th>
+                        <th scope="col">Import Active Energy</th>
+                        <th scope="col">Export Active Energy</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of data.smartmeter">
+                          <th scope="row" *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.address_no}}</th>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeter_name}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.configuration}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{avg(r.smartmeterlogs_current[0].data1,r.smartmeterlogs_current[0].data2,r.smartmeterlogs_current[0].data3) }}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{avg(r.smartmeterlogs_current[0].data4,r.smartmeterlogs_current[0].data5,r.smartmeterlogs_current[0].data6) }}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{avg(r.smartmeterlogs_current[0].data7,r.smartmeterlogs_current[0].data8,r.smartmeterlogs_current[0].data9) }}</td>
+
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data10}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data11}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data12}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">{{r.smartmeterlogs_current[0].data13}}</td>
+                          <td *ngIf="(r.meter_type =='EM1320') && (r.smartmeterlogs_current.length != 0)">Del</td>
+  
+                        </tr>
+                      </tbody>
+                  </table>
+            </div>
         </div>
 
 

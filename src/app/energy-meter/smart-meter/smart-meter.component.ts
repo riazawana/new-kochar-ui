@@ -73,12 +73,13 @@ export class SmartMeterComponent implements OnInit {
         console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 
+    
     });
 
 
 
   }
-
+  smartmeterval:any = [];
 
   addsmartmeter(x,y){
       // alert(x);
