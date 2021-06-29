@@ -25,8 +25,8 @@ import { RouterAnalysisComponent } from './router-analysis/router-analysis.compo
 import { EnergyMeterComponent } from './energy-meter/energy-meter.component';
 import { AddenergyMeterComponent } from './addenergy-meter/addenergy-meter.component';
 import { ViewenergyComponent } from './viewenergy/viewenergy.component';
-import { SecondryGatewayComponent } from './secondry-gateway/secondry-gateway.component';
-import { SmartMeterComponent } from './smart-meter/smart-meter.component';
+// import { SecondryGatewayComponent } from './secondrygateway/secondry-gateway.component';
+// import { SmartMeterComponent } from './smartmeter/smartmeter.component';
 
 
 
@@ -118,8 +118,8 @@ const userRoutes: Routes =[
     EnergyMeterComponent,
     AddenergyMeterComponent,
     ViewenergyComponent,
-    SecondryGatewayComponent,
-    SmartMeterComponent, 
+    // SecondryGatewayComponent,
+    // SmartMeterComponent, 
   ],
   imports: [
     RouterModule.forChild(userRoutes),
