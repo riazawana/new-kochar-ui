@@ -21,13 +21,13 @@
                     </p>
                   <p>
                     <mat-form-field appearance="outline">
-                      <input matInput  [(ngModel)]="pinginterval2" name="pinginterval2">
+                      <input matInput  [(ngModel)]="getping_interval" name="getping_interval">
                     </mat-form-field>
                   </p>
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn btn-primary" (click) = "sendMessage('pinginterval',pinginterval1,data.id)" >Set</button>
-                <button type="button" class="btn btn-primary" (click) = "get('pinginterval',data.id)" >Get</button>
+                <button type="button" class="btn btn-primary" (click) = "sendMessage('updatepollingtime',pinginterval1,data.id)" >Set</button>
+                <button type="button" class="btn btn-primary" (click) = "get('getpollingtime',data.id)" >Get</button>
 
             </div>
 
@@ -50,13 +50,13 @@
                   </p>
                   <p>
                     <mat-form-field appearance="outline">
-                      <input matInput  [(ngModel)]="pingurl2" name="pingurl2">
+                      <input matInput  [(ngModel)]="getping_url" name="getping_url">
                     </mat-form-field>
                   </p>
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn btn-primary" (click) = "sendMessage('pingurl',pingurl1,data.id)" >Set</button>
-                <button type="button" class="btn btn-primary" (click) = "get('pingurl',data.id)" >Get</button>
+                <button type="button" class="btn btn-primary" (click) = "sendMessage('updatepollingurl',pingurl1,data.id)" >Set</button>
+                <button type="button" class="btn btn-primary" (click) = "get('getpollingurl',data.id)" >Get</button>
 
             </div>
 
@@ -92,12 +92,12 @@
                 
                   <p>
                     <mat-form-field appearance="outline">
-                      <input matInput  [(ngModel)]="relaystatus" name="relaystatus">
+                      <input matInput  [(ngModel)]="getrelaystatus" name="getrelaystatus">
                     </mat-form-field>
                   </p>
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn btn-primary" (click) = "get('relaystatus',data.id)" >Get</button>
+                <button type="button" class="btn btn-primary" (click) = "get('getrelaystatus',data.id)" >Get</button>
             </div>
 
   
@@ -119,13 +119,13 @@
                   </p>
                   <p>
                     <mat-form-field appearance="outline">
-                      <input matInput  [(ngModel)]="firmwarevirsion2" name="firmwarevirsion2">
+                      <input matInput  [(ngModel)]="getfirmware" name="getfirmware">
                     </mat-form-field>
                   </p>
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn btn-primary" (click) = "sendMessage('firmwarevirsion',firmwarevirsion1,data.id)" >Set</button>
-                <button type="button" class="btn btn-primary" (click) = "get('firmwarevirsion',data.id)" >Get</button>
+                <button type="button" class="btn btn-primary" (click) = "sendMessage('updatefirmwareversion',firmwarevirsion1,data.id)" >Set</button>
+                <button type="button" class="btn btn-primary" (click) = "get('getfirmwareversion',data.id)" >Get</button>
 
             </div>
 

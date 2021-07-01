@@ -366,6 +366,7 @@ macs(macs: any) {
 
 sendMessage(x,y,mac) {
  var data = {
+  cmdtype:"iot_gateway_commands",
    mac_id:mac,
    type:x,
    value:y

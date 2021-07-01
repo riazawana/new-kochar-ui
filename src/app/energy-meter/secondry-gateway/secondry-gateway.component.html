@@ -29,14 +29,14 @@
         <div *ngIf="l.gateways.length != 0">
           <div class="row" *ngFor="let g of l.gateways; let j = index;" style="padding: 1%;width: 100%;">
 
-            <mat-accordion >
+            <mat-accordion style="width: 100%;" >
             <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
            {{g.name}}
             </mat-panel-title>
             <mat-panel-description>
-              <a (click)="openDialog(g.mac_id)">Command Settings</a>
+              <a (click)="openDialog(g.mac_id,g.version)">Command Settings</a>
           
             </mat-panel-description>
             </mat-expansion-panel-header>
@@ -46,10 +46,12 @@
                 <div class="row col-md-3">
                  <span class="label label-primary tempclass">Temp 1</span><br>                     
                  <span class="label label-primary tempclass">Temp 2</span><br>                     
-                 <i class="fa fa-refresh refreshcls pt-2" aria-hidden="true"></i>
+                 <!-- <i class="fa fa-refresh refreshcls pt-2" aria-hidden="true"></i> -->
                   </div>
 
-                  <div class="col-sm-3"></div>
+                  <div class="col-sm-3"> 
+                <p (click)="sendMessage('restart',g.mac_id,g.version,'none')"><i class="fa fa-refresh" aria-hidden="true"></i></p>
+                  </div>
 
                   <div class="col-sm-3">
                    <!-- <button type="button" class="btn btn-primary" [disabled]="!relay1"  (click)="sendMessage('relay1',1,g.mac_id)" style="font-size: 60%;">HOOTER / ON</button>

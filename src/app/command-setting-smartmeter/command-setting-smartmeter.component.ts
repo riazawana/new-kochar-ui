@@ -17,7 +17,7 @@ export class CommandSettingSmartmeterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     setaddress:any;
-   
+    metertype:any;
 
 
 
@@ -26,6 +26,19 @@ export class CommandSettingSmartmeterComponent implements OnInit {
     ngOnInit(): void {
      // console.log(typeof this.data.id)
       // alert(this.data.id)
+
+      this.soc.messages.subscribe(msg => {
+        console.log(msg);
+        if(msg.type == "modbus_command_response"){
+            console.log(JSON.parse(msg.text[0]));
+            var text = JSON.parse(msg.text[0]);
+
+        
+           
+           
+        }
+      })
+
     }
 
     onNoClick(): void {
@@ -35,8 +48,11 @@ export class CommandSettingSmartmeterComponent implements OnInit {
 
     sendMessage(x,y,mac) {
       var data = {
+        cmdtype:"modbus_commands",
         mac_id:mac,
+        version:this.data.v,
         type:x,
+        meter_type:this.metertype,
         value:y
       }
        

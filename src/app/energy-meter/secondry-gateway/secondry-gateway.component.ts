@@ -48,15 +48,27 @@ export class SecondryGatewayComponent implements OnInit {
 
   
 
-
+    sendMessage(t,x,y,v) {
+      var data = {
+        cmdtype:"modbus_commands",
+        mac_id:x,
+        version:y,
+        type:t,
+        value:v
+      }
+       
+     this.soc.sendMsg(data);
+  
+     
+   }
 
   /////////////////////////modal 2/////////////////////////////////////
-     openDialog(id): void {
+     openDialog(id,v): void {
       //  alert(id)
        this.dialogRef = this.dialog.open(CommandSettingMeterComponent, {
          width: '600px',
          height:'600px',
-         data: {id: id}    
+         data: {id: id,v:v}    
        },
        );
 
