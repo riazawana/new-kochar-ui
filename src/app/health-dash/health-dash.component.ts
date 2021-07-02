@@ -5,7 +5,15 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { DetailsModalComponent } from './details-modal/details-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {MatTableDataSource} from '@angular/material/table';
 
+export interface healthData {
+  location: string;
+  router: string;
+  wired:any;
+  video:any;
+
+}
 
 @Component({
   selector: 'app-health-dash',
@@ -13,6 +21,8 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./health-dash.component.scss']
 })
 export class HealthDashComponent implements OnInit {
+  displayedColumns: string[] = ['location', 'router', 'wired','video'];
+  dataSource: MatTableDataSource<healthData>;
 
   constructor(
     private backend:BackendconnectionService,
@@ -49,6 +59,8 @@ export class HealthDashComponent implements OnInit {
 
            console.log("All location:",data["data"]);
            this.healthdata = data["data"];
+       this.dataSource = new MatTableDataSource(data["data"]);
+
         });
 
 
@@ -194,6 +206,8 @@ this.ngxLoader.stop();
 
      console.log("All location:",data["data"]);
      this.healthdata = data["data"];
+     this.dataSource = new MatTableDataSource(data["data"]);
+
   });
 }
 
@@ -205,6 +219,8 @@ this.ngxLoader.stop();
     .subscribe((data)=> { 
       console.log("All healthDashboardfilter:",data); 
       this.healthdata = data["data"];
+      this.dataSource = new MatTableDataSource(data["data"]);
+
     
     })
 

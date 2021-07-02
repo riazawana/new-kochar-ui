@@ -60,7 +60,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
      
 
        const dialogRef = this.dialog.open(EscalationDetailsComponent, {
-        //  width: '600px',
+          width: '600px',
          data: {data: data,location_id:location_id}    
        },
        );
