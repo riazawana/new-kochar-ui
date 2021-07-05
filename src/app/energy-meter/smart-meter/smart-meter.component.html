@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row px-3">
   <div class="containt">
       <div class="sub-heading">
        
@@ -9,25 +9,25 @@
 
       <div class="main">
           
-        <div class="row" *ngFor="let l of modbus" style="padding: 1%;width: 100%;">
-          <div class="col-sm-12"  style="margin-bottom: 2%;" *ngIf="l.gateways.length != 0">
+        <div class="row" *ngFor="let l of modbus">
+          <div class="col-sm-12 my-2"  *ngIf="l.gateways.length != 0">
             
 
             <mat-accordion>
               <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
+              <mat-expansion-panel-header class="px-0">
               <mat-panel-title>
-                <p>Zone: {{l.zone_name}}</p>
+              Zone: {{l.zone_name}}
               </mat-panel-title>
               <mat-panel-description>
-                <p>Location: {{l.location_name}}</p>              
+                Location: {{l.location_name}}         
               </mat-panel-description>
               </mat-expansion-panel-header>
         <div *ngIf="l.gateways.length != 0">
-          <div class="row" *ngFor="let g of l.gateways; let j = index;" style="padding: 1%;width: 100%;">
+          <div class="row " *ngFor="let g of l.gateways; let j = index;" >
 
 
-              <mat-accordion>
+              <mat-accordion class="w-100">
               <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
               <mat-panel-title>
@@ -37,18 +37,16 @@
                 <a (click)="openDialog(g.mac_id)">Command Settings</a>
               </mat-panel-description>
               </mat-expansion-panel-header>
-            <div class="row" *ngIf="g.smartmeter.length != 0" style="width: 100%;margin:0%">
+            <div class="row" *ngIf="g.smartmeter.length != 0" >
               
-              <div class="col-sm-4"  *ngFor="let s of g.smartmeter;let i = index">
+              <div class="col-md-4"  *ngFor="let s of g.smartmeter;let i = index">
 
-                <div style="border: 2px solid;
-                padding: 3%;
-                border-radius: 5%;">
+                <div class="p-2 border border-dark rounded">
 
               
 
-                  <div style="text-align: center;">
-                      <table class="table table-bordered">
+                  <div class="text-center my-3">
+                      <table class="table table-bordered mb-1">
                           <thead>
                             <tr>
                               <th>0</th>
@@ -61,11 +59,11 @@
                             </tr>
                           </thead>
                         </table>
-                        <p><b>Kilo Watt-Hour (Monthly)</b></p>
+                        <b>Kilo Watt-Hour (Monthly)</b>
                   </div>
 
-                  <div style="text-align: center;">
-                      <table class="table table-bordered">
+                  <div class="text-center my-3">
+                      <table class="table table-bordered mb-1">
                           <thead>
                             <tr>
                               <th>0</th>
@@ -78,20 +76,20 @@
                             </tr>
                           </thead>
                         </table>
-                        <p><b>Kilo Watt-Hour (Today)</b></p>
+                        <b>Kilo Watt-Hour (Today)</b>
                   </div>
 
                   <div style="text-align: center;">
-                     <div class="row">
-                         <div class="col-sm-5" style="border: 2px solid black;"><p style="margin:0%"><b>0 kVAh</b></p></div>
-                         <div class="col-sm-2"></div>
-                         <div class="col-sm-5" style="border: 2px solid black;"><p style="margin:0%"><b>0 kVAh</b></p></div>
+                     <div class="row justify-content-around">
+                         <div class="col-sm-5" ><b>0 kVAh</b></div>
+                        
+                         <div class="col-sm-5"><b>0 kVAh</b></div>
 
                       </div>
-                      <div class="row">
-                          <div class="col-sm-5"><p><b>Monthly</b></p></div>
-                          <div class="col-sm-2"></div>
-                          <div class="col-sm-5"><p><b>Today</b></p></div>
+                      <div class="row justify-content-around my-2">
+                          <div class="col-sm-5 border border-dark font-weight-bold">Monthly</div>
+                          
+                          <div class="col-sm-5  border border-dark font-weight-bold">Today</div>
 
                        </div>
 
