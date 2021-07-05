@@ -23,6 +23,7 @@ export interface UserData {
 })
 
 
+
 export class ZoneComponent implements AfterViewInit {
   displayedColumns: string[] = ['sr_no', 'name', 'action'];
   dataSource: MatTableDataSource<UserData>;

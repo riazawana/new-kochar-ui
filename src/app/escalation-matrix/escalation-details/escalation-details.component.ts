@@ -5,6 +5,22 @@ import { EditEscalationUserModalComponent } from '../edit-escalation-user-modal/
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {MatTableDataSource} from '@angular/material/table';
+
+
+export interface UserData {
+  sr_no: string;
+  cat: string;
+  level:string;
+  name:string;
+  phone:string;
+  email:string;
+  desiganation:string;
+  tat:string;
+  action:string;
+
+
+}
 
 @Component({
   selector: 'app-escalation-details',
@@ -12,6 +28,12 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./escalation-details.component.scss']
 })
 export class EscalationDetailsComponent implements OnInit {
+
+  displayedColumns: string[] = ['sr_no','cat','level','name','phone','email','desiganation','tat','action'];
+  dataSource: MatTableDataSource<UserData>;
+
+
+ 
 
   constructor( 
     private ngxLoader: NgxUiLoaderService,
@@ -30,6 +52,9 @@ export class EscalationDetailsComponent implements OnInit {
     console.log("escalation:",this.data.location_id);
     this.alluser = this.data.data;
     this.location_id = this.data.location_id;
+
+    this.dataSource = new MatTableDataSource(this.data["data"]);
+
 
     this.ngxLoader.stop();
 

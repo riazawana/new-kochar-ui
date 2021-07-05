@@ -81,6 +81,7 @@ export class CommandSettingComponent implements OnInit {
 
     sendMessage(x,y,mac) {
       var data = {
+        cmdtype:"iot_gateway_commands",
         mac_id:mac,
         type:x,
         value:y
@@ -93,6 +94,7 @@ export class CommandSettingComponent implements OnInit {
 
    gettemperaturecalibrationstatus(x,y,mac) {
     var data = {
+      cmdtype:"iot_gateway_commands",
       mac_id:mac,
       type:x,
       value:y
@@ -111,6 +113,7 @@ export class CommandSettingComponent implements OnInit {
    updatepollingurl(x,y,mac){
     if (confirm('Do you want to change url ?')) {
       var data = {
+        cmdtype:"iot_gateway_commands",
         mac_id:mac,
         type:x,
         value:y
@@ -127,6 +130,7 @@ export class CommandSettingComponent implements OnInit {
    updatepassword(x,y,mac){
     if (confirm('Do you want to change passowrd ?')) {
       var data = {
+        cmdtype:"iot_gateway_commands",
         mac_id:mac,
         type:x,
         value:y
@@ -143,6 +147,7 @@ export class CommandSettingComponent implements OnInit {
    updatefirmwareversion(x,y,mac){
     if (confirm('Do You Want to Change Firmware Version ?')) {
       var data = {
+        cmdtype:"iot_gateway_commands",
         mac_id:mac,
         type:x,
         value:y
@@ -159,6 +164,7 @@ export class CommandSettingComponent implements OnInit {
    rebootschedule(x,y,mac){
     if (confirm('Do You Want to Schedule IN Reboot ?')) {
       var data = {
+        cmdtype:"iot_gateway_commands",
         mac_id:mac,
         type:x,
         value:y
@@ -176,6 +182,7 @@ export class CommandSettingComponent implements OnInit {
 
    routersendMessage(x,mac,rmac,rphone){
     var data = {
+      cmdtype:"iot_gateway_commands",
       mac_id:mac,
       type:x,
       value: {

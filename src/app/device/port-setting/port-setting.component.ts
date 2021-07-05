@@ -140,6 +140,7 @@ export class PortSettingComponent implements OnInit {
 
   sendMessage(x,y) {
     var data = {
+      cmdtype:"iot_gateway_commands",
       mac_id:this.newdata.mac_id,
       type:x,
       value:y

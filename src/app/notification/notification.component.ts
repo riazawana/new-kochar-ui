@@ -52,12 +52,6 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
   
 
-  // @ViewChild('MatPaginator') paginator: MatPaginator;
-  // @ViewChild('MatPaginator2') paginator2: MatPaginator;
-
- 
-  // @ViewChild('MatSort') t1Sort: MatSort;
-  // @ViewChild('MatSort2') t2Sort: MatSort;
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
@@ -190,7 +184,7 @@ onsubmit(){
      this.val = "macId="+this.gateway;
   }if(this.filter == "tat"){
     this.val = "tat="+this.tat;
-  }if(this.filter == "tatStatus"){
+  }if(this.filter == "location"){
     this.val = "locationName="+this.location;
   }if(this.filter == "status"){
     this.val = "status="+this.status;

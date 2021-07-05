@@ -49,6 +49,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   sendMessage() {
    
     var data = {
+      cmdtype:"iot_gateway_commands",
       mac:"asdf",
       type:"asdf123",
       value:"asdd"
@@ -115,6 +116,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   
     this.soc.messages.subscribe(msg => {
+   console.log("Welcome:",msg);
 
       if(msg.type == "iot-gateway-notification"){
           var type;
@@ -154,6 +156,48 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       
       }
     }
+
+    if(msg.type == "modbus-notification"){
+      var type;
+  console.log(msg);
+  
+  console.log(JSON.parse(msg.text[0]));
+  var da = JSON.parse(msg.text[0]);
+  var x = da[0]._id;
+  var cli = da[0].client;
+    // alert(cli);
+
+
+     
+      if(da[0].notification_category_name == "Health Check") {
+        type = "info"
+      }else{
+        type = "success"
+      }
+    
+  if(this.notif == true){
+
+    for(var i = 0; i < this.client.length; i++){
+    // alert(this.client[i]);
+
+      if(this.client[i] == cli){
+          console.log(JSON.parse(msg.text[0])[0].data.notification);
+          var notdata = JSON.parse(msg.text[0])[0].data.notification;
+          var send_time = JSON.parse(msg.text[0])[0].send_time;
+          this.create("Notification",notdata,send_time,x,cli,type);
+          this.backend.getNotificationCount()
+          .subscribe((data)=> { 
+           console.log(data)
+            this.notificationcount = data["opencount"]; 
+          })
+        
+      }
+    }
+   
+   
+  
+  }
+}
 
 
 
@@ -203,7 +247,14 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         showProgressBar: true,
         pauseOnHover: true
       });
+     }if(type == "info"){
+      this.notification = this._notifications.info(title, data, {
+        timeOut: 100000,
+        showProgressBar: true,
+        pauseOnHover: true
+      });
      }
+
 
 
 

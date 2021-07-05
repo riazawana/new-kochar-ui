@@ -42,6 +42,15 @@ export class SocketioService {
         }
         )
 
+        this.socket.on('modbus_command_response', (data) => {
+          console.log("Received message from Websocket Server")
+          observer.next(data);
+        }
+        )
+
+        
+
+       
         
 
         // this.socket.on('iot_gateway_commands', (data) => {
@@ -76,8 +85,14 @@ export class SocketioService {
     // from our other components and send messages back to our
     // socket server whenever the `next()` method is called.
     let observer = {
-        next: (data: Object) => {
+        next: (data: any) => {
+             console.log("datasend:",data);
+          if(data.cmdtype == "modbus_commands"){
+            this.socket.emit('modbus_commands', JSON.stringify(data));
+          }else{
             this.socket.emit('iot_gateway_commands', JSON.stringify(data));
+          }
+
         },
     };
    
