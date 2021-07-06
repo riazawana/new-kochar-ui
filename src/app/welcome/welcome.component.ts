@@ -85,7 +85,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       
       this.backend.getUserInfo(userDetails["_instance"].tokenParsed.email)
       .subscribe((data)=> {  
-        console.log("userInfo:",data)
+        //console.log("userInfo:",data)
         this.client = data["data"][0].client;
         this.ngxLoader.stop();
       })
@@ -105,24 +105,24 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
       this.backend.getModulesAgainstRole()
       .subscribe((data)=> { 
-     console.log("data:",data);
+     //console.log("data:",data);
       this.sidebar = data["data"][0].mapping;
 
       })
       
       } catch (e){
-     // console.log('Failed to load user details', e);
+     // //console.log('Failed to load user details', e);
       }
 
   
     this.soc.messages.subscribe(msg => {
-   console.log("Welcome:",msg);
+   //console.log("Welcome:",msg);
 
       if(msg.type == "iot-gateway-notification"){
           var type;
-      console.log(msg);
+      //console.log(msg);
       
-      console.log(JSON.parse(msg.text[0]));
+      //console.log(JSON.parse(msg.text[0]));
       var da = JSON.parse(msg.text[0]);
       var x = da[0]._id;
       var cli = da[0].client;
@@ -139,13 +139,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         // alert(this.client[i]);
 
           if(this.client[i] == cli){
-              console.log(JSON.parse(msg.text[0])[0].data.notification);
+              //console.log(JSON.parse(msg.text[0])[0].data.notification);
               var notdata = JSON.parse(msg.text[0])[0].data.notification;
               var send_time = JSON.parse(msg.text[0])[0].send_time;
               this.create("Notification",notdata,send_time,x,cli,type);
               this.backend.getNotificationCount()
               .subscribe((data)=> { 
-               console.log(data)
+               //console.log(data)
                 this.notificationcount = data["opencount"]; 
               })
             
@@ -159,9 +159,9 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
     if(msg.type == "modbus-notification"){
       var type;
-  console.log(msg);
+  //console.log(msg);
   
-  console.log(JSON.parse(msg.text[0]));
+  //console.log(JSON.parse(msg.text[0]));
   var da = JSON.parse(msg.text[0]);
   var x = da[0]._id;
   var cli = da[0].client;
@@ -181,13 +181,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     // alert(this.client[i]);
 
       if(this.client[i] == cli){
-          console.log(JSON.parse(msg.text[0])[0].data.notification);
+          //console.log(JSON.parse(msg.text[0])[0].data.notification);
           var notdata = JSON.parse(msg.text[0])[0].data.notification;
           var send_time = JSON.parse(msg.text[0])[0].send_time;
           this.create("Notification",notdata,send_time,x,cli,type);
           this.backend.getNotificationCount()
           .subscribe((data)=> { 
-           console.log(data)
+           //console.log(data)
             this.notificationcount = data["opencount"]; 
           })
         
@@ -209,7 +209,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       if( this.notif == true){
        this.backend.getNotificationCount()
        .subscribe((data)=> { 
-        console.log(data)
+        //console.log(data)
          this.notificationcount = data["opencount"]; 
        })
    
@@ -226,7 +226,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   create(title,content,send_time,id,cli,type) {
 
     var data = content+"\r\n"+send_time //JSON.parse(content);
-     console.log(data);
+     //console.log(data);
     
      
      if(type == "success"){

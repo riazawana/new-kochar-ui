@@ -88,7 +88,7 @@ export class GatewayListComponent implements OnInit {
     this.ngxLoader.start();
 
     var url = this.router.url.split("/");
-    console.log(url);
+    //console.log(url);
     if(url[3] == "singleGatewayList"){
        this.singleGatewayList = true;
        this.route.paramMap.subscribe(params => {
@@ -190,9 +190,9 @@ export class GatewayListComponent implements OnInit {
    
 
       this.soc.messages.subscribe(msg => {
-        console.log(msg);
+        //console.log(msg);
         if(msg.type == "iot-gateway-command-response"){
-            console.log(JSON.parse(msg.text[0]));
+            //console.log(JSON.parse(msg.text[0]));
             var text = JSON.parse(msg.text[0]);
   //           alert(1);
   // alert(this.macid);
@@ -257,7 +257,7 @@ export class GatewayListComponent implements OnInit {
         var c = data["data"][0].client;
        this.backend.getgatewaylocationwise(this.id,c)
        .subscribe((data)=> { 
-          console.log("All gateway:",data["data"]);
+          //console.log("All gateway:",data["data"]);
           this.gateway = data["data"];
 
           for(var k = 0; k < this.gateway.length; k++){
@@ -292,7 +292,7 @@ export class GatewayListComponent implements OnInit {
       value:y
     }   
     this.macid = mac;
-    console.log(data);
+    //console.log(data);
    this.soc.sendMsg(data);
    this.getdata();
    alert("Command executed succesfully")
@@ -388,7 +388,7 @@ singlegateway(x,y){
 
   this.backend.getiotgateway(x,y)
   .subscribe((data)=> {
-    console.log("All gateway:",data["data"]);
+    //console.log("All gateway:",data["data"]);
           this.gateway = data["data"];
 
           for(var k = 0; k < this.gateway.length; k++){

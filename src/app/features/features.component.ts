@@ -80,7 +80,7 @@ export class FeaturesComponent implements AfterViewInit {
   getallf(){
     this.backend.getallfeatures()
     .subscribe((data)=> { 
-        console.log("All roles:",data['data']);
+        //console.log("All roles:",data['data']);
        this.dataSource = new MatTableDataSource(data['data']);
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;

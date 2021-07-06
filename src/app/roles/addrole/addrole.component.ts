@@ -114,7 +114,7 @@ export class AddroleComponent implements OnInit {
     }
 
     this.backend.addrole(data).subscribe((data)=>{
-     console.log("result:",data)
+     //console.log("result:",data)
 
     //  console.log("final:",this.featuresarr);
 
@@ -131,7 +131,7 @@ export class AddroleComponent implements OnInit {
           }
 
           this.backend.addrole_feature_mapping(newmappingdata).subscribe((resule)=>{  
-                 console.log("result:",resule)
+                 //console.log("result:",resule)
 
                 if(resule["success"] == true){
 
@@ -142,11 +142,11 @@ export class AddroleComponent implements OnInit {
       mapping: this.mapping,
       role_id: role_id
     }
-     console.log(data);
+     //console.log(data);
 
     this.backend.addrole_module_mapping(data)
     .subscribe((data)=> { 
-       console.log(data);
+       //console.log(data);
       if(data["success"] == true){
         Swal.fire("Role Added Successfully!");
 
@@ -208,7 +208,7 @@ export class AddroleComponent implements OnInit {
     var m;
 
     if(this.module_name != undefined){
-      console.log(this.submodule_name)
+      //console.log(this.submodule_name)
       if(this.submodule_name != undefined){
      
        var new_smn_arr = [];

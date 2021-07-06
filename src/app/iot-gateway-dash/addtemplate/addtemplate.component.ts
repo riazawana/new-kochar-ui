@@ -327,11 +327,11 @@ export class AddtemplateComponent implements OnInit {
       gatewaytype:this.gateway_type
   }
 
-  console.log("Datasend:",newdata)
+  //console.log("Datasend:",newdata)
     
     this.backend.addtemplate(newdata)
     .subscribe((data)=> { 
-      console.log("Result Data:",data);
+      //console.log("Result Data:",data);
       if(data["success"] == true){
         Swal.fire("Template added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/Templates"]);

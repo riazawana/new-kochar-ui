@@ -85,7 +85,7 @@ export class CameraModalComponent implements OnInit {
       if(rs["success"]) {
         this.getAllRtspProcesses();
     } else {
-        console.log(rs);
+        //console.log(rs);
     }
     })
     }

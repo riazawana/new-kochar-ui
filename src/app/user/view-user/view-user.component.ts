@@ -71,7 +71,7 @@ export class ViewUserComponent implements OnInit {
     .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-       console.log("User Data",data);
+       //console.log("User Data",data);
        this.user = data['data'][0];
 
        this.name = this.user.name;

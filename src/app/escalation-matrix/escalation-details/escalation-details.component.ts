@@ -49,7 +49,7 @@ export class EscalationDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.ngxLoader.start();
      
-    console.log("escalation:",this.data.location_id);
+    //console.log("escalation:",this.data.location_id);
     this.alluser = this.data.data;
     this.location_id = this.data.location_id;
 
@@ -72,7 +72,7 @@ export class EscalationDetailsComponent implements OnInit {
                  gateway_name: gateway_name}
 
 
-          console.log(data);       
+          //console.log(data);       
    
 
           Swal.fire({
@@ -99,7 +99,7 @@ export class EscalationDetailsComponent implements OnInit {
                this.backend.deleteescalationmatrix(data)
         .subscribe((data)=> { 
     
-            console.log(data);
+            //console.log(data);
             if(data["success"]==true){ 
               this.onNoClick();
               Swal.fire(

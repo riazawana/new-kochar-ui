@@ -233,12 +233,12 @@ if(x == "mon2f"){
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
         for(var i = 0; i < data["data"].length; i++)
         {
           this.gateways = this.gateways.concat(data["data"][i]);
         }
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
       });
   }
 
@@ -349,11 +349,11 @@ if(x == "mon2f"){
       "client": spil[2]
   }
 
-  console.log(data);
+  //console.log(data);
   
     this.backend.addiotgatewayschedule(data)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
 
       if(data["success"] == true){
           Swal.fire("Schedule added successfully");

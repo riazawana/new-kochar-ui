@@ -42,7 +42,7 @@ export class LocationComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-          console.log("All location:",data["data"]);
+          //console.log("All location:",data["data"]);
            this.locations = data["data"];
         });
       // }else{

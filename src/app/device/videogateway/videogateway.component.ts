@@ -38,7 +38,7 @@ export class VideogatewayComponent implements OnInit {
 
     this.backend.getvideogatewaylocationwise(this.id)
     .subscribe((data)=> { 
-         console.log("Data:",data["data"]);
+         //console.log("Data:",data["data"]);
        this.videolist = data["data"];
       
 
@@ -73,7 +73,7 @@ export class VideogatewayComponent implements OnInit {
            this.backend.deletevideogateways(x,y)
     .subscribe((data)=> { 
 
-        console.log(data);
+        //console.log(data);
       this.getvideo();
       Swal.fire(
         'Deleted!',

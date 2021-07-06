@@ -128,11 +128,11 @@ export class AddvideogatewayComponent implements OnInit {
     }
  
 
-   console.log(data);
+   //console.log(data);
     
     this.backend.addvideogateways(data)
     .subscribe((data)=> { 
-      console.log("Data:",data);
+      //console.log("Data:",data);
 
       if(data["success"] == true){
         Swal.fire("Video gateway Added Successfully!");

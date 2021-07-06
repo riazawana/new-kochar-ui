@@ -44,13 +44,13 @@ export class CommandSettingComponent implements OnInit {
     tem_cal_status : any = false;
     ngOnInit(): void {
      
-     // console.log(typeof this.data.id)
+     // //console.log(typeof this.data.id)
 
       // alert(this.data.id);
       this.soc.messages.subscribe(msg => {
-        console.log(msg);
+        ////console.log(msg);
         if(msg.type == "iot-gateway-command-response"){
-            console.log(JSON.parse(msg.text[0]));
+            ////console.log(JSON.parse(msg.text[0]));
             var text = JSON.parse(msg.text[0]);
 
             if(text.mac_id == this.data.id){
@@ -63,7 +63,7 @@ export class CommandSettingComponent implements OnInit {
               }if(text.type == "getrebootscheduletime"){
                     this.boot_time = text.boot_time;
               }if(text.type == "calibratetemperaturesensor"){
-            console.log("calibratetemperaturesensor:",JSON.parse(msg.text[0]));
+            ////console.log("calibratetemperaturesensor:",JSON.parse(msg.text[0]));
               }if(text.type == "gettemperaturecalibrationstatus"){
                   this.tem_cal_status = text.temperature_calibration_status;
                   this.temperature_calibration_status_last_updated_on  = text.temperature_calibration_status_last_updated_on;
@@ -86,7 +86,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-         console.log(data)
+         ////console.log(data)
      this.soc.sendMsg(data);
       alert("Command scheduled successfully");
      
@@ -99,7 +99,7 @@ export class CommandSettingComponent implements OnInit {
       type:x,
       value:y
     }
-       console.log(data)
+       ////console.log(data)
    this.soc.sendMsg(data);
 
    var newLine = "\r\n"
@@ -118,7 +118,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-         console.log(data)
+         ////console.log(data)
      this.soc.sendMsg(data);
       alert("Command scheduled successfully");
      
@@ -135,7 +135,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-         console.log(data)
+         ////console.log(data)
      this.soc.sendMsg(data);
       alert("Command scheduled successfully");
      
@@ -152,7 +152,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-         console.log(data)
+         //console.log(data)
      this.soc.sendMsg(data);
       alert("Command scheduled successfully");
      
@@ -169,7 +169,7 @@ export class CommandSettingComponent implements OnInit {
         type:x,
         value:y
       }
-         console.log(data)
+         //console.log(data)
      this.soc.sendMsg(data);
       alert("Command scheduled successfully");
      
@@ -190,7 +190,7 @@ export class CommandSettingComponent implements OnInit {
         gl_phone : rphone
       }
     }
-       console.log(data)
+       //console.log(data)
    this.soc.sendMsg(data);
 
    }

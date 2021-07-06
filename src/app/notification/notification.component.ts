@@ -89,7 +89,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
 
   this.soc.messages.subscribe(msg => {
-    console.log(msg);
+    ////console.log(msg);
     that.fetchdata();
   })
 
@@ -206,7 +206,7 @@ gateways:any;
 getlocation(){
   this.backend.getlocationuserwise()
   .subscribe((data)=> { 
-    console.log("All location:",data["data"]);
+    //console.log("All location:",data["data"]);
      this.locations = data["data"][0].locations;
   });
 }
@@ -215,12 +215,12 @@ getgateway(){
   this.gateways = [];
   this.backend.getgatewayuserwise()
   .subscribe((data)=> { 
-    console.log("All gateways:",data["data"]);
+    //console.log("All gateways:",data["data"]);
     for(var i = 0; i < data["data"].length; i++)
     {
       this.gateways = this.gateways.concat(data["data"][i]);
     }
-    console.log("All gateways:",this.gateways);
+    //console.log("All gateways:",this.gateways);
   });
 }
 
@@ -307,7 +307,7 @@ getgateway(){
 
     this.backend.getallnotificationsbyfilter(x)
       .subscribe((data)=> { 
-        console.log("All Notifications:",data); 
+        //console.log("All Notifications:",data); 
   
         var sorthealth = data["data"].heatlthCheck; 
         var sortrisk =  data["data"].riskAssesment;
@@ -336,7 +336,7 @@ getgateway(){
 
     this.backend.getallnotifications()
     .subscribe((data)=> { 
-      console.log("All Notifications:",data); 
+      //console.log("All Notifications:",data); 
       this.ngxLoader.stop();
 
     
@@ -346,9 +346,9 @@ getgateway(){
         var sortrisk =  data["data"].riskAssesment;
 
 
-          console.log("Risk:",sortrisk);
+          //console.log("Risk:",sortrisk);
 
-           console.log("Health:",sorthealth);
+           //console.log("Health:",sorthealth);
        
        this.dataSource2 = new MatTableDataSource( sortrisk );
        this.dataSource = new MatTableDataSource( sorthealth );

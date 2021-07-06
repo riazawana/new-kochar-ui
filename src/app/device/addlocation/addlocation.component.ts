@@ -754,7 +754,7 @@ formatMAC(e) {
     this.alltemplate = [];
     this.backend.getalltemplate()
     .subscribe((data)=> { 
-       console.log("temp:",data["data"]);
+       //console.log("temp:",data["data"]);
        for(var i = 0; i < data["data"].length;i++){
          if(x == data["data"][i].gatewaytype){
           this.alltemplate.push(data["data"][i]) 
@@ -769,8 +769,8 @@ formatMAC(e) {
 //alert(x);
     this.backend.gettemplate(x)
     .subscribe((data)=> { 
-       console.log("Data:",data);
-       console.log(data["data"][0].configuration)
+       //console.log("Data:",data);
+       //console.log(data["data"][0].configuration)
         var getiotgatway = data["data"][0].configuration;
 
         this.gatewaytype = data["data"][0].gatewaytype;
@@ -859,7 +859,7 @@ formatMAC(e) {
          //  console.log("Data:",data);
            this.gateway_id =  data["gateway_id"];
            
-           console.log(data2);
+           //console.log(data2);
            for(var k = 0; k<data2.length; k++){
                      data2[k].created_by = da["name"];
                      data2[k].user_id = this.user_id;
@@ -874,7 +874,7 @@ formatMAC(e) {
            
            this.backend.adddevice(newdata)
            .subscribe((data3)=> { 
-             console.log("Data:",data3);
+             //console.log("Data:",data3);
               //this.nextStep();
        
               if(data3["success"] == true){

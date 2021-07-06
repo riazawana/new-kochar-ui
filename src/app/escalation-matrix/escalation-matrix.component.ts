@@ -131,7 +131,7 @@ export class EscalationMatrixComponent implements AfterViewInit {
 
     this.backend.getescalationmatrixuserwise()
     .subscribe((data)=> { 
-        console.log("All escalation:",data);
+        //console.log("All escalation:",data);
         this.ngxLoader.stop();
 
      

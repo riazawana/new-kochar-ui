@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
    .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-      console.log("User Data for edit",data);
+      //console.log("User Data for edit",data);
      this.user = data['data'][0];
       this.mobile = this.user.mobile;
       this.address = this.user.address;

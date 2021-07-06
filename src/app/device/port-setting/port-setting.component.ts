@@ -36,7 +36,7 @@ export class PortSettingComponent implements OnInit {
     this.ngxLoader.start();
 
     this.route.paramMap.subscribe(params => {
-      console.log("Data in port setting",JSON.parse(params.get("data")));
+      //console.log("Data in port setting",JSON.parse(params.get("data")));
 
     this.newdata = JSON.parse(params.get("data"));
 
@@ -73,7 +73,7 @@ export class PortSettingComponent implements OnInit {
         }else{
         this.valuesend = "0"+this.port_no+""+this.default+""+this.alarm;
         }
-         console.log(this.valuesend);
+         //console.log(this.valuesend);
 
          this.sendMessage("portsettings",this.valuesend);
          this.newdata.sensor_name =  this.name;
@@ -84,10 +84,10 @@ export class PortSettingComponent implements OnInit {
          this.newdata.sensor_name = this.name;
          this.newdata.room_name = this.room;
          this.newdata.sensor_type = this.sensor_type;
-           console.log(this.newdata);
+           //console.log(this.newdata);
          this.backend.updatedevice(this.newdata)
          .subscribe((data)=> { 
-            console.log("Data:",data);
+            //console.log("Data:",data);
             
             if(data["success"] == true){
               this._location.back();
@@ -101,7 +101,7 @@ export class PortSettingComponent implements OnInit {
         
         this.valuesend = this.port_no_soc+""+this.temp_status;
 
-        console.log(this.valuesend);
+        //console.log(this.valuesend);
 
         this.sendMessage("temperature",this.valuesend);
         this.newdata.sensor_name =  this.name;
@@ -113,10 +113,10 @@ export class PortSettingComponent implements OnInit {
         this.newdata.sensor_type = this.sensor_type;
         this.newdata.default_state = this.temp_status;
 
-          console.log(this.newdata);
+          //console.log(this.newdata);
         this.backend.updatedevice(this.newdata)
         .subscribe((data)=> { 
-           console.log("Data:",data);
+           //console.log("Data:",data);
     
          
            
@@ -146,7 +146,7 @@ export class PortSettingComponent implements OnInit {
       value:y
     }
 
-    console.log(data);
+    //console.log(data);
      
    this.soc.sendMsg(data);
 

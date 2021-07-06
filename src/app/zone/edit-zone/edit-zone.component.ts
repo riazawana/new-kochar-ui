@@ -83,7 +83,7 @@ export class EditZoneComponent implements OnInit {
 
     this.backend.updatezone(data)
     .subscribe((result)=> { 
-       console.log(result);
+       //console.log(result);
 
       if(result["success"] == true){
         Swal.fire("Zone updated Successfully!");

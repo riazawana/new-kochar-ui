@@ -69,7 +69,7 @@ export class AddzoneComponent implements OnInit {
     //console.log(data);
 
     this.backend.addzone(data).subscribe((resule)=>{  
-      console.log("result:",resule)
+      //console.log("result:",resule)
 
       if(resule["success"] == true){
         Swal.fire("Zone Added Successfully!");

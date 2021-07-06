@@ -91,7 +91,7 @@ id:string;
 
     this.ngxLoader.stop();
 
-           console.log("All gateway:",data["data"]);
+           //console.log("All gateway:",data["data"]);
           this.gateway = data["data"];
         
            
@@ -126,7 +126,7 @@ id:string;
   }
 
   get(){
-    console.log(this.temparray);
+    //console.log(this.temparray);
   }
 
   temparray:any = [];
@@ -273,9 +273,9 @@ ngOnInit(): void {
 
 
    this.soc.messages.subscribe(msg => {
-     console.log(msg);
+     //console.log(msg);
      if(msg.type == "iot-gateway-command-response"){
-         console.log(JSON.parse(msg.text[0]));
+         //console.log(JSON.parse(msg.text[0]));
          var text = JSON.parse(msg.text[0]);
 //           alert(1);
 // alert(this.macid);
@@ -372,7 +372,7 @@ sendMessage(x,y,mac) {
    value:y
  }   
  this.macid = mac;
- console.log(data);
+ //console.log(data);
 this.soc.sendMsg(data);
 this.getdata();
 alert("Command executed succesfully")
@@ -466,7 +466,7 @@ singlegateway(x,y){
 
 this.backend.getiotgateway(x,y)
 .subscribe((data)=> {
- console.log("All gateway:",data["data"]);
+ //console.log("All gateway:",data["data"]);
        this.gateway = data["data"];
 
        for(var k = 0; k < this.gateway.length; k++){

@@ -44,11 +44,11 @@ export class CommandSettingMeterComponent implements OnInit {
       // alert(this.data.id)
 
       this.soc.messages.subscribe(msg => {
-        console.log(msg);
+        //console.log(msg);
         if(msg.type == "modbus-command-response"){
         
 
-            console.log(JSON.parse(msg.text[0]));
+            //console.log(JSON.parse(msg.text[0]));
             var text = JSON.parse(msg.text[0]);
 
             if(text.mac_id == this.data.id){

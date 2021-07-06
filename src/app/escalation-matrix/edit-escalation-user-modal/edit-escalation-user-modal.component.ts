@@ -33,7 +33,7 @@ export class EditEscalationUserModalComponent implements OnInit {
    this.edit_data = this.data.edit_data;
 
     // alert(this.location_id);
-    console.log(this.edit_data);
+    //console.log(this.edit_data);
 
    this.email = this.edit_data.email;
    this.phone = this.edit_data.phone;
@@ -69,11 +69,11 @@ edit(){
      client:this.edit_data.client
     }
 
-    console.log(data);
+    //console.log(data);
 
     this.backend.updateescalationmatrix(data)
     .subscribe((data)=> { 
-        console.log("dara:",data);
+        //console.log("dara:",data);
         if(data["success"]==true){
           Swal.fire("Escalation matrix updated successfully!");
           this.onNoClick();

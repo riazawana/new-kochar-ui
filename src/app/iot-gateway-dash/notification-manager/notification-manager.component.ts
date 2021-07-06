@@ -170,14 +170,14 @@ gateways:any;
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
 
         for(var i = 0; i < data["data"].length; i++)
         {
           this.gateways = this.gateways.concat(data["data"][i]);
         }
   
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
 
       });
     
@@ -188,7 +188,7 @@ gateway:any;
   getport(x){
     this.backend.getnotificationsettings(x)
     .subscribe((data)=> { 
-      console.log("Data:",data);
+      //console.log("Data:",data);
         this.ports = data["data"];
         this.data = data["data"];
 
@@ -213,13 +213,13 @@ gateway:any;
 
 
   submit(){
-     console.log(this.data);
+     //console.log(this.data);
      var da = {
        data:this.data
      }
     this.backend.updatenotificationsettings(da)
     .subscribe((data)=> { 
-        console.log("Data:",data);
+        //console.log("Data:",data);
 
         if(data["success"]== true){
          Swal.fire("Notification Setting updated successfully!");

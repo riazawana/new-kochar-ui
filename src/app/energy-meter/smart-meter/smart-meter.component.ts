@@ -70,7 +70,7 @@ export class SmartMeterComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-        console.log("Modbus",data["data"]);
+        //console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 
       //  this.smartmeterval = {}
@@ -194,7 +194,7 @@ export class SmartMeterComponent implements OnInit {
          
            }
     
-           console.log("this.smartmeterval:",this.smartmeterval);
+           //console.log("this.smartmeterval:",this.smartmeterval);
            this.gatewaydata.push(this.smartmeterval);
            this.smartmeterval = []
 
@@ -305,7 +305,7 @@ export class SmartMeterComponent implements OnInit {
          
            }
     
-           console.log("this.smartmeterval:",this.smartmeterval);
+           //console.log("this.smartmeterval:",this.smartmeterval);
            this.gatewaydata.push(this.smartmeterval);
            this.smartmeterval = []
 
@@ -316,7 +316,7 @@ export class SmartMeterComponent implements OnInit {
 
          }
          
-         console.log("this.gatewaydata:",this.gatewaydata)
+         //console.log("this.gatewaydata:",this.gatewaydata)
   
             }
 
@@ -328,7 +328,7 @@ export class SmartMeterComponent implements OnInit {
        }
 
 
-        console.log(this.finalmodbus)
+        //console.log(this.finalmodbus)
 
     });
 
