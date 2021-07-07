@@ -44,12 +44,15 @@
          <ng-container matColumnDef="action">
            <th class="wd-action" mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
            <td class="wd-action" mat-cell *matCellDef="let row"> 
-             <label *ngIf="view" (click)="viewrole(row.name)"><i class="fa fa-eye"></i></label>
-               <label *ngIf="edit" (click)="editrole(row.name)"><i class="fa fa-pencil-square-o ml-3"></i></label>
-               <label *ngIf="delete" (click)="deleterole(row.name)"><i class="fa fa-times ml-3"></i></label>                
-               <label *ngIf="!view" ><i class="fa fa-eye"></i></label>
-               <label *ngIf="!edit" ><i class="fa fa-pencil-square-o ml-3"></i></label>
-               <label *ngIf="!delete" ><i class="fa fa-times ml-3"></i></label>  
+             <div class="d-flex gap-1">
+
+               <label *ngIf="view" (click)="viewrole(row.name)"><i class="fa fa-eye"></i></label>
+                 <label *ngIf="edit" (click)="editrole(row.name)"><i class="fa fa-pencil-square-o ml-3"></i></label>
+                 <label *ngIf="delete" (click)="deleterole(row.name)"><i class="fa fa-times ml-3"></i></label>                
+                 <label *ngIf="!view" ><i class="fa fa-eye"></i></label>
+                 <label *ngIf="!edit" ><i class="fa fa-pencil-square-o ml-3"></i></label>
+                 <label *ngIf="!delete" ><i class="fa fa-times ml-3"></i></label>  
+             </div>
            </td>
          </ng-container>
      
