@@ -79,7 +79,7 @@ delete:any=false;
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
 
  
         
@@ -90,7 +90,7 @@ delete:any=false;
         
      
 
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
 
       });
     
@@ -104,7 +104,7 @@ delete:any=false;
 
     this.backend.getsmssetting(x)
     .subscribe((data)=> { 
-        console.log("Data:",data);
+        //console.log("Data:",data);
         this.k = data["data"];
     });
 
@@ -135,7 +135,7 @@ delete:any=false;
 
     this.backend.deletesmssetting(mac_id,cli)
     .subscribe((data)=> { 
-        console.log("Data:",data);
+        //console.log("Data:",data);
         if(data["success"] == true){
 
           Swal.fire("Deleted Successfully!");

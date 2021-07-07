@@ -57,7 +57,7 @@ export class GetallrecordModalComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-           console.log("All Record:",data);
+           //console.log("All Record:",data);
           this.records = data["data"].data;
       });
 

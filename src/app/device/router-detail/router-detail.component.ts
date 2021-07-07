@@ -55,7 +55,7 @@ export class RouterDetailComponent implements OnInit {
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-          console.log("Data:",data);
+          ////console.log("Data:",data);
 
           this.data = data["data"].result[0];
           this.info =  data["data"].router_info;
@@ -108,11 +108,11 @@ export class RouterDetailComponent implements OnInit {
       "cmd": "REBOOT"
     }
 
-    console.log(data);
+    ////console.log(data);
      
     this.backend.executeshellcommand(data)
     .subscribe((data)=> { 
-        console.log("Data:",data);
+        //console.log("Data:",data);
         alert("Command has been schedule successfully, it will take some time!")
     });
   }
@@ -127,7 +127,7 @@ firmware(x){
   // alert(x);
   this.backend.routerfirmwareupdate(x)
   .subscribe((data)=> { 
-       console.log("Data:",data);
+       //console.log("Data:",data);
         if(data["success"] == true){
           alert(data["msg"]);
         }

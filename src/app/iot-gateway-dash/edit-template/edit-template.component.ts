@@ -48,7 +48,7 @@ export class EditTemplateComponent implements OnInit {
     this.ngxLoader.stop();
 
         this.tem_data = data["data"][0];
-        console.log(this.tem_data);
+        //console.log(this.tem_data);
 
       this.template = data["data"][0].configuration; 
       this.template_name = data["data"][0].name; 
@@ -64,10 +64,10 @@ export class EditTemplateComponent implements OnInit {
       "name": this.template_name
     }
 
-   console.log(da);
+   //console.log(da);
     this.backend.updatetemplate(da)
     .subscribe((data)=> { 
-        console.log(data);
+        //console.log(data);
         if(data["success"] == true){
           Swal.fire("Template update successfully!");
           this.router.navigate(["/kochar/IOT Gateway/Templates"]);

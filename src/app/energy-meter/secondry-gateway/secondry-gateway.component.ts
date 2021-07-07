@@ -93,7 +93,7 @@ export class SecondryGatewayComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-        console.log("Modbus",data["data"]);
+        //console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 
     });

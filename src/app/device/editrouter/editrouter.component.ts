@@ -62,7 +62,7 @@ export class EditrouterComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-           console.log("Data:",data["data"]);
+           //console.log("Data:",data["data"]);
 
           this.data = data["data"].result[0];
 
@@ -106,11 +106,11 @@ export class EditrouterComponent implements OnInit {
 
    
    
-   console.log(data);
+   //console.log(data);
 
    this.backend.updaterouter(data)
    .subscribe((data)=>{
-           console.log(data);
+           //console.log(data);
 
        if(data["success"] == true){
         // this.router.navigate(["/kochar/Devices"]);

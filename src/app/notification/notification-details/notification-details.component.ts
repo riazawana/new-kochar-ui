@@ -40,11 +40,11 @@ export class NotificationDetailsComponent implements OnInit, OnDestroy {
                
             this.backend.getnotification(this.id,this.cli)
           .subscribe((data)=> { 
-             console.log("Data:",data);
+             //console.log("Data:",data);
              this.wholedata = data["data"];
              this.data = data["data"].notification[0];
               this.date = this.data.send_time;
-            // console.log("Data:",this.data);
+            // //console.log("Data:",this.data);
             this._id = this.data._id;
             this.send_time = this.data.send_time;
             
@@ -53,7 +53,7 @@ export class NotificationDetailsComponent implements OnInit, OnDestroy {
               this.initial_cam_id = this.data.data.camera_id;
               this.getcam(this.data.data.nvr_mac);
             }else{
-              console.log("health");
+              //console.log("health");
             }
 
           });
@@ -82,7 +82,7 @@ ngOnDestroy(){
 
     this.ngxLoader.stop();
       
-           console.log("cam data:",data);
+           //console.log("cam data:",data);
            this.camdata = data["data"].channel_info;
            this.channel_zero_resp = data["data"].channel_zero_resp;
            this.nvrname = data["data"].info[0].name;
@@ -196,7 +196,7 @@ ngOnDestroy(){
       if(rs["success"]) {
         this.getAllRtspProcesses();
     } else {
-        console.log(rs);
+        //console.log(rs);
     }
     })
     }

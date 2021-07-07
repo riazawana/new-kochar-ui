@@ -26,7 +26,7 @@ export class AddsubModuleComponent implements OnInit {
 
       this.backend.getallmodules()
     .subscribe((data)=> { 
-     console.log(data);
+     //console.log(data);
       this.moduledata = data["data"];
 
     })
@@ -39,11 +39,11 @@ export class AddsubModuleComponent implements OnInit {
      modulename:this.Module
    }
 
-   console.log(data);
+   //console.log(data);
 
    this.backend.addsubmodule(data)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
       if(data["success"] == true){
         Swal.fire("Sub-module added Successfully!");
         this.router.navigate(["/kochar/Features"]);

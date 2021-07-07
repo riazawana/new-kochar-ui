@@ -83,7 +83,7 @@ gateway:any;
     this.gateways = [];
     this.backend.getgatewayuserwise()
     .subscribe((data)=> { 
-      console.log("All gateways:",data["data"]);
+      //console.log("All gateways:",data["data"]);
 
 
       
@@ -94,7 +94,7 @@ gateway:any;
       
    
 
-      console.log("All gateways:",this.gateways);
+      //console.log("All gateways:",this.gateways);
 
     });
   }
@@ -105,7 +105,7 @@ gateway:any;
     this.backend.getiotgatewayschedule(x)
     .subscribe((data)=> { 
       
-      console.log(data);
+      //console.log(data);
         this.schdata = data["data"];
 
     });
@@ -152,14 +152,14 @@ gateway:any;
       this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
         for(var i = 0; i < data["data"].length; i++)
         {
           this.gateways = this.gateways.concat(data["data"][i]);
         }
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
       });
-        console.log(data);
+        //console.log(data);
         this.getdata(x);
         
         

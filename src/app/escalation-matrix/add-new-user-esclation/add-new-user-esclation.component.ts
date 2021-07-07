@@ -53,7 +53,7 @@ export class AddNewUserEsclationComponent implements OnInit {
 
     this.backend.getlocationuserwise()
     .subscribe((data)=> { 
-     console.log(data);
+     //console.log(data);
     this.ngxLoader.stop();
 
       this.locations = data["data"][0].locations;
@@ -73,7 +73,7 @@ export class AddNewUserEsclationComponent implements OnInit {
 
   onsubmit(){  
     // alert("sub");
-    console.log(this.array);
+    //console.log(this.array);
     if(this.array.data.length == 0){
       // alert("direct submit")
 
@@ -109,7 +109,7 @@ export class AddNewUserEsclationComponent implements OnInit {
 
       this.backend.addescalationmatrix(this.array)
       .subscribe((data)=> { 
-        console.log(data);
+        //console.log(data);
         if(data["success"]==true){
           Swal.fire("Escalation matrix added successfully");
          this._location.back();
@@ -119,7 +119,7 @@ export class AddNewUserEsclationComponent implements OnInit {
     }else{
       this.backend.addescalationmatrix(this.array)
       .subscribe((data)=> { 
-        console.log(data);
+        //console.log(data);
         if(data["success"]==true){
           Swal.fire("Escalation matrix added successfully");
          this._location.back();

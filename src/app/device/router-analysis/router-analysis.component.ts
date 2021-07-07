@@ -80,11 +80,11 @@ export class RouterAnalysisComponent implements OnInit {
           "cmd": x
         }
 
-        console.log(data);
+        //console.log(data);
          
         this.backend.executeshellcommand(data)
         .subscribe((data)=> { 
-            console.log("Data:",data);
+            //console.log("Data:",data);
              this.result = data["data"];
         });
 

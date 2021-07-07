@@ -100,7 +100,7 @@ export class EditUserComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-       console.log("User Data for edit",data);
+       //console.log("User Data for edit",data);
       this.user = data['data'][0];
       this.name = this.user.name;
        this.mobile = this.user.mobile;
@@ -118,7 +118,7 @@ export class EditUserComponent implements OnInit {
 
         // alert(this.role_id);
         
-        console.log("client 1:", this.client);
+        //console.log("client 1:", this.client);
 
        this.getcity(this.state_id);
        this.getpin(this.state_id, this.city_id);
@@ -143,7 +143,7 @@ export class EditUserComponent implements OnInit {
     
    this.backend.getstate(x)
    .subscribe((data)=> { 
-     // console.log("Data:",data["data"]);
+     // //console.log("Data:",data["data"]);
       this.state_list = data["data"];
    });
 
@@ -153,7 +153,7 @@ export class EditUserComponent implements OnInit {
    
    this.backend.getcity(x)
    .subscribe((data)=> { 
-     // console.log("Data:",data["data"]);
+     // //console.log("Data:",data["data"]);
       this.city_list = data["data"];
    });
  }
@@ -162,7 +162,7 @@ export class EditUserComponent implements OnInit {
    
    this.backend.getpin(x,y)
    .subscribe((data)=> { 
-     // console.log("Data:",data["data"]);
+     // //console.log("Data:",data["data"]);
       this.pin_list = data["data"];
    });
  }
@@ -197,13 +197,13 @@ zoneonchnage(){
   for(var i = 0; i < this.zonesname.length; i++ ){
       this.backend.getzoneinfobyname(this.zonesname[i])
       .subscribe((data)=> { 
-         console.log(data["data"][0])
+         //console.log(data["data"][0])
         var c = data["data"][0].client;
         this.client.push(c);
       });
      
   }
-  console.log("client 3:", this.client);
+  //console.log("client 3:", this.client);
 }
 
  onsubmit(){
@@ -228,12 +228,12 @@ zoneonchnage(){
     "keycloak_user_id": this.keycloak,
     "modified_by" : this.mod_name
 }
-console.log("client 4:", this.client);
+//console.log("client 4:", this.client);
 
- console.log(data)
+ //console.log(data)
 this.backend.updateuser(data)
 .subscribe((data)=> { 
-    console.log("Data:",data["data"]);
+    //console.log("Data:",data["data"]);
  
    if(data["success"] == true){
      Swal.fire("User updated successfully!");

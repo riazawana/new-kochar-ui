@@ -57,7 +57,7 @@ export class HealthDashComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-           console.log("All location:",data["data"]);
+           //console.log("All location:",data["data"]);
            this.healthdata = data["data"];
        this.dataSource = new MatTableDataSource(data["data"]);
 
@@ -70,7 +70,7 @@ export class HealthDashComponent implements OnInit {
         .subscribe((data)=> { 
 
 
-           console.log("All zones:",data["data"]);
+           //console.log("All zones:",data["data"]);
            this.zones = data["data"];
         });
 
@@ -79,7 +79,7 @@ export class HealthDashComponent implements OnInit {
         .subscribe((data)=> { 
 
 
-           console.log("All states:",data["data"]);
+           //console.log("All states:",data["data"]);
            this.states = data["data"];
         });
 
@@ -165,7 +165,7 @@ filter:any;
 cityfind(){
   this.backend.getcity(this.state)
   .subscribe((data)=> { 
-     console.log("All citys:",data["data"]);
+     //console.log("All citys:",data["data"]);
      this.citys = data["data"];
   });
 }
@@ -204,7 +204,7 @@ reset(){
 
 this.ngxLoader.stop();
 
-     console.log("All location:",data["data"]);
+     //console.log("All location:",data["data"]);
      this.healthdata = data["data"];
      this.dataSource = new MatTableDataSource(data["data"]);
 
@@ -217,7 +217,7 @@ this.ngxLoader.stop();
 
   this.backend.healthDashboardfilter(x)
     .subscribe((data)=> { 
-      console.log("All healthDashboardfilter:",data); 
+      //console.log("All healthDashboardfilter:",data); 
       this.healthdata = data["data"];
       this.dataSource = new MatTableDataSource(data["data"]);
 

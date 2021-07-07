@@ -23,7 +23,7 @@ export class DetailModalComponent implements OnInit {
     da:any;
 
     ngOnInit(): void {
-        console.log(this.data)
+        //console.log(this.data)
         this.da = this.data.da.escalation;
     }
 
@@ -55,7 +55,7 @@ export class DetailModalComponent implements OnInit {
     sendmssg(mac_id,phone,msg,client){
       this.backend.sendSMS(mac_id,phone,msg,client)
   .subscribe((data)=> { 
-    console.log("Send mssf",data["data"]);
+    //console.log("Send mssf",data["data"]);
   });
     }
 

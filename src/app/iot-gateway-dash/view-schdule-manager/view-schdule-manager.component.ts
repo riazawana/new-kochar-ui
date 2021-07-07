@@ -180,7 +180,7 @@ disable = true;
     this.ngxLoader.start();
 
     var url = this.router.url.split("/");
-    console.log(url);
+    //console.log(url);
     if(url[3] == "editschedule"){
        this.edit = true;
        this.disable = true;
@@ -204,7 +204,7 @@ disable = true;
 
     this.ngxLoader.stop();
 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
 
  
         
@@ -215,13 +215,13 @@ disable = true;
         
      
 
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
 
       });
 
       this.backend.getiotgatewayschedule(this.id)
       .subscribe((data)=> { 
-          console.log("Data:",data);
+          //console.log("Data:",data);
           this.gateway = data['data'][0].mac_id;
           this.da = data['data'][0];
 
@@ -498,11 +498,11 @@ if(x == "mon2f"){
       "client": this.da.client
   }
 
-  console.log(data);
+  //console.log(data);
   
     this.backend.updateiotgatewayschedule(data)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
       if(data["success"] == true){
         Swal.fire("Schedule updated successfully!");
       this._location.back();

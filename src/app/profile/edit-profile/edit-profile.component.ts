@@ -71,7 +71,7 @@ export class EditProfileComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-       console.log("User Data for edit",data);
+       //console.log("User Data for edit",data);
       this.user = data['data'][0];
        this.mobile = this.user.mobile;
        this.address = this.user.address;
@@ -154,10 +154,10 @@ export class EditProfileComponent implements OnInit {
     "keycloak_user_id": this.keycloak,
 }
 
- console.log(data)
+ //console.log(data)
 this.backend.updateUserprofile(data)
 .subscribe((data)=> { 
-    console.log("Data:",data["data"]);
+    //console.log("Data:",data["data"]);
  
    if(data["success"] == true){
      Swal.fire("User updated successfully!");

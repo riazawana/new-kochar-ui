@@ -50,7 +50,7 @@ export class EditvideogatewayComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-       console.log("Video Data",data);
+       //console.log("Video Data",data);
        this.cameradetails = data["data"][0];
        this.mac_id = data['data'][0].mac_id;
 
@@ -124,11 +124,11 @@ export class EditvideogatewayComponent implements OnInit {
 
     }
 
-   console.log(data);
+   //console.log(data);
     
     this.backend.updatevideogateways(data)
     .subscribe((data)=> { 
-      console.log("Data:",data);
+      //console.log("Data:",data);
 
       if(data["success"] == true){
         Swal.fire("Video gateway updated Successfully!");

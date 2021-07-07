@@ -27,7 +27,7 @@ export class RelaychangeModalComponent implements OnInit {
 
     this.ngxLoader.start();
 
-      console.log("data:",this.data)
+      //console.log("data:",this.data)
       this.relay1_name = this.data.g.relay1_name;
       this.relay2_name = this.data.g.relay2_name;
 
@@ -53,7 +53,7 @@ export class RelaychangeModalComponent implements OnInit {
 
         this.backend.updateiotgateway(data)
         .subscribe((data)=> { 
-           console.log(data);
+           //console.log(data);
            if(data["success"] == true){
             Swal.fire("Relays Updated Successfully!");
             // this.router.navigate(["/kochar/Devices"]);

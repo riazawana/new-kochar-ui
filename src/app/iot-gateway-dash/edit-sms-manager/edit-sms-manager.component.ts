@@ -88,8 +88,8 @@ export class EditSmsManagerComponent implements OnInit {
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-         console.log("Data:",data["data"][0]);
-         console.log("Data:",data);
+         //console.log("Data:",data["data"][0]);
+         //console.log("Data:",data);
 
         //  this.gateway = data["data"][0].gateway_id
          this.gateway = data["data"][0].gateway_id+','+data["data"][0].client+','+data["data"][0].mac_id;
@@ -107,12 +107,12 @@ export class EditSmsManagerComponent implements OnInit {
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
         for(var i = 0; i < data["data"].length; i++)
         {
           this.gateways = this.gateways.concat(data["data"][i]);
         }
-       console.log("All gateways:",this.gateways);
+       //console.log("All gateways:",this.gateways);
       });
   }
 
@@ -606,7 +606,7 @@ export class EditSmsManagerComponent implements OnInit {
 
 
   onsubmit(){
-    console.log(this.data);
+    //console.log(this.data);
     var da = JSON.parse(sessionStorage.getItem('userdata')); 
 var data = {
   "arm_by_platform": this.data.arm_by_platform,
@@ -625,7 +625,7 @@ var data = {
 
     this.backend.updatesmssetting(data)
     .subscribe((data)=> { 
-        console.log("Data:",data);
+        //console.log("Data:",data);
         if(data["success"] == true){
 
            Swal.fire("Updated Successfully!");

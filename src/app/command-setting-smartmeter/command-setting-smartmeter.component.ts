@@ -28,9 +28,9 @@ export class CommandSettingSmartmeterComponent implements OnInit {
       // alert(this.data.id)
 
       this.soc.messages.subscribe(msg => {
-        console.log(msg);
+        //console.log(msg);
         if(msg.type == "modbus_command_response"){
-            console.log(JSON.parse(msg.text[0]));
+            //console.log(JSON.parse(msg.text[0]));
             var text = JSON.parse(msg.text[0]);
 
         

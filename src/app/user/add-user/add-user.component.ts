@@ -87,7 +87,7 @@ export class AddUserComponent implements OnInit {
 
       // console.log("zones:",data["data"]);
        this.zones = data["data"];
-     console.log(this.zones);
+     //console.log(this.zones);
     });
   }
 
@@ -190,11 +190,11 @@ export class AddUserComponent implements OnInit {
         client:this.client
       }
   
-      console.log(data);
+      //console.log(data);
 
       this.backend.adduser(data)
       .subscribe((data)=> { 
-        console.log(data);
+        //console.log(data);
         //console.log(data["success"]);
 
         if(data["success"] == true){
@@ -256,7 +256,7 @@ export class AddUserComponent implements OnInit {
   
       this.backend.adduser(data)
       .subscribe((data)=> { 
-        console.log(data);
+        //console.log(data);
         if(data["success"] == true){ 
           Swal.fire("User created successfully!");         
           this.router.navigate(["/kochar/Users"]);
@@ -274,7 +274,7 @@ export class AddUserComponent implements OnInit {
   checkUserExistse(x){
     this.backend.checkUserExistse(x)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
       if(data["msg"]=="get user info"){
         this.showemail = true;
         // alert(this.showemail );
@@ -289,7 +289,7 @@ export class AddUserComponent implements OnInit {
   checkUserExistsn(x){
     this.backend.checkUserExistsn(x)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
       if(data["msg"] =="get user info"){
         this.showename = true;
         // alert(this.showename );

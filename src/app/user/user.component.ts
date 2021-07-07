@@ -99,7 +99,7 @@ if(role == 'admin'){
     .subscribe((data)=> { 
     this.ngxLoader.stop();
        
-        console.log("All Users:",data);
+        //console.log("All Users:",data);
        var users = data["data"];
        var business_user = [];
        
@@ -181,7 +181,7 @@ if(role == 'admin'){
            this.backend.deleteuser(x)
     .subscribe((data)=> { 
 
-        console.log(data);
+        //console.log(data);
       this.getuser();
       Swal.fire(
         'Deleted!',

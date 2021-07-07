@@ -76,7 +76,7 @@ export class AddSmsManagerComponent implements OnInit {
       .subscribe((data)=> { 
     this.ngxLoader.stop();
 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
 
  
         
@@ -87,7 +87,7 @@ export class AddSmsManagerComponent implements OnInit {
         
      
 
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
 
       });
   }
@@ -507,7 +507,7 @@ export class AddSmsManagerComponent implements OnInit {
 
     this.backend.addsmssetting(this.data)
     .subscribe((data)=> { 
-       console.log("Data:",data);
+       //console.log("Data:",data);
        if(data["success"] == true){
          Swal.fire("SMS Setting added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);

@@ -73,7 +73,7 @@ export class ViewSmsManagerComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-          console.log("Data:",data);
+          //console.log("Data:",data);
          this.gateway = data["data"][0].gateway_id+','+data["data"][0].client+','+data["data"][0].mac_id;
         //  alert(this.gateway);
           this.data = data["data"][0];
@@ -82,14 +82,14 @@ export class ViewSmsManagerComponent implements OnInit {
 
     // this.backend.getgatewayuserwise()
     // .subscribe((data)=> { 
-    //     console.log("Data:",data["data"]);
+    //     //console.log("Data:",data["data"]);
     //     this.gateways = data["data"][0];
     // });
 
     this.gateways = [];
       this.backend.getgatewayuserwise()
       .subscribe((data)=> { 
-        console.log("All gateways:",data["data"]);
+        //console.log("All gateways:",data["data"]);
 
  
         
@@ -100,7 +100,7 @@ export class ViewSmsManagerComponent implements OnInit {
         
      
 
-        console.log("All gateways:",this.gateways);
+        //console.log("All gateways:",this.gateways);
 
       });
   }

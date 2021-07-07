@@ -155,7 +155,7 @@ onNoClick2(): void {
 
     this.ngxLoader.stop();
 
-       console.log("User Data",data);
+       //console.log("User Data",data);
        this.cameradetails = data["data"][0];
        this.mac_id = data['data'][0].mac_id;
 
@@ -164,7 +164,7 @@ onNoClick2(): void {
 
     this.backend.getchannelinfo(this.id)
     .subscribe((data)=> { 
-       console.log("User Data",data);
+       //console.log("User Data",data);
        this.cameras = data["data"].channel_info;
 
        this.zero = data['data'].channel_zero_resp;

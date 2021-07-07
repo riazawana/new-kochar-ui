@@ -58,7 +58,7 @@ export class AddSmartMeterComponent implements OnInit {
   
       this.ngxLoader.stop();
   
-         console.log("User Data",data);
+         //console.log("User Data",data);
 
         this.version = data["data"][0].version;
   
@@ -84,13 +84,13 @@ export class AddSmartMeterComponent implements OnInit {
       "client":this.client
     }
 
-    console.log(data);
+    //console.log(data);
 
     
 
     this.backend.addsmartmeter(data)
     .subscribe((data)=> { 
-      console.log(data);
+      //console.log(data);
       if(data["success"] == true){
         Swal.fire("Smart Meter Added Successfully!");
         // this.router.navigate(["/kochar/Devices"]);

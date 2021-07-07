@@ -29,12 +29,12 @@ export class TagcameraComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-      console.log("All gateways:",data["data"]);
+      //console.log("All gateways:",data["data"]);
       for(var i = 0; i < data["data"].length; i++)
       {
         this.gateways = this.gateways.concat(data["data"][i]);
       }
-      console.log("All gateways:",this.gateways);
+      //console.log("All gateways:",this.gateways);
     });
 
 }
@@ -160,13 +160,13 @@ selgateway(gateway){
      var mac = val[1];
     this.backend.getdevicecameramapping(mac)
   .subscribe((data)=> { 
-    console.log(data)
+    //console.log(data)
     this.portlist = data["data"];
   })
 
   this.backend.getCameraInfoLocationWise(loc,cli)
   .subscribe((data)=> { 
-    console.log(data)
+    //console.log(data)
     this.camera_list = data["data"][0].cameras;
 
     // multiple camera list append
@@ -200,7 +200,7 @@ selgateway_nocam(gateway){
     var mac = val[1];
    this.backend.getdevicecameramapping(mac)
  .subscribe((data)=> { 
-   console.log(data)
+   //console.log(data)
   //  this.portlist = data["data"];
   for(var k = 0; k < data["data"].length; k++){
     if(data["data"][k].camera_id == undefined){
@@ -211,7 +211,7 @@ selgateway_nocam(gateway){
 
  this.backend.getCameraInfoLocationWise(loc,cli)
  .subscribe((data)=> { 
-   console.log(data)
+   //console.log(data)
    this.camera_list = data["data"][0].cameras;
 
    // multiple camera list append
@@ -226,7 +226,7 @@ submit(){
       data : this.portlist
     }
   this.backend.updatedevicecameramapping(da).subscribe((data)=>{
-                console.log(data);
+                //console.log(data);
                 if(data["success"] == true){
                   Swal.fire("Camera updated successfully");        
                }
