@@ -328,7 +328,7 @@ export class SmartMeterComponent implements OnInit {
        }
 
 
-        //console.log(this.finalmodbus)
+        console.log(this.finalmodbus)
 
     });
 

@@ -5,6 +5,8 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-editenergy-meter',
@@ -15,6 +17,7 @@ export class EditenergyMeterComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private ngxLoader: NgxUiLoaderService,
+    private _location:Location,
     private route: ActivatedRoute,
     private router:Router) { }
 
@@ -76,7 +79,7 @@ export class EditenergyMeterComponent implements OnInit {
 
       this.backend.getmodbus(this.id,this.client)
       .subscribe((data)=> { 
-        // console.log(data["data"][0]);
+         console.log(data["data"][0]);
         this.ngxLoader.stop();
 
         this.name = data["data"][0].name;
@@ -87,7 +90,11 @@ export class EditenergyMeterComponent implements OnInit {
         this.mac = data["data"][0].mac_id;
         this.ports = data["data"][0].ports;
         this.relays = data["data"][0].relays;
-
+           this.ncnoname1 = this.ports[0].port_name;
+           this.ncnoname2 = this.ports[1].port_name;
+           this.tempname1 = this.ports[2].port_name;
+           this.tempname2 = this.ports[3].port_name;
+            this.relayname = this.relays[0].relay_name;
 
       })
     
@@ -102,6 +109,12 @@ export class EditenergyMeterComponent implements OnInit {
    
  
   submit(){
+
+           this.ports[0].port_name = this.ncnoname1
+           this.ports[1].port_name = this.ncnoname2
+           this.ports[2].port_name =  this.tempname1
+           this.ports[3].port_name =  this.tempname2
+           this.relays[0].relay_name = this.relayname;
     
  var da = 
     {
@@ -111,20 +124,21 @@ export class EditenergyMeterComponent implements OnInit {
       relays: this.relays,
       ports: this.ports,
       zone_name: this.zone_name,
-      location_name: this.location_name[0],
+      location_name: this.location_name,
       mac_id: this.mac
   }
 
 
  
-    // console.log(da);
+     console.log(da);
 
     this.backend.updatemodbus(da)
     .subscribe((data)=> { 
         console.log("Data:",data);
     
         if(data["success"] == true){
-          this.router.navigate(["/kochar/Devices"]);
+          Swal.fire("Secondary controller Updated Successfully!");
+          this._location.back();
          }
     });
   }
