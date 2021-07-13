@@ -2,3 +2,16 @@
   width: 150px;
   max-width: 150px;
 }
+.spacingPage {
+  .mat-paginator-page-size {
+    mat-form-field.mat-paginator-page-size-select {
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          .mat-form-field-infix {
+            margin-bottom: 1rem !important;
+          }
+        }
+      }
+    }
+  }
+}

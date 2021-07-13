@@ -1,8 +1,10 @@
 /* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
-* {
-  font-family: "Inter", sans-serif;
-}
+// * {
+//   font-family: "Inter", sans-serif;
+// }
+
 html {
+  background: #f4f5f7;
   box-sizing: border-box;
 }
 *,
@@ -426,7 +428,7 @@ a {
 }
 .w3-sidebar {
   height: 100%;
-  width: 200px;
+  width: 250px;
   background-color: #fff;
   position: fixed !important;
   z-index: 1;
@@ -1649,13 +1651,14 @@ a {
   font-size: 14px;
   cursor: pointer;
   align-items: center;
-  height: 40px;
+  height: 30px;
   margin-top: 4px;
   margin-bottom: 4px;
   /* padding: 0 16px; */
   /* overflow: hidden; */
   line-height: 40px;
   text-overflow: ellipsis;
+  font-weight: normal;
 
   span {
     width: 40px;
@@ -1703,7 +1706,7 @@ a {
 .rightsectionHeader {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
   justify-content: flex-end;
   .fa-bell-o {
     font-size: 20px;
