@@ -3,7 +3,9 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -15,9 +17,12 @@ export class AddenergyMeterComponent implements OnInit {
 
   constructor(private backend:BackendconnectionService,
     private ngxLoader: NgxUiLoaderService,
+    private _location:Location,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private router:Router) { }
 
+    formGroup1: FormGroup;
  
 
  
@@ -60,6 +65,29 @@ export class AddenergyMeterComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngxLoader.start();
+
+
+    this.formGroup1 = this.formBuilder.group({
+      mac: ['', [Validators.required,]],
+      name : ['', [Validators.required]],
+      version : ['', [Validators.required]],
+       ncnono1 : ['', [Validators.required]],
+      ncnoname1 : ['', [Validators.required]],
+       ncnono2 : ['', [Validators.required]],
+      ncnoname2 : ['', [Validators.required]],
+      ncnodefault1 : ['', [Validators.required]],
+      ncnodefault2 : ['', [Validators.required]],
+      relayno : ['', [Validators.required]],
+      relayname : ['', [Validators.required]],
+      tempno1 : ['', [Validators.required]],
+      tempno2 : ['', [Validators.required]],
+      tempname1 : ['', [Validators.required]],
+      tempname2 : ['', [Validators.required]],
+      tempdefault1 : ['', [Validators.required]],
+      tempdefault2 : ['', [Validators.required]],
+
+
+    })
 
     this.route.paramMap.subscribe(params => {
       this.location_id = params.get("id");
@@ -156,8 +184,8 @@ export class AddenergyMeterComponent implements OnInit {
        //this.nextStep(1);
 
        if(data["success"] == true){
-        Swal.fire("Energy Meter Added Successfully!");
-        this.router.navigate(["/kochar/Devices"]);
+        Swal.fire("Secondary controller Added Successfully!");
+        this._location.back();
        }
     });
   }

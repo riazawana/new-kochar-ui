@@ -48,7 +48,7 @@
                   <div class="text-center my-3">
                       <table class="table table-bordered mb-1">
                           <thead>
-                            <tr>
+                            <tr *ngIf="finalmodbus[j].length == 0">
                               <th>{{finalmodbus[j][i][0].kwhm[0]}}</th>
                               <th>{{finalmodbus[j][i][0].kwhm[1]}}</th>
                               <th>{{finalmodbus[j][i][0].kwhm[2]}}</th>
@@ -56,6 +56,15 @@
                               <th>{{finalmodbus[j][i][0].kwhm[4]}}</th>
                               <th>{{finalmodbus[j][i][0].kwhm[5]}}</th>
                               <th>{{finalmodbus[j][i][0].kwhm[6]}}</th>
+                            </tr>
+                            <tr *ngIf="finalmodbus[j].length != 0">
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
                             </tr>
                           </thead>
                         </table>
@@ -65,7 +74,7 @@
                   <div class="text-center my-3">
                       <table class="table table-bordered mb-1">
                           <thead>
-                            <tr>
+                            <tr *ngIf="finalmodbus[j].length == 0">
                               <th>{{finalmodbus[j][i][1].kwht[0]}}</th>
                               <th>{{finalmodbus[j][i][1].kwht[1]}}</th>
                               <th>{{finalmodbus[j][i][1].kwht[2]}}</th>
@@ -73,6 +82,15 @@
                               <th>{{finalmodbus[j][i][1].kwht[4]}}</th>
                               <th>{{finalmodbus[j][i][1].kwht[5]}}</th>
                               <th>{{finalmodbus[j][i][1].kwht[6]}}</th>
+                            </tr>
+                            <tr *ngIf="finalmodbus[j].length != 0">
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
+                              <th>0</th>
                             </tr>
                           </thead>
                         </table>
