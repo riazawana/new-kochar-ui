@@ -61,7 +61,6 @@ export class RouterDetailComponent implements OnInit {
           this.info =  data["data"].router_info;
           this.rx_bytes = data["data"].router_info.rx_bytes;
           this.tx_bytes = data["data"].router_info.tx_bytes;
-
           this.totalmem = data["data"].router_info.meminfo[0].split(":")
           this.avilmem  = data["data"].router_info.meminfo[2].split(":")
           this.cached =  data["data"].router_info.meminfo[4].split(":")

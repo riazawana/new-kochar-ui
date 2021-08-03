@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
+import { environment } from './../environments/environment';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class BackendconnectionService {
     ) { }
 
      
-  api = "http://202.164.38.204:3003";
+  api = environment.api;
 
   headers_object:any;
   httpOptions:any;

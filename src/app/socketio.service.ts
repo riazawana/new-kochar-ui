@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {io} from 'socket.io-client';
 import { Observable } from 'rxjs';
 import * as Rx from 'rxjs';
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class SocketioService {
@@ -20,7 +21,7 @@ export class SocketioService {
     // If you aren't familiar with environment variables then
     // you can hard code `environment.ws_url` as `http://localhost:5000`
 
-    this.socket = io('http://202.164.38.204:9001/');
+    this.socket = io(environment.socketurl);
     // We define our observable which will observe any incoming messages
     // from our socket.io server.
     let observable = new Observable(observer => {

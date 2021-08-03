@@ -2,8 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//'http://202.164.38.204:9002/auth'
+
 export const environment = {
-  production: false
+  production: true,
+  keyclockurl: 'https://13.233.156.5:9002/auth/',
+  keyclockrealm: 'TestIOT',
+  keyclockclientId: 'test-client2',
+  socketurl:'http://202.164.38.204:9001/',
+  api:"http://202.164.38.204:3003"
 };
 
 /*

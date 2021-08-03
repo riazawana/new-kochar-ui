@@ -40,17 +40,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Extra1Component } from './extra1/extra1.component';
 import { Extra2Component } from './extra2/extra2.component';
-// import { UserModule } from './user/user.module';
-// import { ZoneModule } from './zone/zone.module';
-// import { FeaturesModule } from './features/features.module';
-// import { RolesModule } from './roles/roles.module';
-// import { NotificationModule } from './notification/notification.module';
-// import { EscalationMatrixModule } from './escalation-matrix/escalation-matrix.module';
-// import { HealthDashModule } from './health-dash/health-dash.module';
-// import { DeviceModule } from './device/device.module';
-// import { IotGatewayModule } from './iot-gateway-dash/iot-gateway.module';
-// import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
+import { environment } from './../environments/environment';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#f44336",
@@ -85,9 +76,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://202.164.38.204:9002/auth',
-        realm: 'TestIOT',
-        clientId: 'test-client2',
+        url: environment.keyclockurl,
+        realm: environment.keyclockrealm,
+        clientId: environment.keyclockclientId,
       },
       initOptions: {
         onLoad: 'check-sso',
