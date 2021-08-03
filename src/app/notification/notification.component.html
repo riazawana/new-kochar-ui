@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="row">
+<div class="px-3 ">
+  <div class="row ">
     <div class="col-md-12">
-      <div class="sub-heading">
+      <div class="sub-heading mt-3">
 
         <h3>Notification</h3>
-        <hr>
      </div>
     </div>
   </div>
   
-  <div class="row">
-    <div class="col-sm-4">
+  <div class="d-flex bg-white align-items-center py-2 mx-1 rounded">
+    <div class="col-md-3">
       <mat-form-field appearance="outline" id="filter">
         <mat-label>Filter</mat-label>
         <mat-select [(ngModel)]="filter"  name="filter"  > 
@@ -24,7 +23,7 @@
       </mat-form-field>
 </div>
 
-    <div class="col-md-4" *ngIf="filter == 'location'">
+    <div class="col-md-3" *ngIf="filter == 'location'">
        
       <mat-form-field appearance="outline" id="hub">
           <mat-label>Location</mat-label>
@@ -39,7 +38,7 @@
       </div>
 
 
-      <div class="col-md-4" *ngIf="filter == 'gateway'">
+      <div class="col-md-3" *ngIf="filter == 'gateway'">
           
           <mat-form-field appearance="outline" id="hub">
               <mat-label>Gateway</mat-label>
@@ -53,7 +52,7 @@
 
     
     
-    <div class="col-md-4" *ngIf="filter == 'tat'">
+    <div class="col-md-3" *ngIf="filter == 'tat'">
       <label>TAT </label>
          
       <mat-radio-group
@@ -69,7 +68,7 @@
       </mat-radio-group>
   </div>
 
-  <div class="col-md-4" *ngIf="filter == 'status'">
+  <div class="col-md-3" *ngIf="filter == 'status'">
       
       
     <label>Status </label>
@@ -87,7 +86,7 @@
     </mat-radio-group>
 
 </div>
-  <div class="col-sm-4">
+  <div class="col-md-3">
     <mat-form-field appearance="outline" id="filterdate">
       <mat-label>Filter by date</mat-label>
       <mat-select [(ngModel)]="filterdate"  name="filterdate"  (selectionChange)="dofilter(filterdate)">
@@ -103,24 +102,25 @@
       </mat-select>
     </mat-form-field>
   </div>
-    <div class="col-sm-4">
+    <div class="col-md-3">
 
       {{totalfilter}}
 
     </div>
      
+    <div class="col-md-3">
+      <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+  
+      <button class="btn btn-light" (click)="resetfilter()">Reset</button>
+  
+    </div>
   </div>
-  <div class="row justify-content-center gap-1">
-    <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
-
-    <button class="btn btn-light" (click)="resetfilter()">Reset</button>
-
-  </div>
+  
 
 
   <div class="row my-3">
 
-    <div class="col-md-12">
+    <div class="col-md-12 ">
 
       <h3 class="headingSmall">Risk Assesment Notification</h3>
     </div>
@@ -130,8 +130,8 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field> -->
-         <div class="col-md-12">
-           <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 mt-4 riskAssesment" style="position: sticky;" #t1Sort="matSort" matSort>
+         <div class="col-md-12 ">
+           <table mat-table [dataSource]="dataSource2" class="mat-elevation-z2 mt-2 riskAssesment rounded"  #t1Sort="matSort" matSort>
      
                
      
@@ -214,7 +214,7 @@
              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
            </table>  
-           <mat-paginator #myPaginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+           <mat-paginator class="spacingPage" #myPaginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
          </div>
 
 
@@ -232,7 +232,7 @@
       <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. Mia" #input>
     </mat-form-field> -->
     
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-4"  style="position:sticky" #t2Sort="matSort" matSort>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 mt-4 rounded"  style="position:sticky" #t2Sort="matSort" matSort>
 
        
         <!-- Sr no. Column -->
@@ -314,7 +314,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>     
-      <mat-paginator #myPaginator2  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-paginator class="spacingPage" #myPaginator2  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
    
   </div>
 </div>
