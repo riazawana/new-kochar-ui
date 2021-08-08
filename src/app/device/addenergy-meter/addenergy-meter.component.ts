@@ -35,14 +35,17 @@ export class AddenergyMeterComponent implements OnInit {
   tempname2:any = "Temp 2";
   ncnodefault1:any = 0;
   ncnodefault2:any = 0;
-  version:any;
+  version:any = 1;
   ncnono1:any = 1;
   ncnono2:any = 2;
   ncnoname1:any;
   ncnoname2:any;
   tempdefault1:any = "RR.R";
   tempdefault2:any = "RR.R";
-
+  config:any;
+  metertype:any;
+  sname:any;
+  address:any;
   relayno:any = 1;
   relayname:any;
   name:any;
@@ -184,8 +187,35 @@ export class AddenergyMeterComponent implements OnInit {
        //this.nextStep(1);
 
        if(data["success"] == true){
-        Swal.fire("Secondary controller Added Successfully!");
-        this._location.back();
+        // Swal.fire("Secondary controller Added Successfully!");
+        // this._location.back();
+
+        var smartmeterdata = {
+          "mac_id": this.mac,
+          "smartmeter":[{
+            "smartmeter_name": this.sname,
+            "address_no": this.address,
+            "configuration": this.config,
+            "client":this.client,
+            "meter_type":this.metertype
+          }],
+          "client":this.client
+        }
+    
+        //console.log(data);
+    
+        
+    
+        this.backend.addsmartmeter(smartmeterdata)
+        .subscribe((data)=> { 
+          //console.log(data);
+          if(data["success"] == true){
+            Swal.fire("Smart Meter Added Successfully!");
+            // this.router.navigate(["/kochar/Devices"]);
+          this._location.back();
+           }
+        })
+        
        }
     });
   }

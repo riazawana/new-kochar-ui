@@ -34,7 +34,7 @@
            </div>
        </div>
        
-       <div class="col-sm-3">
+       <div class="col-sm-3" *ngIf="data.modbus_info.length != 0">
            <p>Last Ping Status : {{status[1]}} </p>
            <p>Ping Count : {{status[3]}} </p>
            <p>Address Range : 1 - 125</p>

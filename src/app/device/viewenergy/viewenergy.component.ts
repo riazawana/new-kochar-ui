@@ -57,9 +57,20 @@ export class ViewenergyComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-       //console.log("User Data",data["data"][0]);
+       
+   
+    console.log("User Data",data["data"][0]);
        this.data = data["data"][0];
-        this.status = this.data.modbus_info[0].status.split("|");
+       console.log(this.data.modbus_info)
+
+        if(this.data.modbus_info.length != 0){
+          this.status = this.data.modbus_info[0].status.split("|");
+          // alert(this.data.modbus_info)
+
+        }else{
+          this.status = [];
+          // alert(this.data.modbus_info)
+        }
 
     });
     

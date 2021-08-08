@@ -87,7 +87,7 @@ export class SocketioService {
     // socket server whenever the `next()` method is called.
     let observer = {
         next: (data: any) => {
-             //console.log("datasend:",data);
+             console.log("datasend:",data);
           if(data.cmdtype == "modbus_commands"){
             this.socket.emit('modbus_commands', JSON.stringify(data));
           }else{

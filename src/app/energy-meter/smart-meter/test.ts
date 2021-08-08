@@ -70,10 +70,10 @@ export class SmartMeterComponent implements OnInit {
 
     this.ngxLoader.stop();
 
-        //console.log("Modbus",data["data"]);
+        console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 
-      //  this.smartmeterval = {}
+       this.smartmeterval = []
 
        for(var i = 0; i<this.modbus.length;i++){
          if(this.modbus[i].gateways.length != 0){
@@ -141,6 +141,10 @@ export class SmartMeterComponent implements OnInit {
                   
     
           
+             }else{
+              this.smartmeterval.push({'kwhm':["0","0","0","0","0","0","0"]}) ;
+              this.smartmeterval.push({'kwht':["0","0","0","0","0","0","0"]})
+
              }
     
              if((smartmeterlogs_current.length != 0)&&(smartmeterlogs_monthly.length != 0)&&(smartmeterlogs_today.length != 0)){
@@ -192,6 +196,12 @@ export class SmartMeterComponent implements OnInit {
     
           //  console.log("this.smartmeterval:",this.smartmeterval)
          
+           }
+
+           else{
+            this.smartmeterval.push({'kvhm':0}) 
+            this.smartmeterval.push({'kvht':0})  
+
            }
     
            //console.log("this.smartmeterval:",this.smartmeterval);
@@ -252,6 +262,10 @@ export class SmartMeterComponent implements OnInit {
                   
     
           
+             }else{
+              this.smartmeterval.push({'kwhm':["0","0","0","0","0","0","0"]}) ;
+              this.smartmeterval.push({'kwht':["0","0","0","0","0","0","0"]})
+
              }
     
              if((smartmeterlogs_current.length != 0)&&(smartmeterlogs_monthly.length != 0)&&(smartmeterlogs_today.length != 0)){
@@ -303,6 +317,10 @@ export class SmartMeterComponent implements OnInit {
     
           //  console.log("this.smartmeterval:",this.smartmeterval)
          
+           }else{
+            this.smartmeterval.push({'kvhm':0}) 
+            this.smartmeterval.push({'kvht':0})  
+
            }
     
            //console.log("this.smartmeterval:",this.smartmeterval);
@@ -316,11 +334,11 @@ export class SmartMeterComponent implements OnInit {
 
          }
          
-         //console.log("this.gatewaydata:",this.gatewaydata)
-         this.finalmodbus.push(this.gatewaydata);
+         console.log("this.gatewaydata:",this.gatewaydata)
+  
             }
 
-        //  this.finalmodbus.push(this.gatewaydata);
+         this.finalmodbus.push(this.gatewaydata);
 
 
          }

@@ -6,7 +6,7 @@
 
 export const environment = {
   production: true,
-  keyclockurl: 'https://13.233.156.5:9002/auth/',
+  keyclockurl: 'https://13.232.228.145:9002/auth/',
   keyclockrealm: 'TestIOT',
   keyclockclientId: 'test-client2',
   socketurl:'http://202.164.38.204:9001/',
