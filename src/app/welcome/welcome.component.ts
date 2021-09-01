@@ -105,7 +105,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
       this.backend.getModulesAgainstRole()
       .subscribe((data)=> { 
-     //console.log("data:",data);
+     console.log("data:",data);
       this.sidebar = data["data"][0].mapping;
 
       })

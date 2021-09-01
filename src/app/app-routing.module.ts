@@ -27,6 +27,12 @@ const routes: Routes =[{
     },
 
     {
+      path: 'Report',
+      loadChildren: () => import('./report/report.module').then(m => m.ReportModule)
+
+    },
+
+    {
       path: 'Zones',
       loadChildren: () => import('./zone/zone.module').then(m => m.ZoneModule)
     },
