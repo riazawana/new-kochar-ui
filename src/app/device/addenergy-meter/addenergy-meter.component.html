@@ -26,6 +26,16 @@
                 <mat-error *ngIf="formGroup1.get('mac').hasError('required')">
                   Mac Addres is Required!
                 </mat-error>
+
+                <mat-error *ngIf="formGroup1.get('mac').hasError('minlength')">
+                  Invalid Mac Addres!
+                </mat-error>
+
+                <mat-error *ngIf="formGroup1.get('mac').hasError('maxlength')">
+                  Invalid Mac Addres!
+                </mat-error>
+
+                
               </mat-form-field>
             </div>
             <div class="col-md-4">
@@ -69,6 +79,10 @@
                               <mat-error *ngIf="formGroup1.get('ncnono1').hasError('required')">
                                 No. is Required!
                               </mat-error>
+
+                              <mat-error *ngIf="formGroup1.get('ncnono1').hasError('pattern')">
+                                No. should be positive!
+                              </mat-error>
                             </mat-form-field>
                           </p>
   
@@ -79,13 +93,14 @@
                               <mat-error *ngIf="formGroup1.get('ncnoname1').hasError('required')">
                                 Name is Required!
                               </mat-error>
+                              
                             </mat-form-field>
                           </p>
   
                           <p>
                             <mat-form-field appearance="outline">
                               <mat-label>Default Value</mat-label>
-                              <input type="number" matInput [(ngModel)]="ncnodefault1" name="ncnodefault1" placeholder="1" required formControlName="ncnodefault1">
+                              <input type="number" matInput [(ngModel)]="ncnodefault1" (change)="default_fun1()" name="ncnodefault1" placeholder="1" required formControlName="ncnodefault1">
                               <mat-error *ngIf="formGroup1.get('ncnodefault1').hasError('required')">
                                 Default Value is Required!
                               </mat-error>
@@ -99,6 +114,9 @@
                               <input matInput type="number" [(ngModel)]="ncnono2" name="ncnono2" placeholder="2" required formControlName="ncnono2">
                               <mat-error *ngIf="formGroup1.get('ncnono2').hasError('required')">
                                 No. is Required!
+                              </mat-error>
+                              <mat-error *ngIf="formGroup1.get('ncnono2').hasError('pattern')">
+                                No. should be positive!
                               </mat-error>
                             </mat-form-field>
                           </p>
@@ -116,7 +134,7 @@
                           <p>
                             <mat-form-field appearance="outline">
                               <mat-label>Default Value</mat-label>
-                              <input matInput type="number" [(ngModel)]="ncnodefault2" name="ncnodefault2" placeholder="1" required formControlName="ncnodefault2">
+                              <input matInput type="number" [(ngModel)]="ncnodefault2" (change)="default_fun2()" name="ncnodefault2" placeholder="1" required formControlName="ncnodefault2">
                               <mat-error *ngIf="formGroup1.get('ncnodefault2').hasError('required')">
                                 Default Value is Required!
                                </mat-error>
@@ -128,7 +146,7 @@
             </div>
   
             <div class="col-sm-6">
-                <p>Temprature Ports</p>
+                <p>Temperature Ports</p>
                 <div class="row">
                     <div class="col-sm-6">
                         <p>
@@ -137,6 +155,9 @@
                               <input matInput type="number" [(ngModel)]="tempno1" name="tempno1" placeholder="1"  required formControlName="tempno1">
                               <mat-error *ngIf="formGroup1.get('tempno1').hasError('required')">
                                 No. is Required!
+                              </mat-error>
+                              <mat-error *ngIf="formGroup1.get('tempno1').hasError('pattern')">
+                                No. should be positive!
                               </mat-error>
                             </mat-form-field>
                           </p>
@@ -169,6 +190,9 @@
                               <input matInput type="number" [(ngModel)]="tempno2" name="tempno2" placeholder="2"  required formControlName="tempno2">
                               <mat-error *ngIf="formGroup1.get('tempno2').hasError('required')">
                                 No. is Required!
+                              </mat-error>
+                              <mat-error *ngIf="formGroup1.get('tempno2').hasError('pattern')">
+                                No. should be positive!
                               </mat-error>
                             </mat-form-field>
                           </p>
@@ -239,6 +263,8 @@
 </div>
 
 <!-- ============================= -->
+
+<form  [formGroup]="formGroup2">
         <div class="w-100 flex-column">
           <div class="row">
             <div class="col-md-3">
@@ -272,22 +298,30 @@
             <div class="col-md-3">
              <mat-form-field appearance="outline">
                <mat-label>Address No</mat-label>
-               <input matInput [(ngModel)]="address" name="address" placeholder="Number">
+               <input type="number" matInput [(ngModel)]="address" name="address" placeholder="Number" formControlName="address">
                <!-- <mat-hint>Address No</mat-hint> -->
+
+               <mat-error *ngIf="formGroup2.get('address').hasError('pattern')">
+                Address no will be positive!
+               </mat-error>
              </mat-form-field>
+            </div>
+
+            <div>
+      <button type="button" class="btn btn-primary" (click)="addsmartmeterdatainarray()" >Add Smart Meter</button>
+
             </div>
 
           </div>
           
                     
                </div>
-       
+</form>
 <!-- ============================= -->
         <div class="d-flex justify-content-center">
       <button type="button" class="btn btn-primary" (click)="submit_meter()" [disabled]="!formGroup1.valid" style="float: right;">Submit</button>
 
         </div>
-      <!-- <button type="button" class="btn btn-primary" (click)="previousStep(1)" style="float: right;">Previous</button> -->
 
     </mat-tab>
 

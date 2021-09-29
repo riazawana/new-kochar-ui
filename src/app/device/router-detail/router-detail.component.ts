@@ -129,7 +129,9 @@ firmware(x){
        //console.log("Data:",data);
         if(data["success"] == true){
           alert(data["msg"]);
-        }
+        }else{
+          alert(data["msg"]);
+         }
   });
 }
 

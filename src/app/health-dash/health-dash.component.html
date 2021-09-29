@@ -17,6 +17,8 @@
                 <mat-option  value="city"  >City</mat-option>        
               </mat-select>
             </mat-form-field>
+
+
     
             <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
     
@@ -32,7 +34,7 @@
                  
             <mat-form-field appearance="outline" >
               <mat-label>Zone</mat-label>
-              <mat-select  [(ngModel)]="zone"  name="zone">
+              <mat-select  [(ngModel)]="zone"  name="zone" (selectionChange)="onsubmit()">
               
                 <mat-option *ngFor="let l of zones"  value="{{l.zone_name}}"  >{{l.zone_name}}</mat-option>
   
@@ -44,11 +46,11 @@
          <div class="col-md-4" *ngIf="filter == 'state'">
                
                    
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" >
                   <mat-label>State</mat-label>
-                  <mat-select  [(ngModel)]="state"  name="state">
+                  <mat-select  [(ngModel)]="state"  name="state" (selectionChange)="onsubmit()">
                   
-                    <mat-option *ngFor="let l of states"  value="{{l.state_id}}"  >{{l.name}}</mat-option>
+                    <mat-option *ngFor="let l of states"  value="{{l.state_id}},{{l.name}}"  >{{l.name}}</mat-option>
       
                   </mat-select>
                 </mat-form-field>
@@ -56,11 +58,11 @@
             
             
          <div class="col-md-4" *ngIf="filter == 'city'">
-                    <mat-form-field appearance="outline" >
+                    <mat-form-field appearance="outline"  >
                         <mat-label>City</mat-label>
-                        <mat-select  [(ngModel)]="city"  name="city">
+                        <mat-select  [(ngModel)]="city"  name="city" (selectionChange)="onsubmit()">
                         
-                          <mat-option *ngFor="let l of citys"  value="{{l.city_id}}"  >{{l.name}}</mat-option>
+                          <mat-option *ngFor="let l of citys"  value="{{l.city_id}},{{l.name}}"  >{{l.name}}</mat-option>
             
                         </mat-select>
                       </mat-form-field>
@@ -68,10 +70,34 @@
                         
          </div>
 
+         <p *ngIf="zone != undefined">
+           {{zone}}
+         <span (click)="remove('z')"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+         </p> 
+
+         <p *ngIf="statename != undefined">
+          {{statename}}
+         <span (click)="remove('s')"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+        </p>
+
+
+        <p *ngIf="cityname != undefined">
+          {{cityname}}
+        <span (click)="remove('c')"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+        </p>
+
+       <!-- {{totalfilter}} -->
+
+
+
+
 
           </div>
           <div class="row justify-content-center gap-1 my-3">
-            <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+            <!-- <button type="button" *ngIf="filter != ''" class="btn btn-primary" (click)="onsubmit()">Submit</button> -->
             <button (click)="reset()" class="btn btn-light">Reset</button>
   
            </div>

@@ -162,7 +162,9 @@ export class AddroleComponent implements OnInit {
           
           })
 
-      }
+      }else{
+        Swal.fire(data["msg"]);
+       }
      this.router.navigate(["/kochar/Roles"]);
     })
 

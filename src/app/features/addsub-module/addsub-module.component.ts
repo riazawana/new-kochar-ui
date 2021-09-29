@@ -47,6 +47,8 @@ export class AddsubModuleComponent implements OnInit {
       if(data["success"] == true){
         Swal.fire("Sub-module added Successfully!");
         this.router.navigate(["/kochar/Features"]);
+       }else{
+        Swal.fire(data["msg"]);
        }
 
     })

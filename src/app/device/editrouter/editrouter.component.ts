@@ -3,6 +3,8 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {Location} from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+
 
 @Component({
   selector: 'app-editrouter',
@@ -113,8 +115,10 @@ export class EditrouterComponent implements OnInit {
            //console.log(data);
 
        if(data["success"] == true){
-        // this.router.navigate(["/kochar/Devices"]);
-      this._location.back();
+        Swal.fire("Router  Updated Successfully!");
+        this._location.back();
+       }else{
+        Swal.fire(data["msg"]);
        }
    })
 

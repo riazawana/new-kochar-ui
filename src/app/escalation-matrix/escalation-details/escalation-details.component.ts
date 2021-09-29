@@ -107,7 +107,9 @@ export class EscalationDetailsComponent implements OnInit {
                 'Escalation matrix deleted successfully.',
                 'success'
               )
-            }
+            }else{
+              Swal.fire(data["msg"]);
+             }
        
         });         
             

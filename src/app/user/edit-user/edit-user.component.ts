@@ -238,6 +238,8 @@ this.backend.updateuser(data)
    if(data["success"] == true){
      Swal.fire("User updated successfully!");
     this.router.navigate(["/kochar/Users"]);
+   }else{
+    Swal.fire(data["msg"]);
    }
 });
 

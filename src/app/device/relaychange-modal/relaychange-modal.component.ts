@@ -58,6 +58,8 @@ export class RelaychangeModalComponent implements OnInit {
             Swal.fire("Relays Updated Successfully!");
             // this.router.navigate(["/kochar/Devices"]);
             this.onNoClick();
+           }else{
+            Swal.fire(data["msg"]);
            }
         })
      }

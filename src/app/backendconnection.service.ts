@@ -237,8 +237,22 @@ export class BackendconnectionService {
   }
 
  
+  deletesmartmeter(x,t,a){
+    this.auth();
+    return this.httpClient.delete(this.api+'/deletesmartmeter?mac_id='+x+'&client='+t+'&address_no='+a,this.httpOptions);
+  
+  }
 
+  clearqueue(x){
+    this.auth();
+    return this.httpClient.get(this.api+'/clearqueue?mac_id='+x,this.httpOptions);
+  }
 
+  
+  getModbusPayload(x,t){
+    this.auth();
+    return this.httpClient.get(this.api+'/getModbusPayload?mac_id='+x+'&client='+t,this.httpOptions);
+  }
 
   deleteescalationmatrix(data){
     this.auth();

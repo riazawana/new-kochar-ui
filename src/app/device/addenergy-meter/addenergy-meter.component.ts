@@ -23,6 +23,8 @@ export class AddenergyMeterComponent implements OnInit {
     private router:Router) { }
 
     formGroup1: FormGroup;
+    formGroup2: FormGroup;
+
  
 
  
@@ -55,11 +57,12 @@ export class AddenergyMeterComponent implements OnInit {
 
   client:any;
   zone_id:string;
+  addsmartmeterdata:any =[];
 
   formatMAC(e) {
     // alert(e);
-    var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
-        str = e.replace(/[^a-f0-9]/ig, "");
+    var r = /([a-z0-9]{2})([a-z0-9]{2})/i,
+        str = e.replace(/[^a-z0-9]/ig, "");
     while (r.test(str)) {
         str = str.replace(r, '$1' + ':' + '$2');
     }
@@ -71,23 +74,31 @@ export class AddenergyMeterComponent implements OnInit {
 
 
     this.formGroup1 = this.formBuilder.group({
-      mac: ['', [Validators.required,]],
+      mac: ['', [Validators.required,Validators.minLength(17),Validators.maxLength(17)]],
       name : ['', [Validators.required]],
       version : ['', [Validators.required]],
-       ncnono1 : ['', [Validators.required]],
+       ncnono1 : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
       ncnoname1 : ['', [Validators.required]],
-       ncnono2 : ['', [Validators.required]],
+       ncnono2 : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
       ncnoname2 : ['', [Validators.required]],
       ncnodefault1 : ['', [Validators.required]],
       ncnodefault2 : ['', [Validators.required]],
       relayno : ['', [Validators.required]],
       relayname : ['', [Validators.required]],
-      tempno1 : ['', [Validators.required]],
-      tempno2 : ['', [Validators.required]],
+      tempno1 : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
+      tempno2 : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
       tempname1 : ['', [Validators.required]],
       tempname2 : ['', [Validators.required]],
       tempdefault1 : ['', [Validators.required]],
       tempdefault2 : ['', [Validators.required]],
+
+
+    })
+
+    this.formGroup2 = this.formBuilder.group({
+      tempno1 : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
+      address : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
+      
 
 
     })
@@ -111,16 +122,16 @@ export class AddenergyMeterComponent implements OnInit {
 
   selectedIndex: number = 0;
 
- nextStep(x) {
+//  nextStep(x) {
    
-    this.selectedIndex = x;
-  }
+//     this.selectedIndex = x;
+//   }
 
-  previousStep(x) {
+//   previousStep(x) {
   
-    this.selectedIndex = x;
+//     this.selectedIndex = x;
 
-  }
+//   }
 
   location_list:any;
 
@@ -128,12 +139,30 @@ export class AddenergyMeterComponent implements OnInit {
 
 
 
+  addsmartmeterdatainarray(){
+    this.addsmartmeterdata.push(
+      {
+        "smartmeter_name": this.sname,
+        "address_no": this.address,
+        "configuration": this.config,
+        "client":this.client,
+        "meter_type":this.metertype
+      }
+    );
+
+    this.sname = '';
+    this.address = '';
+    this.config = '';
   
+
+    
+  }
 
  
    
  
   submit_meter(){
+
     
  var da = 
     {
@@ -180,6 +209,8 @@ export class AddenergyMeterComponent implements OnInit {
  
   //  console.log(da);
 
+  // this.addsmartmeterdata = [];
+
     this.backend.addmodbus(da)
     .subscribe((data)=> { 
        //console.log("Data:",data);
@@ -192,13 +223,7 @@ export class AddenergyMeterComponent implements OnInit {
 
         var smartmeterdata = {
           "mac_id": this.mac,
-          "smartmeter":[{
-            "smartmeter_name": this.sname,
-            "address_no": this.address,
-            "configuration": this.config,
-            "client":this.client,
-            "meter_type":this.metertype
-          }],
+          "smartmeter":this.addsmartmeterdata,
           "client":this.client
         }
     
@@ -208,16 +233,51 @@ export class AddenergyMeterComponent implements OnInit {
     
         this.backend.addsmartmeter(smartmeterdata)
         .subscribe((data)=> { 
-          //console.log(data);
+          console.log(data);
           if(data["success"] == true){
-            Swal.fire("Smart Meter Added Successfully!");
+            Swal.fire("Energy and Smart Meter Added Successfully!");
             // this.router.navigate(["/kochar/Devices"]);
           this._location.back();
+           }else{
+            //  console.log(data["msg"])
+            Swal.fire(data["msg"]);
            }
         })
         
-       }
+      }else{
+        // console.log(data["msg"])
+       Swal.fire(data["msg"]);
+      }
+
+       
     });
+  }
+
+  default_fun1(){
+
+    if((this.ncnodefault1 == 0) || (this.ncnodefault1 == 1)){
+     
+    }
+   
+    else{
+      alert("Default No should be 0 or 1")
+      this.ncnodefault1 = 0;
+    }
+  
+  }
+
+
+  default_fun2(){
+
+    if((this.ncnodefault2 == 0) || (this.ncnodefault2 == 1)){
+     
+    }
+   
+    else{
+      alert("Default No should be 0 or 1")
+      this.ncnodefault2 = 0;
+    }
+  
   }
 
 

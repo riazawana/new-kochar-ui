@@ -162,8 +162,8 @@ export class HealthDashComponent implements OnInit {
 
 filter:any;
 
-cityfind(){
-  this.backend.getcity(this.state)
+cityfind(x){
+  this.backend.getcity(x)
   .subscribe((data)=> { 
      //console.log("All citys:",data["data"]);
      this.citys = data["data"];
@@ -174,26 +174,122 @@ val:any = '';
 
 totalfilter:any = '';
 
+cityname :any;
+statename :any;
+
+
 onsubmit(){
 
   if(this.filter == "state"){
-     this.val = "state_id="+this.state;
-     this.cityfind();
+      var s = this.state.split(",");
+      if(s.length == 2){
+      this.statename = s[1]
+      }
+     this.val = "state_id="+s[0];
+     this.cityfind(s[0]);
   }if(this.filter == "city"){
-    this.val = "city_id="+this.city;
+      var c = this.city.split(",");
+      if(c.length == 2){
+      this.cityname = c[1]
+      }
+      this.val = "city_id="+c[0];
   }if(this.filter == "zone"){
     this.val = "zoneName="+this.zone;
   }
+  
+  
+  if(this.totalfilter != ""){
+      this.totalfilter += "&"+this.val
+  }else{
+      this.totalfilter +=  "?"+this.val
+  }
 
-   if(this.totalfilter != ""){
-  this.totalfilter += "&"+this.val
-   }else{
-  this.totalfilter +=  "?"+this.val
-   }
+   this.filterfun(this.totalfilter);
+   this.filter = undefined;
 
-  //  alert(this.totalfilter);
+}
+
+remove(x){
+  this.totalfilter = "";
+
+
+  if(x == 's'){
+
+    this.state = undefined;
+    this.statename = undefined;
+    if(this.zone != undefined){
+      this.totalfilter = "?zoneName="+this.zone;
+    }if(this.city != undefined){
+
+      var c = this.city.split(",");
+      
+      if(c.length == 2){
+      this.cityname = c[1]
+      }
+      if(this.totalfilter != ""){
+      this.totalfilter += "&city_id="+c[0];
+      }else{
+      this.totalfilter += "?city_id="+c[0];
+      }
+    }
+   this.filterfun(this.totalfilter);
+  } 
+  
+  if(x == 'z'){
+    this.zone = undefined;
+
+    if(this.state != undefined){
+      var s = this.state.split(",");
+      if(s.length == 2){
+      this.statename = s[1]
+      }
+      this.totalfilter += "?state_id="+s[0];
+    }if(this.city != undefined){
+      var c = this.city.split(",");
+      if(c.length == 2){
+      this.cityname = c[1]
+      }
+      if(this.totalfilter != ""){
+      this.totalfilter += "&city_id="+c[0];
+      }else{
+      this.totalfilter += "?city_id="+c[0];
+      }
+    }
+
    this.filterfun(this.totalfilter);
 
+    
+
+ } if(x == 'c'){
+
+  this.city = undefined;
+
+  this.cityname = undefined;
+
+  if(this.zone != undefined){
+    this.totalfilter = "?zoneName="+this.zone;
+  }
+  if(this.state != undefined){
+    var s = this.state.split(",");
+    if(s.length == 2){
+    this.statename = s[1]
+    }
+    if(this.totalfilter != ""){
+  this.totalfilter += "?state_id="+s[0];
+}else{
+  if(this.totalfilter != ""){
+  this.totalfilter += "$state_id="+s[0];
+  
+}
+}
+  }
+
+ this.filterfun(this.totalfilter);
+  
+
+}
+
+alert(this.totalfilter)
 }
 
 reset(){
@@ -202,7 +298,6 @@ reset(){
   this.backend.healthDashboard()
   .subscribe((data)=> { 
 
-this.ngxLoader.stop();
 
      //console.log("All location:",data["data"]);
      this.healthdata = data["data"];

@@ -34,16 +34,24 @@
                 {{g.name}}
               </mat-panel-title>
               <mat-panel-description>
-                <a (click)="openDialog(g.mac_id,g.version)">Command Settings</a>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a (click)="openDialog(g.mac_id,g.version,g.client)">Command Settings</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary" (click)="clearqueue(g.mac_id)" style="font-size: 60%;">Clean Queue</button>
+
+                  </div>
+                </div>
               </mat-panel-description>
               </mat-expansion-panel-header>
             <div class="row" *ngIf="g.smartmeter.length != 0" >
               
               <div class="col-md-4"  *ngFor="let s of g.smartmeter;let i = index">
 
-                <div class="p-2 border border-dark rounded">
+                <div  class="p-2 border border-dark rounded" (click) = "graph(g.mac_id,g.client)">
 
-              
+                
 
                   <div class="text-center my-3">
                       <table class="table table-bordered mb-1">
@@ -111,7 +119,7 @@
 
                        </div>
 
-                       <p>Total Energy Consumtion</p>
+                       <p>Total Energy Consumption</p>
 
                        <p><b>Smart Meter</b></p>
 
@@ -119,6 +127,8 @@
 
                   </div>
                   
+
+                <span (click)="deletesmartmeter(g.mac_id,g.client,s.address_no)"><i class="fa fa-trash" aria-hidden="true"></i></span>
 
                 </div>
 

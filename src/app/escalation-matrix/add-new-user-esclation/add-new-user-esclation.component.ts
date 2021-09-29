@@ -3,6 +3,8 @@ import { BackendconnectionService } from '../../backendconnection.service';
 import {Router,ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
@@ -16,6 +18,7 @@ export class AddNewUserEsclationComponent implements OnInit {
     private backend: BackendconnectionService,
     private route: ActivatedRoute,
     private ngxLoader: NgxUiLoaderService,
+    private formBuilder: FormBuilder,
     private router: Router,
     private _location:Location
 
@@ -38,8 +41,24 @@ export class AddNewUserEsclationComponent implements OnInit {
 
    client : any; 
    id:any;
+
+   formGroup1: FormGroup;
+
   ngOnInit(): void {
     this.ngxLoader.start();
+
+    this.formGroup1 = this.formBuilder.group({
+      tat: ['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{1}$")]],
+      name : ['', [Validators.required]],
+      email : ['', [Validators.required,Validators.email]],
+      phone : ['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      designation : ['', [Validators.required]],
+      location_id : ['', [Validators.required]],
+      hub : ['', [Validators.required]],
+      level : ['', [Validators.required]],
+      notification_category : ['', [Validators.required]],
+
+    })
   
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
@@ -113,7 +132,9 @@ export class AddNewUserEsclationComponent implements OnInit {
         if(data["success"]==true){
           Swal.fire("Escalation matrix added successfully");
          this._location.back();
-        }
+        }else{
+          Swal.fire(data["msg"]);
+         }
         
       })  
     }else{
@@ -123,7 +144,9 @@ export class AddNewUserEsclationComponent implements OnInit {
         if(data["success"]==true){
           Swal.fire("Escalation matrix added successfully");
          this._location.back();
-        }
+        }else{
+          Swal.fire(data["msg"]);
+         }
         
       })  
     }

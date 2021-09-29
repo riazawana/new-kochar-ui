@@ -139,6 +139,8 @@ export class EditenergyMeterComponent implements OnInit {
         if(data["success"] == true){
           Swal.fire("Secondary controller Updated Successfully!");
           this._location.back();
+         }else{
+          Swal.fire(data["msg"]);
          }
     });
   }

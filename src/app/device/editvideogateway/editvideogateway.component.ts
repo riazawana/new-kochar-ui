@@ -135,6 +135,8 @@ export class EditvideogatewayComponent implements OnInit {
         // this.router.navigate(["/kochar/Devices"]);
       this._location.back();
 
+       }else{
+        Swal.fire(data["msg"]);
        }
     });
 

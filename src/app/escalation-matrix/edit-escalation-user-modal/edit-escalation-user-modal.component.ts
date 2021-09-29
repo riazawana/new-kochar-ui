@@ -77,7 +77,9 @@ edit(){
         if(data["success"]==true){
           Swal.fire("Escalation matrix updated successfully!");
           this.onNoClick();
-        }
+        }else{
+          Swal.fire(data["msg"]);
+         }
     });
    }
 

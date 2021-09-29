@@ -31,14 +31,7 @@
     </mat-error>
 </mat-form-field>
 </div>
-<div class="col-md-4" *ngIf="brand == 'hikvision'">
-  <mat-label>Category</mat-label>
-  <mat-radio-group aria-label="Category" [(ngModel)]="cat" name="cat" >
-      <mat-radio-button value="nvr"> NVR </mat-radio-button>
-      <mat-radio-button value="dvr"> DVR </mat-radio-button>
-      <mat-radio-button value="xvr"> XVR </mat-radio-button>
-    </mat-radio-group>
-</div>
+
 <div class="col-md-4" *ngIf="brand != 'camera manager'">
   <mat-form-field appearance="outline">
     <mat-label>HOST Address</mat-label>
@@ -46,6 +39,12 @@
     <mat-error *ngIf="formGroup1.get('host_add').hasError('required')">
       Host is Required!
     </mat-error>
+
+    <mat-error *ngIf="formGroup1.get('host_add').hasError('pattern')">
+     Valid Host is Required!
+    </mat-error>
+
+    
   </mat-form-field>
 </div>
 <div class="col-md-4" *ngIf="brand == 'hikvision'">
@@ -64,19 +63,6 @@
 </mat-form-field></div>
 
 
-<div class="col-md-4" *ngIf="(brand == 'hikvision')&&((cat == 'xvr')||(cat == 'dvr'))">
-  <mat-form-field appearance="outline">
-    <mat-label>No of analog port</mat-label>
-    <mat-select placeholder="analog_ports_count" [(ngModel)]="analog_ports_count" name="analog_ports_count">
-      <mat-option  value="4" >4 Ports</mat-option>
-      <mat-option  value="8" >8 Ports</mat-option>
-      <mat-option  value="16" >16 Ports</mat-option>
-      <mat-option  value="32" >32 Ports</mat-option>
-
-      
-    </mat-select>
-</mat-form-field>
-</div>
 <div class="col-md-4">
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
@@ -107,6 +93,35 @@
               
               </div>
             </form>
+
+         <div class="row">
+          <div class="col-md-4" *ngIf="brand == 'hikvision'">
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select placeholder="Category" [(ngModel)]="cat" name="cat">
+                <mat-option  value="nvr" >NVR</mat-option>
+                <mat-option  value="dvr" >DVR</mat-option>
+                <mat-option  value="xvr" >XVR</mat-option>
+              </mat-select>
+          
+          </mat-form-field>
+        </div>
+
+
+<div class="col-md-4" *ngIf="(brand == 'hikvision')&&((cat == 'xvr')||(cat == 'dvr'))">
+<mat-form-field appearance="outline" >
+  <mat-label>No of analog port</mat-label>
+  <mat-select placeholder="analog_ports_count" [(ngModel)]="analog_ports_count" name="analog_ports_count">
+    <mat-option  value="4" >4 Ports</mat-option>
+    <mat-option  value="8" >8 Ports</mat-option>
+    <mat-option  value="16" >16 Ports</mat-option>
+    <mat-option  value="32" >32 Ports</mat-option>
+
+    
+  </mat-select>
+</mat-form-field>
+</div>
+         </div>
         </div>
 
         <button type="button" class="btn btn-primary" (click)="submit()" style="float: right;" [disabled]="!formGroup1.valid">Submit</button>

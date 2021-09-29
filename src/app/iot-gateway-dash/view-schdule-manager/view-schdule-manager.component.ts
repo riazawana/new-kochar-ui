@@ -507,6 +507,8 @@ if(x == "mon2f"){
         Swal.fire("Schedule updated successfully!");
       this._location.back();
 
+     }else{
+      Swal.fire(data["msg"]);
      }
     })
 

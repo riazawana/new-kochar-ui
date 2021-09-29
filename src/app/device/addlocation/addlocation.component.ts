@@ -697,7 +697,7 @@ formatMAC(e) {
       w_c_n : ['', [Validators.required]],
       w_c_m_a : ['', [Validators.required]],
       gl_mac : ['', [Validators.required]],
-      gl_num : ['', [Validators.required]],
+      gl_num : ['', [Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$')]],
     })
 
     this.user_id =  sessionStorage.getItem('userid');
@@ -880,7 +880,9 @@ formatMAC(e) {
               if(data3["success"] == true){
                Swal.fire("IN Gateway Added Successfully!");
                this.router.navigate(["/kochar/Devices"]);
-              }
+              }else{
+                Swal.fire(data["msg"]);
+               }
        
            });
        

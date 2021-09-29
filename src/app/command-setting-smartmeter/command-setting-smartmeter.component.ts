@@ -17,14 +17,14 @@ export class CommandSettingSmartmeterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     setaddress:any;
-    metertype:any;
+    metertype:any = "";
 
 
 
 
 
     ngOnInit(): void {
-     // console.log(typeof this.data.id)
+      console.log(this.data)
       // alert(this.data.id)
 
       this.soc.messages.subscribe(msg => {
@@ -47,6 +47,8 @@ export class CommandSettingSmartmeterComponent implements OnInit {
  
 
     sendMessage(x,y,mac) {
+
+
       var data = {
         cmdtype:"modbus_commands",
         mac_id:mac,
@@ -62,6 +64,19 @@ export class CommandSettingSmartmeterComponent implements OnInit {
    }
 
    get(x,y){
+
+   }
+
+   view:any = "";
+
+   viewpayload(m,c){
+
+    this.backend.getModbusPayload(m,c)
+    .subscribe((data)=> { 
+      
+      console.log(data);
+      this.view = data["data"];
+    })
 
    }
 

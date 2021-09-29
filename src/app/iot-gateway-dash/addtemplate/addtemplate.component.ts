@@ -335,6 +335,8 @@ export class AddtemplateComponent implements OnInit {
       if(data["success"] == true){
         Swal.fire("Template added successfully!");
         this.router.navigate(["/kochar/IOT Gateway/Templates"]);
+       }else{
+        Swal.fire(data["msg"]);
        }
     });
 

@@ -8,25 +8,40 @@
          </div>
   
          <div class="form_holder p-3" style="border-radius: 10px;">
+
+          <form  [formGroup]="formGroup1">
+
             <div class="row">
               <div class="col-md-4">
                 <mat-form-field appearance="outline" id="hub">
                   <mat-label>Location</mat-label>
-                  <mat-select placeholder="location_id" [(ngModel)]="location_id"  name="location_id">
+                  <mat-select placeholder="location_id" [(ngModel)]="location_id"  name="location_id" required formControlName="location_id">
                   
                     <mat-option *ngFor="let l of locations" value="{{l._id}},{{l.name}},{{l.client}}" (click)="gethub(l._id,l.client)" >{{l.name}}</mat-option>
 
                   </mat-select>
+
+
+
+                  <mat-error *ngIf="formGroup1.get('location_id').hasError('required')">
+                    Location is Required!
+                  </mat-error>
+
                 </mat-form-field>
               </div>
               <div class="col-md-4">
                 <mat-form-field appearance="outline" id="hub">
                   <mat-label>Hub*</mat-label>
-                  <mat-select placeholder="hub" [(ngModel)]="hub" name="hub">
+                  <mat-select placeholder="hub" [(ngModel)]="hub" name="hub"  required formControlName="hub">
                   
                     <mat-option *ngFor="let h of hub_list" value="{{h.name}},{{h.mac_id}},{{h._id}}" >{{h.name}}</mat-option>
 
                   </mat-select>
+
+
+                  <mat-error *ngIf="formGroup1.get('hub').hasError('required')">
+                    Hub is Required!
+                  </mat-error>
                 </mat-form-field>
               </div>
 
@@ -39,68 +54,101 @@
               <div class="col-md-4">
                 <mat-form-field appearance="outline" id="level">
                   <mat-label>Level*</mat-label>
-                  <mat-select placeholder="level" [(ngModel)]="level" name="level">
+                  <mat-select placeholder="level" [(ngModel)]="level" name="level" required formControlName="level">
                     <mat-option *ngFor="let l of level_list" value="{{l}}"  >{{l}}</mat-option>
                   </mat-select>
+
+                  <mat-error *ngIf="formGroup1.get('level').hasError('required')">
+                    Level is Required!
+                  </mat-error>
+
                 </mat-form-field>
               </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline" id="notification_category">
                   <mat-label>Notification Category*</mat-label>
-                  <mat-select placeholder="notification cat" [(ngModel)]="notification_category" name="notification_category" multiple>
+                  <mat-select placeholder="notification cat" [(ngModel)]="notification_category" name="notification_category" required formControlName="notification_category" multiple>
                     <mat-option value="Health Check"  >Health Check</mat-option>
                     <mat-option value="Risk Assesment"  >Risk Assesment</mat-option>
                     
                   </mat-select>
+
+                  <mat-error *ngIf="formGroup1.get('notification_category').hasError('required')">
+                    Notification Category is Required!
+                  </mat-error>
+
                 </mat-form-field>
               </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>User Name</mat-label>
-                  <input matInput [(ngModel)]="name" name="name" placeholder="Name">
-                   
+                  <input matInput [(ngModel)]="name" name="name" placeholder="Name" required formControlName="name">
+                  <mat-error *ngIf="formGroup1.get('name').hasError('required')">
+                    User Name is Required!
+                  </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>Phone</mat-label>
-                  <input matInput type="number" [(ngModel)]="phone" name="phone" [maxlength]="10"  placeholder="Number">
-                  
+                  <input matInput type="number" [(ngModel)]="phone" name="phone" [maxlength]="10"  placeholder="Number" required formControlName="phone">
+                  <mat-error *ngIf="formGroup1.get('phone').hasError('required')">
+                    Phone is Required!
+                  </mat-error>
+
+                  <mat-error *ngIf="formGroup1.get('phone').hasError('pattern')">
+                    Please, Enter valid 10 digit Mobile Number.
+                  </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>Designation</mat-label>
-                  <input matInput [(ngModel)]="designation" name="designation" placeholder="Developer">
-                  
+                  <input matInput [(ngModel)]="designation" name="designation" placeholder="Developer" required formControlName="designation">
+                  <mat-error *ngIf="formGroup1.get('designation').hasError('required')">
+                    Designation is Required!
+                  </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-md-4">
                 <mat-form-field appearance="outline">
                   <mat-label>Email</mat-label>
-                  <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Email">
-                  
+                  <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Email" required formControlName="email">
+                  <mat-error *ngIf="formGroup1.get('email').hasError('required')">
+                    Email is Required!
+                  </mat-error>
+
+                  <mat-error *ngIf="formGroup1.get('email').hasError('email')">
+                    Please, Enter valid Email.
+                  </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="col-md-4"> <mat-form-field appearance="outline">
                 <mat-label>TAT</mat-label>
-                <input matInput type="number" [(ngModel)]="tat" name="tat" placeholder="tat">
-                 
+                <input matInput type="number" [(ngModel)]="tat" name="tat" placeholder="tat"required formControlName="tat">
+                <mat-error *ngIf="formGroup1.get('tat').hasError('required')">
+                  TAT is Required!
+                </mat-error>
+
+                <mat-error *ngIf="formGroup1.get('tat').hasError('pattern')">
+                  Please, Enter valid TAT Number.
+                </mat-error>
               </mat-form-field></div>
 
               <div class="col-md-12 d-flex">
-                <button type="button" class="btn btn-primary" (click)="add()">Add More</button>
+                <button type="button" class="btn btn-primary" (click)="add()" [disabled]="!formGroup1.valid" >Add More</button>
 
               </div>
 
               
             </div>
+          </form>
 
 
             <div class="row my-4">
@@ -146,7 +194,7 @@
             </div>
 
               <div class="row justify-content-center gap-1 my-3">
-                <button type="button" class="btn btn-primary" (click)="onsubmit()">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="onsubmit()" [disabled]="!formGroup1.valid">Submit</button>
                         
                 <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button>
                 

@@ -5,6 +5,7 @@ declare const Hls: any;
 import { DetailModalComponent } from '../detail-modal/detail-modal.component';         
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-notification-details',
@@ -121,6 +122,8 @@ ngOnDestroy(){
              if(data["success"] == true){
               this.router.navigate(['/kochar/Notifications']);
 
+             }else{
+              Swal.fire(data["msg"]);
              }
 
           });

@@ -178,6 +178,8 @@ export class AddnewlocationComponent implements OnInit {
       if(data["success"] == true){
         Swal.fire("Location added successfully!");
         this.router.navigate(["/kochar/Devices"]);
+       }else{
+        Swal.fire(data["msg"]);
        }
     });
 

@@ -73,9 +73,9 @@ export class AddrouterComponent implements OnInit {
 
     this.formGroup1 = this.formBuilder.group({
       r_name: ['', [Validators.required,]],
-      m_a : ['', [Validators.required]],
-      mob : ['', [Validators.required]],
-      imsi : ['', [Validators.required]],
+      m_a : ['', [Validators.required,Validators.minLength(17),Validators.maxLength(17)]],
+      mob : ['', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+      imsi : ['', [Validators.required,Validators.minLength(15),Validators.maxLength(15)]],
       sim : ['', [Validators.required]],
     })
 
@@ -147,7 +147,9 @@ export class AddrouterComponent implements OnInit {
        //this.location_id = data["location_id"];
        if(data["success"] == true){
           Swal.fire("Router added successfully!"); 
-      }
+      }else{
+        Swal.fire(data["msg"]);
+       }
        this.nextStep(1);
     });
   }
@@ -173,7 +175,9 @@ export class AddrouterComponent implements OnInit {
      //  console.log("Data:",data);
      if(data["success"] == true){
       Swal.fire("Tunnel Successfull!"); 
-  }
+  }else{
+    Swal.fire(data["msg"]);
+   }
        this.flag = true;
     });
 
@@ -190,7 +194,9 @@ export class AddrouterComponent implements OnInit {
        // console.log("Data:",data);
        if(data["success"] == true){
         Swal.fire("Get Live Port Successfull!"); 
-    }
+    }else{
+      Swal.fire(data["msg"]);
+     }
        this.live = data["data"];
        this.liveport = data["data"].liveport;
        this.liveurl = data["data"].liveurl;

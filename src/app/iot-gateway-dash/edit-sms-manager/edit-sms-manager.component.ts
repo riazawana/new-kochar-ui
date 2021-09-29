@@ -631,6 +631,8 @@ var data = {
            Swal.fire("Updated Successfully!");
 
           this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
+         }else{
+          Swal.fire(data["msg"]);
          }
 
     });

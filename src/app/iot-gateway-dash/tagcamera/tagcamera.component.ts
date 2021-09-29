@@ -229,6 +229,8 @@ submit(){
                 //console.log(data);
                 if(data["success"] == true){
                   Swal.fire("Camera updated successfully");        
+               }else{
+                Swal.fire(data["msg"]);
                }
   })
 }

@@ -64,9 +64,13 @@
                             <div class="col-md-4">
                              <mat-form-field appearance="outline">
                                <mat-label>GL Number</mat-label>
-                               <input matInput [(ngModel)]="gl_num" name="gl_num" placeholder="0000000000" required formControlName="gl_num">
+                               <input type="number" matInput [(ngModel)]="gl_num" name="gl_num" placeholder="0000000000" required formControlName="gl_num">
                                <mat-error *ngIf="formGroup1.get('gl_num').hasError('required')">
                                  GL Number is Required!
+                               </mat-error>
+
+                               <mat-error *ngIf="formGroup1.get('gl_num').hasError('pattern')">
+                                GL Number will be positive!
                                </mat-error>
                              </mat-form-field>
                             </div>

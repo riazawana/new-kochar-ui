@@ -3,6 +3,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 import { BackendconnectionService } from '../../backendconnection.service';
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {Location} from '@angular/common';
 @Component({
   selector: 'app-port-setting',
@@ -90,9 +91,14 @@ export class PortSettingComponent implements OnInit {
             //console.log("Data:",data);
             
             if(data["success"] == true){
+        Swal.fire("Port Setting updated Successfully!");
+
               this._location.back();
 
             }
+            else{
+              Swal.fire(data["msg"]);
+             }
      
          });
 
@@ -123,8 +129,12 @@ export class PortSettingComponent implements OnInit {
             
            
            if(data["success"] == true){
+             Swal.fire("Port Setting updated Successfully!");
+
             this._location.back();
 
+           }else{
+            Swal.fire(data["msg"]);
            }
     
     

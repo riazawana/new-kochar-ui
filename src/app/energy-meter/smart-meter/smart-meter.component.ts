@@ -5,7 +5,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {SocketioSendmsgService} from "../../socketio-sendmsg.service";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommandSettingSmartmeterComponent } from '../../command-setting-smartmeter/command-setting-smartmeter.component';  
 
@@ -47,11 +47,11 @@ export class SmartMeterComponent implements OnInit {
 
 
   /////////////////////////modal 2/////////////////////////////////////
-     openDialog(id,v): void {
+     openDialog(id,v,c): void {
       //  alert(id)
        const dialogRef = this.dialog.open(CommandSettingSmartmeterComponent, {
          width: '600px',
-         data: {id: id,v:v}    
+         data: {id: id,v:v,client:c}    
        },
        );
 
@@ -65,12 +65,19 @@ export class SmartMeterComponent implements OnInit {
     this.ngxLoader.start();
    
 
+    this.getdata();
+
+
+
+  }
+
+  getdata(){
     this.backend.getmodbususerwise()
     .subscribe((data)=> { 
 
     this.ngxLoader.stop();
 
-        //console.log("Modbus",data["data"]);
+        console.log("Modbus",data["data"]);
        this.modbus = data["data"];
 
       //  this.smartmeterval = {}
@@ -331,9 +338,6 @@ export class SmartMeterComponent implements OnInit {
         console.log(this.finalmodbus)
 
     });
-
-
-
   }
 
 
@@ -352,10 +356,62 @@ export class SmartMeterComponent implements OnInit {
 
   }
 
+  clearqueue(x){
+    this.backend.clearqueue(x)
+    .subscribe((data)=> { 
+      console.log(data["data"])
+    });
+  }
+
+
+   graph(x,y){
+    this.router.navigate(['/kochar/Energy Management/smartgraph',x,y])
+   }
 
 
 
+  deletesmartmeter(x,y,a){
 
+    
+    // if (confirm('Are you sure to delete this record ?') == true) {
+      
+  
+   
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this Smart meter!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+  
+           this.backend.deletesmartmeter(x,y,a)
+    .subscribe((data)=> { 
+  
+      //  console.log(data);
+      this.getdata();
+      Swal.fire(
+        'Deleted!',
+        'Smart meter has been deleted.',
+        'success'
+      )
+    });
+          
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Gateway is safe :)',
+            'error'
+          )
+        }
+      }) 
+   
+  // }
+  }
   
 
 }

@@ -5,6 +5,7 @@ import { EnergyMeterComponent } from './energy-meter.component';
 import { SecondryGatewayComponent } from './secondry-gateway/secondry-gateway.component';
 import { SmartMeterComponent } from './smart-meter/smart-meter.component';
 import { AddSmartMeterComponent } from './add-smart-meter/add-smart-meter.component';
+import { SmartGraphComponent } from './smart-graph/smart-graph.component';
 
 
 import { Routes, RouterModule } from '@angular/router';
@@ -41,6 +42,8 @@ const userRoutes: Routes =[
     {path:'Secondary Gateway',component: SecondryGatewayComponent,canActivate:[AuthGuard]},
     {path:'Smartmeter',component: SmartMeterComponent,canActivate:[AuthGuard]},
     {path:'addsmartmeter/:id/:client',component: AddSmartMeterComponent,canActivate:[AuthGuard]},
+    {path:'smartgraph/:id/:client',component: SmartGraphComponent,canActivate:[AuthGuard]},
+
 
 
     
@@ -52,7 +55,8 @@ const userRoutes: Routes =[
     EnergyMeterComponent,
     SecondryGatewayComponent,
     SmartMeterComponent,
-    AddSmartMeterComponent
+    AddSmartMeterComponent,
+    SmartGraphComponent
   ],
   imports: [
     RouterModule.forChild(userRoutes),

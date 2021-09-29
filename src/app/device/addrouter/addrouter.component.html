@@ -35,6 +35,15 @@
                             <mat-error *ngIf="formGroup1.get('m_a').hasError('required')">
                               Mac is Required!
                             </mat-error>
+
+
+                <mat-error *ngIf="formGroup1.get('m_a').hasError('minlength')">
+                  Invalid Mac Addres!
+                </mat-error>
+
+                <mat-error *ngIf="formGroup1.get('m_a').hasError('maxlength')">
+                  Invalid Mac Addres!
+                </mat-error>
                           </mat-form-field>
                         </div>
   
@@ -45,6 +54,16 @@
                             <mat-error *ngIf="formGroup1.get('mob').hasError('required')">
                               Mobile is Required!
                             </mat-error>
+
+                            <mat-error *ngIf="formGroup1.get('mob').hasError('minlength')">
+                              Invalid Mobile No!
+                            </mat-error>
+            
+                            <mat-error *ngIf="formGroup1.get('mob').hasError('maxlength')">
+                              Invalid Mobile No!
+                            </mat-error>
+
+
                           </mat-form-field>
                         </div>
   
@@ -54,6 +73,15 @@
                             <input matInput [(ngModel)]="imsi" name="imsi" placeholder="IMSI Number" (keypress)="keyPress($event)" required formControlName="imsi">
                             <mat-error *ngIf="formGroup1.get('imsi').hasError('required')">
                               IMSI is Required!
+                            </mat-error>
+
+
+                            <mat-error *ngIf="formGroup1.get('imsi').hasError('minlength')">
+                              Invalid IMSI No!
+                            </mat-error>
+            
+                            <mat-error *ngIf="formGroup1.get('imsi').hasError('maxlength')">
+                              Invalid IMSI No!
                             </mat-error>
                           </mat-form-field>
                         </div>

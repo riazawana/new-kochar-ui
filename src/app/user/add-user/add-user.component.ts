@@ -222,7 +222,9 @@ export class AddUserComponent implements OnInit {
         Swal.fire("User created successfully!");
         this.router.navigate(["/kochar/Users"]);
       })
-      }
+      }else{
+        Swal.fire(data["msg"]);
+       }
 
 
       });
@@ -260,6 +262,8 @@ export class AddUserComponent implements OnInit {
         if(data["success"] == true){ 
           Swal.fire("User created successfully!");         
           this.router.navigate(["/kochar/Users"]);
+         }else{
+          Swal.fire(data["msg"]);
          }
       });
 

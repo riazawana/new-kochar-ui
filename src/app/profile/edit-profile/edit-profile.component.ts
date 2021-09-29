@@ -162,6 +162,8 @@ this.backend.updateUserprofile(data)
    if(data["success"] == true){
      Swal.fire("User updated successfully!");
     this.router.navigate(["/kochar/profile"]);
+   }else{
+    Swal.fire(data["msg"]);
    }
 });
 

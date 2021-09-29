@@ -9,7 +9,7 @@
            <div class="row my-2">
                
             <div class="col-md-3">
-             <p>Set Address</p> 
+             <p>Set Address:</p> 
 
             </div>
             <div class="col-md-9">
@@ -17,15 +17,42 @@
                       <input matInput  [(ngModel)]="setaddress" name="setaddress">
                     </mat-form-field>
             </div>
-           </div>
 
-           <div class="row justify-content-end">
+            <div class="col-md-3">
+               <p>Meter Type:</p> 
+  
+              </div>
+
+            <div class="col-md-9" *ngIf="data.v == 2">
+               <mat-form-field appearance="outline">
+                 <mat-label>Meter Type</mat-label>
+                 <mat-select placeholder="metertype" [(ngModel)]="metertype" name="metertype">
+                   <mat-option  value="EM368" >EM368</mat-option>
+                   <mat-option  value="EM1320" >EM1320</mat-option>
+               
+                 </mat-select>
+             </mat-form-field>
+              </div>
+
+
+
+            <button type="button" class="btn btn-primary" (click) = "sendMessage('setaddress',setaddress,data.id)" style="float: right;">Submit</button>
+      
             
-              <button type="button" class="btn btn-primary" (click) = "sendMessage('setaddress',setaddress,data.id)" >Submit</button>
-       
-
-           </div>
+          
           
            </div>
-  
+           
+           <div class="row my-2" *ngIf="data.v == 2">
+            <div class="col-md-3" >
+               <button type="button" class="btn btn-primary" (click) = "viewpayload(data.id,data.client)" >View Payload</button>
+   
+              </div>
+   
+            <div class="col-md-9">
+               <textarea matInput [(ngModel)]="view" style="border: 1px solid #d4d4d4;border-radius: 7px;"></textarea>
+              </div>
+           </div>
+           </div>
+         
  

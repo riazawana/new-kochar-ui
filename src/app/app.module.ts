@@ -41,6 +41,16 @@ import { Extra1Component } from './extra1/extra1.component';
 import { Extra2Component } from './extra2/extra2.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
 import { environment } from './../environments/environment';
+import { ChartsModule } from 'ng2-charts';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import stock from 'highcharts/modules/stock.src';
+import more from 'highcharts/highcharts-more.src'
+
+
+export function highchartsModules() {
+  // apply Highcharts Modules to this array
+  return [stock, more];
+}
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#f44336",
@@ -141,6 +151,7 @@ const customNotifierOptions: NotifierOptions = {
     ErrorComponent,
     Extra1Component,
     Extra2Component,
+    // SmartGraphComponent,
   ],
   imports: [
     HttpClientModule,
@@ -182,7 +193,8 @@ const customNotifierOptions: NotifierOptions = {
      MatBadgeModule,
      MatSlideToggleModule,
      MatDatepickerModule,
-     MatNativeDateModule
+     MatNativeDateModule,
+     ChartsModule
   ],
   providers: [BackendconnectionService,SocketioService,SocketioSendmsgService,
     // {provide : LocationStrategy , useClass: HashLocationStrategy},
@@ -201,6 +213,7 @@ const customNotifierOptions: NotifierOptions = {
     multi: true,
     deps: [KeycloakService],
    },
+   { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules },
   
 ],
   bootstrap: [AppComponent],

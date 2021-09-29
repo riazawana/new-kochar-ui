@@ -71,6 +71,8 @@ export class EditTemplateComponent implements OnInit {
         if(data["success"] == true){
           Swal.fire("Template update successfully!");
           this.router.navigate(["/kochar/IOT Gateway/Templates"]);
+         }else{
+          Swal.fire(data["msg"]);
          }
     });
   }

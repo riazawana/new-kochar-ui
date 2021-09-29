@@ -142,7 +142,9 @@ delete:any=false;
 
         //  this.router.navigate(["/kochar/IOT Gateway/SMS Manager"]);
          this.getsetting(mac_id);
-        }
+        }else{
+          Swal.fire(data["msg"]);
+         }
     });
   }
   

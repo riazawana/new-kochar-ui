@@ -223,7 +223,9 @@ gateway:any;
 
         if(data["success"]== true){
          Swal.fire("Notification Setting updated successfully!");
-        }
+        }else{
+          Swal.fire(data["msg"]);
+         }
 
     });
 

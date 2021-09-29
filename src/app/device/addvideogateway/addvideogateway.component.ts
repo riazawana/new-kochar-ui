@@ -31,11 +31,11 @@ export class AddvideogatewayComponent implements OnInit {
   username:any;
   password:any;
   name:any;
-  brand:any;
+  brand:any = "shinobi";
   mac_id:any;
   rtsp_port:any;
   analog_ports_count:any;
-  cat:any;
+  cat:any = "nvr";
 
   formGroup1: FormGroup;
 
@@ -45,15 +45,15 @@ export class AddvideogatewayComponent implements OnInit {
 
     this.formGroup1 = this.formBuilder.group({
       brand: ['', [Validators.required,]],
-      host_add : ['', [Validators.required]],
+      host_add : ['', [Validators.required,Validators.pattern('.*,+.*')]],
       mac_id : ['', [Validators.required]],
       name : ['', [Validators.required]],
       username : ['', [Validators.required]],
       password : ['', [Validators.required]],
     })
 
-    this.user_id =  sessionStorage.getItem('userid');
-    this.route.paramMap.subscribe(params => {
+      this.user_id =  sessionStorage.getItem('userid');
+      this.route.paramMap.subscribe(params => {
       this.zone_id = params.get("idz");
       this.location_id = params.get("id");
       })
@@ -78,6 +78,10 @@ export class AddvideogatewayComponent implements OnInit {
      //this.mac_id.addEventListener("keyup", this.formatMAC, false);
    
     
+  }
+
+  chng(c){
+    alert(c)
   }
 
   formatMAC(e) {
@@ -139,6 +143,8 @@ export class AddvideogatewayComponent implements OnInit {
         // this.router.navigate(["/kochar/Devices"]);
       this._location.back();
 
+       }else{
+        Swal.fire(data["msg"]);
        }
     });
 

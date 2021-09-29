@@ -59,7 +59,9 @@ export class AddfeaturesComponent implements OnInit {
          if(data["success"] == true){
            Swal.fire("Module added successfully!")
            this.router.navigate(["/kochar/Features"]);
-          }
+          }else{
+            Swal.fire(data["msg"]);
+           }
        });
      }else{
       this.backend.addfeature(data).subscribe((data)=> { 
@@ -67,7 +69,9 @@ export class AddfeaturesComponent implements OnInit {
          if(data["success"] == true){
            Swal.fire("Feature added successfully!");
            this.router.navigate(["/kochar/Features"]);
-          }
+          }else{
+            Swal.fire(data["msg"]);
+           }
        });
      }
       

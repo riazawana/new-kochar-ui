@@ -95,6 +95,8 @@ export class AddSmartMeterComponent implements OnInit {
         Swal.fire("Smart Meter Added Successfully!");
         // this.router.navigate(["/kochar/Devices"]);
       this._location.back();
+       }else{
+        Swal.fire(data["msg"]);
        }
     })
 
